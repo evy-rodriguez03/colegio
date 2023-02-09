@@ -1,29 +1,27 @@
 
-@extends('layout.app')
+@extends('layout.form')
 
 @section('title', 'login')
 
 @section('content')
 
-<div class="block mx-auto my-12 p-8 bg-white w-1/3 border-gray-200 rounded-lg shadow-lg">
-    <h1 class="text-3xl text-center font-bold">Login</h1>
+<footer class="py-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-xl-between">
+          <div class="col-xl-6">
+            
+          </div>
+          <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+        
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    <form class="mt-4" method="POST" action="">
-        <input type="email" class="border border-gray-200 rounded-md bg-gray-200
-        w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-while" placeholder="Usuario"
-        id="email" name="email">
-        </input>
-        <input type="password" class="border border-gray-200 rounded-md bg-gray-200
-        w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-while" placeholder="Contraseña"
-        id="password" name="password">
-        </input>
+    
 
-        <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
-        text-while font-semibold p-2 my-3 hover:bg-indigo-600">
-            Entrar
-        </button>
 
-    </form>
-</div>
 
 @endSection
