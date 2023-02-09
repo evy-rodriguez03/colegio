@@ -12,8 +12,9 @@ class RegisterController extends Controller
    }
 
    public function store(){
-      $user = User::create(request (['name', 'email', 'password']));
-      auth()->login($user);
-      return redirect()->to('/');
+      if(auth ()->attempt (request (['name', 'email', 'password']) == false )){ 
+         return back()->withErrors(['message'=> 'El correo y la contraseña es incorrecto']);
+      }
+      
    }
 }
