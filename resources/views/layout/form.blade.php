@@ -46,46 +46,13 @@
               </div>
             </div>
           </div>
-          <!-- Navbar items -->
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../index.html">
-                <i class="ni ni-planet"></i>
-                <span class="nav-link-inner--text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../examples/register.html">
-                <i class="ni ni-circle-08"></i>
-                <span class="nav-link-inner--text">Register</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../examples/login.html">
-                <i class="ni ni-key-25"></i>
-                <span class="nav-link-inner--text">Login</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../examples/profile.html">
-                <i class="ni ni-single-02"></i>
-                <span class="nav-link-inner--text">Profile</span>
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8">
+    <div class="header bg-gradient-primary py-3 py-lg-5">
       <div class="container">
-        <div class="header-body text-center mb-7">
-          <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Login</h1>
-              <p class="text-lead text-light">Instituto Cosmer Garcia C.</p>
-            </div>
-          </div>
+        <div class="header-body text-center mb-3">
         </div>
       </div>
       <div class="separator separator-bottom separator-skew zindex-100">
@@ -113,11 +80,11 @@
               </div>
               @else
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <h1>Login</h1>
               </div>
               @endif
               
-              <form role="form" method="POST" action="{{ route('login') }}">
+              <form role="form">
               @csrf  
               <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
@@ -141,19 +108,18 @@
                     <span class="text-muted">Recordar Sessión</span>
                   </label>
                 </div>
+              
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Entrar</button>
                 </div>
+                <div class="col-6" >
+              <a href="#"><small><center>Olvidaste tu contraseña</center></small></a>
+            </div>
               </form>
             </div>
           </div>
           <div class="row mt-3">
-            <div class="col-6">
-              <a href="{{route ('password.request') }}" class="text-light"><small>Olvidaste tu contraseña</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="{{route ('register') }}" class="text-light"><small>Crear Cuenta Nueva</small></a>
-            </div>
+           
           </div>
         </div>
       </div>
