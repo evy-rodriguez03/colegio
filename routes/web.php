@@ -6,7 +6,7 @@ use App\Http\controllers\SessionsController;
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('Home');
 });
 
 /*Ruta de Login */
