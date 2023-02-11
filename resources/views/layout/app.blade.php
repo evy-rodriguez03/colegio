@@ -23,18 +23,6 @@
 	  <h2 class="text-2xl font-bold">Instituto Cosmer Garcia C.</h2>
         </div>
 
-		<ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
-			<li class="mx-6">
-				<a href="{{ route('login.index') }}" class="font-semibold hover bg-indigo-700 py-3 px-4 rounded-md"> Login </a>
-
-				</li>
-
-				<li>
-				<a href="{{ route('register.index') }}" class="font-semibold hover bg-indigo-700 py-3 px-4 rounded-md">Registrar </a>
-			</li>
-		</ul>
-		
-	  </nav>
 
 	  @yield('content')
 	  </body>
