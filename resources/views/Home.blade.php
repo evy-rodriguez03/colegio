@@ -1,5 +1,5 @@
 
-@extends('layout.form')
+@extends('layout.app')
 
 @section('title', 'Login')
 
