@@ -33,19 +33,23 @@
             @yield('content')
         </div>
 
-		<ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
-			<li class="mx-6">
-				<a href="{{ route('login.index') }}" class="font-semibold hover bg-indigo-700 py-3 px-4 rounded-md"> Login </a>
-
-				</li>
-
-				<li>
-				<a href="{{ route('register.index') }}" class="font-semibold hover bg-indigo-700 py-3 px-4 rounded-md">Registrar </a>
-			</li>
-		</ul>
-		
-	  </nav>
+<<<<<<< HEAD
 
 	  @yield('content')
 	  </body>
 	</html>
+=======
+        @guest()
+            @include('layout.footers.guest')
+        @endguest
+
+        <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        
+        @stack('js')
+        
+        <!-- Argon JS -->
+        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    </body>
+</html>
+>>>>>>> da1a4548763a7d22e286ef88df98c38326623dae
