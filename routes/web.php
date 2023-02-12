@@ -23,6 +23,8 @@ Route::get('/register', [RegisterController::class,
 
  Route::post('/register', [RegisterController::class,
  'store'])->name('register.index');
+ 
+ 
 
 
 
