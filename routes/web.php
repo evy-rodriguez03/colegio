@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\SessionsController;
 use App\Http\controllers\DashboardController;
-use App\Http\controllers\PeriodoelectivoController;
 
 
 /*Ruta de Login */
@@ -16,9 +15,10 @@ Route::get('/login', [SessionsController::class,
 
 Route::get('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
-
-/*Ruta de Iniciar periodo electivo */
-Route::get('/prinperiodo', [PeriodoelectivoController::class, 
-'create'])->name('periodo.index');
-
+ 
+//rutas usuario
+route::get('/usuarios', [UsuarioController::Class,'index'])->name('usuarios.index');
+route::get('/usuarios/crear', [UsuarioController::Class,'create'])->name('usuarios.create');
+route::get('/usuarios/{usuario}/edit', [UsuarioController::Class,'edit'])->name('usuarios.edit');
+route::post('/usuarios', [UsuarioController::Class,'sendData']);
 
