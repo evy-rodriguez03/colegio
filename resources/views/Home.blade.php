@@ -1,7 +1,7 @@
 
-@extends('layout.Form')
+@extends('layout.form')
 
-@section('title', 'Home')
+@section('title', 'Login')
 
 @section('content')
 <br>

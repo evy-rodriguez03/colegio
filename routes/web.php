@@ -1,17 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\controllers\RegisterController;
 use App\Http\controllers\SessionsController;
 use App\Http\controllers\UsuarioController;
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('Home');
 });
 
 /*Ruta de Login */
-
 Route::get('/login', [SessionsController::class, 
 'create'])->name('login.index');
 
@@ -25,8 +23,9 @@ Route::get('/register', [RegisterController::class,
  Route::post('/register', [RegisterController::class,
  'store'])->name('register.index');
 
-//rutas usuario
 
+
+//rutas usuario
 route::get('/usuarios', [UsuarioController::Class,'index'])->name('usuarios.index');
 
 route::get('/usuarios/crear', [UsuarioController::Class,'create'])->name('usuarios.create');
