@@ -104,7 +104,7 @@
                   <button type="submit" class="btn btn-info my-4">Entrar</button>
                 </div>
                 <div class="col-6" >
-              <a href="{{route ('periodo.index') }}"><small><center>Olvidaste tu contraseña</center></small></a>
+              <a href="(#)"><small><center>Olvidaste tu contraseña</center></small></a>
             </div>
               </form>
             </div>
