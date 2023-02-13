@@ -33,6 +33,12 @@
             @yield('content')
         </div>
 
+<<<<<<< HEAD
+
+	  @yield('content')
+	  </body>
+	</html>
+=======
         @guest()
             @include('layout.footers.guest')
         @endguest
@@ -46,3 +52,4 @@
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
     </body>
 </html>
+>>>>>>> da1a4548763a7d22e286ef88df98c38326623dae
