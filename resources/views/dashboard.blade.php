@@ -3,6 +3,46 @@
 @section('title', 'Home')
 
 @section('content')
+<br><br>
+<div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card">
+        <img src="{{asset('img/brand/profesores.jpg') }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <center><h2 class="card-title">Personal</h2></center>
+          <center><button onclick="window.location.href='{{route('usuarios.index')}}'" type="button" class="btn btn-primary btn-lg">Ir</button></center>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="{{asset('img/brand/cursos.jpg') }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <center><h2 class="card-title">Cursos totales</h2></center>
+          <center><button type="button" class="btn btn-primary btn-lg">Large button</button></center>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="{{asset('img/brand/periodo.jpg') }}" class="card-img-top" alt="..."  height="335">
+        <div class="card-body">
+          <center><h2 class="card-title">Periodo Lectivo</h2></center>
+          <center><button type="button" class="btn btn-primary btn-lg">Large button</button></center>
+           
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
 <div class="row">
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card bg-gradient-default shadow">
