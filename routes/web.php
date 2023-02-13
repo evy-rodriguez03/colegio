@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\SessionsController;
 use App\Http\controllers\DashboardController;
+use App\Http\controllers\UsuarioController;
 
 
 /*Ruta de Login */
