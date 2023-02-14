@@ -1,8 +1,7 @@
-@extends('layout.app')
+@extends('layout.panel')
 
 
 @section('content')
-<br><br><br><br>
 <div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">

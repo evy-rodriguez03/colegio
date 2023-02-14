@@ -33,14 +33,11 @@
             @yield('content')
         </div>
 
-
-
-	  @yield('content')
 	  </body>
 	</html>
 
         @guest()
-            @include('layout.footers.guest')
+            @include('includes.panel.footer')
         @endguest
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>

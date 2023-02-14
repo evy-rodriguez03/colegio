@@ -34,11 +34,7 @@
           <i class="fas fa-comment-dollar text-red"></i> Tesoreria
         </a>
       </li>
-    <li class="nav-item">
-      <a class="nav-link" href="./examples/login.html">
-        <i class="ni ni-key-25 text-info"></i> Login
-      </a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" href="{{route('login.index')}}"
       onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();"
