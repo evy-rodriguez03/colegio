@@ -9,7 +9,7 @@ use App\Http\controllers\UsuarioController;
 /*Ruta de Login */
 
 Route::get('/', function ()
- {return view('home');});
+ {return view('Home');});
 
 Route::get('/login', [SessionsController::class, 
 'create'])->name('login.index');
