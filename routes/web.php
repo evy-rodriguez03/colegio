@@ -14,7 +14,7 @@ Route::get('/', function ()
 Route::get('/login', [SessionsController::class, 
 'create'])->name('login.index');
 
-Route::get('/dashboard', [DashboardController::class, 
+Route::post('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
  
 //rutas usuario

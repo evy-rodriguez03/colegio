@@ -75,7 +75,7 @@
               </div>
               @endif
               
-              <form role="form" action="{{ route('dashboard.index') }}" >
+              <form role="form" action="{{ route('dashboard.index') }}" method="POST" >
               @csrf  
               <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
