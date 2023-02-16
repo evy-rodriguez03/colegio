@@ -7,26 +7,26 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
       <div class="card">
-        <img src="{{asset('img/brand/profesores.jpg') }}" class="card-img-top" alt="..." width="50" height="170">
+      <center><img src="{{asset('img/brand/personal.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{Route('usuarios.index')}}" class="btn btn-sm btn-primary">Personal</a></center>
+          <center><a href="{{Route('usuarios.index')}}" class="btn btn-lg btn-info">Personal</a></center>
           
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <img src="{{asset('img/brand/cursos.jpg') }}" class="card-img-top" alt="..." width="50" height="170">
+      <center><img src="{{asset('img/brand/listo.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-sm btn-primary">Curso Totales</a></center>
+          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <img src="{{asset('img/brand/periodo.jpg') }}" class="card-img-top" alt="..." width="50" height="170">
+      <center><img src="{{asset('img/brand/ficha.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-sm btn-primary">Curso Totales</a></center>
+          <center><a href="{{route ('periodo')}}" class="btn btn-lg btn-info">Periodo Matricula</a></center>
            
         </div>
       </div>
