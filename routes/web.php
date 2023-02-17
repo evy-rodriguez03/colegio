@@ -20,6 +20,7 @@ Route::post('/dashboard', [DashboardController::class,
 //rutas usuario
 route::get('/usuarios', [UsuarioController::Class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UsuarioController::Class,'create'])->name('usuarios.create');
-route::get('/usuarios/{usuario}/edit', [UsuarioController::Class,'edit'])->name('usuarios.edit');
+route::get('/usuarios/{usuarios}/edit', [UsuarioController::Class,'edit'])->name('usuarios.edit');
 route::post('/usuarios', [UsuarioController::Class,'sendData']);
-
+route::put('/usuarios/{usuarios}', [UsuarioController::Class,'update'])->name('usuarios.update');
+route::delete('/usuarios/{usuarios}', [UsuarioController::Class,'destroy'])->name('usuarios.destroy');
