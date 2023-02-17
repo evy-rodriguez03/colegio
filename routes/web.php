@@ -30,6 +30,26 @@ Route::get('/dashboardsec', [dashboardsecController::class,
 //rutas usuario
 route::get('/usuarios', [UsuarioController::Class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UsuarioController::Class,'create'])->name('usuarios.create');
-route::get('/usuarios/{usuario}/edit', [UsuarioController::Class,'edit'])->name('usuarios.edit');
+route::get('/usuarios/{usuarios}/edit', [UsuarioController::Class,'edit'])->name('usuarios.edit');
 route::post('/usuarios', [UsuarioController::Class,'sendData']);
+route::put('/usuarios/{usuarios}', [UsuarioController::Class,'update'])->name('usuarios.update');
+route::delete('/usuarios/{usuarios}', [UsuarioController::Class,'destroy'])->name('usuarios.destroy');
+
+/*Rutas inicio y cieree de matricula */
+Route::get('/prinperiodo', [PeriodomController::class, 
+'create'])->name('periodo');
+
+Route::get('/iniciom', [IniciomController::class, 
+'create'])->name('inicio');
+
+Route::get('/cierrem', [FinalizarController::class, 
+'create'])->name('cierre');
+
+/*(Calendario)*/
+Route::get('evento/form','ControllerEvent@form')->name('evento.index');
+Route::post('evento/create','ControllerEvent@create');
+Route::get('evento/details/{id}','ControllerEvent@details');
+Route::get('evento/index','ControllerEvent@index');
+Route::get('evento/index/{month}','ControllerEvent@index_month');
+Route::post('evento/calendario','ControllerEvent@calendario');
 
