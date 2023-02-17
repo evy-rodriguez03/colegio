@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="./examples/profile.html">
+      <a class="nav-link " href="{{route('dashboardsec.index')}}">
         <i class="fas fa-chalkboard-teacher text-yellow"></i> Secretaria
       </a>
     </li>
