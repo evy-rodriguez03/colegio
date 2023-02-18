@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PeriodoelectivoController extends Controller
+class PeriodomController extends Controller
 {
     public function create(){
-        return view('periodoelectivo.prinperiodo');
+        return view('administracion.prinperiodo');
        }
 }
