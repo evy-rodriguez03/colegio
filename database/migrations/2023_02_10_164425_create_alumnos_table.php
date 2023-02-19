@@ -19,6 +19,7 @@ class CreateAlumnosTable extends Migration
             $table->string('segundonombre');
             $table->string('primerapellido');
             $table->string('segundoapellido');
+            $table->string('numerodeidentidad');
             $table->date('fechadenacimiento');
             $table->string('genero');
             $table->string('lugardenacimiento');

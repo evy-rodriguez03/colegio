@@ -18,7 +18,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/listo.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
+          <center><a href="{{url('#')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
         </div>
       </div>
     </div>

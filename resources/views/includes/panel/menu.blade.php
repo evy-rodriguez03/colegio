@@ -5,7 +5,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="./examples/icons.html">
+      <a class="nav-link " href="{{route('alumnos.index')}}">
         <i class="ni ni-hat-3"></i> Alumnos
       </a>
     </li>

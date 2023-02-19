@@ -9,6 +9,7 @@ use App\Http\controllers\PeriodomController;
 use App\Http\controllers\IniciomController;
 use App\Http\controllers\FinalizarController;
 use App\Http\controllers\ControllerEvent;
+use App\Http\controllers\AlumnoController;
 
 
 
@@ -53,3 +54,10 @@ Route::get('evento/index','ControllerEvent@index');
 Route::get('evento/index/{month}','ControllerEvent@index_month');
 Route::post('evento/calendario','ControllerEvent@calendario');
 
+//ruta alumnos
+route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
+route::get('/alumnos/{usuarios}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::Class,'sendData']);
+route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
