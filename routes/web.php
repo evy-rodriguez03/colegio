@@ -109,5 +109,5 @@ route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index')
 route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::Class,'sendData']);
-route::put('/alumnos/{alumnos}', [AlumnoController::Class,'update'])->name('alumnos.update');
-route::delete('/alumnos/{alumnos}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
+route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
