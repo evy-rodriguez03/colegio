@@ -9,9 +9,8 @@ use App\Http\controllers\PeriodomController;
 use App\Http\controllers\IniciomController;
 use App\Http\controllers\FinalizarController;
 use App\Http\controllers\ControllerEvent;
-
+use App\Http\controllers\AlumnoController;
 use App\Http\controllers\PadreController;
-
 
 
 /*Ruta de Login */
@@ -105,3 +104,10 @@ route::post('/padres', [PadreController::Class,'sendData']);
 route::put('/padres/{padres}', [PadreController::Class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::Class,'destroy'])->name('padres.destroy');
 
+//ruta alumnos
+route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::Class,'sendData']);
+route::put('/alumnos/{alumnos}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::delete('/alumnos/{alumnos}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
