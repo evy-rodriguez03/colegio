@@ -61,3 +61,48 @@ route::get('/alumnos/{usuarios}/edit', [AlumnoController::Class,'edit'])->name('
 route::post('/alumnos', [AlumnoController::Class,'sendData']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');

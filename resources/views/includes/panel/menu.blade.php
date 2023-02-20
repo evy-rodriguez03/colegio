@@ -1,7 +1,10 @@
 <ul class="navbar-nav">
     <li class="nav-item  active ">
-      <a class="nav-link  active " href="./index.html">
+      <a href="{{Route('dashboard.index')}}" class="nav-link  active " href="./index.html">
         <i class="ni ni-tv-2 text-primary"></i> Panel
+
+       
+
       </a>
     </li>
     <li class="nav-item">
@@ -10,7 +13,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="./examples/maps.html">
+      <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/maps.html">
         <i class="fas fa-user-tie text-orange"></i> Padres
       </a>
     </li>
@@ -20,17 +23,17 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="./examples/tables.html">
+      <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
         <i class="fas fa-book-reader text-red"></i> Orientación
       </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="./examples/tables.html">
+        <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
           <i class="fas fa-users text-red"></i> Consejeria
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="./examples/tables.html">
+        <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
           <i class="fas fa-comment-dollar text-red"></i> Tesoreria
         </a>
       </li>

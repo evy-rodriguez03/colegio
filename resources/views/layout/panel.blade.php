@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Instituto Cosme Gacria.
+    Instituto Cosme Garcia C.
   </title>
   <!-- Favicon -->
   <link href=" {{asset('img/brand/favicon.png') }} " rel="icon" type="image/png">
@@ -25,8 +25,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
-        <img src=" {{asset('img/brand/blue.png')}} " class="navbar-brand-img" alt="...">
+      <a class="navbar-brand pt-0" href="./index.html" >
+        <br>
+       
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
