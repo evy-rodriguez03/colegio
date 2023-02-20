@@ -10,6 +10,8 @@ use App\Http\controllers\IniciomController;
 use App\Http\controllers\FinalizarController;
 use App\Http\controllers\ControllerEvent;
 
+use App\Http\controllers\PadreController;
+
 
 
 /*Ruta de Login */
@@ -52,4 +54,54 @@ Route::get('evento/details/{id}','ControllerEvent@details');
 Route::get('evento/index','ControllerEvent@index');
 Route::get('evento/index/{month}','ControllerEvent@index_month');
 Route::post('evento/calendario','ControllerEvent@calendario');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//rutas Padres
+route::get('/padres', [PadreController::Class,'index'])->name('padres.index');
+route::get('/padres/crear', [PadreController::Class,'create'])->name('padres.create');
+route::get('/padres/{padres}/edit', [PadreController::Class,'edit'])->name('padres.edit');
+route::post('/padres', [PadreController::Class,'sendData']);
+route::put('/padres/{padres}', [PadreController::Class,'update'])->name('padres.update');
+route::delete('/padres/{padres}', [PadreController::Class,'destroy'])->name('padres.destroy');
 

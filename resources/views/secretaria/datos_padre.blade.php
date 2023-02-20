@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Datos Padre</h1>
             </div>
             <div class="col text-right">
-            <a href="{{url('#')}}" class="btn btn-sm btn-success">
+            <a href="{{route('padres.index')}}" class="btn btn-sm btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>
@@ -18,76 +18,78 @@
 
     <div class="card-body">
         <!-- inicio formulario -->
-    <form class="row g-3 mt-3">
+
+        <form class="row g-3 mt-3" action="{{route('padres.index')}}" method="POST">
+          @csrf
         <div class="form-group col-2 mt-3">
-            <label for="name">Tipo:</label>
+            <label for="tipo">Tipo:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="tipo" name="tipo" class="form-control" 
+            <input type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}"
             placeholder="Ingrese el tipo"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Primer Nombre:</label>
+            <label for="primernombre">Primer Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="pNombre" name="pNombre" class="form-control" 
+            <input type="text" id="primernombre" name="primernombre" class="form-control" required value="{{old('primernombre')}}"
             placeholder="Ingrese el primer nombre"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Segundo Nombre:</label>
+            <label for="segundonombre">Segundo Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="sNombre" name="sNombre" class="form-control" 
+            <input type="text" id="segundonombre" name="segundonombre" class="form-control" required value="{{old('segundonombre')}}"
             placeholder="Ingrese el segundo nombre"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Numero de Identidad:</label>
+            <label for="numerodeidentidad">Número de Identidad:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="identidad" name="identidad" class="form-control" 
-            placeholder="Ingrese el numero de identidad"></input>
+            <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required value="{{old('numerodeidentidad')}}"
+            placeholder="Ingrese el número de identidad"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Telefono Personal:</label>
+            <label for="name">Teléfono Personal:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="personal" name="personal" class="form-control" 
-            placeholder="Ingrese el telefono personal"></input>
+            <input type="text" id="personal" name="personal" class="form-control" required value="{{old('personal')}}"
+            placeholder="Ingrese el télefono personal"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Lugar de Trabajo:</label>
+            <label for="lugardetrabajo">Lugar de Trabajo:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="lugar" name="lugar" class="form-control" 
+            <input type="text" id="lugardetrabajo" name="lugardetrabajo" class="form-control" required value="{{old('lugardetrabajo')}}"
             placeholder="Ingrese el lugar de trabajo"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Oficio:</label>
+            <label for="oficio">Oficio:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="oficio" name="oficio" class="form-control" 
+            <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
             placeholder="Ingrese el oficio"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Telefono de Oficina:</label>
+            <label for="telefonodeoficina">Teléfono de Oficina:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="oficina" name="oficina" class="form-control" 
-            placeholder="Ingrese el telefono de oficina"></input>
+            <input type="text" id="telefonodeoficina" name="telefonodeoficina" class="form-control" required value="{{old('telefonodeoficina')}}"
+            placeholder="Ingrese el télefono de oficina"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="name">Ingresos:</label>
+            <label for="ingresos">Ingresos:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="ingresos" name="ingresos" class="form-control" 
+            <input type="text" id="ingresos" name="ingresos" class="form-control" required value="{{old('ingresos')}}"
             placeholder="Ingrese los ingresos"></input>
         </div>
 
@@ -95,7 +97,7 @@
             Borrar
         </button>
 
-        <button type="button" class="btn btn-primary mt-3">
+        <button type="submit" class="btn btn-primary mt-3">
             Guardar
         </button>
     </form>
