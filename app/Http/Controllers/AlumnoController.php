@@ -25,7 +25,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view('secretaria.Alumnos.create');
     }
 
     /**
