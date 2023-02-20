@@ -26,12 +26,14 @@ class CreateAlumnosTable extends Migration
             $table->string('direccion');
             $table->string('hermanosentotal');
             $table->string('numerodehermanosenicgc');
+            $table->string('nombredelmedico');
             $table->string('telefonodeencargado');
             $table->string('alergia');
             $table->string('fotografias');
             $table->string('fotografiasdelpadre');
             $table->string('fotografiacarnet');
             $table->string('certificadodeconducta');
+            $table->string('partidadenacimiento');
             
         });
     }
