@@ -23,6 +23,8 @@ Route::get('/login', [SessionsController::class,
 
 Route::post('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');
 
 Route::get('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
@@ -50,7 +52,7 @@ Route::get('/cierrem', [FinalizarController::class,
 'create'])->name('cierre');
 
 /*(Calendario)*/
-Route::get('evento/form','ControllerEvent@form')->name('evento.index');
+Route::get('evento/form','ControllerEvent@form');
 Route::post('evento/create','ControllerEvent@create');
 Route::get('evento/details/{id}','ControllerEvent@details');
 Route::get('evento/index','ControllerEvent@index');
