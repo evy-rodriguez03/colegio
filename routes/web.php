@@ -24,6 +24,9 @@ Route::get('/login', [SessionsController::class,
 Route::post('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
 
+Route::get('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');
+
  /*Ruta del dashboar secretaria*/
 Route::get('/dashboardsec', [dashboardsecController::class, 
 'create'])->name('dashboardsec.index');
@@ -94,8 +97,6 @@ Route::post('evento/calendario','ControllerEvent@calendario');
 
 
 
-
-
 //rutas Padres
 route::get('/padres', [PadreController::Class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::Class,'create'])->name('padres.create');
@@ -111,3 +112,7 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::Class,'sendData']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
+
+
+Route::get('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');
