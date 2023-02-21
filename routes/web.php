@@ -69,3 +69,4 @@ route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::Class,'sendData']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+});
