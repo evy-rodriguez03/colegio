@@ -28,8 +28,8 @@
             </div>
 
             <div class="form-group">
-                <label for="name2">Contraseña</label>
-                <input type="password" name="name3" class="form-control">
+                <label for="contrasena">Contraseña</label>
+                <input type="text" name="contrasena" class="form-control" required value="{{old('contrasena')}}">
             </div>
             <div class="form-group">
                 <label for="name2">Cargo</label>

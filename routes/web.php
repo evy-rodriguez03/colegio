@@ -29,7 +29,11 @@ Route::group(['middleware' => ['auth']], function () {
     ->name('dashboard.index');
 });
 
-Route::group(['middleware' => ['auth','Admin']], function () {
+Route::get('/login', [SessionsController::class, 
+'create'])->name('login.index');
+
+Route::post('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');
 
     /*Ruta del dashboar secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
@@ -52,6 +56,71 @@ route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->nam
     Route::get('/iniciom', [IniciomController::class,
     'index'])->name('inicio');
 
-    Route::get('/cierrem', [FinalizarController::class,
-    'index'])->name('cierre');
-});
+Route::get('/cierrem', [FinalizarController::class, 
+'create'])->name('cierre');
+
+/*(Calendario)*/
+Route::get('evento/form','ControllerEvent@form');
+Route::post('evento/create','ControllerEvent@create');
+Route::get('evento/details/{id}','ControllerEvent@details');
+Route::get('evento/index','ControllerEvent@index');
+Route::get('evento/index/{month}','ControllerEvent@index_month');
+Route::post('evento/calendario','ControllerEvent@calendario');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//rutas Padres
+route::get('/padres', [PadreController::Class,'index'])->name('padres.index');
+route::get('/padres/crear', [PadreController::Class,'create'])->name('padres.create');
+route::get('/padres/{padres}/edit', [PadreController::Class,'edit'])->name('padres.edit');
+route::post('/padres', [PadreController::Class,'sendData']);
+route::put('/padres/{padres}', [PadreController::Class,'update'])->name('padres.update');
+route::delete('/padres/{padres}', [PadreController::Class,'destroy'])->name('padres.destroy');
+
+//ruta alumnos
+route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::Class,'sendData']);
+route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
