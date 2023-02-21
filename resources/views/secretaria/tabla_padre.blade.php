@@ -6,10 +6,10 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Usuarios</h3>
+          <h3 class="mb-0">Padres</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary">Nuevo Usuario</a>
+          <a href="{{route('padres.create')}}" class="btn btn-sm btn-primary">Nuevo Padre</a>
         </div>
       </div>
     </div>
@@ -25,26 +25,34 @@
       <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Rol</th>
-            <th scope="col">Opciones</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Primer Nombre</th>
+            <th scope="col">Segundo Nombre</th>
+            <th scope="col">Número de Identidad</th>
+            <th scope="col">Teléfono Personal</th>
+            <th scope="col">Lugar de Trabajo</th>
+            <th scope="col">Oficio</th>
+            <th scope="col">Teléfono de Oficina</th>
+            <th scope="col">Ingresos</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($usuarios as $usuario)
+        <tbody>
+          @foreach ($padres as $padre)
               
           
           <tr>
+            <td>
+              {{$padre->tipo}}
+            </td>
             <th scope="row">
-              {{$usuario->nombre}} {{$usuario->apellido}}
+              {{$padre->primernombre}} {{$usuario->segundonombre}}
             </th>
             <td>
-              {{$usuario->correo}}
+              {{$padre->numerodeidentidad}}
             </td>
             <td>
-              {{$usuario->contrasena}}
+              {{$padre->contrasena}}
             </td>
            <td>
             {{$usuario->rol}}
@@ -60,6 +68,7 @@
             
            </td>
            @endforeach
+        </tbody>
         </tbody>
       </table>
     </div>
