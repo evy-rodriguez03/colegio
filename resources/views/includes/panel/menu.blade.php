@@ -1,19 +1,16 @@
 <ul class="navbar-nav">
     <li class="nav-item  active ">
-      <a href="{{Route('dashboard.index')}}" class="nav-link  active " href="./index.html">
+      <a class="nav-link  active " href="./index.html">
         <i class="ni ni-tv-2 text-primary"></i> Panel
-
-       
-
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="{{route('alumnos.index')}}">
+      <a class="nav-link " href="./examples/icons.html">
         <i class="ni ni-hat-3"></i> Alumnos
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="{{route('padres.index')}}">
+      <a class="nav-link " href="./examples/maps.html">
         <i class="fas fa-user-tie text-orange"></i> Padres
       </a>
     </li>
@@ -23,28 +20,27 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
+      <a class="nav-link " href="./examples/tables.html">
         <i class="fas fa-book-reader text-red"></i> Orientación
       </a>
     </li>
     <li class="nav-item">
-        <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
+        <a class="nav-link " href="./examples/tables.html">
           <i class="fas fa-users text-red"></i> Consejeria
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
+        <a class="nav-link " href="./examples/tables.html">
           <i class="fas fa-comment-dollar text-red"></i> Tesoreria
         </a>
       </li>
-    
+
     <li class="nav-item">
-      <a class="nav-link" href="{{route('login.index')}}"
-      onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();"
-      >
+      <a class="nav-link"
+      onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();">
         <i class="fas fa-sign-in-alt"></i> Cerrar sesion
       </a>
-      <form action="{{route('login.index')}}" method="POST" style="display: none;" id="formlogout">
+      <form action="{{route('logout')}}" method="POST" style="display: none;" id="formlogout">
     @csrf
 </form>
     </li>
@@ -52,9 +48,9 @@
   <!-- Divider -->
   <hr class="my-3">
   <!-- Heading -->
-  
+
   <!-- Navigation -->
   <ul class="navbar-nav mb-md-3">
-    
+
     </li>
   </ul>
