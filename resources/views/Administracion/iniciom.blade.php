@@ -8,7 +8,7 @@
           <h1 class="mb-0">Inicio de Matricula</h1>
         </div>
         <div class="col text-right">
-          <a href="{{url('periodo')}}" class="btn btn-lg btn-info">
+          <a href="{{route ('periodo')}}" class="btn btn-lg btn-info">
             <i class="fas fa-angle-left"></i>
             Regresar</a>
         </div>
@@ -16,7 +16,6 @@
     </div>
     <!-- Formulario para crear -->
 
-    <a href="{{Route('evento.index')}}" class="btn btn-lg btn-info">Ingreso de Matricula </a>
    
     
 @endsection

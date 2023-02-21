@@ -9,16 +9,9 @@
           <h3 class="mb-0">Usuarios</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary">Nuevo Usuario</a>
+          <a href="{{url('/usuarios/crear')}}" class="btn btn-sm btn-primary">Nuevo Usuario</a>
         </div>
       </div>
-    </div>
-    <div class="card-body">
-     @if (session('notification'))
-     <div class="alert alert-success" role="alert">
-      {{session('notification')}}
-  </div>
-     @endif
     </div>
     <div class="table-responsive">
       <!-- Projects table -->
@@ -33,33 +26,24 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($usuarios as $usuario)
-              
-          
           <tr>
             <th scope="row">
-              {{$usuario->nombre}} {{$usuario->apellido}}
+              /argon/
             </th>
             <td>
-              {{$usuario->correo}}
+              4,569
             </td>
             <td>
-              {{$usuario->contrasena}}
+              340
             </td>
            <td>
-            {{$usuario->rol}}
+
            </td>
            <td>
-            
-            <form action="{{url('/usuarios/'.$usuario->id)}}" method="POST">
-              @csrf
-              @method('DELETE')
-              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
-            </form>
-            
+            <a href="" class="btn btn-sm bt-primary">Editar</a>
+            <a href="" class="btn btn-sm bt-danger">Eliminar</a>
            </td>
-           @endforeach
+       
         </tbody>
       </table>
     </div>

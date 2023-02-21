@@ -11,12 +11,12 @@
       <span>Configuración</span>
     </a>
     <div class="dropdown-divider"></div>
-    <a href="{{route('login.index')}}"
-    onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();"class="dropdown-item">
-      <i class="ni ni-user-run"></i>
-      <span>Cerrar sesión</span>
-      <form action="{{route('login.index')}}" method="POST" style="display: none;" id="formlogout">
+    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <i class="ni ni-button-power"></i>
+        <span>Cerrar sesión</span>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-    </a>
+
   </div>
