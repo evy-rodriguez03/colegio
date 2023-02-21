@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label for="contrasena">Contraseña</label>
-                <input type="text" name="contrasena" class="form-control" required value="{{old('contrasena')}}">
+                <input type="password" name="contrasena" class="form-control" required value="{{old('contrasena')}}">
             </div>
             <div class="form-group">
                 <label for="rol">Rol</label>
