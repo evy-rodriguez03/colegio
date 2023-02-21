@@ -34,13 +34,14 @@
           <i class="fas fa-comment-dollar text-red"></i> Tesoreria
         </a>
       </li>
-
+    
     <li class="nav-item">
-      <a class="nav-link"
-      onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();">
+      <a class="nav-link" href="{{route('login.index')}}"
+      onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();"
+      >
         <i class="fas fa-sign-in-alt"></i> Cerrar sesion
       </a>
-      <form action="{{route('logout')}}" method="POST" style="display: none;" id="formlogout">
+      <form action="{{route('login.index')}}" method="POST" style="display: none;" id="formlogout">
     @csrf
 </form>
     </li>
@@ -48,9 +49,9 @@
   <!-- Divider -->
   <hr class="my-3">
   <!-- Heading -->
-
+  
   <!-- Navigation -->
   <ul class="navbar-nav mb-md-3">
-
+    
     </li>
   </ul>

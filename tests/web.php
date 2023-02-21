@@ -44,6 +44,7 @@ route::post('/usuarios', [UsuarioController::class,'sendData']);
 route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
 route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
 
+
     /*Rutas inicio y cieree de matricula */
     Route::get('/prinperiodo', [PeriodomController::class,
     'index'])->name('periodo');
@@ -51,21 +52,6 @@ route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->nam
     Route::get('/iniciom', [IniciomController::class,
     'index'])->name('inicio');
 
-Route::get('/cierrem', [FinalizarController::class, 
-'create'])->name('cierre');
-
-
-//rutas Padres
-route::get('/padres', [PadreController::Class,'index'])->name('padres.index');
-route::get('/padres/crear', [PadreController::Class,'create'])->name('padres.create');
-route::get('/padres/{padres}/edit', [PadreController::Class,'edit'])->name('padres.edit');
-route::post('/padres', [PadreController::Class,'sendData']);
-route::put('/padres/{padres}', [PadreController::Class,'update'])->name('padres.update');
-route::delete('/padres/{padres}', [PadreController::Class,'destroy'])->name('padres.destroy');
-
-//ruta alumnos
-route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
-route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
-route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
-route::post('/alumnos', [AlumnoController::Class,'sendData']);
-route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+    Route::get('/cierrem', [FinalizarController::class,
+    'index'])->name('cierre');
+});

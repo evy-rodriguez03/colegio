@@ -90,8 +90,8 @@
             </div>
           </div>
         </div>
-      
-       
+
+
         <!-- Navigation -->
             @include('includes.panel.menu')
       </div>
@@ -135,19 +135,19 @@
     <!-- End Navbar -->
     <!-- Header -->
     <div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
-     
+
     </div>
     <div class="container-fluid mt--7">
       @yield('content')
-      
+
     </div>
   </div>
   <!--   Core   -->
-  <script src=" {{asset('js/plugins/jquery/dist/jquery.min.js') }} "></script>
-  <script src=" {{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
+  <script src="{{asset('js/plugins/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <!--   Optional JS   -->
-  <script src=" {{asset('js/plugins/chart.js/dist/Chart.min.js')}} "></script>
-  <script src=" {{asset('js/plugins/chart.js/dist/Chart.extension.js')}} "></script>
+  <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
+  <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
   <!--   Argon JS   -->
   <script src="./assets/js/argon-dashboard.min.js?v=1.1.2"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
