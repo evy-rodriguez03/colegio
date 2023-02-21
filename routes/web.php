@@ -29,11 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     ->name('dashboard.index');
 });
 
-Route::get('/login', [SessionsController::class, 
-'create'])->name('login.index');
-
-Route::post('/dashboard', [DashboardController::class, 
-'create'])->name('dashboard.index');
+Route::group(['middleware' => ['auth','Admin']], function () {
 
     /*Ruta del dashboar secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
@@ -48,7 +44,6 @@ route::post('/usuarios', [UsuarioController::class,'sendData']);
 route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
 route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
 
-
     /*Rutas inicio y cieree de matricula */
     Route::get('/prinperiodo', [PeriodomController::class,
     'index'])->name('periodo');
@@ -58,55 +53,6 @@ route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->nam
 
 Route::get('/cierrem', [FinalizarController::class, 
 'create'])->name('cierre');
-
-/*(Calendario)*/
-Route::get('evento/form','ControllerEvent@form');
-Route::post('evento/create','ControllerEvent@create');
-Route::get('evento/details/{id}','ControllerEvent@details');
-Route::get('evento/index','ControllerEvent@index');
-Route::get('evento/index/{month}','ControllerEvent@index_month');
-Route::post('evento/calendario','ControllerEvent@calendario');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //rutas Padres
@@ -123,4 +69,3 @@ route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::Class,'sendData']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
-route::delete('/alumnos/{usuarios}', [AlumnoController::Class,'destroy'])->name('alumnos.destroy');
