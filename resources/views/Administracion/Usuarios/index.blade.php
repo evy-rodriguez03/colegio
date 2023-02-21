@@ -27,7 +27,6 @@
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Correo</th>
-            <th scope="col">Contraseña</th>
             <th scope="col">Rol</th>
             <th scope="col">Opciones</th>
           </tr>
@@ -42,9 +41,6 @@
             </th>
             <td>
               {{$usuario->correo}}
-            </td>
-            <td>
-              {{$usuario->contrasena}}
             </td>
            <td>
             {{$usuario->rol}}

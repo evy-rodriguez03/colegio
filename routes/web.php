@@ -23,6 +23,8 @@ Route::get('/login', [SessionsController::class,
 
 Route::post('/dashboard', [DashboardController::class, 
 'create'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 
+'create'])->name('dashboard.index');
 
  /*Ruta del dashboar secretaria*/
 Route::get('/dashboardsec', [dashboardsecController::class, 
