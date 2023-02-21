@@ -6,7 +6,7 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Agregar Nuevo Personal</h3>
+          <h3 class="mb-0">Agregar Nuevo Alumno</h3>
         </div>
         <div class="col text-right">
           <a href="{{route('alumnos.index')}}" class="btn btn-sm btn-success">
@@ -26,7 +26,7 @@
         </div>
           @endforeach
       @endif
-        <form action="{{route('usuarios.index')}}" method="POST">
+        <form action="{{route('alumnos.index')}}" method="POST">
           @csrf
           <div>
             <div class="form-row">
@@ -122,26 +122,36 @@
                               <input type="text" class="form-control" name="nombredelmedico" placeholder="Nombre del medico" required>
                             </div>
                           </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                           <!-- checkbox-->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="fotografias">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Fotografias entregadas
+                            </label>
                           </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                            
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="fotografiasdelpadre">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Fotografias de los padres entregadas
+                            </label>
                           </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="fotografiacarnet">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Fotografias tamaño carnet entregadas
+                            </label>
                           </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="certificadodeconducta">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Certificado de conducta entregadas
+                            </label>
                           </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="partidasdenacimiento">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Partidas de nacimiento entregadas
+                            </label>
                           </div>
                       </div>
 
