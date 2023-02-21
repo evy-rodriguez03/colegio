@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PeriodomController extends Controller
 {
-    public function create(){
+    public function index(){
         return view('administracion.prinperiodo');
        }
 }

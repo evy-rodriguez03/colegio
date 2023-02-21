@@ -23,7 +23,7 @@
 
 
     <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">   
+    <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
           <!-- Collapse header -->
           <div class="navbar-collapse-header d-md-none">
@@ -53,7 +53,7 @@
       <div class="separator separator-bottom separator-skew zindex-100">
       </div>
     </div>
-   
+
     @yield('content')
 
     <div class="container mt--8 pb-5">
@@ -74,9 +74,9 @@
                 <h1>Login</h1>
               </div>
               @endif
-              
-              <form role="form" action="{{ route('dashboard.index') }}" method="POST" >
-              @csrf  
+
+              <form role="form" action="{{ route('login') }}" method="POST" >
+              @csrf
               <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -90,7 +90,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Contraseña" type="password" name="pasword" required autocomplete="current-password">
+                    <input class="form-control" placeholder="Contraseña" type="password" name="password" required autocomplete="current-password">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -99,12 +99,12 @@
                     <span class="text-muted">Recordar Sessión</span>
                   </label>
                 </div>
-              
+
                 <div class="text-center">
                   <button type="submit" class="btn btn-info my-4">Entrar</button>
                 </div>
                 <div class="col-6" >
-              <a href="(#)"><small><center>Olvidaste tu contraseña</center></small></a>
+              <a href="{{ route('password.request') }}"><small><center>Olvidaste tu contraseña</center></small></a>
             </div>
               </form>
             </div>
