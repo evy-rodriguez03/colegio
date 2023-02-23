@@ -6,10 +6,10 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Usuarios</h3>
+          <h3 class="mb-0">Alumnos</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary">Nuevo Usuario</a>
+          <a href="{{route('alumnos.create')}}" class="btn btn-sm btn-primary">Nuevo Alumno</a>
         </div>
       </div>
     </div>
@@ -26,35 +26,39 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">Nombre</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Rol</th>
+            <th scope="col">Número de identidad</th>
+            <th scope="col">Telefono de encargado</th>
+            <th scope="col">Grado</th>
+            <th scope="col">Sección</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($usuarios as $usuario)
+          @foreach ($alumnos as $alumno)
               
           
           <tr>
             <th scope="row">
-              {{$usuario->nombre}} {{$usuario->apellido}}
+              {{$alumno->primernombre}} {{$alumno->segundonombre}} {{$alumno->primerapellido}} {{$alumno->segundoapellido}}
             </th>
             <td>
-              {{$usuario->correo}}
+              {{$alumno->numerodeidentidad}}
             </td>
             <td>
-              {{$usuario->contrasena}}
+              {{$alumno->telefonodeencargado}}
             </td>
            <td>
-            {{$usuario->rol}}
+            <!-- grado -->
+           </td>
+           <td>
+            <!-- sección -->
            </td>
            <td>
             
-            <form action="{{url('/usuarios/'.$usuario->id)}}" method="POST">
+            <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST">
               @csrf
               @method('DELETE')
-              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
+              <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
               <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
             </form>
             
