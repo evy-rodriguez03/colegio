@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\PadreController;
 use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\FinalizarController;
 use App\Http\Controllers\IniciomController;
@@ -31,10 +33,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth','Admin']], function () {
 
-    /*Ruta del dashboar secretaria*/
+   
+    /*Ruta del dashboard secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
 
+    /*Ruta del dashboard */
+    Route::get('/dashboard', [dashboardsecController::class,
+    'create'])->name('dashboard.index');
     
     /*rutas usuario*/
 route::get('/usuarios', [UsuarioController::class,'index'])->name('usuarios.index');
@@ -56,16 +62,18 @@ Route::get('/cierrem', [FinalizarController::class,
 
 
 //rutas Padres
-route::get('/padres', [PadreController::Class,'index'])->name('padres.index');
-route::get('/padres/crear', [PadreController::Class,'create'])->name('padres.create');
-route::get('/padres/{padres}/edit', [PadreController::Class,'edit'])->name('padres.edit');
-route::post('/padres', [PadreController::Class,'sendData']);
-route::put('/padres/{padres}', [PadreController::Class,'update'])->name('padres.update');
-route::delete('/padres/{padres}', [PadreController::Class,'destroy'])->name('padres.destroy');
+route::get('/padres', [PadreController::class,'index'])->name('padres.index');
+route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
+route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padres.edit');
+route::post('/padres', [PadreController::class,'sendData']);
+route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
+route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 
 //ruta alumnos
-route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
-route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
-route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
-route::post('/alumnos', [AlumnoController::Class,'sendData']);
-route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::class,'sendData']);
+route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
+
+});
