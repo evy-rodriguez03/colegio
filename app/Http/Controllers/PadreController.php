@@ -25,15 +25,15 @@ class PadreController extends Controller
 
     public function sendData(Request $request){
         $rules = [
-            'tipo' => 'required',
-            'primernombre' => 'required',
-            'segundonombre'=> 'required',
-            'numerodeidentidad'=> 'required',
-            'telefonopersonal'=> 'required',
-            'lugardetrabajo'=> 'required',
-            'oficio'=> 'required',
-            'telefonooficina'=> 'required',
-            'ingresos'=> 'required',
+            'tipo' => 'required|alpha',
+            'prmernombre' => 'required|alpha',
+            'segundonombre'=> 'required|alpha',
+            'numerodeidentidad'=> 'required|alpha',
+            'telefonopersonal'=> 'required|alpha',
+            'lugardetrabajo'=> 'required|alpha',
+            'oficio'=> 'required|alpha',
+            'telefonooficina'=> 'required|alpha',
+            'ingresos'=> 'required|alpha',
         ];
 
         
@@ -102,15 +102,15 @@ class PadreController extends Controller
     public function update(Request $request, Padre $padres )
     {
         $rules = [
-            'tipo' => 'required',
-            'primernombre' => 'required',
-            'segundonombre'=> 'required',
-            'numerodeidentidad'=> 'required',
-            'telefonopersonal'=> 'required',
-            'lugardetrabajo'=> 'required',
-            'oficio'=> 'required',
-            'telefonooficina'=> 'required',
-            'ingresos'=> 'required',
+            'tipo' => 'required|alpha',
+            'prmernombre' => 'required|alpha',
+            'segundonombre'=> 'required|alpha',
+            'numerodeidentidad'=> 'required|alpha',
+            'telefonopersonal'=> 'required|alpha',
+            'lugardetrabajo'=> 'required|alpha',
+            'oficio'=> 'required|alpha',
+            'telefonooficina'=> 'required|alpha',
+            'ingresos'=> 'required|alpha',
         ];
 
         $this->validate($request, $rules);
