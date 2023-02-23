@@ -87,9 +87,8 @@ route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alu
 });
 
 //ruta alumnos
-route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
-route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
-route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
-route::post('/alumnos', [AlumnoController::Class,'sendData']);
-route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
-});
+route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::class,'sendData']);
+route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
