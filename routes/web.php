@@ -46,14 +46,22 @@ Route::group(['middleware' => ['auth','Admin']], function () {
 route::get('/usuarios', [UsuarioController::class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UsuarioController::class,'create'])->name('usuarios.create');
 route::get('/usuarios/{usuarios}/edit', [UsuarioController::class,'edit'])->name('usuarios.edit');
+route::get('/usuarios/{usuarios}/edit', [UsuarioController::class,'edit'])->name('usuarios.edit');
 route::post('/usuarios', [UsuarioController::class,'sendData']);
+route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
+route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
 route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
 route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
     Route::get('/prinperiodo', [PeriodomController::class,
     'index'])->name('periodo');
+    /*Rutas inicio y cieree de matricula */
+    Route::get('/prinperiodo', [PeriodomController::class,
+    'index'])->name('periodo');
 
+    Route::get('/iniciom', [IniciomController::class,
+    'index'])->name('inicio');
     Route::get('/iniciom', [IniciomController::class,
     'index'])->name('inicio');
 
@@ -76,4 +84,12 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::class,'sendData']);
 route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
 
+});
+
+//ruta alumnos
+route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::Class,'sendData']);
+route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 });
