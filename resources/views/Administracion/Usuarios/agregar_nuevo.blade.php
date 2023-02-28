@@ -1,3 +1,7 @@
+<?php
+use Illuminate\Support\Str;
+?>
+
 @extends('layout.panel')
 
 
@@ -29,27 +33,23 @@
         <form action="{{route('usuarios.index')}}" method="POST">
           @csrf
             <div class="form-group">
-                <label for="nombre">Nombre Docente</label>
-                <input type="text" name="nombre" class="form-control" required value="{{old('nombre')}}">
+                <label for="name">Nombre del Usuario</label>
+                <input type="text" name="name" class="form-control" required value="{{old('name')}}">
             </div>
             <div class="form-group">
-              <label for="apellido">Apellido Docente</label>
-              <input type="text" name="apellido" class="form-control" required value="{{old('apellido')}}">
-          </div>
-            <div class="form-group">
-                <label for="correo">Correo Electronico</label>
-                <input type="text" name="correo" class="form-control" required value="{{old('correo')}}">
+                <label for="email">Correo Electronico</label>
+                <input type="text" name="email" class="form-control" required value="{{old('email')}}">
             </div>
 
             <div class="form-group">
-                <label for="contrasena">Contraseña</label>
-                <input type="text" name="contrasena" class="form-control" required value="{{old('contrasena')}}">
+                <label for="password">Contraseña</label>
+                <input type="text" name="password" class="form-control" required value="{{old('password', str::random(8))}}">
             </div>
             <div class="form-group">
-                <label for="rol">Rol</label>
-                <select class="form-control" name="rol" required>
+                <label for="role">Cargo</label>
+                <select class="form-control" name="role" required value="{{old('role')}}">
                   <option value="">Elegir</option>
-                  <option value="Administrador">Administrador</option>
+                  <option value="Admin">Admin</option>
                  <option value="Secretaria">Secretaria</option>
                  <option value="Orientacion">Orientacion</option>
                  <option value="Consejeria">Consejeria</option>

@@ -30,25 +30,21 @@
           @csrf
           @method('PUT')
             <div class="form-group">
-                <label for="nombre">Nombre Docente</label>
-                <input type="text" name="nombre" class="form-control" required value="{{old('nombre', $usuarios->nombre)}}">
+                <label for="name">Nombre del Usuario</label>
+                <input type="text" name="name" class="form-control" required value="{{old('name', $usuarios->name)}}">
             </div>
             <div class="form-group">
-              <label for="apellido">Apellido Docente</label>
-              <input type="text" name="apellido" class="form-control" required value="{{old('apellido', $usuarios->apellido)}}">
-          </div>
-            <div class="form-group">
-                <label for="correo">Correo Electronico</label>
-                <input type="text" name="correo" class="form-control" required value="{{old('correo', $usuarios->correo)}}">
+                <label for="email">Correo Electronico</label>
+                <input type="text" name="email" class="form-control" required value="{{old('email', $usuarios->email)}}">
             </div>
 
             <div class="form-group">
-                <label for="contrasena">Contraseña</label>
-                <input type="text" name="contrasena" class="form-control" required value="{{old('contrasena', $usuarios->contrasena)}}">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" class="form-control" required >
             </div>
             <div class="form-group">
-                <label for="rol">Rol</label>
-                <select class="form-control" name="rol" required value="{{old('rol', $usuarios->rol)}}">
+                <label for="role">Rol</label>
+                <select class="form-control" name="role" required value="{{old('role', $usuarios->role)}}">
                   <option value="">Elegir</option>
                   <option value="Administrador">Administrador</option>
                  <option value="Secretaria">Secretaria</option>

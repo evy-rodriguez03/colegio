@@ -39,13 +39,12 @@
       </li>
 
     <li class="nav-item">
-      <a class="nav-link"
-      onclick="event.preventDefault(); document.getElementbyId('formlogout').submit();">
+      <a href="#" class="nav-link " onclick="event.preventDefault(); document.getElementById('formlogout').submit();">
         <i class="fas fa-sign-in-alt"></i> Cerrar sesion
       </a>
       <form action="{{route('logout')}}" method="POST" style="display: none;" id="formlogout">
-    @csrf
-</form>
+      @csrf
+      </form>
     </li>
   </ul>
   <!-- Divider -->
