@@ -7,7 +7,7 @@ use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\FinalizarController;
 use App\Http\Controllers\IniciomController;
 use App\Http\Controllers\PeriodomController;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,18 +40,15 @@ Route::group(['middleware' => ['auth','Admin']], function () {
 
     /*Ruta del dashboard */
     Route::get('/dashboard', [dashboardsecController::class,
-    'create'])->name('dashboard.index');
+    'create'])->name('dashboardsec.index');
     
     /*rutas usuario*/
-route::get('/usuarios', [UsuarioController::class,'index'])->name('usuarios.index');
-route::get('/usuarios/crear', [UsuarioController::class,'create'])->name('usuarios.create');
-route::get('/usuarios/{usuarios}/edit', [UsuarioController::class,'edit'])->name('usuarios.edit');
-route::get('/usuarios/{usuarios}/edit', [UsuarioController::class,'edit'])->name('usuarios.edit');
-route::post('/usuarios', [UsuarioController::class,'sendData']);
-route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
-route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
-route::put('/usuarios/{usuarios}', [UsuarioController::class,'update'])->name('usuarios.update');
-route::delete('/usuarios/{usuarios}', [UsuarioController::class,'destroy'])->name('usuarios.destroy');
+route::get('/usuarios', [UserController::class,'index'])->name('usuarios.index');
+route::get('/usuarios/crear', [UserController::class,'create'])->name('usuarios.create');
+route::get('/usuarios/{usuarios}/edit', [UserController::class,'edit'])->name('usuarios.edit');
+route::post('/usuarios', [UserController::class,'sendData']);
+route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usuarios.update');
+route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
     Route::get('/prinperiodo', [PeriodomController::class,
@@ -81,7 +78,7 @@ route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('pad
 route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
-route::post('/alumnos', [AlumnoController::Class,'sendData']);
+route::post('/alumnos', [AlumnoController::Class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 });
 

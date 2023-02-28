@@ -15,6 +15,7 @@
   <link href=" {{asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}} " rel="stylesheet" />
   <!-- CSS Files -->
   <link href=" {{asset('css/argon-dashboard.css?v=1.1.2')}} " rel="stylesheet" />
+  <link rel="stylesheet" href="nuevo-estilo.css">
 </head>
 
 <body class="">
@@ -124,7 +125,7 @@
                   <img alt="Image placeholder" src=" {{asset('img/theme/team-4-800x800.jpg')}} ">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Usuario</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
                 </div>
               </div>
             </a>
@@ -159,6 +160,7 @@
         application: "argon-dashboard-free"
       });
   </script>
+  @yield('js')
 </body>
 
 </html>
