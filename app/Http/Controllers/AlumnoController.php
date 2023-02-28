@@ -36,13 +36,13 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $i
      * @return \Illuminate\Http\Response
      */
     public function show($id)
