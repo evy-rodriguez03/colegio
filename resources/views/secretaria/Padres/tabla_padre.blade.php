@@ -13,7 +13,9 @@
         </div>
       </div>
     </div>
+    setTimeout()
     <div class="card-body">
+      
      @if (session('notification'))
      <div class="alert alert-success" role="alert">
       {{session('notification')}}
@@ -25,50 +27,40 @@
       <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Tipo</th>
-            <th scope="col">Primer Nombre</th>
-            <th scope="col">Segundo Nombre</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Número de Identidad</th>
             <th scope="col">Teléfono Personal</th>
-            <th scope="col">Lugar de Trabajo</th>
-            <th scope="col">Oficio</th>
             <th scope="col">Teléfono de Oficina</th>
-            <th scope="col">Ingresos</th>
           </tr>
         </thead>
-        <tbody>
-        <tbody>
+        <tbody>  
           @foreach ($padres as $padre)
               
-          
           <tr>
-            <td>
-              {{$padre->tipo}}
-            </td>
             <th scope="row">
-              {{$padre->primernombre}} {{$usuario->segundonombre}}
+              {{$padre->tipo}}{{$padre->primernombre}} {{$padre->segundonombre}}
             </th>
             <td>
               {{$padre->numerodeidentidad}}
             </td>
             <td>
-              {{$padre->contrasena}}
+              {{$padre->telefonopersonal}}
+            </td>
+            
+            <td>
+              {{$padre->telefonooficina}}
             </td>
            <td>
-            {{$usuario->rol}}
-           </td>
-           <td>
             
-            <form action="{{url('/usuarios/'.$usuario->id)}}" method="POST">
+            <form action="{{url('/padres/'.$padre->id)}}" method="POST">
               @csrf
               @method('DELETE')
-              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
+              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
               <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
             </form>
             
            </td>
            @endforeach
-        </tbody>
         </tbody>
       </table>
     </div>

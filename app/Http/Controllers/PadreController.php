@@ -10,7 +10,7 @@ class PadreController extends Controller
     public function index()
     {
         $padres = Padre::all();
-        return view('secretaria.tabla_padre', compact('padres'));
+        return view('secretaria.Padres.tabla_padre', compact('padres'));
     }
 
     /**
@@ -20,13 +20,13 @@ class PadreController extends Controller
      */
     public function create()
     {
-        return view('secretaria.datos_padre');
+        return view('secretaria.Padres.datos_padre');
     }
 
     public function sendData(Request $request){
         $rules = [
             'tipo' => 'required|alpha',
-            'prmernombre' => 'required|alpha',
+            'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'numerodeidentidad'=> 'required|alpha',
             'telefonopersonal'=> 'required|alpha',
@@ -89,7 +89,7 @@ class PadreController extends Controller
     public function edit(Padre $padres)
     {
        
-        return view('secretaria.datos_padre.edit', compact('padres'));
+        return view('secretaria.Padres.datos_padre.edit', compact('padres'));
     }
 
     /**
@@ -103,7 +103,7 @@ class PadreController extends Controller
     {
         $rules = [
             'tipo' => 'required|alpha',
-            'prmernombre' => 'required|alpha',
+            'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'numerodeidentidad'=> 'required|alpha',
             'telefonopersonal'=> 'required|alpha',
