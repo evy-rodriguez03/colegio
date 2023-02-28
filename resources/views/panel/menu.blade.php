@@ -31,7 +31,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " href="./examples/tables.html">
-          <i class="fas fa-comment-dollar text-red"></i> Tesoreria
+          <i class="fas fa-comment-dollar text-red"></i> Tesore
         </a>
       </li>
     
