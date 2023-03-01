@@ -17,13 +17,15 @@ class CreatePadresTable extends Migration
             $table->id();
             $table->string('tipo');
             $table->string('primernombre');
-            $table->string('segundonomnbre');
+            $table->string('segundonombre');
             $table->string('numerodeidentidad');
             $table->string('telefonopersonal');
             $table->string('lugardetrabajo');
             $table->string('oficio');
             $table->string('telefonooficina');
             $table->string('ingresos');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
