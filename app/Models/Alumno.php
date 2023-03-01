@@ -9,5 +9,23 @@ class Alumno extends Model
 {
     use HasFactory;
     protected $table = "alumnos";
-    public $timestamps = false;
+
+    protected $fillable = [
+        'primernombre',
+        'segundonombre',
+        'telefonodeencargado',
+        'primerapellido',
+        'segundoapellido',
+        'numerodeidentidad',
+        'fechadenacimiento',
+        'alergia',
+        'lugardenacimiento',
+        'genero',
+        'direccion',
+        'numerodehermanosenicgc',
+        'fotografias',
+        'fotografiasdelpadre',
+        'fotografiacarnet',
+        'certificadodeconducta'
+    ];
 }
