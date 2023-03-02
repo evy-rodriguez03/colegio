@@ -9,6 +9,8 @@ use App\Http\Controllers\IniciomController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionsController;
+use App\Http\controllers\PaneltesoreriaController;
+use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +40,11 @@ Route::group(['middleware' => ['auth','Admin']], function () {
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
 
-    /*Ruta del dashboard */
+    /*Rutas de los paneles */
     Route::get('/dashboard', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
+    route::get('/tesoreria',[PaneltesoreriaController::class,'index'])->name('paneltesoreria.index');
+
     
     /*rutas usuario*/
 route::get('/usuarios', [UserController::class,'index'])->name('usuarios.index');
@@ -65,6 +69,10 @@ route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('
 Route::get('/cierrem', [FinalizarController::class, 
 'create'])->name('cierre');
 
+/*Ruta del boton requisitos*/
+Route::get('/requisito', [requisitoController::class, 
+'create'])->name('requisito.index');
+
 
 //rutas Padres
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
@@ -80,4 +88,5 @@ route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::Class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
