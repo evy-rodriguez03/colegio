@@ -81,6 +81,3 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::Class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 });
-
-
-
