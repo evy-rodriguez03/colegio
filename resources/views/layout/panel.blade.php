@@ -1,11 +1,41 @@
 <html lang="en">
 
 <head>
+  <style>
+
+.tabla-dashboard .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabla-dashboard .table th,
+.tabla-dashboard .table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-dashboard .table th {
+  background-color: #333;
+  color: #fff;
+}
+
+.tabla-dashboard .table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.tabla-dashboard .table tbody tr:hover {
+  background-color: #ddd;
+}
+
+
+  </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
     Instituto Cosme Garcia C.
   </title>
+  <!-- JSS Files -->
+ 
   <!-- Favicon -->
   <link href=" {{asset('img/brand/favicon.png') }} " rel="icon" type="image/png">
   <!-- Fonts -->
@@ -149,17 +179,9 @@
   <script src=" {{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
   <!--   Optional JS   -->
   <script src=" {{asset('js/plugins/chart.js/dist/Chart.min.js')}} "></script>
-  <script src=" {{asset('js/plugins/chart.js/dist/Chart.extension.js')}} "></script>
-  <!--   Argon JS   -->
-  <script src="./assets/js/argon-dashboard.min.js?v=1.1.2"></script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
-    window.TrackJS &&
-      TrackJS.install({
-        token: "ee6fab19c5a04ac1a32a645abde4613a",
-        application: "argon-dashboard-free"
-      });
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  @include('includes.panel.footer')
   @yield('js')
 </body>
 
