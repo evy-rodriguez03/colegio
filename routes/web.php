@@ -90,13 +90,3 @@ route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alu
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
 
-
- /*Rutas inicio y cieree de matricula */
- Route::get('/prinperiodo', [PeriodomController::class,
- 'index'])->name('periodo');
-
- route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
- route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
-
- route::get('/cierrem', [CierreController::class,'create'])->name('cierre.create');
- route::post('/cierrem', [CierreController::class,'store'])->name('cierre.store');
