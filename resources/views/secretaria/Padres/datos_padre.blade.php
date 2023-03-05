@@ -21,7 +21,7 @@
           @foreach ($errors->all() as $error)
           <div class="alert alert-danger" role="alert">
             <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Porfavor!</strong> {{$error}}
+            <strong>¡Por favor!</strong> {{$error}}
         </div>
           @endforeach
       @endif
@@ -51,6 +51,22 @@
         <div class="col-4 mt-3">
             <input type="text" id="segundonombre" name="segundonombre" class="form-control" required value="{{old('segundonombre')}}"
             placeholder="Ingrese el segundo nombre"></input>
+        </div>
+
+        <div class="form-group col-2 mt-3">
+            <label for="primerapellido">Primer Apellido:</label>
+        </div>
+        <div class="col-4 mt-3">
+            <input type="text" id="primerapellido" name="primerapellido" class="form-control" required value="{{old('primerapellido')}}"
+            placeholder="Ingrese el primer apellido"></input>
+        </div>
+
+        <div class="form-group col-2 mt-3">
+            <label for="segundoapellido">Segundo Apellido:</label>
+        </div>
+        <div class="col-4 mt-3">
+            <input type="text" id="segundoapellido" name="segundoapellido" class="form-control" required value="{{old('segundoapellido')}}"
+            placeholder="Ingrese el segundo apellido"></input>
         </div>
 
         <div class="form-group col-2 mt-3">
@@ -101,13 +117,10 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button type="button" class="btn btn-danger mt-3">
-            Borrar
-        </button>
-
         <button type="submit" class="btn btn-primary mt-3">
             Guardar
         </button>
     </form>
+    </div>
 </div>
 @endSection
