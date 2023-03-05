@@ -73,5 +73,21 @@ route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
+route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::class,'store']);
+route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
+
+
+ /*Rutas inicio y cieree de matricula */
+ Route::get('/prinperiodo', [PeriodomController::class,
+ 'index'])->name('periodo');
+
+ route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
+ route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
+
+ route::get('/cierrem', [CierreController::class,'create'])->name('cierre.create');
+ route::post('/cierrem', [CierreController::class,'store'])->name('cierre.store');
