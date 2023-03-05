@@ -23,7 +23,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="{{Route('dashboard.index')}}" class="nav-link " href="./examples/tables.html">
+      <a href="{{Route('paneltesoreria.index')}}" class="nav-link " href="./examples/tables.html">
         <i class="fas fa-book-reader text-red"></i> Orientación
       </a>
     </li>
