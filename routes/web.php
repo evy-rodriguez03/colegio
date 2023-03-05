@@ -84,3 +84,6 @@ route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
+
+
+
