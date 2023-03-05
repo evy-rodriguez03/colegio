@@ -4,11 +4,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PadreController;
 use App\Http\Controllers\dashboardsecController;
-use App\Http\Controllers\FinalizarController;
-use App\Http\Controllers\IniciomController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\CierreController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
@@ -78,10 +77,26 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 
 //ruta alumnos
-route::get('/alumnos', [AlumnoController::Class,'index'])->name('alumnos.index');
-route::get('/alumnos/crear', [AlumnoController::Class,'create'])->name('alumnos.create');
-route::get('/alumnos/{alumnos}/edit', [AlumnoController::Class,'edit'])->name('alumnos.edit');
-route::post('/alumnos', [AlumnoController::Class,'store']);
-route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
+route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::class,'store']);
+route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
+route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
+route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
+route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
+route::post('/alumnos', [AlumnoController::class,'store']);
+route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
+
+
+ /*Rutas inicio y cieree de matricula */
+ Route::get('/prinperiodo', [PeriodomController::class,
+ 'index'])->name('periodo');
+
+ route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
+ route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
+
+ route::get('/cierrem', [CierreController::class,'create'])->name('cierre.create');
+ route::post('/cierrem', [CierreController::class,'store'])->name('cierre.store');
