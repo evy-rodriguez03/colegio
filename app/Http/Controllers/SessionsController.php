@@ -35,4 +35,6 @@ class SessionsController extends Controller
 
         return redirect()->to('/');
     }
+
+    protected $redirectTo = '/dashboard';
 }

@@ -8,7 +8,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/inicio.png') }}" class="card-img-top" alt="..." style="width:210px;height:200px;"></center>
         <div class="card-body">
-          <center><a href="{{Route('inicio')}}" class="btn btn-lg btn-info">Inicio de Matricula </a></center>
+          <center><a href="{{Route('inicio.create')}}" class="btn btn-lg btn-info">Inicio de Matricula </a></center>
           
         </div>
       </div>
@@ -17,7 +17,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/cierre.png') }}" class="card-img-top" alt="..." style="width:190px;height:200px;"></center>
  <div class="card-body">
-          <center><a href="{{Route('cierre')}}" class="btn btn-lg btn-info">Cierre de Matricula</a></center>
+          <center><a href="{{Route('cierre.create')}}" class="btn btn-lg btn-info">Cierre de Matricula</a></center>
         </div>
       </div>
     </div>
