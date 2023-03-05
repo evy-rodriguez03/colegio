@@ -18,5 +18,8 @@ class CierreController extends Controller
         $inicio->fecha = $request->input('fecha');
         $inicio->usuario = $request->input('usuario');
         $inicio->save();
+
+        return redirect('/iniciom')
+        ->with('mensaje', 'Se ha finalizado la matricula exitosa mente.');
     }
 }

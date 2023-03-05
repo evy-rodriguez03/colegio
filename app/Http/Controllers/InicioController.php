@@ -18,5 +18,8 @@ class InicioController extends Controller
         $inicio->fecha = $request->input('fecha');
         $inicio->usuario = $request->input('usuario');
         $inicio->save();
+
+        return redirect('/iniciom')
+        ->with('mensaje', 'Se ha iniciado la matricula exitosa mente.');
     }
 }
