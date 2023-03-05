@@ -57,17 +57,12 @@ route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('
     /*Rutas inicio y cieree de matricula */
     Route::get('/prinperiodo', [PeriodomController::class,
     'index'])->name('periodo');
-    /*Rutas inicio y cieree de matricula */
-    Route::get('/prinperiodo', [PeriodomController::class,
-    'index'])->name('periodo');
+ 
+    route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
+    route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
 
-    Route::get('/iniciom', [IniciomController::class,
-    'index'])->name('inicio');
-    Route::get('/iniciom', [IniciomController::class,
-    'index'])->name('inicio');
-
-Route::get('/cierrem', [FinalizarController::class, 
-'create'])->name('cierre');
+    route::get('/cierrem', [CierreController::class,'create'])->name('cierre.create');
+    route::post('/cierrem', [CierreController::class,'store'])->name('cierre.store');
 
 /*Ruta del boton requisitos*/
 Route::get('/requisito', [requisitoController::class, 
