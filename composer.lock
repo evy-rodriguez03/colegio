@@ -133,6 +133,17 @@
             "time": "2022-01-18T09:12:03+00:00"
         },
         {
+<<<<<<< HEAD
+            "name": "brick/math",
+            "version": "0.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/math.git",
+                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
+            },
+            "dist": {
+                "type": "zip",
+=======
             "name": "balping/json-raw-encoder",
             "version": "v1.0.1",
             "source": {
@@ -188,6 +199,7 @@
             },
             "dist": {
                 "type": "zip",
+>>>>>>> 6335a014c75814947b3eb4b16f203dcaebf92ba5
                 "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
                 "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
                 "shasum": ""
@@ -237,6 +249,8 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+<<<<<<< HEAD
+=======
         },
         {
             "name": "consoletvs/charts",
@@ -293,6 +307,7 @@
                 }
             ],
             "time": "2023-02-01T06:52:41+00:00"
+>>>>>>> 6335a014c75814947b3eb4b16f203dcaebf92ba5
         },
         {
             "name": "dflydev/dot-access-data",
