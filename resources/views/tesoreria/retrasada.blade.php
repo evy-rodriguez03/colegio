@@ -6,10 +6,10 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h1 class="mb-0">Padres</h1>
+          <h1 class="mb-0">Clases Retrasadas</h1>
         </div>
         <div class="col text-right">
-          <a href="{{route('padres.create')}}" class="btn btn-sm btn-primary">Nuevo Padre</a>
+          <a href="{{route('retrasadas.create')}}" class="btn btn-sm btn-primary">Nuevo Alumno</a>
         </div>
       </div>
     </div>
@@ -28,41 +28,35 @@
           <tr>
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Número de Identidad</th>
-            <th scope="col">Teléfono Personal</th>
-            <th scope="col">Teléfono de Oficina</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Total a Pagar</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>  
-          @foreach ($padres as $index=> $padre)
+          @foreach ($retrasadas as $index=> $retrasada)
               
           <tr>
             <th scope="row">
              {{$index + 1}}
             </th>
             <td>
-              {{$padre->primernombre}} {{$padre->primerapellido}}
+              {{$retrasada->primernombre}} {{$retrasada->primerapellido}}
             </td>
             <td>
-              {{$padre->numerodeidentidad}}
+              {{$retrasada->materiaretrasada}}
             </td>
             <td>
-              {{$padre->telefonopersonal}}
+              {{$retrasada->total}}
             </td>
             <td>
-              {{$padre->telefonooficina}}
-            </td>
-           <td>
-            
-            <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="formulario-eliminar">
+            <form action="{{url('/retrasadas/'.$retrasada->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
-              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
+              <a href="{{url('/retrasadas/'.$retrasada->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
               <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
             </form>
-            
-           </td>
+            </td>
            @endforeach
         </tbody>
       </table>
@@ -77,7 +71,7 @@
         <script> 
         Swal.fire(
       '¡Borrado!',
-      'El usuario ha sido borrado exitosamente.',
+      'El alumno ha sido borrado exitosamente.',
       'Éxito'
     )
     
