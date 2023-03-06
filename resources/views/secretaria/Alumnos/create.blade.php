@@ -22,11 +22,11 @@
           @foreach ($errors->all() as $error)
           <div class="alert alert-danger" role="alert">
             <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Porfavor!</strong> {{$error}}
+            <strong>¡Por favor!</strong> {{$error}}
         </div>
           @endforeach
       @endif
-      <form action="{{ route('usuarios.index') }}" method="POST">
+      <form action="{{ route('alumnos.index') }}" method="POST">
         @csrf
         <div class="form-row">
           <div class="col-md-4 mb-3">
@@ -40,8 +40,8 @@
               <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
-              <label for="numeroencargado">Número de Encargado</label>
-              <input type="text" class="form-control" name="numeroencargado" placeholder="Número de Encargado" required>
+              <label for="telefonodeencargado">Número de Encargado</label>
+              <input type="number" class="form-control" name="telefonodeencargado" placeholder="99999999" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
       </div>
@@ -54,12 +54,12 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="segundoapellido">Segundo Apellido</label>
-                <input type="text" class="form-control" name="segundoapellido" placeholder="Segundo Apellido" required>
+                <input type="text" class="form-control" name="segundoapellido" placeholder="Segundo Apellido">
                 <div class="valid-feedback">#</div>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="numerodeidentidad">Número de identidad</label>
-                <input type="text" class="form-control" name="numerodeidentidad" placeholder="Número de identidad" required>
+                <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
                 <div class="invalid-feedback">#</div>
             </div>
         </div>
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-4 mb-3">
               <label for="alergia">Alergia</label>
-              <input type="text" class="form-control" name="alergia" placeholder="Si/No" required>
+              <input type="text" class="form-control" name="alergia" placeholder="Si, al polvo/No" required>
               <div class="invalid-feedback">#</div>
           </div>
           <div class="col-md-4 mb-3">
@@ -92,7 +92,7 @@
               <input type="text" class="form-control" name="direccion" placeholder="Dirección" required>
           </div>
           <div class="col-md-4 mb-3">
-              <label for="numero_hermanos">Número de hermanos en ICGC</label>
+              <label for="numerodehermanosenicgc">Número de hermanos en ICGC</label>
               <input type="number" class="form-control" name="numerodehermanosenicgc" placeholder="Número de hermanos en ICGC" >
           </div>
       </div>

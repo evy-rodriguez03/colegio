@@ -19,18 +19,20 @@ class CreateAlumnosTable extends Migration
             $table->string('segundonombre');
             $table->string('primerapellido');
             $table->string('segundoapellido');
+            $table->string('numerodeidentidad');
             $table->date('fechadenacimiento');
             $table->string('genero');
             $table->string('lugardenacimiento');
             $table->string('direccion');
-            $table->string('hermanosentotal');
             $table->string('numerodehermanosenicgc');
             $table->string('telefonodeencargado');
             $table->string('alergia');
-            $table->string('fotografias');
-            $table->string('fotografiasdelpadre');
-            $table->string('fotografiacarnet');
-            $table->string('certificadodeconducta');
+            $table->boolean('fotografias')->default(false)->nullable();
+            $table->boolean('fotografiasdelpadre')->default(false)->nullable();
+            $table->boolean('fotografiacarnet')->default(false)->nullable();
+            $table->boolean('certificadodeconducta')->default(false)->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
             
         });
     }
