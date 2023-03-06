@@ -13,6 +13,7 @@ use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\PagoaRealizaraController;
 use App\Http\controllers\CursoController;
+use App\Http\controllers\RetrasadaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,11 @@ route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('
 
 //ruta de pago a realizar 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
+
+//rutas Retrasadas
+route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
+route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
+route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
+route::post('/retrasadas', [RetrasadaController::class,'sendData']);
+route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
