@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-    setTimeout()
     <div class="card-body">
       
      @if (session('notification'))
@@ -27,6 +26,7 @@
       <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
+            <th scope="col">N°</th>
             <th scope="col">Nombre</th>
             <th scope="col">Número de Identidad</th>
             <th scope="col">Teléfono Personal</th>
@@ -34,25 +34,27 @@
           </tr>
         </thead>
         <tbody>  
-          @foreach ($padres as $padre)
+          @foreach ($padres as $index=> $padre)
               
           <tr>
             <th scope="row">
-              {{$padre->tipo}}{{$padre->primernombre}} {{$padre->segundonombre}}
+             {{$index + 1}}
             </th>
+            <td>
+              {{$padre->primernombre}} {{$padre->primerapellido}}
+            </td>
             <td>
               {{$padre->numerodeidentidad}}
             </td>
             <td>
               {{$padre->telefonopersonal}}
             </td>
-            
             <td>
               {{$padre->telefonooficina}}
             </td>
            <td>
             
-            <form action="{{url('/padres/'.$padre->id)}}" method="POST">
+            <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
               <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
@@ -65,4 +67,59 @@
       </table>
     </div>
   </div>
+@endsection
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar') == 'ok')
+        <script> 
+        Swal.fire(
+      '¡Borrado!',
+      'El usuario ha sido borrado exitosamente.',
+      'Éxito'
+    )
+    
+        </script>
+
+  
+@endif
+
+<script>
+
+  $('.formulario-eliminar').submit(function(e){
+  e.preventDefault();
+
+
+  Swal.fire({
+  title: '¿Esta seguro?',
+  text: "¡Si usted borra este registro no podra recuperarlo!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, borralo'
+}).then((result) => {
+  if (result.isConfirmed) {
+  
+    this.submit();
+  }
+})
+  });
+
+  
+</script>
+
+@if(session('success'))
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Perfecto!',
+      text: '{{ session('success') }}',
+      showConfirmButton: false,
+      timer: 3000
+    })
+  </script>
+  @endif
+
 @endsection
