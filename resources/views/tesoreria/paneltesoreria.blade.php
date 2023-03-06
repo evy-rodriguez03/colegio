@@ -22,7 +22,7 @@
       <div class="card">
           <center><img src="{{asset('img/brand/pago_retrasada.jpg') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
           <div class="card-body">
-              <center><a href="{{Route('dashboard.index')}}" class="btn btn-lg btn-info">Pago Retrasada</a></center>
+              <center><a href="{{Route('retrasadas.index')}}" class="btn btn-lg btn-info">Pago Retrasada</a></center>
           </div>
       </div>
   </div>

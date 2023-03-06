@@ -27,7 +27,7 @@
       @endif
         <!-- inicio formulario -->
 
-        <form class="row g-3 mt-3" action="" method="POST">
+        <form class="row g-3 mt-3" action="{{route('retrasadas.index')}}"  method="POST">
           @csrf
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
