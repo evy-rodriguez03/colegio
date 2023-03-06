@@ -12,6 +12,7 @@ use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\PagoaRealizaraController;
+use App\Http\controllers\CursoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,11 @@ route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('
 /*Ruta del boton requisitos*/
 Route::get('/requisito', [requisitoController::class, 
 'create'])->name('requisito.index');
+
+Route::get('/requisito', [requisitoController::class, 
+'create'])->name('requisito.index');
+
+Route::resource('cursos','App\Http\Controllers\CursoController');
 
 
 //rutas Padres
