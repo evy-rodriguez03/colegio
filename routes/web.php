@@ -91,6 +91,3 @@ route::post('/alumnos', [AlumnoController::Class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
-
-//ruta de pago a realizar 
-route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
