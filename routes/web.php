@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionsController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
+use App\Http\controllers\PagoaRealizaraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,3 +91,6 @@ route::post('/alumnos', [AlumnoController::Class,'store']);
 route::put('/alumnos/{usuarios}', [AlumnoController::Class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
+
+//ruta de pago a realizar 
+route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
