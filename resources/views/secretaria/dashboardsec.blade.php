@@ -7,7 +7,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/listo.png') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{Route('usuarios.index')}}" class="btn btn-lg btn-info">Requisitos Recibidos</a></center>
+        <center><a href="{{Route('requisito.index')}}" class="btn btn-lg btn-info">Requisitos Recibidos</a></center>
           
         </div>
       </div>
