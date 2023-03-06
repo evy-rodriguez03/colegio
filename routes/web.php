@@ -10,6 +10,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\CierreController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
+use App\Http\controllers\PagoaRealizaraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\PagoaRealizaraController;
 
@@ -91,5 +92,3 @@ route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alu
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
 
-//ruta de pago a realizar 
-route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
