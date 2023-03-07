@@ -25,7 +25,7 @@ class AlumnoFactory extends Factory
             'direccion' => $this->faker->address(),
             'numerodehermanosenicgc' => $this->faker->randomNumber(5),
             'telefonodeencargado' => $this->faker->phoneNumber(),
-            'alergia' => $this->faker->randomElement(['Ninguna', 'Polvo', 'Mariscos', 'Maní']),
+            'alergia' => $this->faker->randomElement(['Ninguna', 'Polvo', 'Mariscos', 'Mani']),
             'created_at' => Carbon::now(),
         ];
     }
