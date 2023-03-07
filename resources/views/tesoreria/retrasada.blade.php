@@ -9,7 +9,7 @@
           <h1 class="mb-0">Clases Retrasadas</h1>
         </div>
         <div class="col text-right">
-          <a href="{{route('retrasadas.create')}}" class="btn btn-sm btn-primary">Nuevo Alumno</a>
+          <a href="{{route('retrasadas.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
         </div>
       </div>
     </div>
