@@ -35,6 +35,6 @@ class CreateRetrasadasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('retrasadas');
     }
 }
