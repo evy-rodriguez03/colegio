@@ -23,7 +23,6 @@ class CreateRetrasadasTable extends Migration
             $table->string('anio');
             $table->string('materiaretrasada');
             $table->string('total');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
