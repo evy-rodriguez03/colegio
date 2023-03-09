@@ -13,7 +13,7 @@
           <h1 class="mb-0">Cierre de Matricula</h1>
         </div>
         <div class="col text-right">
-          <a href="{{route('periodo')}}" class="btn btn-lg btn-primary">
+          <a href="{{route('periodo')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>
             Regresar</a>
         </div>

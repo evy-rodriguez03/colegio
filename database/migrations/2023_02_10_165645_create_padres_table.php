@@ -26,7 +26,6 @@ class CreatePadresTable extends Migration
             $table->string('oficio');
             $table->string('telefonooficina');
             $table->string('ingresos');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
