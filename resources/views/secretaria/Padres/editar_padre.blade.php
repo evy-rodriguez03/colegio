@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Datos Padre</h1>
             </div>
             <div class="col text-right">
-            <a href="{{route('padres.index')}}" class="btn btn-sm btn-success">
+            <a href="{{route('padres.index')}}" class="btn btn-lg btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>

@@ -6,10 +6,10 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Clases retrasadas</h1>
+                <h1 class="mb-0">Agregar Clase Retrasadas</h1>
             </div>
             <div class="col text-right">
-            <a href="" class="btn btn-sm btn-success">
+            <a href="{{route('retrasadas.index')}}" class="btn btn-lg btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>
@@ -21,7 +21,7 @@
           @foreach ($errors->all() as $error)
           <div class="alert alert-danger" role="alert">
             <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Porfavor!</strong> {{$error}}
+            <strong>¡Por favor!</strong> {{$error}}
         </div>
           @endforeach
       @endif

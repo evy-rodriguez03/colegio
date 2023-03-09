@@ -9,7 +9,7 @@
           <h1 class="mb-0">Padres</h1>
         </div>
         <div class="col text-right">
-          <a href="{{route('padres.create')}}" class="btn btn-sm btn-primary">Nuevo Padre</a>
+          <a href="{{route('padres.create')}}" class="btn btn-lg btn-primary">Nuevo Padre</a>
         </div>
       </div>
     </div>
