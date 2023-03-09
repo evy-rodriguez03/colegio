@@ -23,7 +23,6 @@ class CreateRetrasadasTable extends Migration
             $table->string('anio');
             $table->string('materiaretrasada');
             $table->string('total');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -35,6 +34,6 @@ class CreateRetrasadasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('retrasadas');
     }
 }

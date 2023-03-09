@@ -9,7 +9,7 @@
           <h3 class="mb-0">Agregar Nuevo Curso</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('cursos.index')}}" class="btn btn-sm btn-success">
+          <a href="{{route('cursos.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>
             Regresar</a>
         </div>
@@ -53,8 +53,8 @@
         </div>
                 
                 <hr class="mb-2">
-                <a href="{{route('cursos.index')}}" class="btn btn-sm btn-success">Cancelar</a>
-                <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
+                <a href="{{route('cursos.index')}}" class="btn btn-lg btn-primary">Cancelar</a>
           </form>
 
     </div>
