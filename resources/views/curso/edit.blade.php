@@ -9,7 +9,7 @@
           <h3 class="mb-0">Editar Curso</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('cursos.index')}}" class="btn btn-sm btn-success">
+          <a href="{{route('cursos.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>
             Regresar</a>
         </div>

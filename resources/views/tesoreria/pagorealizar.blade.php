@@ -19,7 +19,7 @@
           <h3 class="mb-0">Pago a Realizar</h3>
         </div>
         <div class="col text-right">
-          <a href="{{Route('paneltesoreria.index')}}" class="btn btn-sm btn-success">
+          <a href="{{Route('paneltesoreria.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>Regresar</a>
         </div>
       </div>
@@ -49,8 +49,7 @@
                 <label for="name">Bolsa Escolar</label>
                 <input type="checkbox" name="name3" value="3">
             </div>
-            <button type="submit" class="btn btn-sm btn-primary">Generar monto</button>
-            <button type="submit" class="btn btn-sm btn-primary">Pago clase retrasada</button>
+            <button type="submit" class="btn btn-lg btn-primary">Generar monto</button>
         </form>
     </div>
   </div>
