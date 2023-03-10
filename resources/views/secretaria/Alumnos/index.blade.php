@@ -58,6 +58,7 @@
             <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
               @csrf
               @method('DELETE')
+              <a href="{{url('/alumnos/'.$alumno->id)}}" class="btn btn-sm btn-primary">Ver</a>
               <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
               <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
             </form>
