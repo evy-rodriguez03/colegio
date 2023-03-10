@@ -90,8 +90,9 @@ route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index')
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::class,'store']);
-route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
+route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
+route::get('/alumnos/{alumnos}',[AlumnoController::class,'show'])->name('alumnos.show');
 });
 
 //ruta de pago a realizar 

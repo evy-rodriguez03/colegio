@@ -104,7 +104,8 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        //
+        $alumnos = Alumno::findOrFail($id);
+        return view('secretaria.alumnos.show', compact('alumnos'));
     }
 
     /**
