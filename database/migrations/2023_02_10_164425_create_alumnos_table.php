@@ -29,7 +29,7 @@ class CreateAlumnosTable extends Migration
             $table->string('alergia');
             $table->boolean('fotografias')->default(false)->nullable();
             $table->boolean('fotografiasdelpadre')->default(false)->nullable();
-            $table->boolean('fotografiacarnet')->default(false)->nullable();
+            $table->boolean('carnet')->default(false)->nullable();
             $table->boolean('certificadodeconducta')->default(false)->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

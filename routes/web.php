@@ -83,6 +83,7 @@ route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padr
 route::post('/padres', [PadreController::class,'sendData']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
+route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
