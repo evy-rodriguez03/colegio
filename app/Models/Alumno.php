@@ -25,7 +25,7 @@ class Alumno extends Model
         'numerodehermanosenicgc',
         'fotografias',
         'fotografiasdelpadre',
-        'fotografiacarnet',
+        'carnet',
         'certificadodeconducta'
     ];
 }

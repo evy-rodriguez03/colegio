@@ -51,7 +51,7 @@ class AlumnoController extends Controller
                   'numerodehermanosenicgc'=>'required|numeric',
                   'fotografias'=>'sometimes',
                   'fotografiasdelpadre'=>'sometimes',
-                  'fotografiacarnet'=>'sometimes',
+                  'carnet'=>'sometimes',
                   'certificadodeconductadeconducta'=>'sometimes',
         ];
         $messages = [
@@ -90,7 +90,7 @@ class AlumnoController extends Controller
         Alumno::create(
             $request->only('primernombre','segundonombre','telefonodeencargado','primerapellido','segundoapellido',
             'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-            'fotografias','fotografiasdelpadre', 'fotografiacarnet', 'certificadodeconducta' )
+            'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta' )
             );
  
               return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
@@ -115,7 +115,8 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumnos = Alumno::findOrFail($id);
+        return view('secretaria.alumnos.edit', compact('alumnos'));
     }
 
     /**
@@ -127,7 +128,63 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'primernombre' => 'required|min:3|string',
+            'segundonombre'=> 'required|min:3|string',
+            'telefonodeencargado'=> 'required|min:8|numeric',
+            'primerapellido'=>'required|min:3|string',
+            'segundoapellido'=>'sometimes|min:3|string',
+            'numerodeidentidad' => 'required|min:13|numeric',
+            'fechadenacimiento'=> 'required|date',
+            'alergia'=> 'required|min:2|string',
+            'lugardenacimiento' => 'required|min:2|string',
+            'genero' => 'required|min:1|string',
+            'direccion'=>'required|string',
+            'numerodehermanosenicgc'=>'required|numeric',
+            'fotografias'=>'sometimes',
+            'fotografiasdelpadre'=>'sometimes',
+            'carnet'=>'sometimes',
+            'certificadodeconductadeconducta'=>'sometimes',
+  ];
+  $messages = [
+         'primernombre.required' => 'El primer nombre es requerido.',
+         'primernombre.min'=>'El minimo son 3 caracteres.',
+         
+         'segundonombre.required' => 'El Segundo nombre es requerido.',
+         'segundonombre.min'=>'El minimo son 3 caracteres.',
+   
+         'telefonodeencargado.required'=>'El número de telefono es necesario',
+         'telefonodeencargado.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
+         'telefonodeencargado.numeric'=>'El número de telefono solo acepta números',
+         'primerapellido.required' => 'El primer apellido es requerido.',
+         'primerapellido.min'=>'El minimo son 3 caracteres.',
+    
+         'segundoapellido.min'=>'El minimo son 3 caracteres.',
+
+         'numerodeidentidad.required'=> 'El número de identidad es necesario.',
+         'numerodeidentidad.min'=> 'El minimo de caracteres del número de identidad es de 13 digitos',
+         'numerodeidentidad.numeric'=> 'El campo número de identidad solo permite números',
+         'fechadenacimiento.required'=> 'La fecha de nacimiento es necesaria.',
+         'fechadenacimiento.date'=>'La fecha es necesaria',
+         'alergia.required'=> 'Escriba SI, si tiene alergia; sino escriba NO',
+         'alergia.min'=>'Se necesitan 2 caracteres como minimo para alergia',
+         'alergia.alpha'=>'Alergia solo acepta letras',
+         'genero.required'=>'M=Si es masculino, y F=Si es femenino',
+         'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
+
+         'direccion.required'=> 'El campo dirección es necesario',
+         'numerodehermanosenicgc.required'=> 'Sino tiene escriba "0"',
+         'numerodehermanosenicgc.numeric'=> 'Solo acepta números',
+  ];
+  $this->validate($request,$rules,$messages);
+
+  $alumnos = Alumno::findOrFail($id);
+
+  $alumnos->update($request->only('primernombre', 'segundonombre', 'telefonodeencargado', 'primerapellido', 'segundoapellido',
+        'numerodeidentidad', 'fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
+        'fotografias', 'fotografiasdelpadre', 'carnet', 'certificadodeconducta'));
+  
+        return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
     /**
