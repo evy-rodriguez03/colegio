@@ -9,7 +9,7 @@ class PadreController extends Controller
 {
     public function index()
     {
-        $padres = Padre::all();
+        $padres = Padre::paginate(5);
         return view('secretaria.Padres.tabla_padre', compact('padres'));
     }
 
@@ -25,7 +25,7 @@ class PadreController extends Controller
 
     public function sendData(Request $request){
         $rules = [
-            'tipo' => 'required|alpha',
+            'tipo' => 'required',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'primerapellido' => 'required|alpha',
@@ -111,7 +111,8 @@ class PadreController extends Controller
      */
     public function show($id)
     {
-        //
+        $padre = Padre::findOrFail($id);
+        return view('secretaria.Padres.padre_individual')->with('padre',$padre);
     }
 
     /**
@@ -122,7 +123,6 @@ class PadreController extends Controller
      */
     public function edit($id)
     {
-       
         $padres = Padre::findOrFail($id);
         return view('secretaria.Padres.editar_padre')->with('padres',$padres);
     }
@@ -168,9 +168,9 @@ class PadreController extends Controller
         
         $padres->save();
 
-        $notification = 'El padre se ha creado correctamente';
+        $notification = 'El padre se ha actualizado correctamente';
 
-        return redirect('/padres')->with(compact('notification'));
+        return redirect()->route('padres.index', ['padre' => $padres->id])->with(compact('notification'));
 
     }
 
