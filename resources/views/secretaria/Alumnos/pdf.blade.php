@@ -5,28 +5,32 @@
     <title> PDF Alumnos</title>
     <style>
         .cabecera{
-
-            background-color: black;
-            color: floralwhite;
-        }
+            color: black;}
 
         .h1{
-            color: black;
-        }
+            color: black; }
+            table {
+        border-collapse: collapse;
+    }
+    td, th {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
     </style>
 </head>
 <body>
 <center><img src="{{asset('img/brand/blue.png') }}" class="card-img-top" alt="..." style="width:70px;height:70px;"></center>
 <center><h4>Instituto Cosmer Garcia C.</h4></center>  
 <center><h1>Alumnos</h1></center>
-<table class="table" style="text-align: center; font-size: 15px;"> 
+<table class="table table-bordered" style="text-align: center; font-size: 15px";> 
         <thead class="cabecera">
           <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Número de identidad</th>
-            <th scope="col">Telefono de encargado</th>
-            <th scope="col">Grado</th>
-            <th scope="col">Sección</th>
+            <th scope="row">Nombre</th>
+            <th scope="row">Número de identidad</th>
+            <th scope="row">Telefono de encargado</th>
+            <th scope="row">Grado</th>
+            <th scope="row">Sección</th>
           </tr>
         </thead>
         <tbody>
@@ -48,10 +52,6 @@
            </td>
            <td>
             <!-- sección -->
-           </td>
-           <td>
-            
-            
            </td>
            @endforeach
         </tbody>

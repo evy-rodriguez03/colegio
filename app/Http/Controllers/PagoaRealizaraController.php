@@ -34,7 +34,23 @@ class PagoaRealizaraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules =[
+            'mensualidad'=>'sometimes',
+                  'pagosadministrativos'=>'sometimes',
+                  'bolsaescolar'=>'sometimes',
+        ];
+
+        $messages = [
+            'mensualidad.required' => 'Necesita seleccionar',
+            'pagosadministrativos.required' => 'Necesita seleccionar',
+            'bolsaescolar.required' => 'Necesita seleccionar',
+        ];
+        $this->validate($request,$rules,$messages);
+        Pagorealizar::create(
+            $request->only('mensualidad','pagosadministrativos','bolsaescolar' )
+            );
+ 
+              return redirect('/Pagorealizar')->with('success', '¡El dato ha sido guardado');
     }
 
     /**

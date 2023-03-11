@@ -58,15 +58,18 @@
             <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
-              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
+              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+              <a href="{{route('padre.show', ['id'=> $padre -> id])}}" class="btn btn-sm btn-info">Ver</a>
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
             
            </td>
            @endforeach
+          </tr>
         </tbody>
       </table>
     </div>
+    <!--{{$padres->links()}} -->
   </div>
 @endsection
 
@@ -83,7 +86,6 @@
     
         </script>
 
-  
 @endif
 
 <script>

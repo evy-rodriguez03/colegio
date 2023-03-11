@@ -9,7 +9,7 @@ class PadreController extends Controller
 {
     public function index()
     {
-        $padres = Padre::all();
+        $padres = Padre::paginate(5);
         return view('secretaria.Padres.tabla_padre', compact('padres'));
     }
 
@@ -25,7 +25,7 @@ class PadreController extends Controller
 
     public function sendData(Request $request){
         $rules = [
-            'tipo' => 'required|alpha',
+            'tipo' => 'required',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'primerapellido' => 'required|alpha',
@@ -86,7 +86,21 @@ class PadreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $padres = new Padre;
+            $padres->tipo = $request->get('tipo');
+            $padres->primernombre= $request->get('primernombre');
+            $padres->segundonombre= $request->get('segundonombre');
+            $padres->primerapellido= $request->get('primerapellido');
+            $padres->segundoapellido= $request->get('segundoapellido');
+            $padres->numerodeidentidad= $request->get('numerodeidentidad');
+            $padres->telefonopersonal= $request->get('telefonopersonal');
+            $padres->lugardetrabajo= $request->get('lugardetrabajo');
+            $padres->oficio= $request->get('oficio');
+            $padres->ingresos= $request->get('ingresos');
+    
+            $padres->save();
+    
+            return redirect('/padres');
     }
 
     /**
@@ -97,7 +111,8 @@ class PadreController extends Controller
      */
     public function show($id)
     {
-        //
+        $padre = Padre::findOrFail($id);
+        return view('secretaria.Padres.padre_individual')->with('padre',$padre);
     }
 
     /**
@@ -106,10 +121,10 @@ class PadreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Padre $padres)
+    public function edit($id)
     {
-       
-        return view('secretaria.Padres.editar_padre', compact('padres'));
+        $padres = Padre::findOrFail($id);
+        return view('secretaria.Padres.editar_padre')->with('padres',$padres);
     }
 
     /**
@@ -121,7 +136,10 @@ class PadreController extends Controller
      */
     public function update(Request $request, $id )
     {
-        $rules = [
+
+        $padres = Padre::findOrFail($id);
+
+        $request->validate([
             'tipo' => 'required|alpha',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
@@ -132,21 +150,28 @@ class PadreController extends Controller
             'lugardetrabajo'=> 'required|alpha',
             'oficio'=> 'required|alpha',
             'telefonooficina'=> 'required|min:8|numeric',
-            'ingresos'=> 'required|numeric',
-        ];
+            'ingresos'=> 'required|numeric'
+        ]);
 
-        $this->validate($request, $rules);
 
-        $padres = Padre::findOrFail($id);
-
-        $data = $request->only('tipo','primernombre','segundonombre','primerapellido','segundoapellido','numerodeidentidad','telefonopersonal',
-        'lugardetrabajo','oficio','telefonooficina','ingresos');
-        $padres->fill($data);
-           
+        $padres->tipo = $request->input('tipo');
+        $padres->primernombre = $request->input('primernombre');
+        $padres->segundonombre = $request->input('segundonombre');
+        $padres->primerapellido = $request->input('primerapellido');
+        $padres->segundoapellido = $request->input('segundoapellido');
+        $padres->numerodeidentidad = $request->input('numerodeidentidad');
+        $padres->telefonopersonal = $request->input('telefonopersonal');
+        $padres->lugardetrabajo = $request->input('lugardetrabajo');
+        $padres->oficio = $request->input('oficio');
+        $padres->telefonooficina = $request->input('telefonooficina');
+        $padres->ingresos = $request->input('ingresos');
+        
         $padres->save();
-        $notification = 'El padre se ha editado correctamente';
 
-        return redirect('/padres')->with(compact('notification'));
+        $notification = 'El padre se ha actualizado correctamente';
+
+        return redirect()->route('padres.index', ['padre' => $padres->id])->with(compact('notification'));
+
     }
 
     /**
