@@ -33,8 +33,12 @@
             <label for="tipo">Tipo:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}"
-            placeholder="Ingrese el tipo"></input>
+            <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
+            <option value="">Elegir</option>
+            <option value="padre">Padre</option>
+            <option value="madre">Madre</option>
+            <option value="encargado">Ecncargado</option>
+         </select>
         </div>
 
         <div class="form-group col-2 mt-3">

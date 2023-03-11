@@ -83,14 +83,14 @@ route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padr
 route::post('/padres', [PadreController::class,'sendData']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
+route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::class,'store']);
-route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
-route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
+route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
 });
 

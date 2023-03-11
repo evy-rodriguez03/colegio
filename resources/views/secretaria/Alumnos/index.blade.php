@@ -2,6 +2,18 @@
 
 
 @section('content')
+<style>
+.pagination .page-link span {
+    font-size: 14px;
+}
+
+.pagination .page-link svg {
+    width: 12px;
+    height: 12px;
+}
+
+</style>
+
 <div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">
@@ -59,8 +71,9 @@
             <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
               @csrf
               @method('DELETE')
-              <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-lg bt-danger">Eliminar</button>
+              <a href="{{url('/alumnos/'.$alumno->id)}}" class="btn btn-sm btn-info">Ver</a>
+              <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
             
            </td>
@@ -68,6 +81,7 @@
         </tbody>
       </table>
     </div>
+    {{ $alumnos->links('vendor.pagination.bootstrap-4') }}
   </div>
 @endsection
 @section('js')

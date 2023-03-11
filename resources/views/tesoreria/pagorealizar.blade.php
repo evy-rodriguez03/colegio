@@ -43,13 +43,14 @@
 
             <div class="form-group">
                 <label for="name">Gastos Administrativos</label>
-                <input type="checkbox" name="name2" value="2">
+                <input type="checkbox" name="gastosadministrativos" value="2">
             </div>
             <div class="form-group">
                 <label for="name">Bolsa Escolar</label>
-                <input type="checkbox" name="name3" value="3">
+                <input type="checkbox" name="bolsaescolar" value="3">
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Generar monto</button>
+            <button type="submit" class="btn btn-sm btn-primary">Generar monto</button>
+            <button type="submit" class="btn btn-sm btn-primary">Pago clase retrasada</button>
         </form>
     </div>
   </div>

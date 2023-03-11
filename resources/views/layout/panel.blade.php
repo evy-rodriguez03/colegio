@@ -25,6 +25,8 @@
 
 .tabla-dashboard .table tbody tr:hover {
   background-color: #ddd;
+
+  
 }
 
 
