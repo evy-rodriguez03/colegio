@@ -14,7 +14,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(10);
         return view('secretaria.alumnos.index', compact('alumnos'));
     }
 
