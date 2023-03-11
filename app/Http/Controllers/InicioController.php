@@ -15,8 +15,10 @@ class InicioController extends Controller
     public function store(Request $request){
 
         $inicio = new Inicio;
-        $inicio->fecha = $request->input('fecha');
+        $inicio->fechaInicio = $request->input('fechaInicio');
+        $inicio->periodoMatricula = $request->input('periodoMatricula');
         $inicio->usuario = $request->input('usuario');
+        $inicio->fechaCierre = $request->input('fechaCierre');
         $inicio->save();
 
         return redirect('/iniciom')

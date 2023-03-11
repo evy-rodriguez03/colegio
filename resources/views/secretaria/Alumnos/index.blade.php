@@ -9,6 +9,7 @@
           <h3 class="mb-0">Alumnos</h3>
         </div>
         <div class="col text-right">
+        <a href="{{route('alumnos.pdf')}}" class="btn btn-lg btn-primary">Documento</a>
           <a href="{{route('alumnos.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
         </div>
       </div>

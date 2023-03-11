@@ -11,7 +11,9 @@ class Inicio extends Model
     protected $table = "periodo_i";
 
     protected $fillable = [
-        'fecha',
-        'usuario'
+        'fechaInicio',
+        'periodoMatricula',
+        'usuario',
+        'fechaCierre'
     ];
 }
