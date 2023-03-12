@@ -7,7 +7,6 @@ use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
-use App\Http\Controllers\CierreController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
@@ -85,18 +84,18 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
+
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
-route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
 });
 
 //ruta de pago a realizar 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
-
+ 
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
