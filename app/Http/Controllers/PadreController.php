@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Padre;
+use Barryvdh\DomPDF\Facade\pdf;
 use Illuminate\Http\Request;
 
 class PadreController extends Controller
@@ -11,6 +12,12 @@ class PadreController extends Controller
     {
         $padres = Padre::paginate(5);
         return view('secretaria.Padres.tabla_padre', compact('padres'));
+    }
+
+    public function pdf(){
+        $padres=Padre::All();
+        $pdf = Pdf::loadView('secretaria.Padres.pdfpadres', compact('padres'));
+        return $pdf->stream();
     }
 
     /**
