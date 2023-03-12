@@ -74,6 +74,7 @@ Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
 
 Route::resource('cursos','App\Http\Controllers\CursoController');
+route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 
 
 //rutas Padres
@@ -84,6 +85,7 @@ route::post('/padres', [PadreController::class,'sendData']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
+route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
@@ -92,6 +94,7 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
+route::get('/alumnos/{alumnos}',[AlumnoController::class,'show'])->name('alumnos.show');
 });
 
 //ruta de pago a realizar 
