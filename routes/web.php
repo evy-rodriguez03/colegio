@@ -7,7 +7,6 @@ use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
-use App\Http\Controllers\CierreController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
@@ -94,12 +93,11 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
-route::get('/alumnos/{alumnos}',[AlumnoController::class,'show'])->name('alumnos.show');
 });
 
 //ruta de pago a realizar 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
-
+ 
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
