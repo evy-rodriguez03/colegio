@@ -54,8 +54,8 @@
             <form action="{{url('/usuarios/'.$usuario->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
-              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-outline-light text-dark">Eliminar</button>
+              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
             
            </td>
