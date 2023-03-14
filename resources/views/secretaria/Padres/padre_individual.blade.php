@@ -60,8 +60,70 @@
         
       </table>
     
-      <a  href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-lg btn-primary">Editar</a>
-      <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
+      <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="form-eliminarpadre">
+    @csrf
+    @method('DELETE')
+    <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-lg btn-primary">Editar</a>
+    <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
+  </form>
+
+     
+      
+
+   
+@endSection
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar') == 'ok')
+        <script> 
+        Swal.fire(
+      '¡Borrado!',
+      'El padre ha sido borrado exitosamente.',
+      'Éxito'
+    )
+    
+        </script>
+
+  
+@endif
+
+<script>
+
+  $('.form-eliminarpadre').submit(function(e){
+  e.preventDefault();
+
+
+  Swal.fire({
+  title: '¿Esta seguro?',
+  text: "¡Si usted borra este registro no podra recuperarlo!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, borralo'
+}).then((result) => {
+  if (result.isConfirmed) {
+  
+    this.submit();
+  }
+})
+  });
+
+  
+</script>
+
+@if(session('success'))
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Perfecto!',
+      text: '{{ session('success') }}',
+      showConfirmButton: false,
+      timer: 3000
+    })
+  </script>
+  @endif
     
    
 @endSection

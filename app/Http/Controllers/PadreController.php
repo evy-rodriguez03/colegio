@@ -10,7 +10,7 @@ class PadreController extends Controller
 {
     public function index()
     {
-        $padres = Padre::paginate(5);
+        $padres = Padre::paginate(10);
         return view('secretaria.Padres.tabla_padre', compact('padres'));
     }
 
@@ -73,7 +73,8 @@ class PadreController extends Controller
         $this->validate($request, $rules, $messages);
 
         Padre::create(
-            $request->only('tipo','primernombre', 'segundonombre', 'primerapellido', 'segundoapellido','numerodeidentidad','telefonopersonal', 
+            $request->only('tipo','primernombre', 'segundonombre', 'primerapellido', 'segundoapellido',
+            'numerodeidentidad','telefonopersonal', 
             'lugardetrabajo', 'oficio', 'telefonooficina', 'ingresos' )
             );
 
