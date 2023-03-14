@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
+ 
 
 class AlumnoController extends Controller
 {
@@ -14,10 +16,15 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(10);
         return view('secretaria.alumnos.index', compact('alumnos'));
     }
 
+    public function pdf(){
+        $alumnos=Alumno::All();
+        $pdf = Pdf::loadView('secretaria.alumnos.pdf', compact('alumnos'));
+        return $pdf->stream();
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -104,7 +111,8 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        //
+        $alumnos = Alumno::findOrFail($id);
+        return view('secretaria.alumnos.show', compact('alumnos'));
     }
 
     /**

@@ -10,6 +10,7 @@
         </div>
         <div class="col text-right">
           <a href="{{route('padres.create')}}" class="btn btn-lg btn-primary">Nuevo Padre</a>
+          <a href="{{route('padre.pdf')}}" class="btn btn-lg btn-primary">Documento Padre</a>
         </div>
       </div>
     </div>
@@ -58,9 +59,9 @@
             <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
-               <a href="{{route('padre.show', ['id'=> $padre -> id])}}" class="btn btn-sm bt-primary">Ver</a>
-               <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
+              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+              <a href="{{route('padre.show', ['id'=> $padre -> id])}}" class="btn btn-sm btn-info">Ver</a>
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
             
            </td>
