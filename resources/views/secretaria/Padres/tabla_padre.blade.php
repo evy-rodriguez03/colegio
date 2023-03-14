@@ -58,8 +58,8 @@
             <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('DELETE')
-              <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <a href="{{route('padre.show', ['id'=> $padre -> id])}}" class="btn btn-sm bt-primary">Ver</a>
+               <a href="{{route('padre.show', ['id'=> $padre -> id])}}" class="btn btn-sm bt-primary">Ver</a>
+               <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
               <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
             </form>
             

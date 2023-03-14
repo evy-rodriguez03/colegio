@@ -80,7 +80,7 @@ Route::resource('cursos','App\Http\Controllers\CursoController');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
 route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padres.edit');
-route::post('/padres', [PadreController::class,'sendData']);
+route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
