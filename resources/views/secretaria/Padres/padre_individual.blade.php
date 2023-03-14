@@ -9,6 +9,8 @@
         <h1>Detalles de {{$padre->primernombre}} {{$padre->primerapellido}}</h1>
         </div>
         <div class="col text-right">
+        <a href="{{route('padres.index')}}" class="btn btn-lg btn-success"> 
+        <i class="fas fa-angle-left"></i>Regresar</a>
         </div>
       </div>
     </div>
@@ -31,11 +33,11 @@
             <td>{{$padre->tipo}}</td>
         </tr>
         <tr>
-            <th>Numero de Identidad</th>
+            <th>Número de Identidad</th>
             <td>{{$padre->numerodeidentidad}}</td>
         </tr>
         <tr>
-            <th>Telefono Personal</th>
+            <th>Teléfono Personal</th>
             <td>{{$padre->telefonopersonal}}</td>
         </tr>
         <tr>
@@ -47,7 +49,7 @@
             <td>{{$padre->oficio}}</td>
         </tr>
         <tr>
-            <th>Telefono de Oficina</th>
+            <th>Teléfono de Oficina</th>
             <td>{{$padre->telefonooficina}}</td>
         </tr>
         <tr>
@@ -57,8 +59,9 @@
         </tbody>
         
       </table>
-      <a href="{{route('padres.index')}}" class="btn btn-lg btn-success"> 
-        <i class="fas fa-angle-left"></i>Regresar</a>
-
+    
+      <a  href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-lg btn-primary">Editar</a>
+      <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
+    
    
 @endSection
