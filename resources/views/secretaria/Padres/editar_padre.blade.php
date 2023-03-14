@@ -6,7 +6,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Datos Padre</h1>
+                <h1 class="mb-0">Agregar Nuevo Padre</h1>
             </div>
             <div class="col text-right">
             <a href="{{route('padres.index')}}" class="btn btn-lg btn-success">
@@ -34,15 +34,20 @@
             <label for="tipo">Tipo:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}"
-            placeholder="Ingrese el tipo"></input>
+            <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo', $padres->tipo)}}">
+            <option value="">Elegir</option>
+            <option value="padre">Padre</option>
+            <option value="madre">Madre</option>
+            <option value="encargado">Ecncargado</option>
+         </select>
+         <div class="valid-feedback"></div>
         </div>
 
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="primernombre" name="primernombre" class="form-control" required value="{{old('primernombre')}}"
+            <input type="text" id="primernombre" name="primernombre" class="form-control" required value="{{old('primernombre', $padres->primernombre)}}"
             placeholder="Ingrese el primer nombre"></input>
         </div>
 
@@ -50,7 +55,7 @@
             <label for="segundonombre">Segundo Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="segundonombre" name="segundonombre" class="form-control" required value="{{old('segundonombre')}}"
+            <input type="text" id="segundonombre" name="segundonombre" class="form-control" required value="{{old('segundonombre', $padres->segundonombre)}}"
             placeholder="Ingrese el segundo nombre"></input>
         </div>
 
@@ -58,7 +63,7 @@
             <label for="primerapellido">Primer Apellido:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="primerapellido" name="primerapellido" class="form-control" required value="{{old('primerapellido')}}"
+            <input type="text" id="primerapellido" name="primerapellido" class="form-control" required value="{{old('primerapellido', $padres->primerapellido)}}"
             placeholder="Ingrese el primer apellido"></input>
         </div>
 
@@ -66,7 +71,7 @@
             <label for="segundoapellido">Segundo Apellido:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="segundoapellido" name="segundoapellido" class="form-control" required value="{{old('segundoapellido')}}"
+            <input type="text" id="segundoapellido" name="segundoapellido" class="form-control" required value="{{old('segundoapellido', $padres->segundoapellido)}}"
             placeholder="Ingrese el segundo apellido"></input>
         </div>
 
@@ -74,7 +79,7 @@
             <label for="numerodeidentidad">Número de Identidad:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required value="{{old('numerodeidentidad')}}"
+            <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required value="{{old('numerodeidentidad', $padres->numerodeidentidad)}}"
             placeholder="Ingrese el número de identidad"></input>
         </div>
 
@@ -82,7 +87,7 @@
             <label for="telefonopersonal">Teléfono Personal:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="telefonopersonal" name="telefonopersonal" class="form-control" required value="{{old('telefonopersonal')}}"
+            <input type="text" id="telefonopersonal" name="telefonopersonal" class="form-control" required value="{{old('telefonopersonal', $padres->telefonopersonal)}}"
             placeholder="Ingrese el télefono personal"></input>
         </div>
 
@@ -90,7 +95,7 @@
             <label for="lugardetrabajo">Lugar de Trabajo:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="lugardetrabajo" name="lugardetrabajo" class="form-control" required value="{{old('lugardetrabajo')}}"
+            <input type="text" id="lugardetrabajo" name="lugardetrabajo" class="form-control" required value="{{old('lugardetrabajo', $padres->lugardetrabajo)}}"
             placeholder="Ingrese el lugar de trabajo"></input>
         </div>
 
@@ -98,7 +103,7 @@
             <label for="oficio">Oficio:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
+            <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio', $padres->oficio)}}"
             placeholder="Ingrese el oficio"></input>
         </div>
 
@@ -106,7 +111,7 @@
             <label for="telefonooficina">Teléfono de Oficina:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="telefonooficina" name="telefonooficina" class="form-control" required value="{{old('telefonooficina')}}"
+            <input type="text" id="telefonooficina" name="telefonooficina" class="form-control" required value="{{old('telefonooficina', $padres->telefonooficina)}}"
             placeholder="Ingrese el télefono de oficina"></input>
         </div>
 
@@ -114,7 +119,7 @@
             <label for="ingresos">Ingresos:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="ingresos" name="ingresos" class="form-control" required value="{{old('ingresos')}}"
+            <input type="text" id="ingresos" name="ingresos" class="form-control" required value="{{old('ingresos', $padres->ingresos)}}"
             placeholder="Ingrese los ingresos"></input>
         </div>
 
