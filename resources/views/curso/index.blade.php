@@ -29,6 +29,8 @@
             <th scope="col">Curso</th>
             <th scope="col">Seccion</th>
             <th scope="col">Horario</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Jornada</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -40,6 +42,8 @@
              <td>{{$curso->curso}}</td>
              <td>{{$curso->seccion}}</td>
              <td>{{$curso->horario}}</td>
+              <td>{{$curso->periodo}}</td>
+              <td>{{$curso->jornada}}</td>
              <td> 
               <form action="{{route ('cursos.destroy',$curso->id)}}" method="POST">
                 <a href= "{{route ('cursos.edit',$curso->id)}}"class="btn btn-lg bt-primary">Editar</a>
