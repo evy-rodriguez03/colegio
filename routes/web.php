@@ -7,7 +7,6 @@ use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
-use App\Http\Controllers\CierreController;
 use App\Http\controllers\PaneltesoreriaController;
 use App\Http\controllers\requisitoController;
 use Illuminate\Support\Facades\Route;
@@ -74,23 +73,26 @@ Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
 
 Route::resource('cursos','App\Http\Controllers\CursoController');
+route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 
 
 //rutas Padres
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
 route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padres.edit');
-route::post('/padres', [PadreController::class,'sendData']);
+route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
+route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
+route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
 route::post('/alumnos', [AlumnoController::class,'store']);
-route::put('/alumnos/{usuarios}', [AlumnoController::class,'update'])->name('alumnos.update');
-route::delete('/alumnos/{alumnos}', [AlumnoController::class,'destroy'])->name('alumnos.destroy');
+route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
+route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
 });
 
 //ruta de pago a realizar 

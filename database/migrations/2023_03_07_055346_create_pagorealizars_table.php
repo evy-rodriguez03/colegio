@@ -15,6 +15,9 @@ class CreatePagorealizarsTable extends Migration
     {
         Schema::create('pagorealizars', function (Blueprint $table) {
             $table->id();
+            $table->boolean('mensualidad')->default(false)->nullable();
+            $table->boolean('pagosadministrativos')->default(false)->nullable();
+            $table->boolean('bolsaescolar')->default(false)->nullable();
             $table->timestamps();
         });
     }
