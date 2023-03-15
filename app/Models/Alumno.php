@@ -28,4 +28,9 @@ class Alumno extends Model
         'carnet',
         'certificadodeconducta'
     ];
+        public function padres()
+        {
+            return $this->belongsToMany(Padre::class,'alumno_padre');
+        }
+
 }
