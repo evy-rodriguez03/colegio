@@ -13,7 +13,7 @@ class Pagorealizar extends Model
     protected $fillable = [
         'mensualidad',
         'pagosadministrativos',
-        'telefonodeencargado',
+        'bolsaescolar',
         
     ];
 }
