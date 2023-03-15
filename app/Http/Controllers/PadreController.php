@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Padre;
+use Barryvdh\DomPDF\Facade\pdf;
 use Illuminate\Http\Request;
 
 class PadreController extends Controller
 {
     public function index()
     {
-        $padres = Padre::paginate(5);
+        $padres = Padre::paginate(10);
         return view('secretaria.Padres.tabla_padre', compact('padres'));
+    }
+
+    public function pdf(){
+        $padres=Padre::All();
+        $pdf = Pdf::loadView('secretaria.Padres.pdfpadres', compact('padres'));
+        return $pdf->stream();
     }
 
     /**
@@ -23,7 +30,16 @@ class PadreController extends Controller
         return view('secretaria.Padres.datos_padre');
     }
 
-    public function sendData(Request $request){
+    
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $rules = [
             'tipo' => 'required',
             'primernombre' => 'required|alpha',
@@ -54,53 +70,15 @@ class PadreController extends Controller
     
            ];
 
-        
-
         $this->validate($request, $rules, $messages);
 
+        Padre::create(
+            $request->only('tipo','primernombre', 'segundonombre', 'primerapellido', 'segundoapellido',
+            'numerodeidentidad','telefonopersonal', 
+            'lugardetrabajo', 'oficio', 'telefonooficina', 'ingresos' )
+            );
 
-        $padres = new Padre();
-        $padres->tipo = $request->input('tipo');
-        $padres->primernombre = $request->input('primernombre');
-        $padres->segundonombre = $request->input('segundonombre');
-        $padres->primerapellido = $request->input('primerapellido');
-        $padres->segundoapellido = $request->input('segundoapellido');
-        $padres->numerodeidentidad = $request->input('numerodeidentidad');
-        $padres->telefonopersonal = $request->input('telefonopersonal');
-        $padres->lugardetrabajo = $request->input('lugardetrabajo');
-        $padres->oficio = $request->input('oficio');
-        $padres->telefonooficina = $request->input('telefonooficina');
-        $padres->ingresos = $request->input('ingresos');
-        $padres->save();
-        $notification = 'El padre se ha creado correctamente';
-
-        return redirect('/padres')->with(compact('notification'));
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-            $padres = new Padre;
-            $padres->tipo = $request->get('tipo');
-            $padres->primernombre= $request->get('primernombre');
-            $padres->segundonombre= $request->get('segundonombre');
-            $padres->primerapellido= $request->get('primerapellido');
-            $padres->segundoapellido= $request->get('segundoapellido');
-            $padres->numerodeidentidad= $request->get('numerodeidentidad');
-            $padres->telefonopersonal= $request->get('telefonopersonal');
-            $padres->lugardetrabajo= $request->get('lugardetrabajo');
-            $padres->oficio= $request->get('oficio');
-            $padres->ingresos= $request->get('ingresos');
-    
-            $padres->save();
-    
-            return redirect('/padres');
+        return redirect('/padres')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
     /**
@@ -124,7 +102,7 @@ class PadreController extends Controller
     public function edit($id)
     {
         $padres = Padre::findOrFail($id);
-        return view('secretaria.Padres.editar_padre')->with('padres',$padres);
+        return view('secretaria.Padres.editar_padre', compact('padres'));
     }
 
     /**
@@ -137,9 +115,7 @@ class PadreController extends Controller
     public function update(Request $request, $id )
     {
 
-        $padres = Padre::findOrFail($id);
-
-        $request->validate([
+        $rules = [
             'tipo' => 'required|alpha',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
@@ -151,27 +127,32 @@ class PadreController extends Controller
             'oficio'=> 'required|alpha',
             'telefonooficina'=> 'required|min:8|numeric',
             'ingresos'=> 'required|numeric'
-        ]);
+        ];
 
+        $messages= [
+            'telefonopersonal.min' => 'El número de teléfono personal mínimo debe tener 8 dígitos',
+            'telefonopersonal.numeric' => 'El número de teléfono personal deben ser dígitos del 1 al 10',
+            'telefonooficina.min' => 'El número de teléfono de oficina mínimo debe tener 8 dígitos',
+            'telefonooficina.numeric' => 'El número de teléfono de oficina deben ser dígitos del 1 al 10',
+            'ingresos.numeric' => 'Los ingresos deben ser valores numéricos',
+            'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
+            'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
+            'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
+            'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
+            'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
+            'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
+            
+    
+           ];
+           $this->validate($request,$rules,$messages);
 
-        $padres->tipo = $request->input('tipo');
-        $padres->primernombre = $request->input('primernombre');
-        $padres->segundonombre = $request->input('segundonombre');
-        $padres->primerapellido = $request->input('primerapellido');
-        $padres->segundoapellido = $request->input('segundoapellido');
-        $padres->numerodeidentidad = $request->input('numerodeidentidad');
-        $padres->telefonopersonal = $request->input('telefonopersonal');
-        $padres->lugardetrabajo = $request->input('lugardetrabajo');
-        $padres->oficio = $request->input('oficio');
-        $padres->telefonooficina = $request->input('telefonooficina');
-        $padres->ingresos = $request->input('ingresos');
-        
-        $padres->save();
+           $padres = Padre::findOrFail($id);
 
-        $notification = 'El padre se ha actualizado correctamente';
-
-        return redirect()->route('padres.index', ['padre' => $padres->id])->with(compact('notification'));
-
+           $padres->update($request->only('tipo','primernombre', 'segundonombre', 'primerapellido', 
+           'segundoapellido','numerodeidentidad','telefonopersonal', 'lugardetrabajo', 
+           'oficio', 'telefonooficina', 'ingresos'));
+  
+        return redirect('/padres')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
     /**
@@ -180,11 +161,12 @@ class PadreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Padre $padres)
+    public function destroy($id)
     {
+        $padres = Padre::findOrfail($id);
         $padres->delete();
-        $deletename = $padres->nombre;
-        $notification = 'El padre '.$deletename.' ha eliminado correctamente';
-        return redirect('/padres')->with(compact('notification'));
+
+        
+        return redirect('/padres')->with('eliminar', 'ok');
     }
 }

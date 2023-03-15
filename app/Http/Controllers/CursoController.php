@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Curso;
 
 
@@ -18,6 +19,12 @@ class CursoController extends Controller
         $cursos = Curso::all();
         return view('curso.index')->with('cursos',$cursos);
     }
+
+    public function pdf(){
+        $cursos=Curso::All();
+        $pdf = Pdf::loadView('curso.cursopdf', compact('cursos'));
+        return $pdf->stream();
+}
 
     /**
      * Show the form for creating a new resource.
