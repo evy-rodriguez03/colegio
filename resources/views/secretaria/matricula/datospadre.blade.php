@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Datos Padre</h1>
             </div>
             <div class="col text-right">
-            <a href="{{route('padres.index')}}" class="btn btn-lg btn-success">
+            <a href="{{route('creatematricula')}}" class="btn btn-lg btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>
@@ -27,7 +27,7 @@
       @endif
         <!-- inicio formulario -->
 
-        <form class="row g-3 mt-3" action="{{route('padres.index')}}" method="POST">
+        <form class="row g-3 mt-3" action="{{route('submitpadre')}}" method="POST">
           @csrf
         <div class="form-group col-2 mt-3">
             <label for="tipo">Tipo:</label>
@@ -36,8 +36,7 @@
             <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
             <option value="">Elegir</option>
             <option value="padre">Padre</option>
-            <option value="madre">Madre</option>
-            <option value="encargado">Ecncargado</option>
+           
          </select>
         </div>
 
@@ -121,9 +120,7 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">
-            Guardar
-        </button>
+        <button a href="{{Route('datosmadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
     </form>
     </div>
 </div>
