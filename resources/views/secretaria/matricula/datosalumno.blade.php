@@ -26,7 +26,7 @@
         </div>
           @endforeach
       @endif
-      <form action="{{ route('alumnos.index') }}" method="POST">
+      <form action="{{ route('submitmatricula') }}" method="POST">
         @csrf
         <div class="form-row">
           <div class="col-md-4 mb-3">
@@ -120,7 +120,7 @@
                 </div>
                 
                 <hr class="mb-2">
-                <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
+                <button a href="{{Route('datospadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
           </form>
 
     </div>
