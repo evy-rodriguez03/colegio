@@ -15,8 +15,10 @@ class CreatePeriodoITable extends Migration
     {
         Schema::create('periodo_i', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
+            $table->date('fechaInicio');
+            $table->string('periodoMatricula');
             $table->string('usuario');
+            $table->date('fechaCierre');
             $table->timestamps();
         });
     }

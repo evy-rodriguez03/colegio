@@ -9,5 +9,17 @@ class Padre extends Model
 {
     use HasFactory;
     protected $table = "padres";
-    public $timestamps = false;
+    protected $fillable = [
+        'tipo',
+        'primernombre',
+        'segundonombre',
+        'primerapellido',
+        'segundoapellido',
+        'numerodeidentidad',
+        'telefonopersonal', 
+        'lugardetrabajo',
+        'oficio',
+        'telefonooficina',
+        'ingresos'
+    ];
 }

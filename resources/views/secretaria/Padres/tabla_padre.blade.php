@@ -10,6 +10,7 @@
         </div>
         <div class="col text-right">
           <a href="{{route('padres.create')}}" class="btn btn-lg btn-primary">Nuevo Padre</a>
+          <a href="{{route('padre.pdf')}}" class="btn btn-lg btn-primary">Documento Padre</a>
         </div>
       </div>
     </div>
@@ -69,7 +70,7 @@
         </tbody>
       </table>
     </div>
-    <!--{{$padres->links()}} -->
+    {{ $padres->links('vendor.pagination.bootstrap-4') }}
   </div>
 @endsection
 
