@@ -86,13 +86,6 @@ route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('pad
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
 //ruta alumnos
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
-Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
-
-route::get('/alumnopadre', [PadreController::class,'createconpadre'])->name('datospadre.create');
-
-route::post('/alumnopadre', [PadreController::class,'storeconpadre']);
-
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
@@ -114,7 +107,3 @@ route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
 route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
-
-
-//compromiso
-route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
