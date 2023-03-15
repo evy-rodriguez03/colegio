@@ -70,7 +70,7 @@
         </tbody>
       </table>
     </div>
-    <!--{{$padres->links()}} -->
+    {{ $padres->links('vendor.pagination.bootstrap-4') }}
   </div>
 @endsection
 

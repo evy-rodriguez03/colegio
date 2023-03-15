@@ -16,4 +16,17 @@ class Padre extends Model
     return $this->belongsToMany(Alumno::class, 'alumno_padre');
 }
 
+    protected $fillable = [
+        'tipo',
+        'primernombre',
+        'segundonombre',
+        'primerapellido',
+        'segundoapellido',
+        'numerodeidentidad',
+        'telefonopersonal', 
+        'lugardetrabajo',
+        'oficio',
+        'telefonooficina',
+        'ingresos'
+    ];
 }

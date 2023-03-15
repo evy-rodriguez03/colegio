@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth','Admin']], function () {
     'create'])->name('dashboardsec.index');
     route::get('/tesoreria',[PaneltesoreriaController::class,'index'])->name('paneltesoreria.index');
 
-    
+   
     /*rutas usuario*/
 route::get('/usuarios', [UserController::class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UserController::class,'create'])->name('usuarios.create');
@@ -99,7 +99,7 @@ route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
 route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padres.edit');
-route::post('/padres', [PadreController::class,'sendData']);
+route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
@@ -120,10 +120,11 @@ route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('a
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
+
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
-route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy'); 
