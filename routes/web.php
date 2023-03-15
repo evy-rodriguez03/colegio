@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\controllers\PagoaRealizaraController;
 use App\Http\controllers\CursoController;
 use App\Http\controllers\RetrasadaController;
+use App\Http\controllers\CompromisoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,11 +73,29 @@ Route::get('/requisito', [requisitoController::class,
 Route::get('/requisito', [requisitoController::class, 
 'create'])->name('requisito.index');
 
-Route::resource('cursos','App\Http\Controllers\CursoController');
 route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
+Route::resource('cursos','App\Http\Controllers\CursoController');
+
+//compromiso
+route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
+
+//ruta matricula completa
+Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
+Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
+
+route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
+route::post('/alumnopadre', [PadreController::class,'storeconpadre'])->name('submitpadre');
+
+route::get('/alumnomadre', [PadreController::class,'createdatosmadre'])->name('datosmadre.create');
+route::post('/alumnmadre', [PadreController::class,'storeconmadre'])->name('submitmadre');
+
+route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])->name('datosencargado.create');
+route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
+
 
 
 //rutas Padres
+route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
 route::get('/padres/{padres}/edit', [PadreController::class,'edit'])->name('padres.edit');
@@ -84,7 +103,7 @@ route::post('/padres', [PadreController::class,'sendData']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
-route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
+
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
@@ -93,10 +112,13 @@ route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('a
 route::post('/alumnos', [AlumnoController::class,'store']);
 route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alumnos.update');
 route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
+route::get('/alumnos/{alumnos}', [AlumnoController::class,'show'])->name('alumnos.show');
+route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
 
 //ruta de pago a realizar 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
+route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
