@@ -53,6 +53,25 @@
                 <div class="valid-feedback"></div>
             </div>
         </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="">Periodo</label>
+                <input type="text" class="form-control" name="periodo" value="{{$curso->periodo}}">
+                <div class="valid-feedback"></div>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="">Jornada:</label>
+                <select class="form-control" name="jornada">
+                <option value="{{$curso->jornada}}">Jornada Matutina I</option>
+                <option value="{{$curso->jornada}}">Jornada Matutina II</option>
+                </select>
+         </div>
+              </div>
                 
                 <hr class="mb-2">
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>

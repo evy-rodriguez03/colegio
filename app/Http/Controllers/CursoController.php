@@ -41,7 +41,8 @@ class CursoController extends Controller
         $cursos->curso = $request->get('curso');
         $cursos->seccion= $request->get('seccion');
         $cursos->horario = $request->get('horario');
-
+        $cursos->periodo = $request->get('periodo');
+        $cursos->jornada = $request->get('jornada');
         $cursos->save();
 
         return redirect('/cursos');
@@ -86,12 +87,16 @@ class CursoController extends Controller
         $request->validate([
             'curso' => 'required',
             'seccion' => 'required',
-            'horario' => 'required'
+            'horario' => 'required',
+            'periodo' => 'required',
+            'jornada' => 'required'
         ]);
 
         $curso->curso = $request->input('curso');
         $curso->seccion= $request->input('seccion');
         $curso->horario = $request->input('horario');
+        $curso->periodo = $request->input('periodo');
+        $curso->jornada = $request->input('jornada');
 
         $curso->save();
 

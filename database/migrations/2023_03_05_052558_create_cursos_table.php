@@ -18,6 +18,8 @@ class CreateCursosTable extends Migration
             $table->string('curso');
             $table->string('seccion');
             $table->time('horario');
+            $table->string('periodo');
+            $table->string('jornada');
             $table->timestamps();
         });
     }

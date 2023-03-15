@@ -51,6 +51,26 @@
                 <div class="valid-feedback"></div>
             </div>
         </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="horario">Periodo:</label>
+                <input type="text" class="form-control" name="periodo" required>
+                <div class="valid-feedback"></div>
+            </div>
+        </div>
+
+        
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="jornada" >Jornada:</label>
+                <select class="form-control" name="jornada" >
+                <option >Jornada Matutina I</option>
+                <option >Jornada Matutina II</option>
+                </select>
+                <div class="valid-feedback"></div>
+         </div>
+              </div>
                 
                 <hr class="mb-2">
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>

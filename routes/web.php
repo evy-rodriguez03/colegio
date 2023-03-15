@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth','Admin']], function () {
     'create'])->name('dashboardsec.index');
     route::get('/tesoreria',[PaneltesoreriaController::class,'index'])->name('paneltesoreria.index');
 
-    
+   
     /*rutas usuario*/
 route::get('/usuarios', [UserController::class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UserController::class,'create'])->name('usuarios.create');
@@ -102,4 +102,4 @@ route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('re
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
-route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy'); 
