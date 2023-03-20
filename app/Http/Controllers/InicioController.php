@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Inicio;
+use App\Models\Periodo;
 
 class InicioController extends Controller
 {
@@ -14,12 +14,12 @@ class InicioController extends Controller
 
     public function store(Request $request){
 
-        $inicio = new Inicio;
-        $inicio->fechaInicio = $request->input('fechaInicio');
-        $inicio->periodoMatricula = $request->input('periodoMatricula');
-        $inicio->usuario = $request->input('usuario');
-        $inicio->fechaCierre = $request->input('fechaCierre');
-        $inicio->save();
+        $periodo = new Periodo;
+        $periodo->fechaInicio = $request->input('fechaInicio');
+        $periodo->periodoMatricula = $request->input('periodoMatricula');
+        $periodo->usuario = $request->input('usuario');
+        $periodo->fechaCierre = $request->input('fechaCierre');
+        $periodo->save();
 
         return redirect('/iniciom')
         ->with('mensaje', 'Se ha iniciado la matricula exitosa mente.');

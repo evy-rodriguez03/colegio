@@ -14,6 +14,7 @@ use App\Http\controllers\PagoaRealizaraController;
 use App\Http\controllers\CursoController;
 use App\Http\controllers\RetrasadaController;
 use App\Http\controllers\CompromisoController;
+use App\Http\Middleware\VerificarPeriodoMatricula;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,14 +58,11 @@ route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usua
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
-    Route::get('/prinperiodo', [PeriodomController::class,
-    'index'])->name('periodo');
+Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo');
  
-    route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
-    route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
+Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
+Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
 
-    route::get('/cierrem', [CierreController::class,'create'])->name('cierre.create');
-    route::post('/cierrem', [CierreController::class,'store'])->name('cierre.store');
 
 /*Ruta del boton requisitos*/
 Route::get('/requisito', [requisitoController::class, 
@@ -73,14 +71,14 @@ Route::get('/requisito', [requisitoController::class,
 Route::get('/requisito', [requisitoController::class, 
 'create'])->name('requisito.index');
 
-route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
+Route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 Route::resource('cursos','App\Http\Controllers\CursoController');
 
 //compromiso
-route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
+Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
 
 //ruta matricula completa
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
+Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula')->middleware(VerificarPeriodoMatricula::class);
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
