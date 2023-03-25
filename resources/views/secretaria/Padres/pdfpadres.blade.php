@@ -31,7 +31,6 @@
             <th scope="col">Número de Identidad</th>
             <th scope="col">Teléfono Personal</th>
             <th scope="col">Teléfono de Oficina</th>
-            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>  
