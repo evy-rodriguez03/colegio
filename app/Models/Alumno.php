@@ -13,20 +13,29 @@ class Alumno extends Model
     protected $fillable = [
         'primernombre',
         'segundonombre',
-        'telefonodeencargado',
         'primerapellido',
         'segundoapellido',
         'numerodeidentidad',
         'fechadenacimiento',
-        'alergia',
-        'lugardenacimiento',
         'genero',
         'direccion',
         'numerodehermanosenicgc',
+        'tiene_alergia',
+        'alergia',
         'fotografias',
         'fotografiasdelpadre',
         'carnet',
-        'certificadodeconducta'
+        'certificadodeconducta',
+        'ciudad',
+        'depto',
+        'pais',
+        'gradoingresar',
+        'escuelaanterior',
+        'totalhermanos',
+        'medico',
+        'telefonoemergencia',
+       
+
     ];
         public function padres()
         {
