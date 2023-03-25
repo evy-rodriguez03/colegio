@@ -42,4 +42,13 @@ class Alumno extends Model
             return $this->belongsToMany(Padre::class,'alumno_padre');
         }
 
+        public function periodo(){
+            return $this->hasOne('App\Models\Periodo');
+        }
+
+        public function matriculas()
+        {
+            return $this->hasMany('App\Models\Matriculado');
+        }
+
 }
