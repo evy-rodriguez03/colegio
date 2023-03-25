@@ -26,6 +26,7 @@ class CreatePadresTable extends Migration
             $table->string('oficio');
             $table->string('telefonooficina');
             $table->string('ingresos');
+            $table->boolean('compromiso',0)->nullable();
             $table->timestamps();
         });
     }

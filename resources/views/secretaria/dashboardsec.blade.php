@@ -7,7 +7,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/matricula.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
         <div class="card-body">
-        <center><a href="{{Route('creatematricula')}}" class="btn btn-lg btn-info">Matricula</a></center>
+        <center><a href="{{Route('principal.create')}}"class="btn btn-lg btn-info">Ficha Matricula</a></center>
           
         </div>
       </div>
