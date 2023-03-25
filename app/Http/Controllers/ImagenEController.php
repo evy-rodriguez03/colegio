@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Padre;
+use App\Models\Imagen;
 
-class CompromisoController extends Controller
+class ImagenEController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class CompromisoController extends Controller
      */
     public function index()
     {
-        $padres = Padre::all();
-        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);;
+        //
     }
 
     /**
@@ -25,7 +24,8 @@ class CompromisoController extends Controller
      */
     public function create()
     {
-        //
+   
+        return view('pages/imagenE');
     }
 
     /**
@@ -36,16 +36,33 @@ class CompromisoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $padres = new Padre;
-        $padres->primernombre = $request->get('primernombre');
-        $cursos->primerapellido= $request->get('primerapellido');
-        $cursos->compromiso = $request->get('compromiso');
-      
-        $padres->save();
 
-        return redirect('/indexcompromiso');
+    
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+      
+        $imageName = time().'.'.$request->image->extension();  
+       
+        $request->image->move(public_path('images'), $imageName);
+    
+        /* 
+            Write Code Here for
+            Store $imageName name in DATABASE from HERE 
+        */
+      
+        return back()
+            ->with('success','Has subido correctamente la imagen.')
+            ->with('image',$imageName); 
+
+            $imageName->save();
+            return $request->all();
+
+            return redirect()->route('profile.edit');
     }
+
+    
 
     /**
      * Display the specified resource.
