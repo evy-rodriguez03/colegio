@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Padre;
 
-class CompromisoController extends Controller
+class PrincipalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class CompromisoController extends Controller
      */
     public function index()
     {
-        $padres = Padre::all();
-        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);;
+        //
     }
 
     /**
@@ -25,8 +23,9 @@ class CompromisoController extends Controller
      */
     public function create()
     {
-        //
+        return view('secretaria/matricula/principal');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -36,15 +35,7 @@ class CompromisoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $padres = new Padre;
-        $padres->primernombre = $request->get('primernombre');
-        $cursos->primerapellido= $request->get('primerapellido');
-        $cursos->compromiso = $request->get('compromiso');
-      
-        $padres->save();
-
-        return redirect('/indexcompromiso');
+        //
     }
 
     /**

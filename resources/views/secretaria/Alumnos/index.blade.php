@@ -38,6 +38,7 @@
       <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
+            <th scope="col">N°</th>
             <th scope="col">Nombre</th>
             <th scope="col">Número de identidad</th>
             <th scope="col">Telefono de encargado</th>
@@ -47,10 +48,13 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($alumnos as $alumno)
+          @foreach ($alumnos as $index=> $alumno)
               
           
           <tr>
+            <td>
+              {{$index + 1}}
+            </td>
             <th scope="row">
               {{$alumno->primernombre}} {{$alumno->segundonombre}} {{$alumno->primerapellido}} {{$alumno->segundoapellido}}
             </th>
