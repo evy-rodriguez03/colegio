@@ -97,7 +97,7 @@
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="oficio">Oficio:</label>
+            <label for="oficio">Profesion u Oficio:</label>
         </div>
         <div class="col-4 mt-3">
             <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
