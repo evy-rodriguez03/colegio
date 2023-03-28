@@ -14,6 +14,7 @@ use App\Http\controllers\PagoaRealizaraController;
 use App\Http\controllers\CursoController;
 use App\Http\controllers\RetrasadaController;
 use App\Http\controllers\CompromisoController;
+use App\Http\controllers\HorarioController;
 use App\Http\Middleware\VerificarPeriodoMatricula;
 use App\Http\controllers\UserProfileController;
 use App\Http\controllers\ImagenEController;
@@ -21,6 +22,7 @@ use App\Http\controllers\IngresarController;
 use App\Http\controllers\ExistenteController;
 use App\Http\controllers\PrincipalController;
 use App\Http\controllers\ParientetransporteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +66,8 @@ route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usua
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
-Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo');
+Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo')
+->middleware(VerificarPeriodoMatricula::class);
  
 Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
 Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
@@ -153,3 +156,11 @@ route::get('/existente', [ExistenteController::class,'index'])->name('existente.
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
 route::get('/principal', [PrincipalController::class,'create'])->name('principal.create');
+
+//Rutas Horario de clase 
+Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
+Route::get('/horarioc/create', [HorarioController::class, 'create'])->name('horario.create');
+Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.store');
+Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
+Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
+Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
