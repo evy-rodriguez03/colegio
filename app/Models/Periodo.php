@@ -16,4 +16,8 @@ class Periodo extends Model
         'usuario',
         'fechaCierre'
     ];
+
+    public function alumno(){
+        return $belongsTo('App\Models\Alumno');
+    }
 }

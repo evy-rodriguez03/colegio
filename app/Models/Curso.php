@@ -9,4 +9,9 @@ class Curso extends Model
 {
     use HasFactory;
     protected $table = "cursos";
+
+    public function matriculas()
+    {
+        return $this->hasOne('App\Models\Matriculado');
+    }
 }

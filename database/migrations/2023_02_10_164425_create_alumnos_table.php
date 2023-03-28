@@ -22,17 +22,28 @@ class CreateAlumnosTable extends Migration
             $table->string('numerodeidentidad');
             $table->date('fechadenacimiento');
             $table->string('genero');
-            $table->string('lugardenacimiento');
             $table->string('direccion');
             $table->string('numerodehermanosenicgc');
-            $table->string('telefonodeencargado');
-            $table->string('alergia');
+            $table->boolean('tiene_alergia')->default(false);
+            $table->string('alergia')->nullable();
             $table->boolean('fotografias')->default(false)->nullable();
             $table->boolean('fotografiasdelpadre')->default(false)->nullable();
             $table->boolean('carnet')->default(false)->nullable();
             $table->boolean('certificadodeconducta')->default(false)->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->string('ciudad');
+            $table->string('depto');
+            $table->string('pais');
+            $table->string('gradoingresar');
+            $table->string('escuelaanterior')->nullable();
+            $table->string('totalhermanos');
+            $table->string('medico');
+            $table->string('telefonoemergencia');
+
+            
+
+
             
         });
     }

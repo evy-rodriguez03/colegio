@@ -16,6 +16,11 @@ use App\Http\controllers\RetrasadaController;
 use App\Http\controllers\CompromisoController;
 use App\Http\controllers\HorarioController;
 use App\Http\Middleware\VerificarPeriodoMatricula;
+use App\Http\controllers\UserProfileController;
+use App\Http\controllers\ImagenEController;
+use App\Http\controllers\IngresarController;
+use App\Http\controllers\ExistenteController;
+use App\Http\controllers\PrincipalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,12 +132,29 @@ route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('re
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
+<<<<<<< HEAD
 route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy'); 
 
-//Rutas Horario de clase 
-Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
-Route::get('/horarioc/create', [HorarioController::class, 'create'])->name('horario.create');
-Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.store');
-Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
-Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
-Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
+=======
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
+
+//RUTA DEL PERFIL
+Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
+route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
+route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
+
+
+//RUTA DE LA IMAGEN DE PERFIL
+Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
+Route::post('/imageE', [ ImagenEController::class, 'store' ])->name('image.store');
+
+//RUTA DE INGRESAR ALUMNO 
+route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
+
+//RUTA DE  ALUMNO EXISTENTE
+route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
+
+//RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
+route::get('/principal', [PrincipalController::class,'create'])->name('principal.create');
+>>>>>>> 648af02f9d5936824ea04d040a3f2a1171718598

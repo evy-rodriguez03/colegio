@@ -13,24 +13,42 @@ class Alumno extends Model
     protected $fillable = [
         'primernombre',
         'segundonombre',
-        'telefonodeencargado',
         'primerapellido',
         'segundoapellido',
         'numerodeidentidad',
         'fechadenacimiento',
-        'alergia',
-        'lugardenacimiento',
         'genero',
         'direccion',
         'numerodehermanosenicgc',
+        'tiene_alergia',
+        'alergia',
         'fotografias',
         'fotografiasdelpadre',
         'carnet',
-        'certificadodeconducta'
+        'certificadodeconducta',
+        'ciudad',
+        'depto',
+        'pais',
+        'gradoingresar',
+        'escuelaanterior',
+        'totalhermanos',
+        'medico',
+        'telefonoemergencia',
+       
+
     ];
         public function padres()
         {
             return $this->belongsToMany(Padre::class,'alumno_padre');
+        }
+
+        public function periodo(){
+            return $this->hasOne('App\Models\Periodo');
+        }
+
+        public function matriculas()
+        {
+            return $this->hasMany('App\Models\Matriculado');
         }
 
 }

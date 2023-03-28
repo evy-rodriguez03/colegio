@@ -46,13 +46,12 @@ class AlumnoController extends Controller
         $rules = [
                   'primernombre' => 'required|min:3|string',
                   'segundonombre'=> 'required|min:3|string',
-                  'telefonodeencargado'=> 'required|min:8|numeric',
                   'primerapellido'=>'required|min:3|string',
                   'segundoapellido'=>'sometimes|min:3|string',
                   'numerodeidentidad' => 'required|min:13|numeric',
                   'fechadenacimiento'=> 'required|date',
-                  'alergia'=> 'required|min:2|string',
-                  'lugardenacimiento' => 'required|min:2|string',
+                  'alergia'=> 'sometimes',
+                  'tiene_alergia'=>'sometimes',
                   'genero' => 'required|min:1|string',
                   'direccion'=>'required|string',
                   'numerodehermanosenicgc'=>'required|numeric',
@@ -60,6 +59,15 @@ class AlumnoController extends Controller
                   'fotografiasdelpadre'=>'sometimes',
                   'carnet'=>'sometimes',
                   'certificadodeconductadeconducta'=>'sometimes',
+                  'ciudad'=>'required|min:3|max:16|string',
+                  'depto'=>'required|min:3|max:16|string',
+                  'pais'=>'required|min:3|max:16|string',
+                  'gradoingresar'=>'required|min:3|max:16|string',
+                  'escuelaanterior'=>'sometimes',
+                  'totalhermanos'=>'required|numeric',
+                  'medico'=>'required|min:3|max:12|string',
+                  'telefonoemergencia'=>'required|min:3|numeric'
+
         ];
         $messages = [
                'primernombre.required' => 'El primer nombre es requerido.',
@@ -68,9 +76,9 @@ class AlumnoController extends Controller
                'segundonombre.required' => 'El Segundo nombre es requerido.',
                'segundonombre.min'=>'El minimo son 3 caracteres.',
          
-               'telefonodeencargado.required'=>'El número de telefono es necesario',
-               'telefonodeencargado.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
-               'telefonodeencargado.numeric'=>'El número de telefono solo acepta números',
+               'telefonoemergencia.required'=>'El número de telefono es necesario',
+               'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
+               'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
                'primerapellido.required' => 'El primer apellido es requerido.',
                'primerapellido.min'=>'El minimo son 3 caracteres.',
           
@@ -81,23 +89,32 @@ class AlumnoController extends Controller
                'numerodeidentidad.numeric'=> 'El campo número de identidad solo permite números',
                'fechadenacimiento.required'=> 'La fecha de nacimiento es necesaria.',
                'fechadenacimiento.date'=>'La fecha es necesaria',
-               'alergia.required'=> 'Escriba SI, si tiene alergia; sino escriba NO',
-               'alergia.min'=>'Se necesitan 2 caracteres como minimo para alergia',
-               'alergia.alpha'=>'Alergia solo acepta letras',
                'genero.required'=>'M=Si es masculino, y F=Si es femenino',
                'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
 
                'direccion.required'=> 'El campo dirección es necesario',
                'numerodehermanosenicgc.required'=> 'Sino tiene escriba "0"',
                'numerodehermanosenicgc.numeric'=> 'Solo acepta números',
+               'ciudad.required'=>'la cuidad es necesaria',
+               'ciudad.min'=> 'se necesita 3 caracteres como minimo',
+               'depto.required'=> 'el departamento es necesario',
+               'depto.min'=> 'se necesita  3 caracter como minimo',
+               'pais.required'=> 'es necesario el pais',
+               'pais.min'=>'se necesita como 3 caracteres',
+               'gradoingresar.required'=> 'se necesita el grado',
+               'gradoingresar.min'=>'se necesita como minimo 3 caracteres',
+               'totalhermanos.required'=> 'se necesita el total de hermanos',
+                'medico.required'=>'se necesita el nombre del medico',
+                'medico.min'=>'es necesario 3 caractares como minimo',
         ];
         $this->validate($request,$rules,$messages);
 
 
         Alumno::create(
-            $request->only('primernombre','segundonombre','telefonodeencargado','primerapellido','segundoapellido',
+            $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
             'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-            'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta' )
+            'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
+            'totalhermanos','medico','telefonoemergencia')
             );
  
               return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
@@ -114,13 +131,12 @@ class AlumnoController extends Controller
         $rules = [
             'primernombre' => 'required|min:3|string',
             'segundonombre'=> 'required|min:3|string',
-            'telefonodeencargado'=> 'required|min:8|numeric',
             'primerapellido'=>'required|min:3|string',
             'segundoapellido'=>'sometimes|min:3|string',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento'=> 'required|date',
-            'alergia'=> 'required|min:2|string',
-            'lugardenacimiento' => 'required|min:2|string',
+            'alergia'=> 'sometimes',
+            'tiene_alergia'=>'sometimes',
             'genero' => 'required|min:1|string',
             'direccion'=>'required|string',
             'numerodehermanosenicgc'=>'required|numeric',
@@ -128,6 +144,15 @@ class AlumnoController extends Controller
             'fotografiasdelpadre'=>'sometimes',
             'carnet'=>'sometimes',
             'certificadodeconductadeconducta'=>'sometimes',
+            'ciudad'=>'required|min:3|max:16|string',
+            'depto'=>'required|min:3|max:16|string',
+            'pais'=>'required|min:3|max:16|string',
+            'gradoingresar'=>'required|min:3|max:16|string',
+            'escuelaanterior'=>'sometimes',
+            'totalhermanos'=>'required|numeric',
+            'medico'=>'required|min:3|string',
+            'telefonoemergencia'=>'required|min:3|numeric'
+
   ];
   $messages = [
          'primernombre.required' => 'El primer nombre es requerido.',
@@ -136,9 +161,9 @@ class AlumnoController extends Controller
          'segundonombre.required' => 'El Segundo nombre es requerido.',
          'segundonombre.min'=>'El minimo son 3 caracteres.',
    
-         'telefonodeencargado.required'=>'El número de telefono es necesario',
-         'telefonodeencargado.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
-         'telefonodeencargado.numeric'=>'El número de telefono solo acepta números',
+         'telefonoemergencia.required'=>'El número de telefono es necesario',
+         'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
+         'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
          'primerapellido.required' => 'El primer apellido es requerido.',
          'primerapellido.min'=>'El minimo son 3 caracteres.',
     
@@ -149,24 +174,34 @@ class AlumnoController extends Controller
          'numerodeidentidad.numeric'=> 'El campo número de identidad solo permite números',
          'fechadenacimiento.required'=> 'La fecha de nacimiento es necesaria.',
          'fechadenacimiento.date'=>'La fecha es necesaria',
-         'alergia.required'=> 'Escriba SI, si tiene alergia; sino escriba NO',
-         'alergia.min'=>'Se necesitan 2 caracteres como minimo para alergia',
-         'alergia.alpha'=>'Alergia solo acepta letras',
          'genero.required'=>'M=Si es masculino, y F=Si es femenino',
          'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
 
          'direccion.required'=> 'El campo dirección es necesario',
          'numerodehermanosenicgc.required'=> 'Sino tiene escriba "0"',
          'numerodehermanosenicgc.numeric'=> 'Solo acepta números',
+         'ciudad.required'=>'la cuidad es necesaria',
+         'ciudad.min'=> 'se necesita 3 caracteres como minimo',
+         'depto.required'=> 'el departamento es necesario',
+         'depto.min'=> 'se necesita  3 caracter como minimo',
+         'pais.required'=> 'es necesario el pais',
+         'pais.min'=>'se necesita como 3 caracteres',
+         'gradoingresar.required'=> 'se necesita el grado',
+         'gradoingresar.min'=>'se necesita como minimo 3 caracteres',
+         'totalhermanos.required'=> 'se necesita el total de hermanos',
+          'medico.required'=>'se necesita el nombre del medico',
+          'medico.min'=>'es necesario 3 caractares como minimo',
   ];
   $this->validate($request,$rules,$messages);
 
 
   Alumno::create(
-      $request->only('primernombre','segundonombre','telefonodeencargado','primerapellido','segundoapellido',
+      $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
       'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta' )
+      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
+      'totalhermanos','medico','telefonoemergencia')
       );
+
 
       return redirect()->route('datospadre.create');
 

@@ -96,7 +96,7 @@
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="oficio">Oficio:</label>
+            <label for="oficio"> Profesion u Oficio:</label>
         </div>
         <div class="col-4 mt-3">
             <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
@@ -119,7 +119,7 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button a href="{{Route('datosmadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+        <button a href="{{Route('parientetransporte')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
     </form>
     </div>
 </div>
