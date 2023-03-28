@@ -13,7 +13,7 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        //
+        return view('secretaria.matricula.principal');
     }
 
     /**
@@ -23,7 +23,7 @@ class PrincipalController extends Controller
      */
     public function create()
     {
-        return view('secretaria/matricula/principal');
+       
     }
     
 
