@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Padre;
 
-class CompromisoController extends Controller
+class ParientetransporteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class CompromisoController extends Controller
      */
     public function index()
     {
-        $padres = Padre::all();
-        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);;
+        return view ('secretaria.matricula.parientetransporte');
     }
 
     /**
@@ -25,8 +23,35 @@ class CompromisoController extends Controller
      */
     public function create()
     {
-        //
+        $rules =[
+                  'nombrecompleto'=>'required|min:3|string',
+                  'parentesco'=>'required|min:3|string',
+                  'edad'=>'required|string',
+                  'bus'=>'sometimes',
+                  'taxi'=>'sometimes',
+                  'conelpadre'=>'sometimes',
+                  'solo'=>'sometimes',
+        ];
+
+        $messages = [
+            'nombrecompleto.required' => 'El primer nombre es requerido.',
+            'nombrecompleto.min'=>'El minimo son 3 caracteres.',
+            'parentesco.required' => 'El primer nombre es requerido.',
+            'parentesco.min'=>'El minimo son 3 caracteres.',
+            'edad.required'=>'La edad es requerido',
+            'bus' => 'Necesita seleccionar',
+            'taxi' => 'Necesita seleccionar',
+            'conelpadre' => 'Necesita seleccionar',
+            'solo' => 'Necesita seleccionar',
+        ];
+        $this->validate($request,$rules,$messages);
+        Pagorealizar::create(
+            $request->only('nombrecompelto', 'parentesco','edad','bus','taxi','conelpadre','solo' )
+            );
+ 
+              return redirect('/Parientetransporte.')->with('success', '¡El dato ha sido guardado');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -36,15 +61,7 @@ class CompromisoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $padres = new Padre;
-        $padres->primernombre = $request->get('primernombre');
-        $cursos->primerapellido= $request->get('primerapellido');
-        $cursos->compromiso = $request->get('compromiso');
-      
-        $padres->save();
-
-        return redirect('/indexcompromiso');
+        //
     }
 
     /**
