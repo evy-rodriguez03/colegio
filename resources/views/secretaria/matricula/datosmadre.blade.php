@@ -120,7 +120,8 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button a href="{{Route('datosencargado.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+        <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datosencargado.create', ['alumno_id' => $alumno->id]) }}">Agregar Encargado</button>
+
     </form>
     </div>
 </div>

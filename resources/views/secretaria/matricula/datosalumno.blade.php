@@ -37,12 +37,12 @@
           </div>
           <div class="col-md-4 mb-3">
               <label for="segundonombre">Segundo Nombre</label>
-              <input type="text" class="form-control" name="segundonombre" placeholder="Segunda Nombre" required>
+              <input type="text" class="form-control" name="segundonombre" placeholder="Segundo Nombre" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="primerapellido">Primer Apellido</label>
-              <input type="" class="form-control" name="primerapellido" placeholder="Primer Apellido" required>
+              <input type="text" class="form-control" name="primerapellido" placeholder="Primer Apellido" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
       </div>
@@ -106,7 +106,7 @@
           </div>
           <div class="col-md-4 mb-3">
               <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
-              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No de hermanos(as) actualmente en ICGC" >
+              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
           </div>
           <div class="col-md-4 mb-3">
               <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
@@ -143,11 +143,12 @@
         <input type="text" class="form-control" name="tiene_alergia" placeholder="¿Que tipo de alergia?" >
         </div>
       </div>
-
+      <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="medico">Nombre del medico que la atiende</label>
               <input type="text" class="form-control" name="medico" placeholder="Nombre medico" >  
      </div>
+      </div>
      
 
 
@@ -175,7 +176,8 @@
                 </div>
                 
                 <hr class="mb-2">
-                <button a href="{{Route('datospadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+                <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datospadre.create', ['alumno_id' => $alumno->id]) }}">Agregar padres</button>
+
           </form>
 
     </div>

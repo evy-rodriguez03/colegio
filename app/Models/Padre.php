@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Alumno;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,7 @@ class Padre extends Model
     
     public function alumnos()
 {
-    return $this->belongsToMany(Alumno::class, 'alumno_padre');
+    return $this->belongsToMany(Alumno::class, 'alumno_padre','alumno_id','padre_id');
 }
 
     protected $fillable = [

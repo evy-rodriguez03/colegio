@@ -119,7 +119,8 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button a href="{{Route('parientetransporte')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+        <button type="submit" class="btn btn-primary btn-lg" href="{{ route('parientetransporte', ['alumno_id' => $alumno->id]) }}">Agregar Madre</button>
+
     </form>
     </div>
 </div>

@@ -123,7 +123,8 @@ class AlumnoController extends Controller
 
     public function creatematricula()
     {
-        return view('secretaria.matricula.datosalumno');
+        $alumno = new Alumno();
+        return view('secretaria.matricula.datosalumno',compact('alumno'));
     }
 
     public function storematricula(Request $request)
@@ -216,7 +217,8 @@ class AlumnoController extends Controller
     public function show($id)
     {
         $alumnos = Alumno::findOrFail($id);
-        return view('secretaria.alumnos.show', compact('alumnos'));
+        $padres = $alumnos->padres;
+        return view('secretaria.alumnos.show', compact('alumnos','padres'));
     }
 
     /**
