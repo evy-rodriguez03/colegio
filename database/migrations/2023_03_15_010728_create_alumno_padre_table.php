@@ -17,8 +17,8 @@ class CreateAlumnoPadreTable extends Migration
             $table->id();
             $table->unsignedBigInteger('alumno_id');
             $table->unsignedBigInteger('padre_id');
-            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
-            $table->foreign('padre_id')->references('id')->on('padres')->onDelete('cascade');
+            $table->foreign('alumno_id')->references('id')->on('alumnos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('padre_id')->references('id')->on('padres')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

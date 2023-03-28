@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Padre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,7 +40,7 @@ class Alumno extends Model
     ];
         public function padres()
         {
-            return $this->belongsToMany(Padre::class,'alumno_padre');
+            return $this->belongsToMany(Padre::class,'alumno_padre','padre_id','alumno_id');
         }
 
         public function periodo(){

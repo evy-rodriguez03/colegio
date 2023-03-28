@@ -29,16 +29,6 @@
 
         <form class="row g-3 mt-3" action="{{route('submitpadre')}}" method="POST">
           @csrf
-        <div class="form-group col-2 mt-3">
-            <label for="tipo">Tipo:</label>
-        </div>
-        <div class="col-10 mt-3">
-            <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
-            <option value="">Elegir</option>
-            <option value="padre">Padre</option>
-           
-         </select>
-        </div>
 
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
@@ -119,8 +109,10 @@
             <input type="text" id="ingresos" name="ingresos" class="form-control" required value="{{old('ingresos')}}"
             placeholder="Ingrese los ingresos"></input>
         </div>
+        <input type="hidden" name="alumno_id" value="{{ request()->input('alumno_id') }}">
 
-        <button a href="{{Route('datosmadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+
+        <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datosmadre.create', ['alumno_id' => $alumno->id]) }}">Agregar Madre</button>
     </form>
     </div>
 </div>

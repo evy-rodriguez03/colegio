@@ -20,6 +20,7 @@ use App\Http\controllers\ImagenEController;
 use App\Http\controllers\IngresarController;
 use App\Http\controllers\ExistenteController;
 use App\Http\controllers\PrincipalController;
+use App\Http\controllers\ParientetransporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +84,7 @@ Route::resource('cursos','App\Http\Controllers\CursoController');
 Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
 
 //ruta matricula completa
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula')->middleware(VerificarPeriodoMatricula::class);
+Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
@@ -94,6 +95,7 @@ route::post('/alumnmadre', [PadreController::class,'storeconmadre'])->name('subm
 
 route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])->name('datosencargado.create');
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
+route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
 
 
