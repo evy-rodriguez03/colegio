@@ -22,6 +22,13 @@
         <i class="fas fa-chalkboard text-purple"></i> Curso
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('horario.index')}}">
+        <i class="fas fa-calendar-alt text-blue"></i> Horario
+      </a>
+    </li>
+
     <li class="nav-item">
       <a class="nav-link " href="{{route('dashboardsec.index')}}">
         <i class="fas fa-chalkboard-teacher text-yellow"></i> Secretaria
@@ -39,7 +46,7 @@
       </li>
       <li class="nav-item">
         <a href="{{Route('paneltesoreria.index')}}" class="nav-link " href="./examples/tables.html">
-          <i class="fas fa-comment-dollar text-red"></i> Tesoreria
+          <i class="fas fa-comment-dollar text-green"></i> Tesoreria
         </a>
       </li>
 

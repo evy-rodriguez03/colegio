@@ -14,6 +14,7 @@ use App\Http\controllers\PagoaRealizaraController;
 use App\Http\controllers\CursoController;
 use App\Http\controllers\RetrasadaController;
 use App\Http\controllers\CompromisoController;
+use App\Http\controllers\HorarioController;
 use App\Http\Middleware\VerificarPeriodoMatricula;
 
 /*
@@ -58,7 +59,8 @@ route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usua
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
-Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo');
+Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo')
+->middleware(VerificarPeriodoMatricula::class);
  
 Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
 Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
@@ -78,7 +80,7 @@ Route::resource('cursos','App\Http\Controllers\CursoController');
 Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
 
 //ruta matricula completa
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula')->middleware(VerificarPeriodoMatricula::class);
+Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
@@ -126,3 +128,11 @@ route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
 route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy'); 
+
+//Rutas Horario de clase 
+Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
+Route::get('/horarioc/create', [HorarioController::class, 'create'])->name('horario.create');
+Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.store');
+Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
+Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
+Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');

@@ -11,14 +11,20 @@ class VerificarPeriodoMatricula
     
     public function handle(Request $request, Closure $next)
     {
+        // Verificar si la solicitud ya se está realizando en la página de inicio del sistema de matrícula
+        if ($request->routeIs('inicio.create') || $request->routeIs('inicio.store')) {
+            return $next($request);
+        }
+    
         // Obtenemos el periodo de matrícula actual
         $periodo = Periodo::whereDate('fechaInicio', '<=', now())->whereDate('fechaCierre', '>=', now())->first();
-        
+            
         // Si no hay un periodo activo, redireccionamos al usuario a la página de inicio del sistema de matrícula
         if (!$periodo) {
-            return redirect()->route('creatematricula')->withErrors(['El periodo de matrícula no ha comenzado.']);
+            return redirect()->route('inicio.create')
+                ->withErrors(['El periodo de matrícula no ha comenzado.']);
         }
-        
+    
         // Si hay un periodo activo, continuamos con la solicitud
         return $next($request);
     }
