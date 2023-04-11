@@ -29,15 +29,7 @@
 
         <form class="row g-3 mt-3" action="{{route('submitencargado')}}" method="POST">
           @csrf
-        <div class="form-group col-2 mt-3">
-            <label for="tipo">Tipo:</label>
-        </div>
-        <div class="col-10 mt-3">
-            <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
-            <option value="">Elegir</option>
-            <option value="encargado">Encargado</option>
-         </select>
-        </div>
+          <input type="hidden" name="alumno_id" value="{{ request()->input('alumno_id') }}">
 
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
@@ -119,7 +111,7 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg" href="{{ route('parientetransporte', ['alumno_id' => $alumno->id]) }}">Agregar Madre</button>
+        <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
 
     </form>
     </div>
