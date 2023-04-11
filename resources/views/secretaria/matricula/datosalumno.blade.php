@@ -100,58 +100,113 @@
               <label for="direccion">Dirección de residencia del alumno(a)</label>
               <input type="text" class="form-control" name="direccion" placeholder="Dirección" >
           </div>
-          <div class="col-md-4 mb-3">
-              <label for="totalhermanos">Total de hermanos(as)</label>
-              <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
-          </div>
-          <div class="col-md-4 mb-3">
-              <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
-              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
-          </div>
-          <div class="col-md-4 mb-3">
-              <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
-              <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
-          </div>
-          <div class="col-md-4 mb-3">
-                <label for="numerodeidentidad">Número de identidad</label>
-                <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
-                <div class="invalid-feedback">#</div>
-            </div>
-         <div class="col-md-4 mb-3">
-      <label for="tiene_alergia">¿Tiene alguna alergia?</label>
-      <br>
-   <label for="tiene_alergia">No</label>
-   <input  type="checkbox" name="No" value="0">
-    <label for="tiene_alergia">si</label>
-
-<input type="checkbox" name="tiene_alergia" id="tiene_alergia" value="1" onchange="javascript:showContent()" />
-</div>
-<script type="text/javascript">
-    function showContent() {
-        element = document.getElementById("content");
-        tiene_alergia = document.getElementById("tiene_alergia");
-        if (tiene_alergia.checked) {
-            element.style.display='block';
-        }
-        else {
-            element.style.display='none';
-        }
-    }
-        </script>
-         
-        <div class="col-md-4 mb-3" id="content" style="display: none;">
-        <input type="text" class="form-control" name="tiene_alergia" placeholder="¿Que tipo de alergia?" >
         </div>
-      </div>
-      <div class="form-row">
+
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="totalhermanos">Total de hermanos(as)</label>
+            <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
+        </div>
+        <div class="col-md-4 mb-3">
+        <label for="num_hermanos">Número de hermanos</label>
+        <input type="number" class="form-control" name="num_hermanos" placeholder="Ingrese el número de hermanos">
+        </div>
+         
+        <script>
+  const numHermanosInput = document.querySelector('input[name="num_hermanos"]');
+  const casillasHermanos = document.querySelectorAll('.casillas-hermanos');
+
+  numHermanosInput.addEventListener('input', () => {
+    const numHermanos = numHermanosInput.value;
+    casillasHermanos.forEach((casilla, index) => {
+      if (index < numHermanos) {
+        casilla.style.display = 'block';
+      } else {
+        casilla.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<div class="form-row casillas-hermanos" style="display: none;">
+  <div class="col-md-4 mb-3">
+    <label for="nombre_hermano1">Nombre del hermano 1</label>
+    <input type="text" class="form-control" name="nombre_hermano1" placeholder="Nombre del hermano 1">
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="apellido_hermano1">Apellido del hermano 1</label>
+    <input type="text" class="form-control" name="apellido_hermano1" placeholder="Apellido del hermano 1">
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="edad_hermano1">Edad del hermano 1</label>
+    <input type="number" class="form-control" name="edad_hermano1" placeholder="Edad del hermano 1">
+  </div>
+</div>
+
+<div class="form-row casillas-hermanos" style="display: none;">
+  <div class="col-md-4 mb-3">
+    <label for="nombre_hermano2">Nombre del hermano 2</label>
+    <input type="text" class="form-control" name="nombre_hermano2" placeholder="Nombre del hermano 2">
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="apellido_hermano2">Apellido del hermano 2</label>
+    <input type="text" class="form-control" name="apellido_hermano2" placeholder="Apellido del hermano 2">
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="edad_hermano2">Edad del hermano 2</label>
+    <input type="number" class="form-control" name="edad_hermano2" placeholder="Edad del hermano 2">
+  </div>
+</div>
+
+
+        <div class="col-md-4 mb-3">
+            <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
+            <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="numerodeidentidad">Número de identidad</label>
+            <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
+            <div class="invalid-feedback">#</div>
+        </div>
         <div class="col-md-4 mb-3">
           <label for="medico">Nombre del medico que la atiende</label>
               <input type="text" class="form-control" name="medico" placeholder="Nombre medico" >  
-     </div>
-      </div>
-     
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="tiene_alergia">¿Tiene alguna alergia?</label>
+    <br>
+    <label for="tiene_alergia_no">No</label>
+    <input type="checkbox" name="No" id="tiene_alergia_no" value="0" onchange="hideContent()">
+    <label for="tiene_alergia_si">Sí</label>
+    <input type="checkbox" name="tiene_alergia" id="tiene_alergia_si" value="1" onchange="showContent()">
+</div>
 
+<script type="text/javascript">
+    function showContent() {
+        const element = document.getElementById("content");
+        const tiene_alergia = document.getElementById("tiene_alergia_si");
+        if (tiene_alergia.checked) {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+    
+    function hideContent() {
+        const element = document.getElementById("content");
+        const tiene_alergia_no = document.getElementById("tiene_alergia_no");
+        if (tiene_alergia_no.checked) {
+            element.style.display = 'none';
+        }
+    }
+</script>
 
+<div class="col-md-4 mb-3" id="content" style="display: none;">
+    <input type="text" class="form-control" name="tiene_alergia" placeholder="¿Qué tipo de alergia?">
+</div>
+        </div>
                 <div class="checkbox-group">
                   <hr class="mb-2">
                   <h4 class="mb-0">Si el alumno entrego estos documentos, puede marcarlos, sino dejelos en blanco.</h4>
@@ -176,10 +231,8 @@
                 </div>
                 
                 <hr class="mb-2">
-                <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datospadre.create', ['alumno_id' => $alumno->id]) }}">Agregar padres</button>
-
+                <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
           </form>
-
     </div>
   </div>
   <style>

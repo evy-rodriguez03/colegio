@@ -94,10 +94,10 @@ class PadreController extends Controller
 {
     $rules = [
         'tipo' => 'required',
-        'primernombre' => 'required|alpha',
-        'segundonombre'=> 'required|alpha',
-        'primerapellido' => 'required|alpha',
-        'segundoapellido'=> 'required|alpha',
+        'primernombre' => 'required|min:3|max:12|alpha',
+        'segundonombre'=> 'required|min:3|max:12|alpha',
+        'primerapellido' => 'required|min:3|max:12|alpha',
+        'segundoapellido'=> 'required|min:3|max:12|alpha',
         'numerodeidentidad'=> 'required|min:13|numeric',
         'telefonopersonal'=> 'required|min:8|numeric',
         'lugardetrabajo'=> 'required|alpha',
@@ -115,9 +115,17 @@ class PadreController extends Controller
         'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
         'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
         'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
+        'primernombre.min'=> 'El minimo de caracteres es 3',
+        'primernombre.max'=> 'El maximo de caracteres es 12',
         'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
+        'segundonombre.min'=> 'El minimo de caracteres es 3',
+        'segundonombre.max'=> 'El maximo de caracteres es 12',
         'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
-        'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',            
+        'primerapellido.min'=> 'El minimo de caracteres es 3',
+        'primernombre.max'=> 'El maximo de caracteres es 12',
+        'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',  
+        'segundoapellido.min'=> 'El minimo de caracteres es 3', 
+        'segundoapellido.max'=> 'El maximo de caracteres es 12',         
     ];
 
     $this->validate($request, $rules, $messages);
@@ -156,10 +164,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|alpha',
-            'segundonombre'=> 'required|alpha',
-            'primerapellido' => 'required|alpha',
-            'segundoapellido'=> 'required|alpha',
+            'primernombre' => 'required|min:3|max:12|alpha',
+            'segundonombre'=> 'required|min:3|max:12|alpha',
+            'primerapellido' => 'required|min:3|max:12|alpha',
+            'segundoapellido'=> 'required|min:3|max:12|alpha',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -177,9 +185,17 @@ class PadreController extends Controller
             'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
             'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
             'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
+            'primernombre.min'=> 'El minimo de caracteres es 3',
+            'primernombre.max'=> 'El maximo de caracteres es 12',
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
+            'segundonombre.min'=> 'El minimo de caracteres es 3',
+            'segundonombre.max'=> 'El maximo de caracteres es 12',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
+            'primerapellido.min'=> 'El minimo de caracteres es 3',
+            'primerapellido.max'=> 'El maximo de caracteres es 12',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
+            'segundoapellido.min'=> 'El minimo de caracteres es 3',
+            'segundoapellido.max'=> 'El maximo de caracteres es 12',
             
     
            ];
@@ -218,10 +234,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|alpha',
-            'segundonombre'=> 'required|alpha',
-            'primerapellido' => 'required|alpha',
-            'segundoapellido'=> 'required|alpha',
+            'primernombre' => 'required|min:3|max:12|alpha',
+            'segundonombre'=> 'required|min:3|max:12|alpha',
+            'primerapellido' => 'required|min:3|max:12|alpha',
+            'segundoapellido'=> 'required|min:3|max:12|alpha',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -239,9 +255,17 @@ class PadreController extends Controller
             'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
             'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
             'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
+            'primernombre.min'=> 'El minimo de caracteres es 3',
+            'primernombre.max'=> 'El maximo de caracteres es 12',
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
+            'segundonombre.min'=> 'El minimo de caracteres es 3',
+            'segundonombre.max'=> 'El maximo de caracteres es 12',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
+            'primerapellido.min'=> 'El minimo de caracteres es 3',
+            'primerapellido.max'=> 'El maximo de caracteres es 12',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
+            'segundoapellido.min'=> 'El minimo de caracteres es 3',
+            'segundoapellido.max'=> 'El maximo de caracteres es 12',
             
     
            ];
