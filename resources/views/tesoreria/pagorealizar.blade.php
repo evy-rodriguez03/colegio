@@ -16,11 +16,17 @@
     </div>
     <!-- Formulario para crear -->
     <div class="card-body">
-              <form method="=get"> 
-              <div class="input-group mb-3">
+  <form method="=get"> 
+    <div class="input-group mb-3">
   <input type="text" name="search" class="form-control" placeholder="Buscar Alumno">
   <button class="btn btn-outline-primary" type="submit">Buscar</button>
 </div>
+<div class="card-body">
+    @if (session('success'))
+     <div class="alert alert-success" role="success">
+      {{session('success')}}
+  </div>
+  @endif
  </form>
             <br>
     <table class="table table-bordered">
@@ -47,4 +53,6 @@
   </div>
 </form>
 @endsection
+
+
 
