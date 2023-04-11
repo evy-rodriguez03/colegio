@@ -29,6 +29,7 @@
 
         <form class="row g-3 mt-3" action="{{route('submitpadre')}}" method="POST">
           @csrf
+          <input type="hidden" name="alumno_id" value="{{ request()->input('alumno_id') }}">
 
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
@@ -109,10 +110,10 @@
             <input type="text" id="ingresos" name="ingresos" class="form-control" required value="{{old('ingresos')}}"
             placeholder="Ingrese los ingresos"></input>
         </div>
-        <input type="hidden" name="alumno_id" value="{{ request()->input('alumno_id') }}">
+      
 
 
-        <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datosmadre.create', ['alumno_id' => $alumno->id]) }}">Agregar Madre</button>
+        <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
     </form>
     </div>
 </div>

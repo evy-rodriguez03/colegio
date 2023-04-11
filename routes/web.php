@@ -155,7 +155,7 @@ route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.ind
 route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
-route::get('/principal', [PrincipalController::class,'create'])->name('principal.create');
+route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
 
 //Rutas Horario de clase 
 Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
