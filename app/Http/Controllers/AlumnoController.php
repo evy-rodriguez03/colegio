@@ -196,12 +196,14 @@ class AlumnoController extends Controller
   $this->validate($request,$rules,$messages);
 
 
-  Alumno::create(
+  $alumno = Alumno::create(
       $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
       'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
       'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
       'totalhermanos','medico','telefonoemergencia')
       );
+
+      session(['alumno_id' => $alumno->id]);
 
 
       return redirect()->route('datospadre.create');
