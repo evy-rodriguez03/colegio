@@ -17,7 +17,7 @@ class AlumnoController extends Controller
     public function index()
     {
         $alumnos = Alumno::paginate(10);
-        return view('secretaria.alumnos.index', compact('alumnos'));
+        return view('secretaria.Alumnos.index', compact('alumnos'));
     }
 
     public function pdf(){
@@ -200,14 +200,14 @@ class AlumnoController extends Controller
   $this->validate($request,$rules,$messages);
 
 
-  Alumno::create(
+  $alumno = Alumno::create(
       $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
       'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
       'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
       'totalhermanos','medico','telefonoemergencia')
       );
 
-      
+
       return redirect()->route('datospadre.create');
 
 }

@@ -40,7 +40,7 @@ class Alumno extends Model
     ];
         public function padres()
         {
-            return $this->belongsToMany(Padre::class,'alumno_padre','padre_id','alumno_id');
+            return $this->belongsToMany(Padre::class,'alumno_padre','alumno_id','padre_id');
         }
 
         public function periodo(){

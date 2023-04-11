@@ -49,11 +49,11 @@ use Illuminate\Support\Str;
                 <label for="role">Cargo</label>
                 <select class="form-control" name="role" required value="{{old('role')}}">
                   <option value="">Elegir</option>
-                  <option value="Admin">Admin</option>
-                 <option value="Secretaria">Secretaria</option>
-                 <option value="Orientacion">Orientacion</option>
-                 <option value="Consejeria">Consejeria</option>
-                 <option value="Tesoreria">Tesoreria</option>
+                  <option value="1">Admin</option>
+                 <option value="2">Secretaria</option>
+                 <option value="3">Orientacion</option>
+                 <option value="4">Consejeria</option>
+                 <option value="5">Tesoreria</option>
                </select>
             </div>
             <button type="submit" class="btn btn-sm btn-primary">Guardar cambios</button>
