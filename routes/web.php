@@ -1,27 +1,27 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PadreController;
-use App\Http\Controllers\dashboardsecController;
+use App\Http\Conexittrollers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
-use App\Http\controllers\PaneltesoreriaController;
-use App\Http\controllers\requisitoController;
-use Illuminate\Support\Facades\Route;
-use App\Http\controllers\PagoaRealizaraController;
-use App\Http\controllers\CursoController;
-use App\Http\controllers\RetrasadaController;
-use App\Http\controllers\CompromisoController;
-use App\Http\controllers\HorarioController;
+use App\Http\Controllers\PaneltesoreriaController;
+use App\Http\Controllers\requisitoController;
+use App\Http\Controllers\PagoaRealizaraController;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\RetrasadaController;
+use App\Http\Controllers\CompromisoController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Middleware\VerificarPeriodoMatricula;
-use App\Http\controllers\UserProfileController;
-use App\Http\controllers\ImagenEController;
-use App\Http\controllers\IngresarController;
-use App\Http\controllers\ExistenteController;
-use App\Http\controllers\PrincipalController;
-use App\Http\controllers\ParientetransporteController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ImagenEController;
+use App\Http\Controllers\IngresarController;
+use App\Http\Controllers\ExistenteController;
+use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\ParientetransporteController;
 
 
 /*
