@@ -24,7 +24,7 @@
         <div class="form-group col-2 mt-3">
             <label for="jornada">Jornada:</label>
         </div>
-        
+
         <div class="col-4 mt-3">
             <select type="text" id="jornada" name="jornada" class="form-control" required>
             <option value="">Elegir</option>
@@ -39,18 +39,18 @@
         </div>
         <div class="col-4 mt-3">
             <input type="text" id="descripcion" name="descripcion" class="form-control"
-            placeholder="Ingrese una descripcion"></input>
+            placeholder="Ingrese una descripcion">
             <div class="valid-feedback"></div>
         </div>
 
-        
+
         <table id="tabla" class="table align-items-center table-flush">
           <thead>
           <tr>
           <th>Hora Inicial</th>
-          
+
           <th>Hora Final</th>
-         
+
           <th><button type="submit" class="btn btn-secondary" onclick="agregarFila()">+ Agregar</button></th>
         </tr>
     </thead>
@@ -58,7 +58,9 @@
     <tr>
         <td>
             <div class="input-group">
-                <input type="text" class="form-control" name="horaInicial[]" />
+                <input type="time" class="form-control" name="horaInicial[]">
+
+
                 <div class="input-group-append">
                     <select name="ampmInicial[]">
                         <option value="am">AM</option>
@@ -69,9 +71,10 @@
         </td>
         <td>
             <div class="input-group">
-                <input type="text" class="form-control" name="horaFinal[]" />
+                <input type="time" class="form-control" name="horaFinal[]" >
+
                 <div class="input-group-append">
-                    <select name="ampmInicial[]">
+                    <select name="ampmFinal[]">
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
@@ -86,14 +89,17 @@
   </tbody>
 </table>
 
+<script src="/js/agregarFila.js"></script>
 <script>
+
   function agregarFila() {
     const tbody = document.querySelector('#tabla tbody');
     const fila = document.createElement('tr');
+
     fila.innerHTML = `
     <td>
             <div class="input-group">
-                <input type="text" class="form-control" name="horaInicial[]" />
+                <input type="time" class="form-control" name="horaInicial[]" />
                 <div class="input-group-append">
                     <select name="ampmInicial[]">
                         <option value="am">AM</option>
@@ -104,9 +110,9 @@
         </td>
         <td>
             <div class="input-group">
-                <input type="text" class="form-control" name="horaFinal[]" />
+                <input type="time" class="form-control" name="horaFinal[]" />
                 <div class="input-group-append">
-                    <select name="ampmInicial[]">
+                    <select name="ampmFinal[]">
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
@@ -130,10 +136,10 @@
 </script>
     <div class="col text-left">
     <button type="submit" class="btn btn-primary" name="action" value="guardar">Guardar</button>
-    <button type="submit" class="btn btn-primary" name="action" value="guardar">Listar</button>
-    <button type="submit" class="btn btn-primary" name="action" value="guardar">Documento</button>
     </div>
      </form>
     </div>
 </div>
+
+
 @endSection
