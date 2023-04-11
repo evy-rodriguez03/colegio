@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alumno;
 
 class PrincipalController extends Controller
 {
@@ -13,7 +14,8 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        //
+        $alumnos = Alumno::paginate(10);
+        return view('secretaria/matricula/principal', compact('alumnos'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PrincipalController extends Controller
      */
     public function create()
     {
-        return view('secretaria/matricula/principal');
+       //
     }
     
 

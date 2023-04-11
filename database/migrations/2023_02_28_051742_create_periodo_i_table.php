@@ -20,11 +20,6 @@ class CreatePeriodoITable extends Migration
             $table->string('usuario');
             $table->date('fechaCierre');
             $table->timestamps();
-            $table->unsignedBigInteger('alumno_id')->unique( )->default(0);
-            $table->foreign('alumno_id')
-            ->references('id')
-            ->on('alumnos')
-            ->onDelete('cascade');
         });
     }
 
