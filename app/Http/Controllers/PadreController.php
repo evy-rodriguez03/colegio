@@ -94,10 +94,10 @@ class PadreController extends Controller
 {
     $rules = [
         'tipo' => 'required',
-        'primernombre' => 'required|min:3|max:12|alpha',
-        'segundonombre'=> 'required|min:3|max:12|alpha',
-        'primerapellido' => 'required|min:3|max:12|alpha',
-        'segundoapellido'=> 'required|min:3|max:12|alpha',
+        'primernombre' => 'required|alpha',
+        'segundonombre'=> 'required|alpha',
+        'primerapellido' => 'required|alpha',
+        'segundoapellido'=> 'required|alpha',
         'numerodeidentidad'=> 'required|min:13|numeric',
         'telefonopersonal'=> 'required|min:8|numeric',
         'lugardetrabajo'=> 'required|alpha',
@@ -130,23 +130,28 @@ class PadreController extends Controller
 
     $this->validate($request, $rules, $messages);
 
-    $padre = Padre::create(
-        array_merge(
-            $request->only('primernombre', 'segundonombre', 'primerapellido', 'segundoapellido',
-            'numerodeidentidad','telefonopersonal', 'lugardetrabajo', 'oficio', 'telefonooficina', 'ingresos' ),
-            ['tipo' => 'Padre']
-        )
-    );
-    
+    // Crear nuevo padre
+    $padre = Padre::create([
+        'primernombre' => $request->input('primernombre'),
+        'segundonombre' => $request->input('segundonombre'),
+        'primerapellido' => $request->input('primerapellido'),
+        'segundoapellido' => $request->input('segundoapellido'),
+        'numerodeidentidad' => $request->input('numerodeidentidad'),
+        'telefonopersonal' => $request->input('telefonopersonal'),
+        'lugardetrabajo' => $request->input('lugardetrabajo'),
+        'oficio' => $request->input('oficio'),
+        'telefonooficina' => $request->input('telefonooficina'),
+        'ingresos' => $request->input('ingresos'),
+        'compromiso' => $request->input('compromiso', 0), // valor predeterminado de 0 si no se proporciona
+        'tipo' => 'Padre' // tipo predeterminado siempre es "Padre"
+    ]);
 
-    $alumno_id = $request->input('alumno_id');
-    if ($alumno_id) {
-        // Buscar al alumno correspondiente
-        $alumno = Alumno::find($alumno_id);
+    // Obtener el ID del alumno
+    $alumno_id = session('alumno_id');
 
-        // Relacionar al padre con el alumno
-        $alumno->padre()->attach($padre->id);
-    }
+    // Asociar el padre al alumno
+    $alumno = Alumno::find($alumno_id);
+    $alumno->padres()->attach($padre->id);
 
     return redirect('/alumnomadre');
 }
@@ -155,8 +160,8 @@ class PadreController extends Controller
       public function createdatosmadre()
       {
         $alumno = new Alumno();
-         // Recibe el identificador del alumno si viene como parámetro en la URL
-         $alumno_id = request()->input('alumno_id');
+        // Recibe el identificador del alumno si viene como parámetro en la URL
+        $alumno_id = request()->input('alumno_id');
         return view('secretaria.matricula.datosmadre',compact('alumno', 'alumno_id'));
       }
 
@@ -164,10 +169,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|min:3|max:12|alpha',
-            'segundonombre'=> 'required|min:3|max:12|alpha',
-            'primerapellido' => 'required|min:3|max:12|alpha',
-            'segundoapellido'=> 'required|min:3|max:12|alpha',
+            'primernombre' => 'required|alpha',
+            'segundonombre'=> 'required|alpha',
+            'primerapellido' => 'required|alpha',
+            'segundoapellido'=> 'required|alpha',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -202,23 +207,28 @@ class PadreController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $padre = Padre::create(
-            array_merge(
-                $request->only('primernombre', 'segundonombre', 'primerapellido', 'segundoapellido',
-                'numerodeidentidad','telefonopersonal', 'lugardetrabajo', 'oficio', 'telefonooficina', 'ingresos' ),
-                ['tipo' => 'Madre']
-            )
-        );
-        
-    
-        $alumno_id = $request->input('alumno_id');
-        if ($alumno_id) {
-            // Buscar al alumno correspondiente
-            $alumno = Alumno::find($alumno_id);
-    
-            // Relacionar al padre con el alumno
-            $alumno->padres()->attach($padre->id);
-        }
+         // Crear nuevo padre
+    $padre = Padre::create([
+        'primernombre' => $request->input('primernombre'),
+        'segundonombre' => $request->input('segundonombre'),
+        'primerapellido' => $request->input('primerapellido'),
+        'segundoapellido' => $request->input('segundoapellido'),
+        'numerodeidentidad' => $request->input('numerodeidentidad'),
+        'telefonopersonal' => $request->input('telefonopersonal'),
+        'lugardetrabajo' => $request->input('lugardetrabajo'),
+        'oficio' => $request->input('oficio'),
+        'telefonooficina' => $request->input('telefonooficina'),
+        'ingresos' => $request->input('ingresos'),
+        'compromiso' => $request->input('compromiso', 0), // valor predeterminado de 0 si no se proporciona
+        'tipo' => 'Madre' // tipo predeterminado siempre es "Padre"
+    ]);
+
+    // Obtener el ID del alumno
+    $alumno_id = session('alumno_id');
+
+    // Asociar el padre al alumno
+    $alumno = Alumno::find($alumno_id);
+    $alumno->padres()->attach($padre->id); 
 
         return redirect('/alumnoencargado');
       }
@@ -226,7 +236,8 @@ class PadreController extends Controller
       public function createdatosencargado()
       {
         $alumno = new Alumno();
-        $alumno_id = request()->input('alumno_id');
+         // Recibe el identificador del alumno si viene como parámetro en la URL
+         $alumno_id = request()->input('alumno_id');
         return view('secretaria.matricula.datosencargado', compact('alumno','alumno_id'));
       }
 
@@ -234,10 +245,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|min:3|max:12|alpha',
-            'segundonombre'=> 'required|min:3|max:12|alpha',
-            'primerapellido' => 'required|min:3|max:12|alpha',
-            'segundoapellido'=> 'required|min:3|max:12|alpha',
+            'primernombre' => 'required|alpha',
+            'segundonombre'=> 'required|alpha',
+            'primerapellido' => 'required|alpha',
+            'segundoapellido'=> 'required|alpha',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -272,24 +283,28 @@ class PadreController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $padre = Padre::create(
-            array_merge(
-                $request->only('primernombre', 'segundonombre', 'primerapellido', 'segundoapellido',
-                'numerodeidentidad','telefonopersonal', 'lugardetrabajo', 'oficio', 'telefonooficina', 'ingresos' ),
-                ['tipo' => 'Encargado']
-            )
-        );
-        
-    
-        $alumno_id = $request->input('alumno_id');
-        if ($alumno_id) {
-            // Buscar al alumno correspondiente
-            $alumno = Alumno::find($alumno_id);
-    
-            // Relacionar al padre con el alumno
-            $alumno->padres()->attach($padre->id);
-        }
+           // Crear nuevo padre
+    $padre = Padre::create([
+        'primernombre' => $request->input('primernombre'),
+        'segundonombre' => $request->input('segundonombre'),
+        'primerapellido' => $request->input('primerapellido'),
+        'segundoapellido' => $request->input('segundoapellido'),
+        'numerodeidentidad' => $request->input('numerodeidentidad'),
+        'telefonopersonal' => $request->input('telefonopersonal'),
+        'lugardetrabajo' => $request->input('lugardetrabajo'),
+        'oficio' => $request->input('oficio'),
+        'telefonooficina' => $request->input('telefonooficina'),
+        'ingresos' => $request->input('ingresos'),
+        'compromiso' => $request->input('compromiso', 0), // valor predeterminado de 0 si no se proporciona
+        'tipo' => 'Encargado' // tipo predeterminado siempre es "Padre"
+    ]);
 
+    // Obtener el ID del alumno
+    $alumno_id = session('alumno_id');
+
+    // Asociar el padre al alumno
+    $alumno = Alumno::find($alumno_id);
+    $alumno->padres()->attach($padre->id); 
         return redirect('/padres');
       }
 

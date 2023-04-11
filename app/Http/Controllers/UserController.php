@@ -53,11 +53,12 @@ class UserController extends Controller
        ];
        $this->validate($request,$rules,$messages);
 
-        User::create(
+       $user = User::create(
         $request->only('name','email','password','role')+[
             'password'=>bcrypt($request->input('password'))
         ]
         );
+         $user->assignRole($request->input('role'));
          
        return redirect('/usuarios')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }

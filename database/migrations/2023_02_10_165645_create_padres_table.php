@@ -14,7 +14,7 @@ class CreatePadresTable extends Migration
     public function up()
     {
         Schema::create('padres', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('tipo');
             $table->string('primernombre');
             $table->string('segundonombre');

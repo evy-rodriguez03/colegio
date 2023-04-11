@@ -14,7 +14,7 @@ class CreateAlumnoPadreTable extends Migration
     public function up()
     {
         Schema::create('alumno_padre', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('alumno_id');
             $table->unsignedBigInteger('padre_id');
             $table->foreign('alumno_id')->references('id')->on('alumnos')->onUpdate('cascade')->onDelete('cascade');

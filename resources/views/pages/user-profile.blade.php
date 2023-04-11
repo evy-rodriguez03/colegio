@@ -18,6 +18,7 @@
   <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
+<link rel="stylesheet" href="estilos.css">
 </head>
 
 <body class="">
@@ -117,8 +118,7 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hola</h1> 
-           
+            <h4 class="display-4 text-white">Hola, {{ old('name', auth()->user()->name) }}</h4>
             <a href="{{ route('profile.edit') }}" class="btn btn-info">Editar Perfil</a>
           </div>
         </div>
@@ -131,11 +131,10 @@
           <div class="card card-profile shadow">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img src="{{ asset('img/theme/team-4-800x800.jpg') }}" class="rounded-circle">
-                  </a>
-                </div>
+              <div class="profile-picture">
+              <input type="file" id="file-input" accept="image/*">
+              <img id="profile-pic" src="ruta/a/la/imagen" alt="Imagen de perfil">
+              </div>
               </div>
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PadreController;
-use App\Http\Conexittrollers\dashboardsecController;
+use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
@@ -100,8 +100,6 @@ route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])-
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
-
-
 //rutas Padres
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
@@ -111,7 +109,6 @@ route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
-
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
@@ -128,7 +125,6 @@ route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('a
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
-
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
@@ -142,7 +138,6 @@ Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
 route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
 route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
-
 
 //RUTA DE LA IMAGEN DE PERFIL
 Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
