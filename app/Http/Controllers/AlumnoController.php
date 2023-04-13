@@ -155,30 +155,30 @@ class AlumnoController extends Controller
   ];
   $messages = [
          'primernombre.required' => 'El primer nombre es requerido.',
-         'primernombre.max'=>'El maximo son 12 caracteres.',
-         'primernombre.min'=>'El minimo son 3 caracteres.',
+         'primernombre.max'=>'El maximo de primer nombre son 12 caracteres.',
+         'primernombre.min'=>'El minimo  de primer nombre son 3 caracteres.',
          
          'segundonombre.required' => 'El Segundo nombre es requerido.',
-         'segundonombre.min'=>'El minimo son 3 caracteres.',
-         'segundonombre.max'=>'El maximo son 12 caracteres.',
+         'segundonombre.min'=>'El minimo de Segundo nombre son 3 caracteres.',
+         'segundonombre.max'=>'El maximo de Segundo nombre son 12 caracteres.',
    
          'telefonoemergencia.required'=>'El número de telefono es necesario',
          'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
          'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
          'primerapellido.required' => 'El primer apellido es requerido.',
-         'primerapellido.min'=>'El minimo son 3 caracteres.',
-         'primerapellido.max'=>'El maximo son 12 caracteres.',
+         'primerapellido.min'=>'El minimo de primer apellido son 3 caracteres.',
+         'primerapellido.max'=>'El maximo de primer apellido son 12 caracteres.',
 
          'segundoapellido.required' => 'El segundo apellido es requerido.',
-         'segundoapellido.min'=>'El minimo son 3 caracteres.',
-         'segundoapellido.max'=>'El maximo son 12 caracteres.',
+         'segundoapellido.min'=>'El minimo de segundo apellido son 3 caracteres.',
+         'segundoapellido.max'=>'El maximo de segundo apellido son 12 caracteres.',
 
          'numerodeidentidad.required'=> 'El número de identidad es necesario.',
          'numerodeidentidad.min'=> 'El minimo de caracteres del número de identidad es de 13 digitos',
          'numerodeidentidad.numeric'=> 'El campo número de identidad solo permite números',
          'fechadenacimiento.required'=> 'La fecha de nacimiento es necesaria.',
          'fechadenacimiento.date'=>'La fecha es necesaria',
-         'genero.required'=>'M=Si es masculino, y F=Si es femenino',
+         'genero.required'=>'seleccion si es masculino, o es femenino',
          'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
 
          'direccion.required'=> 'El campo dirección es necesario',
@@ -194,7 +194,7 @@ class AlumnoController extends Controller
          'gradoingresar.min'=>'se necesita como minimo 3 caracteres',
          'totalhermanos.required'=> 'se necesita el total de hermanos',
           'medico.required'=>'se necesita el nombre del medico',
-          'medico.min'=>'es necesario 3 caractares como minimo',
+          'medico.min'=>'es necesario 3 caractares de nombre del medico como minimo',
           'medico.max'=>'El maximo del nombre del doctor son 12 caracteres.',
   ];
   $this->validate($request,$rules,$messages);

@@ -28,21 +28,23 @@
           @endforeach
       @endif
       <form action="{{ route('submitmatricula') }}" method="POST">
+
+
         @csrf
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="primernombre">Primer Nombre</label>
-              <input type="text" class="form-control" name="primernombre" placeholder="Primer Nombre" required>
+              <input type="text" class="form-control" name="primernombre" value="{{ old('primernombre') }}" placeholder="Primer Nombre" required>
               <div class="valid-feedback"></div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="segundonombre">Segundo Nombre</label>
-              <input type="text" class="form-control" name="segundonombre" placeholder="Segundo Nombre" required>
+              <input type="text" class="form-control" name="segundonombre" value="{{ old('segundonombre') }}" placeholder="Segundo Nombre" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="primerapellido">Primer Apellido</label>
-              <input type="text" class="form-control" name="primerapellido" placeholder="Primer Apellido" required>
+              <input type="text" class="form-control" name="primerapellido" value="{{ old('primerapellido') }}"placeholder="Primer Apellido" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
       </div>
@@ -50,17 +52,17 @@
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="segundoapellido">Segundo Apellido</label>
-                <input type="text" class="form-control" name="segundoapellido" placeholder="Segundo Apellido" required>
+                <input type="text" class="form-control" name="segundoapellido" value="{{ old('segundoapellido') }}" placeholder="Segundo Apellido" required>
                 <div class="valid-feedback">#</div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="fechadenacimiento">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" name="fechadenacimiento" required>
+              <input type="date" class="form-control" name="fechadenacimiento" value="{{ old('fechadenacimiento') }}" required>
               <div class="invalid-feedback">#</div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="genero">Género</label>
-              <select type="text" name="genero" class="form-control">
+              <select type="text" name="genero" value="{{ old('genero') }}" class="form-control">
             <option value="">Elegir</option>
             <option value="femenino">Femenino</option>
             <option value="masculino">Masculino</option>
@@ -72,57 +74,64 @@
           
           <div class="col-md-4 mb-3">
               <label for="ciudad">Lugar de nacimiento</label>
-              <input type="text" class="form-control" name="ciudad" placeholder="Ciudad" required>
+              <input type="text" class="form-control" name="ciudad" value="{{ old('ciudad') }}" placeholder="Ciudad" required>
               <div class="valid-feedback"></div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="depto" id="departamento ">Departamento</label>
-              <input type="text" class="form-control" name="depto" placeholder="Departamento" required>
+              <input type="text" class="form-control" name="depto" value="{{ old('depto') }}" placeholder="Departamento" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="pais" id="pais">Pais</label>
-              <input type="" class="form-control" name="pais" placeholder="Pais" required>
+              <input type="" class="form-control" name="pais" value="{{ old('pais') }}" placeholder="Pais" required>
               <div class="valid-feedback">Looks good!</div>
           </div>
       </div>
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="gradoingresar">Grado a ingresar</label>
-              <input type="text" class="form-control" name="gradoingresar" placeholder="Grado a ingresar" required>
+              <input type="text" class="form-control" name="gradoingresar" value="{{ old('gradoingresar') }}" placeholder="Grado a ingresar" required>
               <div class="invalid-feedback">#</div>
           </div>
           <div class="col-md-4 mb-3">
               <label for="escuelaanterior">Escuela anterior</label>
-              <input type="text" class="form-control" name="escuelaanterior" placeholder="Escuela Anterior" >
+              <input type="text" class="form-control" name="escuelaanterior" value="{{ old('escuelaanterior') }}" placeholder="Escuela Anterior" >
           </div>
           <div class="col-md-4 mb-3">
               <label for="direccion">Dirección de residencia del alumno(a)</label>
-              <input type="text" class="form-control" name="direccion" placeholder="Dirección" >
+              <input type="text" class="form-control" name="direccion" value="{{ old('direccion') }}" placeholder="Dirección" >
           </div>
         </div>
 
         <div class="form-row">
           <div class="col-md-4 mb-3">
-              <label for="totalhermanos">Total de hermanos(as)</label>
-              <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
-          </div>
-          <div class="col-md-4 mb-3">
-              <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
-              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
-          </div>
-          <div class="col-md-4 mb-3">
-              <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
-              <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
-          </div>
+            <label for="totalhermanos">Total de hermanos(as)</label>
+            <input type="text" class="form-control" name="totalhermanos" value="{{ old('totalhermanos') }}"placeholder="Total de hermanos(as)"  >
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+            <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
+  <input type="text"class="form-control" id="numeroDeCuadros" name="numerodehermanosenicgc" value="{{ old('numerodehermanosenicgc') }}" placeholder="No. de hermanos(as) actualmente en ICGC" >
+        </div>
+
+
+
+        <div class="col-md-4 mb-3">
+            <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
+            <input type="text" class="form-control" name="telefonoemergencia"  value="{{ old('telefonoemergencia') }}"placeholder="telefono emergencia" >
+        </div>
+        </div>
+        <div class="form-row">
           <div class="col-md-4 mb-3">
             <label for="numerodeidentidad">Número de identidad</label>
-            <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
+            <input type="text" class="form-control" name="numerodeidentidad" value="{{ old('numerodeidentidad') }}" placeholder="Sin guiones" required>
             <div class="invalid-feedback">#</div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="medico">Nombre del medico que la atiende</label>
-              <input type="text" class="form-control" name="medico" placeholder="Nombre medico" >  
+              <input type="text" class="form-control" name="medico" value="{{ old('medico') }}"placeholder="Nombre medico" >  
   </div>
   <div class="col-md-4 mb-3">
     <label for="tiene_alergia">¿Tiene alguna alergia?</label>
@@ -151,19 +160,12 @@
             element.style.display = 'none';
         }
     }
-        </script>
-         
-        <div class="col-md-4 mb-3" id="content" style="display: none;">
-        <input type="text" class="form-control" name="tiene_alergia" placeholder="¿Que tipo de alergia?" >
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="medico">Nombre del medico que la atiende</label>
-              <input type="text" class="form-control" name="medico" placeholder="Nombre medico" >  
-     </div>
-      </div>
-     
+</script>
+
+<div class="col-md-4 mb-3" id="content" style="display: none;">
+    <input type="text" class="form-control" name="tiene_alergia" value="{{ old('tiene_alergia') }}"placeholder="¿Qué tipo de alergia?">
+</div>
+        </div>     
 
 
                 <div class="checkbox-group">
@@ -171,28 +173,30 @@
                   <h4 class="mb-0">Si el alumno entrego estos documentos, puede marcarlos, sino dejelos en blanco.</h4>
                   <hr class="mb-2">
                   <label>
-                    <input type="checkbox" name="fotografias" value="1">
+                    <input type="checkbox" name="fotografias" value="{{ old('fotografias') }}"value="1">
                     Fotografias del alumno
                   </label>
                   <label>
-                    <input type="checkbox" name="fotografiasdelpadre" value="2">
+                    <input type="checkbox" name="fotografiasdelpadre" value="{{ old('fotografiasdelpadre') }}"value="2">
                     Fotografias del padre
                   </label>
                   <label>
-                    <input type="checkbox" name="carnet" value="3">
+                    <input type="checkbox" name="carnet" value="{{ old('carnet') }}"value="3">
                     Carnet de Vacunación
                   </label>
                   <label>
-                    <input type="checkbox" name="certificadodeconducta" value="4">
+                    <input type="checkbox" name="certificadodeconducta" value="{{ old('certificadodeconducta') }}"value="4">
                     Certificado de conducta
                   </label>
   
                 </div>
                 
                 <hr class="mb-2">
-                <button type="submit" class="btn btn-primary btn-lg" href="{{ route('datospadre.create', ['alumno_id' => $alumno->id]) }}">Agregar padres</button>
-
+                <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
+                
           </form>
+          
+
 
     </div>
   </div>
