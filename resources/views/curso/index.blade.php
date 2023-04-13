@@ -10,7 +10,7 @@
         </div>
         <div class="col text-right">
           <a href="{{route('cursos.create')}}" class="btn btn-lg btn-primary">Nuevo Curso</a>
-          <a href="{{route('cursos.pdf')}}" class="btn btn-lg btn-primary">Documento Curso</a>
+          <a href="{{route('cursos.pdf')}}" class="btn btn-lg btn-success-color-dark">Reporte Curso</a>
         </div>
       </div>
     </div>

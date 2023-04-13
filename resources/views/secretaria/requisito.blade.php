@@ -5,101 +5,86 @@
     <div class="card shadow">
         <div class="card-header border-0">
             <div class="row align-items-center">
-            <div class="col">
-                <h1 class="mb-0">Requisitos</h1>
-            </div>
-            <div class="col text-right">
-            <a href="{{route('dashboardsec.index')}}" class="btn btn-sm btn-success">
-                <i class="fas fa-angle-left"></i>
-                Regresar</a>
+                <div class="col">
+                    <h1 class="mb-0">Requisitos</h1>
+                </div>
+                <div class="col text-right">
+                    <a href="{{route('dashboardsec.index')}}" class="btn btn-sm btn-success">
+                        <i class="fas fa-angle-left"></i>
+                        Regresar
+                    </a>
+                </div>
             </div>
         </div>
+
+        <div class="card-body">
+            <h2 class="text">Datos Recibidos</h2>
+
+            <!-- Aquí se mostrará la gráfica -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="grafica"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card-body">
-    <h2 class="text">Datos Recibidos</h2>
+    <!-- Cargar las librerías de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <form class="row g-3 mt-3">
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-1 mt-3">
-            <label for="name">Recibido</label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Pendiente</label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Partida de Nacimiento:</label>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="nacimientoR" name="nacimientoR" class="form-control"></input>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="nacimientoP" name="nacimientoP" class="form-control"></input>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Fotografía:</label>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="fotografiaR" name="fotografiaR" class="form-control"></input>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="fotografiaP" name="fotografiaP" class="form-control"></input>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Fotografía Padre:</label>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="fotografiaPadreR" name="fotografiaPadreR" class="form-control"></input>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="FotografiaPadreP" name="FotografiaPadreP" class="form-control"></input>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Fotografía Carnet Vacuna:</label>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="carnetR" name="carnetR" class="form-control"></input>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="carnetP" name="carnetP" class="form-control"></input>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Certificado de Conducta:</label>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="conductaR" name="conductaR" class="form-control"></input>
-        </div>
-        <div class="col-1 mt-3">
-            <input type="text" id="conductaP" name="conductaP" class="form-control"></input>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name"> </label>
-        </div>
-        <div class="col-4 mt-3">
-            <label for="name">Total Matrícula:</label>
-        </div>
-        <div class="col-4 mt-3">
-            <input type="text" id="total" name="total" class="form-control"></input>
-        </div>
+    <script>
+        // Obtener los datos de la base de datos
+        var datos = <?php echo json_encode($graficaDatos); ?>;
+            .then(response => response.json())
+            .then(data => {
+                // Crear la gráfica con los datos
+                var ctx = document.getElementById('grafica').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Fotografía', 'Fotografía Padre', 'Fotografía Carnet Vacuna', 'Certificado de Conducta'],
+                        datasets: [{
+                            label: 'Número de estudiantes',
+                            data: [
+                                data.fotografia,
+                                data.fotografia_padre,
+                                data.fotografia_carnet,
+                                data.certificado_conducta
+                            ],
+                            backgroundColor: [
+                                '#3366CC',
+                                '#DC3912',
+                                '#FF9900',
+                                '#109618'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Documentos proporcionados por los estudiantes'
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+    </script>
 
-        <button type="button" class="btn btn-primary mt-3">
-            Siguiente
-        </button>
-
-    </form>
-</div>
-@endSection
+@endsection

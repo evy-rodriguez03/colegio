@@ -25,7 +25,7 @@ class VerificarPeriodoMatricula
         }
         
         // Verificar si ha pasado el período permitido para completar la matrícula del usuario
-        $periodo_permitido = 7; // período permitido en días
+        $periodo_permitido = 365; // período permitido en días
         $fecha_inicio_matricula = $request->session()->get('fecha_inicio_matricula'); // obtener la fecha de inicio de la matrícula del usuario desde la sesión
         if ($fecha_inicio_matricula && (now()->diffInDays($fecha_inicio_matricula) > $periodo_permitido)) {
             // cerrar la matrícula del usuario
