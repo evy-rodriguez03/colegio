@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Horario;
-use App\Models\HorarioDetalle;
+use App\Models\Seccion;
 
-class HorarioController extends Controller
+class SeccionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,18 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = Horario::all();
-        return view('secretaria.horario.horarioc', ['horarios' => $horarios]);
+        $seccions = Seccion::all();
+        return view('secretaria.seccion.listasec', compact('seccions'));
     }
 
-    /**r
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('secretaria.horario.horarioc');
+    public function create(){
+    return view('secretaria.seccion.indexsec');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,43 +34,23 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar datos del formulario
 
         $request->validate([
-            'jornada' => 'required',
             'descripcion' => 'required',
-            'horaInicial.*' => 'required',
-            'horaFinal.*' => 'required',
-            'ampmInicial.*' => 'required',
-            'ampmFinal.*' => 'required',
+            'jornada' => 'required',
+            'modalidad' => 'required',
+            'malla_curricular' => 'required',
         ]);
 
-        // Obtener datos del formulario
-        $jornada = $request->input('jornada');
-        $descripcion = $request->input('descripcion');
-        $horarios = $request->input('horaInicial');
-        $horarios_fin = $request->input('horaFinal');
-        $ampm = $request->input('ampmInicial');
-        $ampm_fin = $request->input('ampmFinal');
-
-        $contador = 0;
-        foreach ($horarios as $value) {
-            // Crear objeto de modelo y guardar en la base de datos
-            $horario = new Horario();
-            $horario->jornada = $jornada;
-            $horario->descripcion = $descripcion;
-            $horario->hora_inicio = $value;
-            $horario->hora_final = $horarios_fin[$contador];
-            $horario->save();
-
-            $contador += 1;
-        }
-
-
-        return redirect()->route('horario.index')->with('success', 'Horario agregado correctamente');
+    $seccion = new Seccion;
+    $seccion->descripcion = $request->descripcion;
+    $seccion->jornada = $request->jornada;
+    $seccion->modalidad = $request->modalidad;
+    $seccion->malla_curricular = $request->malla_curricular;
+    
+    $seccion->save();
+    return redirect()->route('secciones.index');
     }
-
-
 
     /**
      * Display the specified resource.

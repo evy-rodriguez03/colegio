@@ -22,6 +22,7 @@ use App\Http\Controllers\IngresarController;
 use App\Http\Controllers\ExistenteController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
+use App\Http\Controllers\SeccionController;
 
 
 /*
@@ -100,8 +101,6 @@ route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])-
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
-
-
 //rutas Padres
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
@@ -111,7 +110,6 @@ route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
-
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
@@ -128,7 +126,6 @@ route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('a
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
-
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
@@ -142,7 +139,6 @@ Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
 route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
 route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
-
 
 //RUTA DE LA IMAGEN DE PERFIL
 Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
@@ -164,3 +160,16 @@ Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.sto
 Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
 Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
 Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
+
+
+//Ruta de Seccion 
+Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
+Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
+Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
+Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('secciones.show');
+Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
+Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
+Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
+
+
+

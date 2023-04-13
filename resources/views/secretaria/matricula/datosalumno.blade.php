@@ -104,19 +104,17 @@
 
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="totalhermanos">Total de hermanos(as)</label>
-            <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
-            <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
-            <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
-        </div>
-        </div>
-        <div class="form-row">
+              <label for="totalhermanos">Total de hermanos(as)</label>
+              <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
+              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
+              <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
+          </div>
           <div class="col-md-4 mb-3">
             <label for="numerodeidentidad">Número de identidad</label>
             <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
