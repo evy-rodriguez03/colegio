@@ -104,67 +104,17 @@
 
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="totalhermanos">Total de hermanos(as)</label>
-            <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
-        </div>
-        <div class="col-md-4 mb-3">
-        <label for="num_hermanos">Número de hermanos</label>
-        <input type="number" class="form-control" name="num_hermanos" placeholder="Ingrese el número de hermanos">
-        </div>
-         
-        <script>
-  const numHermanosInput = document.querySelector('input[name="num_hermanos"]');
-  const casillasHermanos = document.querySelectorAll('.casillas-hermanos');
-
-  numHermanosInput.addEventListener('input', () => {
-    const numHermanos = numHermanosInput.value;
-    casillasHermanos.forEach((casilla, index) => {
-      if (index < numHermanos) {
-        casilla.style.display = 'block';
-      } else {
-        casilla.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-<div class="form-row casillas-hermanos" style="display: none;">
-  <div class="col-md-4 mb-3">
-    <label for="nombre_hermano1">Nombre del hermano 1</label>
-    <input type="text" class="form-control" name="nombre_hermano1" placeholder="Nombre del hermano 1">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label for="apellido_hermano1">Apellido del hermano 1</label>
-    <input type="text" class="form-control" name="apellido_hermano1" placeholder="Apellido del hermano 1">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label for="edad_hermano1">Edad del hermano 1</label>
-    <input type="number" class="form-control" name="edad_hermano1" placeholder="Edad del hermano 1">
-  </div>
-</div>
-
-<div class="form-row casillas-hermanos" style="display: none;">
-  <div class="col-md-4 mb-3">
-    <label for="nombre_hermano2">Nombre del hermano 2</label>
-    <input type="text" class="form-control" name="nombre_hermano2" placeholder="Nombre del hermano 2">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label for="apellido_hermano2">Apellido del hermano 2</label>
-    <input type="text" class="form-control" name="apellido_hermano2" placeholder="Apellido del hermano 2">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label for="edad_hermano2">Edad del hermano 2</label>
-    <input type="number" class="form-control" name="edad_hermano2" placeholder="Edad del hermano 2">
-  </div>
-</div>
-
-
-        <div class="col-md-4 mb-3">
-            <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
-            <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
-        </div>
-        </div>
-        <div class="form-row">
+              <label for="totalhermanos">Total de hermanos(as)</label>
+              <input type="text" class="form-control" name="totalhermanos" placeholder="Total de hermanos(as)"  >
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="numerodehermanosenicgc">No. De hermanos(as) actualmente en ICGC</label>
+              <input type="text" class="form-control" name="numerodehermanosenicgc" placeholder="No. de hermanos(as) actualmente en ICGC" >
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="telefonoemergencia">En caso de emergencia llamar al telefono:</label>
+              <input type="text" class="form-control" name="telefonoemergencia" placeholder="telefono emergencia" >
+          </div>
           <div class="col-md-4 mb-3">
             <label for="numerodeidentidad">Número de identidad</label>
             <input type="text" class="form-control" name="numerodeidentidad" placeholder="Sin guiones" required>
@@ -206,7 +156,14 @@
 <div class="col-md-4 mb-3" id="content" style="display: none;">
     <input type="text" class="form-control" name="tiene_alergia" placeholder="¿Qué tipo de alergia?">
 </div>
+
+  
         </div>
+        
+          
+     
+
+
                 <div class="checkbox-group">
                   <hr class="mb-2">
                   <h4 class="mb-0">Si el alumno entrego estos documentos, puede marcarlos, sino dejelos en blanco.</h4>
@@ -232,7 +189,11 @@
                 
                 <hr class="mb-2">
                 <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
+                
           </form>
+          
+
+
     </div>
   </div>
   <style>
