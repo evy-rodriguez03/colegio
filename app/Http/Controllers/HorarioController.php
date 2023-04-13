@@ -16,10 +16,10 @@ class HorarioController extends Controller
     public function index()
     {
         $horarios = Horario::all();
-        return view('secretaria.horario.horarioc', ['horarios' => $horarios]);
+        return view('secretaria.Horario.horariolista', ['horarios' => $horarios]);
     }
 
-    /**r
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
