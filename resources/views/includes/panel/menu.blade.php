@@ -24,6 +24,12 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('secciones.index')}}">
+        <i class="fas fa-edit text-pink"></i> Sección
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('horario.index')}}">
         <i class="fas fa-calendar-alt text-blue"></i> Horario
       </a>
