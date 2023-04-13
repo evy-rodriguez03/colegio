@@ -88,9 +88,13 @@
       </div>
         <div class="form-row">
           <div class="col-md-4 mb-3">
-              <label for="gradoingresar">Grado a ingresar</label>
-              <input type="text" class="form-control" name="gradoingresar" placeholder="Grado a ingresar" required>
-              <div class="invalid-feedback">#</div>
+            <label for="curso_id">Grado/Curso:</label>
+            <select name="curso_id" class="form-control">
+              <option value="">Seleccionar un curso</option>
+              @foreach($listaCursos as $id => $curso)
+                  <option value="{{ $id }}">{{ $curso }}</option>
+              @endforeach
+          </select>
           </div>
           <div class="col-md-4 mb-3">
               <label for="escuelaanterior">Escuela anterior</label>
@@ -130,9 +134,9 @@
     <label for="tiene_alergia">¿Tiene alguna alergia?</label>
     <br>
     <label for="tiene_alergia_no">No</label>
-    <input type="checkbox" name="No" id="tiene_alergia_no" value="0" onchange="hideContent()">
+    <input type="checkbox" name="No" class="form-control" id="tiene_alergia_no" value="0" onchange="hideContent()">
     <label for="tiene_alergia_si">Sí</label>
-    <input type="checkbox" name="tiene_alergia" id="tiene_alergia_si" value="1" onchange="showContent()">
+    <input type="checkbox" name class="form-control"="tiene_alergia" id="tiene_alergia_si" value="1" onchange="showContent()">
 </div>
 
 <script type="text/javascript">

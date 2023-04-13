@@ -16,11 +16,13 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('curso');
+            $table->string('descripcion');
+            $table->string('niveleducativo');
             $table->string('seccion');
             $table->time('horario');
-            $table->string('periodo');
-            $table->string('jornada');
+            $table->unsignedBigInteger('alumno_id')->nullable();
             $table->timestamps();
+            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
         });
     }
 

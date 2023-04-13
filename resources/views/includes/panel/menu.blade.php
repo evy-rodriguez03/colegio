@@ -19,7 +19,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('cursos.index')}}">
-        <i class="fas fa-chalkboard text-purple"></i> Curso
+        <i class="fas fa-chalkboard text-purple"></i> Grado/Curso
       </a>
     </li>
 
