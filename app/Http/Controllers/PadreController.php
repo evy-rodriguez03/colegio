@@ -93,7 +93,6 @@ class PadreController extends Controller
       public function storeconpadre(Request $request)
 {
     $rules = [
-        'tipo' => 'required',
         'primernombre' => 'required|alpha',
         'segundonombre'=> 'required|alpha',
         'primerapellido' => 'required|alpha',
@@ -115,17 +114,9 @@ class PadreController extends Controller
         'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
         'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
         'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
-        'primernombre.min'=> 'El minimo de caracteres es 3',
-        'primernombre.max'=> 'El maximo de caracteres es 12',
         'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
-        'segundonombre.min'=> 'El minimo de caracteres es 3',
-        'segundonombre.max'=> 'El maximo de caracteres es 12',
         'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
-        'primerapellido.min'=> 'El minimo de caracteres es 3',
-        'primernombre.max'=> 'El maximo de caracteres es 12',
-        'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',  
-        'segundoapellido.min'=> 'El minimo de caracteres es 3', 
-        'segundoapellido.max'=> 'El maximo de caracteres es 12',         
+        'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',            
     ];
 
     $this->validate($request, $rules, $messages);
@@ -168,7 +159,6 @@ class PadreController extends Controller
       public function storeconmadre(Request $request)
       {
         $rules = [
-            'tipo' => 'required',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'primerapellido' => 'required|alpha',
@@ -190,17 +180,9 @@ class PadreController extends Controller
             'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
             'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
             'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
-            'primernombre.min'=> 'El minimo de caracteres es 3',
-            'primernombre.max'=> 'El maximo de caracteres es 12',
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
-            'segundonombre.min'=> 'El minimo de caracteres es 3',
-            'segundonombre.max'=> 'El maximo de caracteres es 12',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
-            'primerapellido.min'=> 'El minimo de caracteres es 3',
-            'primerapellido.max'=> 'El maximo de caracteres es 12',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
-            'segundoapellido.min'=> 'El minimo de caracteres es 3',
-            'segundoapellido.max'=> 'El maximo de caracteres es 12',
             
     
            ];
@@ -244,7 +226,6 @@ class PadreController extends Controller
       public function storeconencargado(Request $request)
       {
         $rules = [
-            'tipo' => 'required',
             'primernombre' => 'required|alpha',
             'segundonombre'=> 'required|alpha',
             'primerapellido' => 'required|alpha',
@@ -266,17 +247,9 @@ class PadreController extends Controller
             'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
             'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
             'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
-            'primernombre.min'=> 'El minimo de caracteres es 3',
-            'primernombre.max'=> 'El maximo de caracteres es 12',
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
-            'segundonombre.min'=> 'El minimo de caracteres es 3',
-            'segundonombre.max'=> 'El maximo de caracteres es 12',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
-            'primerapellido.min'=> 'El minimo de caracteres es 3',
-            'primerapellido.max'=> 'El maximo de caracteres es 12',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
-            'segundoapellido.min'=> 'El minimo de caracteres es 3',
-            'segundoapellido.max'=> 'El maximo de caracteres es 12',
             
     
            ];
