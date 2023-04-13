@@ -17,7 +17,7 @@ class AlumnoController extends Controller
     public function index()
     {
         $alumnos = Alumno::paginate(10);
-        return view('secretaria.alumnos.index', compact('alumnos'));
+        return view('secretaria.Alumnos.index', compact('alumnos'));
     }
 
     public function pdf(){
@@ -44,10 +44,10 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         $rules = [
-                  'primernombre' => 'required|min:3|max:12|string',
-                  'segundonombre'=> 'required|min:3|max:12|string',
-                  'primerapellido'=>'required|min:3|max:12|string',
-                  'segundoapellido'=>'required|min:3|max:12|string',
+                  'primernombre' => 'required|min:3|string',
+                  'segundonombre'=> 'required|min:3|string',
+                  'primerapellido'=>'required|min:3|string',
+                  'segundoapellido'=>'sometimes|min:3|string',
                   'numerodeidentidad' => 'required|min:13|numeric',
                   'fechadenacimiento'=> 'required|date',
                   'alergia'=> 'sometimes',
@@ -72,14 +72,16 @@ class AlumnoController extends Controller
         $messages = [
                'primernombre.required' => 'El primer nombre es requerido.',
                'primernombre.min'=>'El minimo son 3 caracteres.',
+               
                'segundonombre.required' => 'El Segundo nombre es requerido.',
                'segundonombre.min'=>'El minimo son 3 caracteres.',
+         
                'telefonoemergencia.required'=>'El número de telefono es necesario',
                'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
                'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
                'primerapellido.required' => 'El primer apellido es requerido.',
                'primerapellido.min'=>'El minimo son 3 caracteres.',
-               'segundoapellido.required' => 'El segundo apellido es requerido.',
+          
                'segundoapellido.min'=>'El minimo son 3 caracteres.',
       
                'numerodeidentidad.required'=> 'El número de identidad es necesario.',
@@ -128,10 +130,10 @@ class AlumnoController extends Controller
     public function storematricula(Request $request)
     {
         $rules = [
-            'primernombre' => 'required|min:3|max:12|string',
-            'segundonombre'=> 'required|min:3|max:12|string',
-            'primerapellido'=>'required|min:3|max:12|string',
-            'segundoapellido'=>'required|min:3|max:12|string',
+            'primernombre' => 'required|min:3|string',
+            'segundonombre'=> 'required|min:3|string',
+            'primerapellido'=>'required|min:3|string',
+            'segundoapellido'=>'sometimes|min:3|string',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento'=> 'required|date',
             'alergia'=> 'sometimes',
@@ -149,29 +151,24 @@ class AlumnoController extends Controller
             'gradoingresar'=>'required|min:3|max:16|string',
             'escuelaanterior'=>'sometimes',
             'totalhermanos'=>'required|numeric',
-            'medico'=>'required|min:3|max:18|string',
+            'medico'=>'required|min:3|string',
             'telefonoemergencia'=>'required|min:3|numeric'
 
   ];
   $messages = [
          'primernombre.required' => 'El primer nombre es requerido.',
-         'primernombre.max'=>'El maximo son 12 caracteres.',
          'primernombre.min'=>'El minimo son 3 caracteres.',
          
          'segundonombre.required' => 'El Segundo nombre es requerido.',
          'segundonombre.min'=>'El minimo son 3 caracteres.',
-         'segundonombre.max'=>'El maximo son 12 caracteres.',
    
          'telefonoemergencia.required'=>'El número de telefono es necesario',
          'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
          'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
          'primerapellido.required' => 'El primer apellido es requerido.',
          'primerapellido.min'=>'El minimo son 3 caracteres.',
-         'primerapellido.max'=>'El maximo son 12 caracteres.',
-
-         'segundoapellido.required' => 'El segundo apellido es requerido.',
+    
          'segundoapellido.min'=>'El minimo son 3 caracteres.',
-         'segundoapellido.max'=>'El maximo son 12 caracteres.',
 
          'numerodeidentidad.required'=> 'El número de identidad es necesario.',
          'numerodeidentidad.min'=> 'El minimo de caracteres del número de identidad es de 13 digitos',
@@ -195,7 +192,6 @@ class AlumnoController extends Controller
          'totalhermanos.required'=> 'se necesita el total de hermanos',
           'medico.required'=>'se necesita el nombre del medico',
           'medico.min'=>'es necesario 3 caractares como minimo',
-          'medico.max'=>'El maximo del nombre del doctor son 12 caracteres.',
   ];
   $this->validate($request,$rules,$messages);
 
@@ -206,6 +202,8 @@ class AlumnoController extends Controller
       'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
       'totalhermanos','medico','telefonoemergencia')
       );
+
+      session(['alumno_id' => $alumno->id]);
 
 
       return redirect()->route('datospadre.create');
