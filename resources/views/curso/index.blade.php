@@ -47,10 +47,10 @@
               <td>{{$curso->jornada}}</td>
              <td> 
               <form action="{{route ('cursos.destroy',$curso->id)}}" method="POST">
-                <a href= "{{route ('cursos.edit',$curso->id)}}"class="btn btn-lg btn-primary">Editar</a>
+                <a href= "{{route ('cursos.edit',$curso->id)}}"class="btn btn-sm btn-primary">Editar</a>
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
+                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
               </form>
              </td>
         </tr>

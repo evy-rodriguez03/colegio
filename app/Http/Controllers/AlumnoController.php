@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
+use App\Models\Curso;
  
 
 class AlumnoController extends Controller
@@ -123,8 +124,10 @@ class AlumnoController extends Controller
 
     public function creatematricula()
     {
+        $cursos = Curso::all();
+        $listaCursos = $cursos->pluck('curso', 'id')->toArray();
         $alumno = new Alumno();
-        return view('secretaria.matricula.datosalumno',compact('alumno'));
+        return view('secretaria.matricula.datosalumno',compact('alumno','cursos','listaCursos'));
     }
 
     public function storematricula(Request $request)
@@ -148,7 +151,6 @@ class AlumnoController extends Controller
             'ciudad'=>'required|min:3|max:16|string',
             'depto'=>'required|min:3|max:16|string',
             'pais'=>'required|min:3|max:16|string',
-            'gradoingresar'=>'required|min:3|max:16|string',
             'escuelaanterior'=>'sometimes',
             'totalhermanos'=>'required|numeric',
             'medico'=>'required|min:3|string',
@@ -187,8 +189,6 @@ class AlumnoController extends Controller
          'depto.min'=> 'se necesita  3 caracter como minimo',
          'pais.required'=> 'es necesario el pais',
          'pais.min'=>'se necesita como 3 caracteres',
-         'gradoingresar.required'=> 'se necesita el grado',
-         'gradoingresar.min'=>'se necesita como minimo 3 caracteres',
          'totalhermanos.required'=> 'se necesita el total de hermanos',
           'medico.required'=>'se necesita el nombre del medico',
           'medico.min'=>'es necesario 3 caractares como minimo',
@@ -199,11 +199,12 @@ class AlumnoController extends Controller
   $alumno = Alumno::create(
       $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
       'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
+      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','escuelaanterior',
       'totalhermanos','medico','telefonoemergencia')
       );
 
       session(['alumno_id' => $alumno->id]);
+      
 
 
       return redirect()->route('datospadre.create');
