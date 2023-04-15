@@ -133,10 +133,10 @@ class AlumnoController extends Controller
     public function storematricula(Request $request)
     {
         $rules = [
-            'primernombre' => 'required|min:3|string',
-            'segundonombre'=> 'required|min:3|string',
-            'primerapellido'=>'required|min:3|string',
-            'segundoapellido'=>'sometimes|min:3|string',
+            'primernombre' => 'required|min:3|max:12|string',
+            'segundonombre'=> 'required|min:3|max:12|string',
+            'primerapellido'=>'required|min:3|max:12|string',
+            'segundoapellido'=>'required|min:3|max:12|string',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento'=> 'required|date',
             'alergia'=> 'sometimes',
@@ -153,29 +153,29 @@ class AlumnoController extends Controller
             'pais'=>'required|min:3|max:16|string',
             'escuelaanterior'=>'sometimes',
             'totalhermanos'=>'required|numeric',
-            'medico'=>'required|min:3|string',
+            'medico'=>'required|min:3|max:18|string',
             'telefonoemergencia'=>'required|min:3|numeric'
 
   ];
   $messages = [
          'primernombre.required' => 'El primer nombre es requerido.',
-         'primernombre.max'=>'El maximo son 12 caracteres.',
-         'primernombre.min'=>'El minimo son 3 caracteres.',
+         'primernombre.max'=>'El maximo de primer nombre son 12 caracteres.',
+         'primernombre.min'=>'El minimo  de primer nombre son 3 caracteres.',
          
          'segundonombre.required' => 'El Segundo nombre es requerido.',
-         'segundonombre.min'=>'El minimo son 3 caracteres.',
-         'segundonombre.max'=>'El maximo son 12 caracteres.',
+         'segundonombre.min'=>'El minimo de Segundo nombre son 3 caracteres.',
+         'segundonombre.max'=>'El maximo de Segundo nombre son 12 caracteres.',
    
          'telefonoemergencia.required'=>'El número de telefono es necesario',
          'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
          'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
          'primerapellido.required' => 'El primer apellido es requerido.',
-         'primerapellido.min'=>'El minimo son 3 caracteres.',
-         'primerapellido.max'=>'El maximo son 12 caracteres.',
+         'primerapellido.min'=>'El minimo de primer apellido son 3 caracteres.',
+         'primerapellido.max'=>'El maximo de primer apellido son 12 caracteres.',
 
          'segundoapellido.required' => 'El segundo apellido es requerido.',
-         'segundoapellido.min'=>'El minimo son 3 caracteres.',
-         'segundoapellido.max'=>'El maximo son 12 caracteres.',
+         'segundoapellido.min'=>'El minimo de segundo apellido son 3 caracteres.',
+         'segundoapellido.max'=>'El maximo de segundo apellido son 12 caracteres.',
 
          'numerodeidentidad.required'=> 'El número de identidad es necesario.',
          'numerodeidentidad.min'=> 'El minimo de caracteres del número de identidad es de 13 digitos',
@@ -186,7 +186,7 @@ class AlumnoController extends Controller
          'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
 
          'direccion.required'=> 'El campo dirección es necesario',
-         'numerodehermanosenicgc.required'=> 'Sino tiene escriba "0"',
+         'numerodehermanosenicgc.required'=> 'Sino hermanos tiene escriba "0"',
          'numerodehermanosenicgc.numeric'=> 'Solo acepta números',
          'ciudad.required'=>'la cuidad es necesaria',
          'ciudad.min'=> 'se necesita 3 caracteres como minimo',
