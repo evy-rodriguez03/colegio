@@ -36,9 +36,9 @@
         <div class="col-10 mt-3">
             <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo', $padres->tipo)}}">
             <option value="">Elegir</option>
-            <option value="padre">Padre</option>
-            <option value="madre">Madre</option>
-            <option value="encargado">Ecncargado</option>
+            <option value="Padre">Padre</option>
+            <option value="Madre">Madre</option>
+            <option value="Encargado">Encargado</option>
          </select>
          <div class="valid-feedback"></div>
         </div>
