@@ -138,10 +138,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|alpha',
-            'segundonombre'=> 'required|alpha',
-            'primerapellido' => 'required|alpha',
-            'segundoapellido'=> 'required|alpha',
+            'primernombre' => 'required|alpha|max:13',
+            'segundonombre'=> 'required|alpha|max:13',
+            'primerapellido' => 'required|alpha|max:13',
+            'segundoapellido'=> 'required|alpha|max:13',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -151,6 +151,10 @@ class PadreController extends Controller
         ];
 
         $messages= [
+            'primernombre.max'=>'El numero de caracteres maximo del primer nombre es de 13',
+            'segundonombre.max'=>'El numero de caracteres maximo del segundo nombre es de 13',
+            'primerapellido.max'=>'El numero de caracteres maximo del primer apellido es de 13',
+            'segundoapellido.max'=>'El numero de caracteres maximo del segundo apellido es de 13',
             'telefonopersonal.min' => 'El número de teléfono personal mínimo debe tener 8 dígitos',
             'telefonopersonal.numeric' => 'El número de teléfono personal deben ser dígitos del 1 al 10',
             'telefonooficina.min' => 'El número de teléfono de oficina mínimo debe tener 8 dígitos',
@@ -186,10 +190,10 @@ class PadreController extends Controller
       {
         $rules = [
             'tipo' => 'required',
-            'primernombre' => 'required|alpha',
-            'segundonombre'=> 'required|alpha',
-            'primerapellido' => 'required|alpha',
-            'segundoapellido'=> 'required|alpha',
+            'primernombre' => 'required|alpha|max:13',
+            'segundonombre'=> 'required|alpha|max:13',
+            'primerapellido' => 'required|alpha|max:13',
+            'segundoapellido'=> 'required|alpha|max:13',
             'numerodeidentidad'=> 'required|min:13|numeric',
             'telefonopersonal'=> 'required|min:8|numeric',
             'lugardetrabajo'=> 'required|alpha',
@@ -199,6 +203,10 @@ class PadreController extends Controller
         ];
 
         $messages= [
+            'primernombre.max'=>'El numero de caracteres maximo del primer nombre es de 13',
+            'segundonombre.max'=>'El numero de caracteres maximo del segundo nombre es de 13',
+            'primerapellido.max'=>'El numero de caracteres maximo del primer apellido es de 13',
+            'segundoapellido.max'=>'El numero de caracteres maximo del segundo apellido es de 13',
             'telefonopersonal.min' => 'El número de teléfono personal mínimo debe tener 8 dígitos',
             'telefonopersonal.numeric' => 'El número de teléfono personal deben ser dígitos del 1 al 10',
             'telefonooficina.min' => 'El número de teléfono de oficina mínimo debe tener 8 dígitos',
