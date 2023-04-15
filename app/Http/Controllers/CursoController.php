@@ -44,13 +44,9 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        $cursos = new Curso;
-        $cursos->curso = $request->get('curso');
-        $cursos->seccion= $request->get('seccion');
-        $cursos->horario = $request->get('horario');
-        $cursos->periodo = $request->get('periodo');
-        $cursos->jornada = $request->get('jornada');
-        $cursos->save();
+        Curso::create(
+            $request->only('curso','descripcion','niveleducativo','seccion','horario')
+            );
 
         return redirect('/cursos');
     }

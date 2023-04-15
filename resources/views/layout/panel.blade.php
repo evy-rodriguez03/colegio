@@ -30,6 +30,10 @@
 }
 
 
+    #agregar-padre-link {
+   display: none;
+}
+
   </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -157,7 +161,7 @@
                   <img alt="Image placeholder" src=" {{asset('img/theme/team-4-800x800.jpg')}} ">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
+                  <span class="mb-0 text-sm  font-weight-bold"></span>
                 </div>
               </div>
             </a>
@@ -182,6 +186,7 @@
   <!--   Optional JS   -->
   <script src=" {{asset('js/plugins/chart.js/dist/Chart.min.js')}} "></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
 
   @include('includes.panel.footer')
   @yield('js')

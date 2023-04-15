@@ -14,7 +14,7 @@ class CreatePadresTable extends Migration
     public function up()
     {
         Schema::create('padres', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('tipo');
             $table->string('primernombre');
             $table->string('segundonombre');
@@ -26,6 +26,7 @@ class CreatePadresTable extends Migration
             $table->string('oficio');
             $table->string('telefonooficina');
             $table->string('ingresos');
+            $table->boolean('compromiso',0)->nullable();
             $table->timestamps();
         });
     }

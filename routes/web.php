@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PadreController;
@@ -7,14 +8,22 @@ use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
-use App\Http\controllers\PaneltesoreriaController;
-use App\Http\controllers\requisitoController;
-use Illuminate\Support\Facades\Route;
-use App\Http\controllers\PagoaRealizaraController;
-use App\Http\controllers\CursoController;
-use App\Http\controllers\RetrasadaController;
-use App\Http\controllers\CompromisoController;
+use App\Http\Controllers\PaneltesoreriaController;
+use App\Http\Controllers\requisitoController;
+use App\Http\Controllers\PagoaRealizaraController;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\RetrasadaController;
+use App\Http\Controllers\CompromisoController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Middleware\VerificarPeriodoMatricula;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ImagenEController;
+use App\Http\Controllers\IngresarController;
+use App\Http\Controllers\ExistenteController;
+use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\ParientetransporteController;
+use App\Http\Controllers\SeccionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +67,8 @@ route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usua
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
-Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo');
+Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo')
+->middleware(VerificarPeriodoMatricula::class);
  
 Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
 Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
@@ -78,7 +88,7 @@ Route::resource('cursos','App\Http\Controllers\CursoController');
 Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
 
 //ruta matricula completa
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula')->middleware(VerificarPeriodoMatricula::class);
+Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
@@ -89,8 +99,7 @@ route::post('/alumnmadre', [PadreController::class,'storeconmadre'])->name('subm
 
 route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])->name('datosencargado.create');
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
-
-
+route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
 //rutas Padres
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
@@ -101,7 +110,6 @@ route::post('/padres', [PadreController::class,'store']);
 route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.update');
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
-
 
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
@@ -118,11 +126,50 @@ route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('a
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
-
 //rutas Retrasadas
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
 route::post('/retrasadas', [RetrasadaController::class,'sendData']);
 route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
-route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy'); 
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
+
+//RUTA DEL PERFIL
+Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
+route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
+route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
+
+//RUTA DE LA IMAGEN DE PERFIL
+Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
+Route::post('/imageE', [ ImagenEController::class, 'store' ])->name('image.store');
+
+//RUTA DE INGRESAR ALUMNO 
+route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
+
+//RUTA DE  ALUMNO EXISTENTE
+route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
+
+//RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
+route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
+
+//Rutas Horario de clase 
+Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
+Route::get('/horarioc/create', [HorarioController::class, 'create'])->name('horario.create');
+Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.store');
+Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
+Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
+Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
+
+
+//Ruta de Seccion 
+Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
+Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
+Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
+Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('secciones.show');
+Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
+Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
+Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
+
+
+
