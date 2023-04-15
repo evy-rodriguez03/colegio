@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Padre;
 
 class CompromisoController extends Controller
 {
@@ -13,7 +14,8 @@ class CompromisoController extends Controller
      */
     public function index()
     {
-        return view ('secretaria.compromiso.indexcompromiso');
+        $padres = Padre::all();
+        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);;
     }
 
     /**
@@ -34,7 +36,15 @@ class CompromisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $padres = new Padre;
+        $padres->primernombre = $request->get('primernombre');
+        $cursos->primerapellido= $request->get('primerapellido');
+        $cursos->compromiso = $request->get('compromiso');
+      
+        $padres->save();
+
+        return redirect('/indexcompromiso');
     }
 
     /**

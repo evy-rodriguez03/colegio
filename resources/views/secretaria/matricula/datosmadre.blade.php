@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    
 
     <div class="card-body">
     @if ($errors->any())
@@ -29,15 +30,7 @@
 
         <form class="row g-3 mt-3" action="{{route('submitmadre')}}" method="POST">
           @csrf
-        <div class="form-group col-2 mt-3">
-            <label for="tipo">Tipo:</label>
-        </div>
-        <div class="col-10 mt-3">
-            <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
-            <option value="">Elegir</option>
-            <option value="madre">Madre</option>
-         </select>
-        </div>
+          <input type="hidden" name="alumno_id" value="{{ request()->input('alumno_id') }}">
 
         <div class="form-group col-2 mt-3">
             <label for="primernombre">Primer Nombre:</label>
@@ -96,7 +89,7 @@
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="oficio">Oficio:</label>
+            <label for="oficio">Profesion u Oficio:</label>
         </div>
         <div class="col-4 mt-3">
             <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
@@ -119,7 +112,8 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button a href="{{Route('datosmadre.create')}}" class="btn btn-primary btn-lg" type="submit">siguiente</button>
+        <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
+
     </form>
     </div>
 </div>

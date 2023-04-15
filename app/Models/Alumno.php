@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Padre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Curso;
 
 class Alumno extends Model
 {
@@ -13,24 +15,46 @@ class Alumno extends Model
     protected $fillable = [
         'primernombre',
         'segundonombre',
-        'telefonodeencargado',
         'primerapellido',
         'segundoapellido',
         'numerodeidentidad',
         'fechadenacimiento',
-        'alergia',
-        'lugardenacimiento',
         'genero',
         'direccion',
         'numerodehermanosenicgc',
+        'tiene_alergia',
+        'alergia',
         'fotografias',
         'fotografiasdelpadre',
         'carnet',
-        'certificadodeconducta'
+        'certificadodeconducta',
+        'ciudad',
+        'depto',
+        'pais',
+        'escuelaanterior',
+        'totalhermanos',
+        'medico',
+        'telefonoemergencia',
+       
+
     ];
         public function padres()
         {
-            return $this->belongsToMany(Padre::class,'alumno_padre');
+            return $this->belongsToMany(Padre::class,'alumno_padre','alumno_id','padre_id');
+        }
+
+        public function cursos()
+        {
+            return $this->hasMany(Alumno::class);
+        }
+
+        public function periodo(){
+            return $this->hasOne('App\Models\Periodo');
+        }
+
+        public function matriculas()
+        {
+            return $this->hasMany('App\Models\Matriculado');
         }
 
 }

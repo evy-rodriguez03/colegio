@@ -6,7 +6,7 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Agregar Nuevo Curso</h3>
+          <h3 class="mb-0">Agregar Nuevo Grado/Curso</h3>
         </div>
         <div class="col text-right">
           <a href="{{route('cursos.index')}}" class="btn btn-lg btn-success">
@@ -30,49 +30,36 @@
         @csrf
         <div class="form-row">
           <div class="col-md-4 mb-3">
-              <label for="curso">Curso:</label>
-              <input type="text" class="form-control" name="curso" required>
+              <label for="curso">Nombre del Grado/Curso:</label>
+              <input type="text" class="form-control" name="curso" placeholder="Primer Grado" required value="{{ old('curso') }}">
               <div class="valid-feedback"></div>
           </div>
+          <div class="col-md-4 mb-3">
+              <label for="descripcion">Descripción</label>
+              <input type="text" class="form-control" name="descripcion" placeholder="Primer año donde se ubican los niños de 6 a 8 años." required value="{{ old('descripcion') }}">
+              <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="niveleducativo">Nivel Educativo</label>
+              <input type="text" class="form-control" name="niveleducativo" placeholder="Primaria" required value="{{ old('niveleducativo') }}">
+              <div class="valid-feedback">Looks good!</div>
+          </div>
       </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="seccion">Sección</label>
+            <input type="text" class="form-control" name="seccion" placeholder="Sección 1-B" required value="{{ old('seccion') }}">
+            <div class="valid-feedback"></div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="horario">horario</label>
+            <input type="text" class="form-control" name="horario" placeholder="13:00 a 13:50" required value="{{ old('descripcion') }}">
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+    </div>
       
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="seccion">Seccion:</label>
-                <input type="text" class="form-control" name="seccion" placeholder="Solo se aceptan letras" required>
-                <div class="valid-feedback"></div>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="horario">Horario</label>
-                <input type="text" class="form-control" name="horario" required>
-                <div class="valid-feedback"></div>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="horario">Periodo:</label>
-                <input type="text" class="form-control" name="periodo" required>
-                <div class="valid-feedback"></div>
-            </div>
-        </div>
-
+      
         
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="jornada" >Jornada:</label>
-                <select class="form-control" name="jornada" >
-                <option >Jornada Matutina I</option>
-                <option >Jornada Matutina II</option>
-                </select>
-                <div class="valid-feedback"></div>
-         </div>
-              </div>
-                
-                <hr class="mb-2">
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
                 <a href="{{route('cursos.index')}}" class="btn btn-lg btn-primary">Cancelar</a>
           </form>

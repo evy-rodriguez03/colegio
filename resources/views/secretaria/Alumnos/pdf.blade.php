@@ -26,7 +26,7 @@
 <table class="table table-bordered" style="text-align: center; font-size: 15px";> 
         <thead class="cabecera">
           <tr>
-          
+            <th scope="row">N°</th>
             <th scope="row">Nombre</th>
             <th scope="row">Número de identidad</th>
             <th scope="row">Telefono de encargado</th>
@@ -37,7 +37,9 @@
         <tbody>
           @foreach ($alumnos as $alumno)
               
-          
+          <td>
+              {{$index + 1}}
+            </td>
           <tr>
             <th scope="row">
               {{$alumno->primernombre}} {{$alumno->segundonombre}} {{$alumno->primerapellido}} {{$alumno->segundoapellido}}
