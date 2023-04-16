@@ -28,7 +28,6 @@ class Padre extends Model
         'lugardetrabajo',
         'oficio',
         'telefonooficina',
-        'ingresos',
-        'compromiso'
+        'ingresos'
     ];
 }

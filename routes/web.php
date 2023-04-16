@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PadreController;
-use App\Http\Conexittrollers\dashboardsecController;
+use App\Http\Controllers\dashboardsecController;
 use App\Http\Controllers\PeriodomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
@@ -84,7 +84,8 @@ Route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 Route::resource('cursos','App\Http\Controllers\CursoController');
 
 //compromiso
-Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
+Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('indexcompromiso.create');
+route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
 Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
@@ -140,7 +141,7 @@ route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy']
 //RUTA DEL PERFIL
 Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
-route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
+route::put('/profile/{id}', [UserProfileController::class,'updateprofile'])->name('profile.update');
 route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
 
 
@@ -164,3 +165,6 @@ Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.sto
 Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('horario.destroy');
 Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
 Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
+
+Route::get('/imagenE', [ImagenEController::class,'index'])->name('imagenE.index');
+Route::delete('/imagenE/{id}', [ImagenEController::class,'destroy'])->name('imagenE.destroy');
