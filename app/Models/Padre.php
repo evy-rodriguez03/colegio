@@ -11,11 +11,6 @@ class Padre extends Model
     use HasFactory;
     protected $table = "padres";
     public $timestamps = false;
-    
-    public function alumnos()
-{
-    return $this->belongsToMany(Alumno::class, 'alumno_padre','alumno_id','padre_id');
-}
 
     protected $fillable = [
         'tipo',
@@ -30,4 +25,11 @@ class Padre extends Model
         'telefonooficina',
         'ingresos'
     ];
+    
+    public function alumnos()
+{
+    return $this->belongsToMany(Alumno::class, 'alumno_padre','padre_id','alumno_id');
+}
+
+    
 }

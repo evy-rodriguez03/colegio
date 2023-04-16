@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Padre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Curso;
 
 class Alumno extends Model
 {
@@ -30,7 +31,6 @@ class Alumno extends Model
         'ciudad',
         'depto',
         'pais',
-        'gradoingresar',
         'escuelaanterior',
         'totalhermanos',
         'medico',
@@ -40,7 +40,12 @@ class Alumno extends Model
     ];
         public function padres()
         {
-            return $this->belongsToMany(Padre::class,'alumno_padre','padre_id','alumno_id');
+            return $this->belongsToMany(Padre::class,'alumno_padre','alumno_id','padre_id');
+        }
+
+        public function cursos()
+        {
+            return $this->hasMany(Alumno::class);
         }
 
         public function periodo(){

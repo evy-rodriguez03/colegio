@@ -10,7 +10,7 @@
         </div>
         <div class="col text-right">
           <a href="{{route('padres.create')}}" class="btn btn-lg btn-primary">Nuevo Padre</a>
-          <a href="{{route('padre.pdf')}}" class="btn btn-lg btn-primary">Documento Padre</a>
+          <a href="{{route('padre.pdf')}}" class="btn btn-lg btn-primary">Reporte Padre</a>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Número de Identidad</th>
             <th scope="col">Teléfono Personal</th>
-            <th scope="col">Teléfono de Oficina</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -52,7 +52,7 @@
               {{$padre->telefonopersonal}}
             </td>
             <td>
-              {{$padre->telefonooficina}}
+              {{$padre->tipo}}
             </td>
            <td>
             

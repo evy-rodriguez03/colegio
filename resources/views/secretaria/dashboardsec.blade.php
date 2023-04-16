@@ -1,6 +1,7 @@
 @extends('layout.panel')
 
 @section('content')
+
 <div>
 <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
@@ -8,7 +9,6 @@
       <center><img src="{{asset('img/brand/matricula.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
         <div class="card-body">
         <center><a href="{{Route('principal.create')}}"class="btn btn-lg btn-info">Ficha Matricula</a></center>
-          
         </div>
       </div>
       <br>

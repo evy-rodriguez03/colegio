@@ -6,7 +6,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Datos Padre</h1>
+                <h1 class="mb-0">Agregar Nuevo Padre</h1>
             </div>
             <div class="col text-right">
             <a href="{{route('padres.index')}}" class="btn btn-lg btn-success">
@@ -35,9 +35,9 @@
         <div class="col-10 mt-3">
             <select type="text" id="tipo" name="tipo" class="form-control" required value="{{old('tipo')}}">
             <option value="">Elegir</option>
-            <option value="padre">Padre</option>
-            <option value="madre">Madre</option>
-            <option value="encargado">Ecncargado</option>
+            <option value="Padre">Padre</option>
+            <option value="Madre">Madre</option>
+            <option value="Encargado">Encargado</option>
          </select>
          <div class="valid-feedback"></div>
         </div>
