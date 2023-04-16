@@ -26,7 +26,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/compromisos.png') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{route('indexcompromiso.index')}}" class="btn btn-lg btn-info">Compromiso</a></center>
+          <center><a href="{{route('indexcompromiso.create')}}" class="btn btn-lg btn-info">Compromiso</a></center>
         </div>
       </div>
     </div>

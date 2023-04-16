@@ -80,7 +80,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{ asset('img/theme/team-4-800x800.jpg') }}">
+                  <img alt="Image placeholder" src="{{ '/'.Auth::user()->imagen }}">
                 </span>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
     <div class=" dropdown-header noti-title">
@@ -106,7 +106,7 @@
   </div>
 
             </a>
-            
+
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
@@ -117,8 +117,8 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hola</h1> 
-           
+            <h1 class="display-2 text-white">Hola</h1>
+
             <a href="{{ route('profile.edit') }}" class="btn btn-info">Editar Perfil</a>
           </div>
         </div>
@@ -132,18 +132,25 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="{{ asset('img/theme/team-4-800x800.jpg') }}" class="rounded-circle">
+                  <a href="{{ route('imagenE.index') }}">
+                    <img src="{{ '/'.Auth::user()->imagen }}" class="rounded-circle">
                   </a>
                 </div>
               </div>
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-info mr-4">Actualizar</a>
-                <a href="#" class="btn btn-sm btn-default float-right">Eliminar</a>
+                <a href="{{ route('imagenE.index') }}" class="btn btn-sm btn-info mr-4">Actualizar</a>
+                <form action="{{route ('imagenE.destroy',[Auth::user()->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-default float-right">Eliminar</button>
+              </form>
               </div>
             </div>
+
+    
+
             <div class="card-body pt-0 pt-md-4">
               <div class="row">
                 <div class="col">
@@ -161,7 +168,7 @@
         </div>
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
-     
+
             <div class="card-body">
              <form>
                 <h4 class="heading-small text-muted mb-4">Informacion del Usuario</h4>
@@ -193,7 +200,7 @@
                                         <input class="form-control" type="text" name="lastname" value="{{ old('password', auth()->user()->password) }}">
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
               </form>
             </div>
           </div>
@@ -202,7 +209,7 @@
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-c`enter justify-content-xl-between">
-          <div class="col-xl-6">  
+          <div class="col-xl-6">
             </ul>
           </div>
         </div>
