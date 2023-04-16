@@ -18,6 +18,7 @@
   <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
+<link rel="stylesheet" href="estilos.css">
 </head>
 
 <body class="">

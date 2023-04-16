@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriodoITable extends Migration
+class CreateSeccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePeriodoITable extends Migration
      */
     public function up()
     {
-        Schema::create('periodo_i', function (Blueprint $table) {
+        Schema::create('seccions', function (Blueprint $table) {
             $table->id();
-            $table->date('fechaInicio');
-            $table->string('periodoMatricula');
-            $table->string('usuario');
-            $table->date('fechaCierre');
+            $table->string('descripcion');
+            $table->string('jornada');
+            $table->string('modalidad');
+            $table->string('malla_curricular');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePeriodoITable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periodo_i');
+        Schema::dropIfExists('seccions');
     }
 }

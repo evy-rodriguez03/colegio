@@ -14,7 +14,7 @@ class CreateAlumnosTable extends Migration
     public function up()
     {
         Schema::create('alumnos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('primernombre');
             $table->string('segundonombre');
             $table->string('primerapellido');
@@ -35,7 +35,6 @@ class CreateAlumnosTable extends Migration
             $table->string('ciudad');
             $table->string('depto');
             $table->string('pais');
-            $table->string('gradoingresar');
             $table->string('escuelaanterior')->nullable();
             $table->string('totalhermanos');
             $table->string('medico');

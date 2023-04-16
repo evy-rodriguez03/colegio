@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Alumno;
+use App\Models\Seccion;
 
-class PrincipalController extends Controller
+class SeccionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::paginate(10);
-        return view('secretaria/matricula/principal', compact('alumnos'));
+        $seccions = Seccion::all();
+        return view('secretaria.seccion.listasec', compact('seccions'));
     }
 
     /**
@@ -23,12 +23,9 @@ class PrincipalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('secretaria/matricula/principal');
+    public function create(){
+    return view('secretaria.seccion.indexsec');
     }
-    
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +34,22 @@ class PrincipalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'descripcion' => 'required',
+            'jornada' => 'required',
+            'modalidad' => 'required',
+            'malla_curricular' => 'required',
+        ]);
+
+    $seccion = new Seccion;
+    $seccion->descripcion = $request->descripcion;
+    $seccion->jornada = $request->jornada;
+    $seccion->modalidad = $request->modalidad;
+    $seccion->malla_curricular = $request->malla_curricular;
+    
+    $seccion->save();
+    return redirect()->route('secciones.index');
     }
 
     /**
