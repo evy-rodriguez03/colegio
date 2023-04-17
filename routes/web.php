@@ -23,6 +23,7 @@ use App\Http\Controllers\ExistenteController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
 use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\PanelorientacionController;
 
 
 /*
@@ -143,6 +144,8 @@ route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofil
 //RUTA DE LA IMAGEN DE PERFIL
 Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
 Route::post('/imageE', [ ImagenEController::class, 'store' ])->name('image.store');
+Route::get('/imagenE', [ImagenEController::class,'index'])->name('imagenE.index');
+Route::delete('/imagenE/{id}', [ImagenEController::class,'destroy'])->name('imagenE.destroy');
 
 //RUTA DE INGRESAR ALUMNO 
 route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
@@ -170,6 +173,8 @@ Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('sec
 Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
 Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
 Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
+//Ruta del dashboard orientacion
+ Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
 
 
 

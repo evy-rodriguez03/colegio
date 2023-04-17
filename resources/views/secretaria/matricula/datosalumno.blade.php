@@ -90,13 +90,13 @@
       </div>
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="curso_id">Grado/Curso:</label>
-            <select name="curso_id" class="form-control">
-              <option value="">Seleccionar un curso</option>
-              @foreach($listaCursos as $id => $curso)
-                  <option value="{{ $id }}">{{ $curso }}</option>
-              @endforeach
-          </select>
+            <label for="curso_id">Curso</label>
+    <select class="form-control" id="curso_id" name="curso_id">
+        <option value="">Seleccionar un curso</option>
+        @foreach ($cursos as $id => $curso)
+            <option value="{{ $id }}">{{ $curso }}</option>
+        @endforeach
+    </select>
           </div>
           <div class="col-md-4 mb-3">
               <label for="escuelaanterior">Escuela anterior</label>
