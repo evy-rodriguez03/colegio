@@ -86,7 +86,8 @@ Route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 Route::resource('cursos','App\Http\Controllers\CursoController');
 
 //compromiso
-Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
+Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('indexcompromiso.create');
+route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
 Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
@@ -138,7 +139,7 @@ route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy']
 //RUTA DEL PERFIL
 Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
-route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
+route::put('/profile/{id}', [UserProfileController::class,'updateprofile'])->name('profile.update');
 route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
 
 //RUTA DE LA IMAGEN DE PERFIL
