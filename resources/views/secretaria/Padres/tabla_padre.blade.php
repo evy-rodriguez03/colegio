@@ -31,7 +31,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Número de Identidad</th>
             <th scope="col">Teléfono Personal</th>
-            <th scope="col">Teléfono de Oficina</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -52,7 +52,7 @@
               {{$padre->telefonopersonal}}
             </td>
             <td>
-              {{$padre->telefonooficina}}
+              {{$padre->tipo}}
             </td>
            <td>
             

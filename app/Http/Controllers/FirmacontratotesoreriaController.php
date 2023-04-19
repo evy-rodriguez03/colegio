@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Imagen;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\File;
 
-class ImagenEController extends Controller
+class FirmacontratotesoreriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +13,7 @@ class ImagenEController extends Controller
      */
     public function index()
     {
-        return view ('pages.imagenE');
+        //
     }
 
     /**
@@ -27,8 +23,7 @@ class ImagenEController extends Controller
      */
     public function create()
     {
-
-        return view('pages/imagenE');
+        //
     }
 
     /**
@@ -39,24 +34,8 @@ class ImagenEController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        $request->image->move(public_path('images'), $imageName);
-
-        $user = User::findOrFail(Auth::user()->id);
-        $user->imagen = 'images/'.$imageName;
-        $user->save();
-
-
-        return redirect()->route('profile')->with('success','Has subido correctamente la imagen.');
+        //
     }
-
-
 
     /**
      * Display the specified resource.
@@ -98,22 +77,8 @@ class ImagenEController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-public function destroy($id)
-{
-    $user = User::find($id);
-    $archivo = public_path($user->imagen);
-
-    if (file_exists($archivo)) {
-      
-        unlink($archivo);
-       
-        $user->imagen = null;
-        $user->save();
-       
-        return redirect()->back()->with('success', 'La imagen de perfil ha sido eliminada con éxito.');
-    } else {
-    
-        return redirect()->back()->with('error', 'No se pudo encontrar la imagen de perfil para eliminar.');
+    public function destroy($id)
+    {
+        //
     }
 }
-} 

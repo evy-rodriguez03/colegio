@@ -23,8 +23,7 @@ use App\Http\Controllers\ExistenteController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
 use App\Http\Controllers\SeccionController;
-use App\Http\Controllers\ReportesController;
-use App\Http\Controllers\SecretariaController;
+use App\Http\Controllers\PanelorientacionController;
 
 
 /*
@@ -87,7 +86,8 @@ Route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
 Route::resource('cursos','App\Http\Controllers\CursoController');
 
 //compromiso
-Route::get('/indexcompromiso', [CompromisoController::class,'index'])->name('indexcompromiso.index');
+Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('indexcompromiso.create');
+route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
 Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
@@ -139,12 +139,14 @@ route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy']
 //RUTA DEL PERFIL
 Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 Route::get('/editar-profile', [UserProfileController::class, 'index'])->name('profile.edit');
-route::put('/profile/{usuarios}', [UserProfileController::class,'updateprofile'])->name('profile.update');
+route::put('/profile/{id}', [UserProfileController::class,'updateprofile'])->name('profile.update');
 route::get('/profile/{usuarios}/edit', [UserProfileController::class,'editprofile'])->name('profile.editar');
 
 //RUTA DE LA IMAGEN DE PERFIL
 Route::get('/imagenE', [ImagenEController::class,'create'])->name('imagenE.index');
 Route::post('/imageE', [ ImagenEController::class, 'store' ])->name('image.store');
+Route::get('/imagenE', [ImagenEController::class,'index'])->name('imagenE.index');
+Route::delete('/imagenE/{id}', [ImagenEController::class,'destroy'])->name('imagenE.destroy');
 
 //RUTA DE INGRESAR ALUMNO 
 route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
@@ -168,4 +170,12 @@ Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horari
 Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
 Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
 Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
+Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('secciones.show');
+Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
+Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
+Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
+//Ruta del dashboard orientacion
+ Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
+
+
 

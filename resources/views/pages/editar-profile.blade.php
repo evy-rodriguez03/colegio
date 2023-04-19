@@ -4,7 +4,7 @@
 <div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">
-        <div class="col">
+        <div class="col">  
           <h3 class="mb-0">Editar Perfil</h3>
         </div>
         <div class="col text-right">
@@ -27,7 +27,8 @@
           @endforeach
       @endif
       
-      <form>
+      <form method="POST" action="{{ route('profile.update', ['id' => Auth::user()->id]) }}">
+ 
         @csrf
         @method('PUT')
         <div class="card-body">
@@ -39,19 +40,19 @@
                                 <div class="col-md-10">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nombre</label>
-                                        <input class="form-control" type="text" name="username" value="{{ old('name', auth()->user()->name) }}">
+                                        <input class="form-control" type="text" name="username" value="{{ old('name', Auth::user()->name) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-10">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Usuario</label>
-                                        <input class="form-control" type="email" name="email" value="{{ old('email', auth()->user()->email) }}">
+                                        <input class="form-control" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-10">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Cargo</label>
-                                        <select class="form-control" name="role" required value="{{ old('role', auth()->user()->role) }}">
+                                        <select class="form-control" name="role" value="{{ old('role', Auth::user()->role) }}">
                                         <option value="">Elegir</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Secretaria">Secretaria</option>

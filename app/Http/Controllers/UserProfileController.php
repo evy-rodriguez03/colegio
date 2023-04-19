@@ -21,8 +21,8 @@ class UserProfileController extends Controller
 
     public function editprofile($id)
     {
-        $usuario = User::find($id);
-        return view('editar-profile', compact('usuario'));
+        $usuarios = User::find($id);
+        return view('pages.editar-profile', compact('usuarios'));
     }
 
     public function updateprofile(Request $request, $id)
@@ -63,6 +63,18 @@ class UserProfileController extends Controller
            $usuarios->fill($data);
            
            $usuarios->save();
+
+           if($request->hasfile('image')){
+
+            if($user->image != null){
+                Storage::disk('images')->delete($user->image->path);
+                $user->image->delete();
+            }
+
+            $user->image()->create([
+                'path' => $request->image->store('users','images')
+            ]);
+           }
              
              return redirect('/profile')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }

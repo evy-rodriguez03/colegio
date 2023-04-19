@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
+use App\Models\Curso;
  
 
 class AlumnoController extends Controller
@@ -124,17 +125,18 @@ class AlumnoController extends Controller
 
     public function creatematricula()
     {
+        $cursos = Curso::pluck('curso', 'id');
         $alumno = new Alumno();
-        return view('secretaria.matricula.datosalumno',compact('alumno'));
+        return view('secretaria.matricula.datosalumno',compact('alumno','cursos'));
     }
 
     public function storematricula(Request $request)
     {
         $rules = [
-            'primernombre' => 'required|min:3|string',
-            'segundonombre'=> 'required|min:3|string',
-            'primerapellido'=>'required|min:3|string',
-            'segundoapellido'=>'sometimes|min:3|string',
+            'primernombre' => 'required|min:3|max:12|string',
+            'segundonombre'=> 'required|min:3|max:12|string',
+            'primerapellido'=>'required|min:3|max:12|string',
+            'segundoapellido'=>'required|min:3|max:12|string',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento'=> 'required|date',
             'alergia'=> 'sometimes',
@@ -149,38 +151,43 @@ class AlumnoController extends Controller
             'ciudad'=>'required|min:3|max:16|string',
             'depto'=>'required|min:3|max:16|string',
             'pais'=>'required|min:3|max:16|string',
-            'gradoingresar'=>'required|min:3|max:16|string',
             'escuelaanterior'=>'sometimes',
             'totalhermanos'=>'required|numeric',
-            'medico'=>'required|min:3|string',
-            'telefonoemergencia'=>'required|min:3|numeric'
+            'medico'=>'required|min:3|max:18|string',
+            'telefonoemergencia'=>'required|min:3|numeric',
+            'curso_id' => 'required|exists:cursos,id',
 
   ];
   $messages = [
          'primernombre.required' => 'El primer nombre es requerido.',
-         'primernombre.min'=>'El minimo son 3 caracteres.',
+         'primernombre.max'=>'El maximo de primer nombre son 12 caracteres.',
+         'primernombre.min'=>'El minimo  de primer nombre son 3 caracteres.',
          
          'segundonombre.required' => 'El Segundo nombre es requerido.',
-         'segundonombre.min'=>'El minimo son 3 caracteres.',
+         'segundonombre.min'=>'El minimo de Segundo nombre son 3 caracteres.',
+         'segundonombre.max'=>'El maximo de Segundo nombre son 12 caracteres.',
    
          'telefonoemergencia.required'=>'El número de telefono es necesario',
          'telefonoemergencia.min'=>'El numero de telefono tiene un minimo de 8 caracteres',
          'telefonoemergencia.numeric'=>'El número de telefono solo acepta números',
          'primerapellido.required' => 'El primer apellido es requerido.',
-         'primerapellido.min'=>'El minimo son 3 caracteres.',
-    
-         'segundoapellido.min'=>'El minimo son 3 caracteres.',
+         'primerapellido.min'=>'El minimo de primer apellido son 3 caracteres.',
+         'primerapellido.max'=>'El maximo de primer apellido son 12 caracteres.',
+
+         'segundoapellido.required' => 'El segundo apellido es requerido.',
+         'segundoapellido.min'=>'El minimo de segundo apellido son 3 caracteres.',
+         'segundoapellido.max'=>'El maximo de segundo apellido son 12 caracteres.',
 
          'numerodeidentidad.required'=> 'El número de identidad es necesario.',
          'numerodeidentidad.min'=> 'El minimo de caracteres del número de identidad es de 13 digitos',
          'numerodeidentidad.numeric'=> 'El campo número de identidad solo permite números',
          'fechadenacimiento.required'=> 'La fecha de nacimiento es necesaria.',
          'fechadenacimiento.date'=>'La fecha es necesaria',
-         'genero.required'=>'M=Si es masculino, y F=Si es femenino',
+         'genero.required'=>'seleccion si es masculino, o es femenino',
          'genero.min'=>'Es necesario tener al menos 1 caracter en genero',
 
          'direccion.required'=> 'El campo dirección es necesario',
-         'numerodehermanosenicgc.required'=> 'Sino tiene escriba "0"',
+         'numerodehermanosenicgc.required'=> 'Sino hermanos tiene escriba "0"',
          'numerodehermanosenicgc.numeric'=> 'Solo acepta números',
          'ciudad.required'=>'la cuidad es necesaria',
          'ciudad.min'=> 'se necesita 3 caracteres como minimo',
@@ -188,23 +195,43 @@ class AlumnoController extends Controller
          'depto.min'=> 'se necesita  3 caracter como minimo',
          'pais.required'=> 'es necesario el pais',
          'pais.min'=>'se necesita como 3 caracteres',
-         'gradoingresar.required'=> 'se necesita el grado',
-         'gradoingresar.min'=>'se necesita como minimo 3 caracteres',
          'totalhermanos.required'=> 'se necesita el total de hermanos',
           'medico.required'=>'se necesita el nombre del medico',
           'medico.min'=>'es necesario 3 caractares como minimo',
+          'medico.max'=>'El maximo del nombre del doctor son 12 caracteres.',
   ];
   $this->validate($request,$rules,$messages);
 
+  $cursos = Curso::find($request->input('curso_id'));
 
-  $alumno = Alumno::create(
-      $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
-      'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','gradoingresar','escuelaanterior',
-      'totalhermanos','medico','telefonoemergencia')
-      );
+  $alumno = Alumno::create([
+    'primernombre' => $request->input('primernombre'),
+    'segundonombre' => $request->input('segundonombre'),
+    'primerapellido' => $request->input('primerapellido'),
+    'segundoapellido' => $request->input('segundoapellido'),
+    'numerodeidentidad' => $request->input('numerodeidentidad'),
+    'fechadenacimiento' => $request->input('fechadenacimiento'),
+    'alergia' => $request->input('alergia'),
+    'lugardenacimiento' => $request->input('lugardenacimiento'),
+    'genero' => $request->input('genero'),
+    'direccion' => $request->input('direccion'),
+    'numerodehermanosenicgc' => $request->input('numerodehermanosenicgc'),
+    'fotografias' => $request->input('fotografias'),
+    'fotografiasdelpadre' => $request->input('fotografiasdelpadre'),
+    'carnet' => $request->input('carnet'),
+    'certificadodeconducta' => $request->input('certificadodeconducta'),
+    'ciudad' => $request->input('ciudad'),
+    'depto' => $request->input('depto'),
+    'pais' => $request->input('pais'),
+    'escuelaanterior' => $request->input('escuelaanterior'),
+    'totalhermanos' => $request->input('totalhermanos'),
+    'medico' => $request->input('medico'),
+    'telefonoemergencia' => $request->input('telefonoemergencia'),
+    'curso_id' => $cursos->id,
+]);
 
       session(['alumno_id' => $alumno->id]);
+      
 
 
       return redirect()->route('datospadre.create');

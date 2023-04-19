@@ -19,7 +19,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('cursos.index')}}">
-        <i class="fas fa-chalkboard text-purple"></i> Curso
+        <i class="fas fa-chalkboard text-purple"></i> Grado/Curso
       </a>
     </li>
 
@@ -41,7 +41,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="{{Route('paneltesoreria.index')}}" class="nav-link " href="./examples/tables.html">
+      <a href="{{Route('panelorientacion.index')}}" class="nav-link " href="./examples/tables.html">
         <i class="fas fa-book-reader text-red"></i> Orientación
       </a>
     </li>
