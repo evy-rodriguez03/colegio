@@ -21,10 +21,11 @@ class AlumnoController extends Controller
     }
 
     public function pdf(){
-        $alumnos=Alumno::All();
-        $pdf = Pdf::loadView('secretaria.alumnos.pdf', compact('alumnos'));
+        $alumnos = Alumno::All();
+        $index = 1; // Definir la variable $index en el controlador
+        $pdf = Pdf::loadView('secretaria.alumnos.pdf', compact('alumnos', 'index'));
         return $pdf->stream();
-}
+    }
     /**
      * Show the form for creating a new resource.
      *
