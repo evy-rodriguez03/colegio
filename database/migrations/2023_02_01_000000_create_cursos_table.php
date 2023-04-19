@@ -20,9 +20,7 @@ class CreateCursosTable extends Migration
             $table->string('niveleducativo');
             $table->string('seccion');
             $table->time('horario');
-            $table->unsignedBigInteger('alumno_id')->nullable();
             $table->timestamps();
-            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
         });
     }
 

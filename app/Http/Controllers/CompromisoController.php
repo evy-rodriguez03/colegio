@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Firmacompromiso;
 use App\Models\Padre;
 
 class CompromisoController extends Controller
@@ -14,9 +15,9 @@ class CompromisoController extends Controller
      */
     public function index()
     {
-        $padres = Padre::all();
-        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);;
+ //
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +26,14 @@ class CompromisoController extends Controller
      */
     public function create()
     {
-        //
+        $padres = Padre::all();
+
+        foreach ($padres as $key => $value) {
+            $value->firmacompromiso = Firmacompromiso::where('id_padre','=',$value->id)->get();
+        }
+
+
+        return view ('secretaria.compromiso.indexcompromiso')->with('padres',$padres);
     }
 
     /**
@@ -36,15 +44,33 @@ class CompromisoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $padres = new Padre;
-        $padres->primernombre = $request->get('primernombre');
-        $cursos->primerapellido= $request->get('primerapellido');
-        $cursos->compromiso = $request->get('compromiso');
-      
-        $padres->save();
 
-        return redirect('/indexcompromiso');
+        $id_padres = $request->input('id_padre');
+        $contador = 0;
+
+
+
+        foreach ($id_padres as $key => $id_padre) {
+            $firmacompromiso = Firmacompromiso::where('id_padre','=', $id_padre)->get();
+
+            if (count($firmacompromiso) == 0) {
+                $firmacompromiso = new Firmacompromiso;
+                $firmacompromiso->id_padre = $id_padre;
+                $firmacompromiso->compromiso = $request->input('compromiso')[$contador] ?? 0;
+                $firmacompromiso->save();
+            }else{
+                $firmacompromiso = Firmacompromiso::find($firmacompromiso[0]->id);
+                $firmacompromiso->id_padre = $id_padre;
+                $firmacompromiso->compromiso = $request->input('compromiso')[$contador] ?? 0;
+                $firmacompromiso->save();
+            }
+
+
+            $contador += 1;
+        }
+
+
+        return redirect('/indexcompromiso')->with('notification','Compromiso firmando exitosamente');
     }
 
     /**

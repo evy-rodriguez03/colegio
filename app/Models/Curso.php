@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Curso;
+use App\Models\Alumno;
 
 class Curso extends Model
 {
@@ -19,6 +20,12 @@ class Curso extends Model
         'horario'
 
     ];
+
+    public function alumnos()
+{
+    return $this->hasMany(Alumno::class);
+}
+
 
     public function matriculas()
     {
