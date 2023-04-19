@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCursosTable extends Migration
+class CreateFirmacompromisosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateCursosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cursos', function (Blueprint $table) {
+        Schema::create('firmacompromisos', function (Blueprint $table) {
             $table->id();
-            $table->string('curso');
-            $table->string('seccion');
-            $table->time('horario');
-            $table->string('periodo');
-            $table->string('jornada');
+            $table->unsignedBigInteger('id_padre');
+            $table->boolean('compromiso')->default(false);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateCursosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cursos');
+        Schema::dropIfExists('firmacompromisos');
     }
 }

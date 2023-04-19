@@ -26,7 +26,7 @@
 .tabla-dashboard .table tbody tr:hover {
   background-color: #ddd;
 
-  
+
 }
 
 
@@ -41,7 +41,7 @@
     Instituto Cosme Garcia C.
   </title>
   <!-- JSS Files -->
- 
+
   <!-- Favicon -->
   <link href=" {{asset('img/brand/favicon.png') }} " rel="icon" type="image/png">
   <!-- Fonts -->
@@ -64,7 +64,7 @@
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html" >
         <br>
-       
+
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -78,7 +78,7 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src=" {{asset('img/theme/team-1-800x800.jpg')}} ">
+                <img alt="Image placeholder" src="{{ '/'.Auth::user()->imagen }}">
               </span>
             </div>
           </a>
@@ -128,8 +128,8 @@
             </div>
           </div>
         </div>
-      
-       
+
+
         <!-- Navigation -->
             @include('includes.panel.menu')
       </div>
@@ -158,7 +158,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src=" {{asset('img/theme/team-4-800x800.jpg')}} ">
+                  <img alt="Image placeholder" src="{{ '/'.Auth::user()->imagen }}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"></span>
@@ -173,11 +173,11 @@
     <!-- End Navbar -->
     <!-- Header -->
     <div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
-     
+
     </div>
     <div class="container-fluid mt--7">
       @yield('content')
-      
+
     </div>
   </div>
   <!--   Core   -->

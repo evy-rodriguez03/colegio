@@ -35,11 +35,12 @@ class CreateAlumnosTable extends Migration
             $table->string('ciudad');
             $table->string('depto');
             $table->string('pais');
-            $table->string('gradoingresar');
             $table->string('escuelaanterior')->nullable();
             $table->string('totalhermanos');
             $table->string('medico');
             $table->string('telefonoemergencia');
+            $table->unsignedBigInteger('curso_id');
+            $table->foreign('curso_id')->references('id')->on('cursos')->before('created_at');
 
             
 
