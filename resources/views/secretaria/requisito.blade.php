@@ -22,27 +22,27 @@
     <div id="chartContainer" style= "width: 500px; height: 500px;">
         <canvas id="grafica"></canvas>
     </div>
-
+   
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
     <script>
-  const ctx = document.getElementById('grafica');
-  var datosGrafica = {!! json_encode($jsonDatos) !!};
-  datosGrafica = JSON.parse(datosGrafica);
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Fotografias Alumno', 'Fotografias Padre', 'Carnet Vacunacion', 'Certificado de Conducta'],
-      datasets: [{
-        label: 'Total',
-        data: [datosGrafica.fotoa, datosGrafica.fotop, datosGrafica.carnet, datosGrafica.certi],
-        borderWidth: 4
-      }]
-    },
-    options: {
-            scales: {
-            }
-    }
-  });
-</script>
-@endSection
-
+      const ctx = document.getElementById('grafica');
+      var datosGrafica = {!! json_encode($jsonDatos) !!};
+      datosGrafica = JSON.parse(datosGrafica);
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Fotografias Alumno', 'Fotografias Padre', 'Carnet Vacunacion', 'Certificado de Conducta'],
+          datasets: [{
+            label: 'Total',
+            data: [datosGrafica.fotoa, datosGrafica.fotop, datosGrafica.carnet, datosGrafica.certi],
+            borderWidth: 4
+          }]
+        },
+        options: {
+                scales: {
+                }
+        }
+      });
+      console.log("Script de Chart.js ejecutado correctamente");
+    </script>
+@endsection
