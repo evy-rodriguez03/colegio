@@ -1,7 +1,7 @@
 <?php
-
+  
 namespace App\Http\Controllers;
-
+  
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +16,8 @@ class requisitoController extends Controller
             DB::raw('(SELECT COUNT(id) FROM alumnos WHERE certificadodeconducta IS false) AS certificado')
         )->get();
 
+
+
         $datos = [
             'fotoa' => $resultado[0]->fotografiasa,
             'fotop' => $resultado[0]->fotografiasp,
@@ -25,5 +27,5 @@ class requisitoController extends Controller
         $jsonDatos = json_encode($datos);
         return view('secretaria/requisito', ['jsonDatos' => $jsonDatos ]);
         
-       }
-}
+       }  
+}  
