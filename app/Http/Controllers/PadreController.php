@@ -93,7 +93,6 @@ class PadreController extends Controller
       public function storeconpadre(Request $request)
 {
     $rules = [
-        'tipo' => 'required',
         'primernombre' => 'required|min:3|max:12|alpha',
         'segundonombre'=> 'required|min:3|max:12|alpha',
         'primerapellido' => 'required|min:3|max:12|alpha',
