@@ -24,6 +24,8 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\PanelorientacionController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\SecretariaController;
 
 
 /*
@@ -103,7 +105,7 @@ route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])-
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
-//rutas Padres
+//RUTAS PADRES
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
@@ -124,11 +126,11 @@ route::get('/alumnos/{alumnos}', [AlumnoController::class,'show'])->name('alumno
 route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
 
-//ruta de pago a realizar 
+//RUTA PAGO A REALIZAR 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
-//rutas Retrasadas
+//RUTAS RETRASADA
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
@@ -176,6 +178,14 @@ Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('s
 Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
 //Ruta del dashboard orientacion
  Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
+
+ //Rutas reporte
+Route::get('/repindex', [ReportesController::class, 'index'])->name('reportes.index');
+route::get('/listalumno/pdf', [ReportesController::class,'pdf'])->name('repalumno.pdf');
+route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadre.pdf');
+
+//Rutas consejeria 
+route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
 
 
