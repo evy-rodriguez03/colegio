@@ -24,6 +24,8 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\PanelorientacionController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\SecretariaController;
 
 
 /*
@@ -176,6 +178,14 @@ Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('s
 Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
 //Ruta del dashboard orientacion
  Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
+
+ //Rutas reporte
+Route::get('/repindex', [ReportesController::class, 'index'])->name('reportes.index');
+route::get('/listalumno/pdf', [ReportesController::class,'pdf'])->name('repalumno.pdf');
+route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadre.pdf');
+
+//Rutas consejeria 
+route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
 
 
