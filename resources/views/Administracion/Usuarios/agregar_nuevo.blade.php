@@ -51,9 +51,9 @@ use Illuminate\Support\Str;
                   <option value="">Elegir</option>
                   <option value="1">Admin</option>
                  <option value="2">Secretaria</option>
-                 <option value="3">Orientacion</option>
-                 <option value="4">Consejeria</option>
-                 <option value="5">Tesoreria</option>
+                 <option value="3">Tesoreria</option>
+                 <option value="4">Orientación</option>
+                 <option value="5">Consejeria</option>
                </select>
             </div>
             <button type="submit" class="btn btn-sm btn-primary">Guardar cambios</button>
