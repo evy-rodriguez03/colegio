@@ -35,6 +35,7 @@ class Alumno extends Model
         'totalhermanos',
         'medico',
         'telefonoemergencia',
+        'curso_id',
        
 
     ];
