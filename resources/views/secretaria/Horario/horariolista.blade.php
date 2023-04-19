@@ -21,7 +21,7 @@
                 <table class="table align-items-center table-flush">
                     <thead>
                         <tr>
-                            <th>Jornada</th>
+                        <th>Jornada</th>
                             <th>Descripción</th>
                             <th>Hora Inicial</th>
                             <th>Hora Final</th>
@@ -43,4 +43,3 @@
     </div>
 
 @endsection
-

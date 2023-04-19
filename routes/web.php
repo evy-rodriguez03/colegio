@@ -23,6 +23,8 @@ use App\Http\Controllers\ExistenteController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ParientetransporteController;
 use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\SecretariaController;
 
 
 /*
@@ -101,7 +103,7 @@ route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])-
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
 
-//rutas Padres
+//RUTAS PADRES
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
 route::get('/padres', [PadreController::class,'index'])->name('padres.index');
 route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
@@ -122,11 +124,11 @@ route::get('/alumnos/{alumnos}', [AlumnoController::class,'show'])->name('alumno
 route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('alumnos.destroy');
 });
 
-//ruta de pago a realizar 
+//RUTA PAGO A REALIZAR 
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
  
-//rutas Retrasadas
+//RUTAS RETRASADA
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
 route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
@@ -166,10 +168,4 @@ Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horari
 Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
 Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
 Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
-Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('secciones.show');
-Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
-Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
-Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
-
-
 
