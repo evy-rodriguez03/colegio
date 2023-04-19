@@ -11,10 +11,10 @@ class requisitoController extends Controller
     public function create()
     {
         $resultado = Alumno::select(
-            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografias IS false) AS fotografiasa'),
-            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografiasdelpadre IS false) AS fotografiasp'),
-            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE carnet IS false) AS carnet'),
-            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE certificadodeconducta IS false) AS certificado')
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografias IS true) AS fotografiasa'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografiasdelpadre IS true) AS fotografiasp'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE carnet IS true) AS carnet'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE certificadodeconducta IS true) AS certificado')
         )->get();
 
         $datos = [
