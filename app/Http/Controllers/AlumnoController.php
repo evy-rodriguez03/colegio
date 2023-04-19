@@ -124,10 +124,9 @@ class AlumnoController extends Controller
 
     public function creatematricula()
     {
-        $cursos = Curso::all();
-        $listaCursos = $cursos->pluck('curso', 'id')->toArray();
+        $cursos = Curso::pluck('curso', 'id');
         $alumno = new Alumno();
-        return view('secretaria.matricula.datosalumno',compact('alumno','cursos','listaCursos'));
+        return view('secretaria.matricula.datosalumno',compact('alumno','cursos'));
     }
 
     public function storematricula(Request $request)
@@ -154,7 +153,8 @@ class AlumnoController extends Controller
             'escuelaanterior'=>'sometimes',
             'totalhermanos'=>'required|numeric',
             'medico'=>'required|min:3|max:18|string',
-            'telefonoemergencia'=>'required|min:3|numeric'
+            'telefonoemergencia'=>'required|min:3|numeric',
+            'curso_id' => 'required|exists:cursos,id',
 
   ];
   $messages = [
@@ -201,13 +201,33 @@ class AlumnoController extends Controller
   ];
   $this->validate($request,$rules,$messages);
 
+  $cursos = Curso::find($request->input('curso_id'));
 
-  $alumno = Alumno::create(
-      $request->only('primernombre','segundonombre','primerapellido','segundoapellido',
-      'numerodeidentidad','fechadenacimiento', 'alergia', 'lugardenacimiento', 'genero', 'direccion', 'numerodehermanosenicgc',
-      'fotografias','fotografiasdelpadre', 'carnet', 'certificadodeconducta','ciudad', 'depto','pais','escuelaanterior',
-      'totalhermanos','medico','telefonoemergencia')
-      );
+  $alumno = Alumno::create([
+    'primernombre' => $request->input('primernombre'),
+    'segundonombre' => $request->input('segundonombre'),
+    'primerapellido' => $request->input('primerapellido'),
+    'segundoapellido' => $request->input('segundoapellido'),
+    'numerodeidentidad' => $request->input('numerodeidentidad'),
+    'fechadenacimiento' => $request->input('fechadenacimiento'),
+    'alergia' => $request->input('alergia'),
+    'lugardenacimiento' => $request->input('lugardenacimiento'),
+    'genero' => $request->input('genero'),
+    'direccion' => $request->input('direccion'),
+    'numerodehermanosenicgc' => $request->input('numerodehermanosenicgc'),
+    'fotografias' => $request->input('fotografias'),
+    'fotografiasdelpadre' => $request->input('fotografiasdelpadre'),
+    'carnet' => $request->input('carnet'),
+    'certificadodeconducta' => $request->input('certificadodeconducta'),
+    'ciudad' => $request->input('ciudad'),
+    'depto' => $request->input('depto'),
+    'pais' => $request->input('pais'),
+    'escuelaanterior' => $request->input('escuelaanterior'),
+    'totalhermanos' => $request->input('totalhermanos'),
+    'medico' => $request->input('medico'),
+    'telefonoemergencia' => $request->input('telefonoemergencia'),
+    'curso_id' => $cursos->id,
+]);
 
       session(['alumno_id' => $alumno->id]);
       

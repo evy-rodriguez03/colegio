@@ -2,49 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class requisitoController extends Controller
 {
     public function create(){
-        return view('secretaria/requisito');
+        $resultado = Alumno::select(
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografias IS false) AS fotografiasa'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE fotografiasdelpadre IS false) AS fotografiasp'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE carnet IS false) AS carnet'),
+            DB::raw('(SELECT COUNT(id) FROM alumnos WHERE certificadodeconducta IS false) AS certificado')
+        )->get();
+
+        $datos = [
+            'fotoa' => $resultado[0]->fotografiasa,
+            'fotop' => $resultado[0]->fotografiasp,
+            'carnet' => $resultado[0]->carnet,
+            'certi' => $resultado[0]->certificado,
+        ];
+        $jsonDatos = json_encode($datos);
+        return view('secretaria/requisito', ['jsonDatos' => $jsonDatos ]);
+        
        }
-
-       public function requisitos()
-{
-    // Recopilar los datos de la base de datos
-    $datos = DB::table('alumnos')
-        ->select('fotografia', 'fotografia_padre', 'fotografia_carnet', 'certificado_conducta')
-        ->get();
-
-    // Crear un array para almacenar los datos de la gráfica
-    $graficaDatos = array(
-        'fotografia' => 0,
-        'fotografia_padre' => 0,
-        'fotografia_carnet' => 0,
-        'certificado_conducta' => 0
-    );
-
-    // Iterar sobre los datos recopilados para contar cada tipo de documento
-    foreach ($datos as $dato) {
-        $graficaDatos['fotografia'] += $dato->fotografia;
-        $graficaDatos['fotografia_padre'] += $dato->fotografia_padre;
-        $graficaDatos['fotografia_carnet'] += $dato->fotografia_carnet;
-        $graficaDatos['certificado_conducta'] += $dato->certificado_conducta;
-    }
-
-    // Pasar los datos a la vista
-    return view('secretaria.requisito', compact('graficaDatos'));
-}
-
-public function mostrarGrafica()
-{
-    // Obtener los datos de la base de datos
-    $datos = DB::table('students')
-                ->select(DB::raw('count(fotografia) as fotografia, count(fotografia_padre) as fotografia_padre, count(fotografia_carnet) as fotografia_carnet, count(certificado_conducta) as certificado_conducta'))
-                ->get();
-    
-    // Pasar los datos a la vista
-    return view('secretaria.requisito', ['graficaDatos' => $datos]);
-}
 }
