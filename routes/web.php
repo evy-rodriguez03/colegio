@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth','Admin']], function () {
 
-   
+
     /*Ruta del dashboard secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth','Admin']], function () {
     'create'])->name('dashboardsec.index');
     route::get('/tesoreria',[PaneltesoreriaController::class,'index'])->name('paneltesoreria.index');
 
-   
+
     /*rutas usuario*/
 route::get('/usuarios', [UserController::class,'index'])->name('usuarios.index');
 route::get('/usuarios/crear', [UserController::class,'create'])->name('usuarios.create');
@@ -72,16 +72,16 @@ route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('
     /*Rutas inicio y cieree de matricula */
 Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo')
 ->middleware(VerificarPeriodoMatricula::class);
- 
+
 Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
 Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
 
 
 /*Ruta del boton requisitos*/
-Route::get('/requisito', [requisitoController::class, 
+Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
 
-Route::get('/requisito', [requisitoController::class, 
+Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
 
 Route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
@@ -124,12 +124,13 @@ route::put('/alumnos/{alumnos}', [AlumnoController::class,'update'])->name('alum
 route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
 route::get('/alumnos/{alumnos}', [AlumnoController::class,'show'])->name('alumnos.show');
 route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('alumnos.destroy');
+route::post('/comprobar/matricula', [AlumnoController::class,'comprobar'])->name('comprobar.alumno');
 });
 
-//RUTA PAGO A REALIZAR 
+//RUTA PAGO A REALIZAR
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
- 
+
 //RUTAS RETRASADA
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
@@ -150,7 +151,7 @@ Route::post('/imageE', [ ImagenEController::class, 'store' ])->name('image.store
 Route::get('/imagenE', [ImagenEController::class,'index'])->name('imagenE.index');
 Route::delete('/imagenE/{id}', [ImagenEController::class,'destroy'])->name('imagenE.destroy');
 
-//RUTA DE INGRESAR ALUMNO 
+//RUTA DE INGRESAR ALUMNO
 route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
 
 //RUTA DE  ALUMNO EXISTENTE
@@ -159,7 +160,7 @@ route::get('/existente', [ExistenteController::class,'index'])->name('existente.
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
 route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
 
-//Rutas Horario de clase 
+//Rutas Horario de clase
 Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
 Route::get('/horarioc/create', [HorarioController::class, 'create'])->name('horario.create');
 Route::post('/horarioc', [HorarioController::class, 'store'])->name('horario.store');
@@ -168,7 +169,7 @@ Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('hor
 Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
 
 
-//Ruta de Seccion 
+//Ruta de Seccion
 Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
 Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
 Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
@@ -184,7 +185,7 @@ Route::get('/repindex', [ReportesController::class, 'index'])->name('reportes.in
 route::get('/listalumno/pdf', [ReportesController::class,'pdf'])->name('repalumno.pdf');
 route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadre.pdf');
 
-//Rutas consejeria 
+//Rutas consejeria
 route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
 

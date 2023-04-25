@@ -50,11 +50,11 @@
           
          </td>
          <td>
-          
-        
-          
+           
          </td>
          @endforeach
+        </tr>
+        \
       </tbody>
     </table>
   </div>

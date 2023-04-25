@@ -44,9 +44,22 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        Curso::create(
-            $request->only('curso','descripcion','niveleducativo','seccion','horario')
-            );
+        $request->validate([
+            'niveleducativo' => 'required',
+            'modalidad' => 'required',
+            'jornada' => 'required',
+            'seccion' => 'required',
+            'horario' => 'required'
+        ]);
+    
+        // Creación del nuevo registro en la base de datos
+        $curso = new Curso();
+        $curso->niveleducativo = $request->input('niveleducativo');
+        $curso->modalidad = $request->input('modalidad');
+        $curso->jornada = $request->input('jornada');
+        $curso->seccion = $request->input('seccion');
+        $curso->horario = $request->input('horario');
+        $curso->save();
 
         return redirect('/cursos');
     }
@@ -88,18 +101,18 @@ class CursoController extends Controller
         $curso = Curso::findOrFail($id);
 
         $request->validate([
-            'curso' => 'required',
+            'niveleducativo' => 'required',
+            'modalidad' => 'required',
+            'jornada' => 'required',
             'seccion' => 'required',
-            'horario' => 'required',
-            'periodo' => 'required',
-            'jornada' => 'required'
+            'horario' => 'required'
         ]);
 
-        $curso->curso = $request->input('curso');
-        $curso->seccion= $request->input('seccion');
-        $curso->horario = $request->input('horario');
-        $curso->periodo = $request->input('periodo');
-        $curso->jornada = $request->input('jornada');
+        $curso->curso = $request->input('niveleducativo');
+        $curso->seccion= $request->input('modalidad');
+        $curso->horario = $request->input('jornada');
+        $curso->periodo = $request->input('seccion');
+        $curso->jornada = $request->input('horario');
 
         $curso->save();
 

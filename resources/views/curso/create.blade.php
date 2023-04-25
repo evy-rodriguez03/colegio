@@ -30,21 +30,55 @@
         @csrf
         <div class="form-row">
           <div class="col-md-4 mb-3">
-              <label for="curso">Nombre del Grado/Curso:</label>
-              <input type="text" class="form-control" name="curso" placeholder="Primer Grado" required value="{{ old('curso') }}">
-              <div class="valid-feedback"></div>
-          </div>
+              <label for="niveleducativo"> Nivel Educativo:</label>
+              <select class="form-control" name="niveleducativo" required value="{{ old('niveleducativo') }}">
+              <option value="">Seleccione una opción</option>
+          <optgroup label="Prebásica">
+              <option value="prekinder">Pre-kinder</option>
+              <option value="kinder">Kinder</option>
+              <option value="preparatoria">Preparatoria</option>
+          </optgroup>
+          <optgroup label="Básica">
+            <option value="primero">1º Grado</option>
+            <option value="segundo">2º Grado</option>
+            <option value="tercero">3º Grado</option>
+            <option value="cuarto">4º Grado</option>
+            <option value="quinto">5º Grado</option>
+            <option value="sexto">6º Grado</option>
+            <option value="septimo">7º Grado</option>
+            <option value="octavo">8º Grado</option>
+            <option value="noveno">9º Grado</option>
+        </optgroup>
+        <optgroup label="Secundaria">
+            <option value="decimo">10º Medio</option>
+            <option value="undecimo">11º Medio</option>
+            
+        </optgroup>
+    </select>
+    <div class="valid-feedback">Looks good!</div>
+</div>
+
           <div class="col-md-4 mb-3">
-              <label for="descripcion">Descripción</label>
-              <input type="text" class="form-control" name="descripcion" placeholder="Primer año donde se ubican los niños de 6 a 8 años." required value="{{ old('descripcion') }}">
+              <label for="modalidad">Modalidad</label>
+              <select type="text" id="modalidad" name="modalidad" class="form-control" required value="{{ old('modalidad') }}">
+              <option value="">Elegir</option>
+              <option value="matutina">Bilingue</option>
+              <option value="extendida">Español</option>
+          </select>
               <div class="valid-feedback">Looks good!</div>
           </div>
+
+
           <div class="col-md-4 mb-3">
-              <label for="niveleducativo">Nivel Educativo</label>
-              <input type="text" class="form-control" name="niveleducativo" placeholder="Primaria" required value="{{ old('niveleducativo') }}">
-              <div class="valid-feedback">Looks good!</div>
+              <label for="jornada">Jornada</label>
+              <select type="text" id="jornada" name="jornada" class="form-control" required value="{{ old('jornada') }}">
+              <option value="">Elegir</option>
+              <option value="matutina">Jornada Matutina</option>
+              <option value="extendida">Jornada Extendida</option>
+         </select>
           </div>
       </div>
+
       <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="seccion">Sección</label>
@@ -57,8 +91,6 @@
             <div class="valid-feedback">Looks good!</div>
         </div>
     </div>
-      
-      
         
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
                 <a href="{{route('cursos.index')}}" class="btn btn-lg btn-primary">Cancelar</a>
