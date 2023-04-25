@@ -145,6 +145,14 @@ class UserController extends Controller
              
              return redirect('/usuarios')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
+    public function habilitar($id)
+    {
+        $usuario = User::find($id);
+        $usuario->activo = True;
+        $usuario->save();
+        return redirect()->back()->with('success', 'El usuario ha sido deshabilitado correctamente.');
+    }
+    
 
     public function deshabilitar($id)
 {

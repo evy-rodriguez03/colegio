@@ -50,14 +50,21 @@
             {{$usuario->getRoleNames()->first()}}
            </td>
            <td>
-            
+            @if ($usuario->activo)
             <form action="{{url('/usuarios/'.$usuario->id.'/deshabilitar')}}" method="POST" class="formulario-eliminar">
               @csrf
               @method('PUT')
               <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
               <button type="submit" class="btn btn-sm btn-danger">Deshabilitar</button>
             </form>
-            
+            @else
+            <form action="{{ route('usuarios.habilitar', $usuario->id) }}" method="POST">
+              @csrf
+              @method('PUT')
+              <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+              <button type="submit" class="btn btn-sm btn-success">Habilitar</button>
+          </form>
+          @endif
            </td>
            @endforeach
         </tbody>
