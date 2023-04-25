@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Datos Encargado</h1>
             </div>
             <div class="col text-right">
-            <a href="{{route('datosmadre.create')}}" class="btn btn-lg btn-success">
+            <a href="#" onclick="window.history.back();" class="btn btn-lg btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>
@@ -35,7 +35,7 @@
             <label for="primernombre">Primer Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="primernombre" name="primernombre" class="form-control" required value="{{old('primernombre')}}"
+            <input type="text" id="primernombre" name="primernombre" class="form-control" required value="{{old('primernombre') }}"
             placeholder="Ingrese el primer nombre"></input>
         </div>
 
