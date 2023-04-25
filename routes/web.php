@@ -68,6 +68,7 @@ route::get('/usuarios/{usuarios}/edit', [UserController::class,'edit'])->name('u
 route::post('/usuarios', [UserController::class,'sendData']);
 route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usuarios.update');
 Route::put('/usuarios/{usuarios}/deshabilitar', [UserController::class,'deshabilitar'])->name('usuarios.deshabilitar');
+Route::post('/usuarios/{usuario}/habilitar', [UserController::class,'habilitar'])->name('usuarios.habilitar');
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
     /*Rutas inicio y cieree de matricula */
