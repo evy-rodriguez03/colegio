@@ -86,10 +86,10 @@
             <div class="valid-feedback"></div>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="horario">horario</label>
-            <input type="text" class="form-control" name="horario" placeholder="13:00 a 13:50" required value="{{ old('descripcion') }}">
-            <div class="valid-feedback">Looks good!</div>
-        </div>
+    <label for="horario">Horario</label>
+    <input type="text" class="form-control" name="horario" pattern="[\d\s:-]+" placeholder="13:00 a 13:50" required value="{{ old('horario') }}">
+    <div class="valid-feedback">Looks good!</div>
+</div>
     </div>
         
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>

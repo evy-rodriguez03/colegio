@@ -138,7 +138,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="direccion">Dirección de residencia del alumno(a)</label>
-                    <input type="text" class="form-control" pattern="[A-Za-z\s\.]+" name="direccion" value="{{ old('direccion')?old('direccion'):(isset($alumno->direccion)?$alumno->direccion:'') }}" placeholder="Dirección" maxlength="50">
+                    <input type="text" class="form-control" pattern="[A-Za-z\s\.,]+" name="direccion" value="{{ old('direccion')?old('direccion'):(isset($alumno->direccion)?$alumno->direccion:'') }}" placeholder="Dirección" maxlength="50">
                 </div>
             </div>
 
