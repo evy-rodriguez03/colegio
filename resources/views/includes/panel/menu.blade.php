@@ -17,24 +17,7 @@
         <i class="fas fa-user-tie text-orange"></i> Padres
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link " href="{{route('cursos.index')}}">
-        <i class="fas fa-chalkboard text-purple"></i> Grado/Curso
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link " href="{{route('secciones.index')}}">
-        <i class="fas fa-edit text-pink"></i> Sección
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link " href="{{route('horario.index')}}">
-        <i class="fas fa-calendar-alt text-blue"></i> Horario
-      </a>
-    </li>
-
+    
     <li class="nav-item">
       <a class="nav-link " href="{{route('dashboardsec.index')}}">
         <i class="fas fa-chalkboard-teacher text-yellow"></i> Secretaria

@@ -27,11 +27,11 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">id</th>
-            <th scope="col">Curso</th>
-            <th scope="col">Seccion</th>
-            <th scope="col">Horario</th>
-            <th scope="col">Periodo</th>
+            <th scope="col">Grado</th>
+            <th scope="col">Modalidad</th>
             <th scope="col">Jornada</th>
+            <th scope="col">seccion</th>
+            <th scope="col">horario</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -40,11 +40,11 @@
         @foreach ($cursos as $curso)
         <tr>
              <td>{{$curso->id}}</td>
-             <td>{{$curso->curso}}</td>
-             <td>{{$curso->seccion}}</td>
-             <td>{{$curso->horario}}</td>
-              <td>{{$curso->periodo}}</td>
-              <td>{{$curso->jornada}}</td>
+             <td>{{$curso->niveleducativo}}</td>
+             <td>{{$curso->modalidad}}</td>
+             <td>{{$curso->jornada}}</td>
+              <td>{{$curso->seccion}}</td>
+              <td>{{$curso->horario}}</td>
              <td> 
               <form action="{{route ('cursos.destroy',$curso->id)}}" method="POST">
                 <a href= "{{route ('cursos.edit',$curso->id)}}"class="btn btn-sm btn-primary">Editar</a>
