@@ -147,7 +147,7 @@ class AlumnoController extends Controller
 
     public function creatematricula()
     {
-        $cursos = Curso::pluck('curso', 'id');
+        $cursos = Curso::pluck('niveleducativo', 'id');
         $value = Cache::get('alumno_id');
 
         if ($value) {

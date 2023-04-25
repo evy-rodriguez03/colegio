@@ -16,6 +16,7 @@ class Curso extends Model
        'niveleducativo',
        'modalidad',
        'jornada',
+       'seccion',
        'horario'
 
     ];
