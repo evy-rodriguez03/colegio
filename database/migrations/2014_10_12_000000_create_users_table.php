@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('imagen')->nullable();
             $table->string('role');
+            $table->boolean('activo')->default(true);
         });
      
         

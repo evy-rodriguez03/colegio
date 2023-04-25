@@ -51,11 +51,11 @@
            </td>
            <td>
             
-            <form action="{{url('/usuarios/'.$usuario->id)}}" method="POST" class="formulario-eliminar">
+            <form action="{{url('/usuarios/'.$usuario->id.'/deshabilitar')}}" method="POST" class="formulario-eliminar">
               @csrf
-              @method('DELETE')
+              @method('PUT')
               <a href="{{url('/usuarios/'.$usuario->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+              <button type="submit" class="btn btn-sm btn-danger">Deshabilitar</button>
             </form>
             
            </td>
@@ -90,12 +90,12 @@
 
   Swal.fire({
   title: '¿Esta seguro?',
-  text: "¡Si usted borra este registro no podra recuperarlo!",
+  text: "¡Si usted deshabilita este usuario, podra volver a habilitarlo después.!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, borralo'
+  confirmButtonText: 'Si, deshabilitalo'
 }).then((result) => {
   if (result.isConfirmed) {
   

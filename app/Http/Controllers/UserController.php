@@ -146,12 +146,16 @@ class UserController extends Controller
              return redirect('/usuarios')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function deshabilitar($id)
+{
+    $usuario = User::find($id);
+    $usuario->activo = false;
+    $usuario->save();
+    return redirect()->back()->with('success', 'El usuario ha sido deshabilitado correctamente.');
+}
+
+
+  
     public function destroy($id)
     {
         $usuarios = User::findOrfail($id);

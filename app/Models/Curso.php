@@ -13,11 +13,10 @@ class Curso extends Model
     protected $table = "cursos";
 
     protected $fillable = [
-        'curso',
-        'descripcion',
-        'niveleducativo',
-        'seccion',
-        'horario'
+       'niveleducativo',
+       'modalidad',
+       'jornada',
+       'horario'
 
     ];
 
