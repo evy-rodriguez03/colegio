@@ -171,7 +171,7 @@ class AlumnoController extends Controller
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $value ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
-            'tiene_alergia' => 'sometimes',
+            'tiene_alergia' => 'required',
             'genero' => 'required|min:1|string',
             'direccion' => 'required|string',
             'numerodehermanosenicgc' => 'required|numeric',
@@ -213,6 +213,7 @@ class AlumnoController extends Controller
             'numerodeidentidad.min' => 'El minimo de caracteres del número de identidad es de 13 digitos',
             'numerodeidentidad.numeric' => 'El campo número de identidad solo permite números',
             'numerodeidentidad.unique' => 'El campo número de identidad debe ser unico',
+            'tiene_alergia.required'=>'Debe seleccionar si tiene una alergia o no',
 
             'fechadenacimiento.required' => 'La fecha de nacimiento es necesaria.',
             'fechadenacimiento.date' => 'La fecha es necesaria',
