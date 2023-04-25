@@ -40,7 +40,7 @@ class CreateAlumnosTable extends Migration
             $table->string('medico');
             $table->string('telefonoemergencia');
             $table->unsignedBigInteger('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos')->before('created_at');
+            $table->foreign('curso_id')->references('id')->on('cursos');
 
             
 
