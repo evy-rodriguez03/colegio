@@ -68,7 +68,7 @@
             <label for="numerodeidentidad">Número de Identidad:</label>
         </div>
         <div class="col-10 mt-3">
-            <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required maxlength="12" value="{{old('numerodeidentidad')}}"
+            <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required maxlength="13" value="{{old('numerodeidentidad')}}"
             placeholder="Ingrese el número de identidad"></input>
         </div>
 
@@ -84,7 +84,7 @@
             <label for="lugardetrabajo">Lugar de Trabajo:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="lugardetrabajo" name="lugardetrabajo" class="form-control" required  maxlength="20" value="{{old('lugardetrabajo')}}"
+            <input type="text" id="lugardetrabajo" name="lugardetrabajo" pattern="[A-Za-z\s\.,]+" class="form-control" required  maxlength="50" value="{{old('lugardetrabajo')}}"
             placeholder="Ingrese el lugar de trabajo"></input>
         </div>
 
@@ -92,7 +92,7 @@
             <label for="oficio">Profesion u Oficio:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="oficio" name="oficio" class="form-control" required maxlength="20" value="{{old('oficio')}}"
+            <input type="text" id="oficio" name="oficio" pattern="[A-Za-z\s\.,]+" class="form-control" required maxlength="20" value="{{old('oficio')}}"
             placeholder="Ingrese el oficio"></input>
         </div>
 

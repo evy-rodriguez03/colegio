@@ -83,7 +83,7 @@
             <label for="lugardetrabajo">Lugar de Trabajo:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="lugardetrabajo" name="lugardetrabajo" class="form-control" required value="{{old('lugardetrabajo')}}"
+            <input type="text" id="lugardetrabajo" name="lugardetrabajo" pattern="[A-Za-z\s\.,]+" class="form-control" required value="{{old('lugardetrabajo')}}"
             placeholder="Ingrese el lugar de trabajo"></input>
         </div>
 
@@ -91,7 +91,7 @@
             <label for="oficio"> Profesion u Oficio:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="oficio" name="oficio" class="form-control" required value="{{old('oficio')}}"
+            <input type="text" id="oficio" name="oficio" pattern="[A-Za-z\s\.,]+" class="form-control" required value="{{old('oficio')}}"
             placeholder="Ingrese el oficio"></input>
         </div>
 
