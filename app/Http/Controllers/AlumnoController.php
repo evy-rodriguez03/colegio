@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
 use App\Models\Curso;
+use App\Models\Proceso;
 use Illuminate\Support\Facades\Cache;
 
 class AlumnoController extends Controller
@@ -145,15 +146,16 @@ class AlumnoController extends Controller
         return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
-    public function creatematricula()
+    public function creatematricula($id = 0)
     {
         $cursos = Curso::pluck('niveleducativo', 'id');
-        $value = Cache::get('alumno_id');
 
-        if ($value) {
-            $alumno = Alumno::find($value);
+        if ($id != 0) {
+            Cache::put('alumno_id',$id);
+            $alumno = Alumno::find($id);
         } else {
             $alumno = new Alumno();
+            Cache::forget('alumno_id');
         }
 
         return view('secretaria.matricula.datosalumno', compact('alumno', 'cursos'));
@@ -163,6 +165,7 @@ class AlumnoController extends Controller
     {
 
         $value = Cache::get('alumno_id');
+
         $rules = [
             'primernombre' => 'required|min:3|max:12|string',
             'segundonombre' => 'required|min:3|max:12|string',
@@ -236,7 +239,7 @@ class AlumnoController extends Controller
         ];
         $this->validate($request, $rules, $messages);
 
-
+        $id = 0;
 
         if ($value) {
             $alumno = Alumno::findOrFail($value);
@@ -266,7 +269,7 @@ class AlumnoController extends Controller
                 'telefonoemergencia',
                 'curso_id'
             ));
-
+            $id = $value;
         } else {
             $cursos = Curso::find($request->input('curso_id'));
 
@@ -299,24 +302,16 @@ class AlumnoController extends Controller
 
             session(['alumno_id' => $alumno->id]);
             Cache::put('alumno_id', $alumno->id);
+            $id =  $alumno->id;
         }
 
-        Cache::put('padre', $request->input('padre'));
-        Cache::put('madre', $request->input('madre'));
-        Cache::put('encargado', $request->input('encargado'));
 
-        if ($request->input('padre') == '1') {
-            return redirect()->route('datospadre.create');
-        }
-        if ($request->input('madre') == '2') {
-            return redirect('/alumnomadre');
-        }
-        if ($request->input('encargado') == '3') {
-            return redirect('/alumnoencargado');
-        }
+        $estado = new Proceso();
+        $estado->id = $id;
+        $estado->matriculado = 'no';
+        $estado->save();
 
-        return redirect()->route('creatematricula')->with('success','Se enecesita registrar algun encargado');
-
+        return redirect()->route('datospadre.create');
 
     }
 
@@ -360,7 +355,7 @@ class AlumnoController extends Controller
             'telefonodeencargado' => 'required|min:8|numeric',
             'primerapellido' => 'required|min:3|string',
             'segundoapellido' => 'sometimes|min:3|string',
-            'numerodeidentidad' => 'required|min:13|numeric',
+            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $id ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'required|min:2|string',
             'lugardenacimiento' => 'required|min:2|string',
@@ -434,7 +429,7 @@ class AlumnoController extends Controller
 
        if (isset($alumnos[0]->id)) {
         Cache::put('alumno_id', $alumnos[0]->id);
-        return redirect()->route('creatematricula')->with('success', '¡Matricula Existente!');
+        return redirect()->route('creatematricula',['id'=>$alumnos[0]->id])->with('success', '¡Matricula Existente!');
        }else{
         Cache::forget('alumno_id');
         return redirect()->route('creatematricula')->with('success', '¡Alumno no matriculado!')->with('identidad', $request->input('identidad'));
