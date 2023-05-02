@@ -23,7 +23,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/cursototal.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
+          <center><a href="#" class="btn btn-lg btn-info">Curso Totales</a></center>
         </div>
       </div>
     </div>
