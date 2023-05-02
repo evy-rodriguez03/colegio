@@ -6,6 +6,7 @@ use App\Models\Padre;
 use Barryvdh\DomPDF\Facade\pdf;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\Proceso;
 use Illuminate\Support\Facades\Cache;
 
 class PadreController extends Controller
@@ -151,28 +152,12 @@ class PadreController extends Controller
 
         // Obtener el ID del alumno
         $alumno_id = Cache::get('alumno_id');
-        $madrev = Cache::get('madre');
-        $padrev = Cache::get('padre');
-        $encargadov = Cache::get('encargado');
-
-
-        if($madrev){
-            return redirect('/alumnomadre');
-        }
-        if($encargadov){
-            return redirect('/alumnoencargado');
-        }
 
           // Asociar el padre al alumno
         $alumno = Alumno::find($alumno_id);
         $alumno->padres()->attach($padre->id);
-        Cache::forget('alumno_id');
-        Cache::forget('madre');
-        Cache::forget('padre');
-        Cache::forget('encargado');
 
-
-        return redirect('/padres');
+        return redirect()->route('datosmadre.create');
     }
 
 
@@ -239,22 +224,12 @@ class PadreController extends Controller
 
         // Obtener el ID del alumno
         $alumno_id = Cache::get('alumno_id');
-        $madrev = Cache::get('madre');
-        $padrev = Cache::get('padre');
-        $encargadov = Cache::get('encargado');
-
-        if($encargadov){
-            return redirect('/alumnoencargado');
-        }
 
         // Asociar el padre al alumno
         $alumno = Alumno::find($alumno_id);
         $alumno->padres()->attach($padre->id);
-        Cache::forget('alumno_id');
-        Cache::forget('madre');
-        Cache::forget('padre');
-        Cache::forget('encargado');
-        return redirect('/padres');
+
+        return redirect()->route('datosencargado.create');
     }
 
     public function createdatosencargado()
@@ -324,13 +299,27 @@ class PadreController extends Controller
         // Asociar el padre al alumno
         $alumno = Alumno::find($alumno_id);
         $alumno->padres()->attach($padre->id);
+
+        $estado = Proceso::findOrFail($alumno_id);
+        $estado->delete();
+
         Cache::forget('alumno_id');
-        Cache::forget('madre');
-        Cache::forget('padre');
-        Cache::forget('encargado');
-        return redirect('/padres');
+
+        return redirect()->route('principal.create');
     }
 
+
+    public function terminar_matricula()
+    {
+        $alumno_id = Cache::get('alumno_id');
+
+        $estado = Proceso::findOrFail($alumno_id);
+        $estado->delete();
+
+        Cache::forget('alumno_id');
+
+        return redirect()->route('principal.create');
+    }
 
 
     /**
