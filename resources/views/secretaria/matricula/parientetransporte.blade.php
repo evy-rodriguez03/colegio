@@ -24,7 +24,7 @@
       @endif
     <!-- Formulario para crear -->
     <div class="card-body">
-              <form method="=get"> 
+              <form method="=get">
               <div class="input-group mb-3">
 </div>
 <div class="form-row">

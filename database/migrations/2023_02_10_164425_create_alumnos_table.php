@@ -19,7 +19,7 @@ class CreateAlumnosTable extends Migration
             $table->string('segundonombre');
             $table->string('primerapellido');
             $table->string('segundoapellido');
-            $table->string('numerodeidentidad');
+            $table->string('numerodeidentidad')->unique();;
             $table->date('fechadenacimiento');
             $table->string('genero');
             $table->string('direccion');
