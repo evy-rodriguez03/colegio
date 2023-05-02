@@ -11,6 +11,7 @@
             color: black; }
             table {
         border-collapse: collapse;
+        margin: auto;
     }
     td, th {
         border: 1px solid black;
@@ -41,7 +42,7 @@
         <tbody>
         @foreach ($alumnos as $index => $alumno)
       <tr>
-        <td>{{ $index + 1 }}</td>
+        <td>{{ $index + 0 }}</td>
         <td>{{ $alumno->primernombre }} {{ $alumno->segundonombre }} {{ $alumno->primerapellido }} {{ $alumno->segundoapellido }}</td>
         <td>
           @foreach($padres as $padre)

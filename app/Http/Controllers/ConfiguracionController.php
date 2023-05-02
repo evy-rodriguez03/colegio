@@ -16,14 +16,20 @@ class ConfiguracionController extends Controller
         return view('configurar.index');
     }
 
+    public function indexJornada()
+    {
+        return view('configurar.jornada');
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createJornada()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +40,20 @@ class ConfiguracionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos enviados por el formulario
+        $validatedData = $request->validate([
+            'seccion' => 'required',
+            'descripcion' => 'required'
+        ]);
+    
+        // Crear una nueva instancia del modelo Jornada con los datos recibidos del formulario
+        $jornada = new Jornada();
+        $jornada->seccion = $request->seccion;
+        $jornada->descripcion = $request->descripcion;
+        $jornada->save();
+    
+        // Redirigir al usuario a la página de inicio con un mensaje de éxito
+        return redirect('/')->with('success', 'La jornada ha sido agregada exitosamente.');
     }
 
     /**

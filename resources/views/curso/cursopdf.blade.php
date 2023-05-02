@@ -17,6 +17,13 @@
         padding: 5px;
     }
 
+    body {
+  text-align: center;
+   }
+   table {
+  margin: auto;
+}
+
     </style>
 </head>
 <body>
@@ -28,9 +35,9 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">Curso</th>
-            <th scope="col">Seccion</th>
+            <th scope="col">Sección</th>
             <th scope="col">Horario</th>
-            <th scope="col">Opciones</th>
+            
           </tr>
         </thead>
 
