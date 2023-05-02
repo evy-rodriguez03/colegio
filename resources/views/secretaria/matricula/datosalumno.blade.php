@@ -10,7 +10,7 @@
                 <h3 class="mb-0">Agregar Nuevo Alumno</h3>
             </div>
             <div class="col text-right">
-                <a href="{{route('alumnos.index')}}" class="btn btn-lg btn-success">
+                <a href="{{route('principal.create')}}" class="btn btn-lg btn-success">
                     <i class="fas fa-angle-left"></i>
                     Regresar</a>
             </div>
@@ -252,24 +252,6 @@
                     Certificado de conducta
                 </label>
 
-            </div>
-
-            <div class="checkbox-group">
-                <hr class="mb-2">
-                <h4 class="mb-0">Opciones de registro de encargados del alumno.</h4>
-                <hr class="mb-2">
-                <label>
-                    <input type="checkbox" name="padre" value="1">
-                    Padre
-                </label>
-                <label>
-                    <input type="checkbox" name="madre" value="2">
-                    Madre
-                </label>
-                <label>
-                    <input type="checkbox" name="encargado" value="3">
-                    Encargado
-                </label>
             </div>
 
             <hr class="mb-2">
