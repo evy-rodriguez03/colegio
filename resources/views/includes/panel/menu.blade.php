@@ -39,6 +39,12 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a href="{{Route('configuracion.index')}}" class="nav-link " href="./examples/tables.html">
+          <i class="fas fa-cogs text-blue"></i> Configuración
+        </a>
+      </li>
+
     <li class="nav-item">
       <a href="#" class="nav-link " onclick="event.preventDefault(); document.getElementById('formlogout').submit();">
         <i class="fas fa-sign-in-alt"></i> Cerrar sesion

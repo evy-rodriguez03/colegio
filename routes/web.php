@@ -26,6 +26,7 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\PanelorientacionController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
+use App\Http\Controllers\ConfiguracionController;
 
 
 /*
@@ -94,7 +95,7 @@ Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('in
 route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
-Route::get('/creatematricula',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
+Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
@@ -106,6 +107,11 @@ route::post('/alumnmadre', [PadreController::class,'storeconmadre'])->name('subm
 route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])->name('datosencargado.create');
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
+
+
+route::get('/terminar_matricula', [PadreController::class,'terminar_matricula'])->name('terminar_matricula');
+
+
 
 //RUTAS PADRES
 route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
@@ -191,4 +197,6 @@ route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadr
 route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
 
-
+//Rutas consfiguracion
+route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
+Route::get('/jornada', [ConfiguracionController::class, 'create'])->name('jornada.create');
