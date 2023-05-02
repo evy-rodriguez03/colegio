@@ -198,5 +198,7 @@ route::get('/consjindex', [SecretariaController::class,'index'])->name('consejer
 
 
 //Rutas consfiguracion
-route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
-Route::get('/jornada', [ConfiguracionController::class, 'create'])->name('jornada.create');
+Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
+Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
+Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
+Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');

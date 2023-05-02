@@ -18,15 +18,8 @@
     <!-- Formulario para crear -->
     <div class="card-body">
 
-      @if ($errors->any())
-          @foreach ($errors->all() as $error)
-          <div class="alert alert-danger" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Porfavor!</strong> {{$error}}
-        </div>
-          @endforeach
-      @endif
-      <form action="{{ route('cursos.index') }}" method="POST">
+
+      <form action="{{ route('jornadas.store') }}" method="POST">
         @csrf
 
       <div class="form-row">
@@ -42,7 +35,7 @@
 </div>
     </div>
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
-                <a href="{{route('cursos.index')}}" class="btn btn-lg btn-primary">Cancelar</a>
+                <a href="{{route('jornada.index')}}" class="btn btn-lg btn-primary">Cancelar</a>
           </form>
 
     </div>

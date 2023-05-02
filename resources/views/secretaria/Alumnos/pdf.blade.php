@@ -10,7 +10,8 @@
         .h1{
             color: black; }
             table {
-        border-collapse: collapse;
+           margin: auto;
+           border-collapse: collapse;
     }
     td, th {
         border: 1px solid black;

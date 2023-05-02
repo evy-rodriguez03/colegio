@@ -25,7 +25,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/jornada.png') }}" class="card-img-top" alt="..." style="width:150px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{route ('periodo')}}" class="btn btn-lg btn-info">Jornada</a></center>
+          <center><a href="{{route ('jornada.index')}}" class="btn btn-lg btn-info">Jornada</a></center>
         </div>
       </div>
     </div>
