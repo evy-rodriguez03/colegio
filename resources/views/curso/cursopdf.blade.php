@@ -35,7 +35,7 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">Curso</th>
-            <th scope="col">Sección</th>
+            <th scope="col">Nivel Educativo</th>
             <th scope="col">Horario</th>
             
           </tr>
@@ -45,7 +45,7 @@
         @foreach ($cursos as $curso)
         <tr>
              <td>{{$curso->id}}</td>
-             <td>{{$curso->curso}}</td>
+             <td>{{$curso->niveleducativo}}</td>
              <td>{{$curso->seccion}}</td>
              <td>{{$curso->horario}}</td>
       
