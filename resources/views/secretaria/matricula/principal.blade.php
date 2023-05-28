@@ -47,9 +47,18 @@
                         {{$alumno->numerodeidentidad}}
                     </td>
                     <td>
-
+                        @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
+                        {{$alumno->cursos[0]->niveleducativo}}
+                    @endif
                     </td>
                     <td>
+                        <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{url('/alumnos/'.$alumno->id)}}" class="btn btn-sm btn-info">Ver</a>
+                            <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                          </form>
                         @php
                             $proce = App\Models\Proceso::where('id','=',$alumno->id)->get();
                         @endphp
@@ -71,55 +80,60 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @if (session('eliminar') == 'ok')
-<script>
-    Swal.fire(
-        '¡Borrado!'
-        , 'El usuario ha sido borrado exitosamente.'
-        , 'Éxito'
+        <script> 
+        Swal.fire(
+      '¡Borrado!',
+      'El Alumno ha sido borrado exitosamente.',
+      'Éxito'
     )
+    
+        </script>
 
-</script>
-
-
+  
 @endif
 
 <script>
-    $('.formulario-eliminar').submit(function(e) {
-        e.preventDefault();
+
+  $('.form-eliminaralumno').submit(function(e){
+  e.preventDefault();
 
 
-        Swal.fire({
-            title: '¿Esta seguro?'
-            , text: "¡Si usted borra este registro no podra recuperarlo!"
-            , icon: 'warning'
-            , showCancelButton: true
-            , confirmButtonColor: '#3085d6'
-            , cancelButtonColor: '#d33'
-            , confirmButtonText: 'Si, borralo'
-        }).then((result) => {
-            if (result.isConfirmed) {
+  Swal.fire({
+  title: '¿Esta seguro?',
+  text: "¡Si usted borra este registro no podra recuperarlo!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, borralo'
+}).then((result) => {
+  if (result.isConfirmed) {
+  
+    this.submit();
+  }
+})
+  });
 
-                this.submit();
-            }
-        })
-    });
-
+  
 </script>
 
 @if(session('success'))
-<script>
+  <script>
     Swal.fire({
-        icon: 'success'
-        , title: '¡Perfecto!'
-        , text: '{{ session('
-        success ') }}'
-        , showConfirmButton: false
-        , timer: 3000
+      icon: 'success',
+      title: '¡Perfecto!',
+      text: '{{ session('success') }}',
+      showConfirmButton: false,
+      timer: 3000
     })
+  </script>
+  @endif
 
-</script>
-@endif
+
 
 
 @endsection

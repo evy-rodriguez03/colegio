@@ -27,7 +27,8 @@ use App\Http\Controllers\PanelorientacionController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\ConfiguracionController;
-
+use App\Http\Controllers\formularioescolarController;
+use App\Http\Controllers\FirmacontratotesoreriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -202,3 +203,10 @@ Route::get('/index', [ConfiguracionController::class,'index'])->name('configurac
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
+
+//RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolarindex.index');
+
+//contrato tesoreria
+Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
+route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
