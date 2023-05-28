@@ -64,12 +64,16 @@
             <td>
               {{$alumno->telefonodeencargado}}
             </td>
-           <td>
-            <!-- grado -->
-           </td>
-           <td>
-            <!-- sección -->
-           </td>
+            <td>
+              @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
+                  {{$alumno->cursos[0]->niveleducativo}}
+              @endif
+          </td>
+          <td>
+            @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
+                {{$alumno->cursos[0]->seccion}}
+            @endif
+        </td>
            <td>
             
             <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
