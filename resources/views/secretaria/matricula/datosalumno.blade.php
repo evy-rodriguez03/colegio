@@ -120,7 +120,7 @@
             </div>
             <div class="form-row">
                 <div class="col-md-4 mb-3">
-                    <label for="curso_id">Curso</label>
+                    <label for="curso_id">Grado</label>
                     <select class="form-control" id="curso_id" name="curso_id">
                         <option value="">Seleccionar un curso</option>
                         @foreach ($cursos as $id => $curso)

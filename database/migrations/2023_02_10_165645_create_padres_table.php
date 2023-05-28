@@ -20,7 +20,7 @@ class CreatePadresTable extends Migration
             $table->string('segundonombre');
             $table->string('primerapellido');
             $table->string('segundoapellido');
-            $table->string('numerodeidentidad');
+            $table->string('numerodeidentidad')->unique();;
             $table->string('telefonopersonal');
             $table->string('lugardetrabajo');
             $table->string('oficio');

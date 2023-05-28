@@ -112,7 +112,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
-
+        <a class="btn btn-success" href="{{ route('terminar_matricula') }}">Terminar Matricula</a>
     </form>
     </div>
 </div>

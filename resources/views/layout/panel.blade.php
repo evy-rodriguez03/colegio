@@ -51,7 +51,7 @@
   <link href=" {{asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}} " rel="stylesheet" />
   <!-- CSS Files -->
   <link href=" {{asset('css/argon-dashboard.css?v=1.1.2')}} " rel="stylesheet" />
-  <link rel="stylesheet" href="nuevo-estilo.css">
+  <link rel="stylesheet" href=" {{asset('css/nuevo-estilo.css')}} ">
 </head>
 
 <body class="">
