@@ -11,6 +11,7 @@
             color: black; }
             table {
         border-collapse: collapse;
+        margin: auto;
     }
     td, th {
         border: 1px solid black;

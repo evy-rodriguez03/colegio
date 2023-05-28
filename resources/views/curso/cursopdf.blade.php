@@ -17,6 +17,13 @@
         padding: 5px;
     }
 
+    body {
+  text-align: center;
+   }
+   table {
+  margin: auto;
+}
+
     </style>
 </head>
 <body>
@@ -28,9 +35,9 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">Curso</th>
-            <th scope="col">Seccion</th>
+            <th scope="col">Nivel Educativo</th>
             <th scope="col">Horario</th>
-            <th scope="col">Opciones</th>
+            
           </tr>
         </thead>
 
@@ -38,7 +45,7 @@
         @foreach ($cursos as $curso)
         <tr>
              <td>{{$curso->id}}</td>
-             <td>{{$curso->curso}}</td>
+             <td>{{$curso->niveleducativo}}</td>
              <td>{{$curso->seccion}}</td>
              <td>{{$curso->horario}}</td>
       
