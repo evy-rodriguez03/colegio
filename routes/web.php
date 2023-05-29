@@ -26,7 +26,9 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\PanelorientacionController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
-
+use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\formularioescolarController;
+use App\Http\Controllers\FirmacontratotesoreriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +124,8 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
+
+
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
@@ -195,3 +199,17 @@ route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadr
 //Rutas consejeria
 route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
+
+//Rutas consfiguracion
+Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
+Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
+Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
+Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
+
+//RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
+
+
+//contrato tesoreria
+Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
+route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
