@@ -34,11 +34,6 @@
                 <div class="valid-feedback"></div>
               </div>
             
-        <div class="col-md-5 mb-3">
-                <label for="usuario"> Usuario</label>
-                <input type="text" name="usuario" class="form-control" >
-                <div class="valid-feedback"></div>
-              </div>
 
       <div class="col-md-5 mb-3">
             <label for="fechaCierre">Fecha de Cierre</label>

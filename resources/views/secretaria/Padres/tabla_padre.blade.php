@@ -40,7 +40,7 @@
               
           <tr>
             <th scope="row">
-             {{$index + 1}}
+             {{$index + 0}}
             </th>
             <td>
               {{$padre->primernombre}} {{$padre->primerapellido}}
