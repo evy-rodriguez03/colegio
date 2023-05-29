@@ -6,7 +6,7 @@
       <div class="card">
           <center><img src="{{asset('img/brand/firma_contrato.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
           <div class="card-body">
-              <center><a href="{{Route('dashboard.index')}}" class="btn btn-lg btn-info">Firma Contrato</a></center>
+              <center><a href="{{Route('firmacontratotesoreria.create')}}" class="btn btn-lg btn-info">Firma Contrato</a></center>
           </div>
       </div>
   </div>
