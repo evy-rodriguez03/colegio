@@ -213,46 +213,52 @@
             </div>
 
 
-
+            <div>
+                <hr class="mb-2">
+                <h4 class="mb-0">Si el alumno entregó estos documentos, puede marcarlos, sino déjelos en blanco.</h4>
+                <hr class="mb-2">
+            </div>
 
             <div class="checkbox-group">
-                <hr class="mb-2">
-                <h4 class="mb-0">Si el alumno entrego estos documentos, puede marcarlos, sino dejelos en blanco.</h4>
-                <hr class="mb-2">
-                <label>
-                    <input type="checkbox" @if(old('fotografias')=='1' || (isset($alumno->fotografias)?$alumno->fotografias:'') == '1')
-                    checked
-                    @else
-
-                    @endif name="fotografias" value="1">
-                    Fotografias del alumno
+           
+            
+                <label class="checkbox-item">
+                    <input type="checkbox" name="fotografias" value="1"
+                        @if(old('fotografias') == '1' || (isset($alumno->fotografias) ? $alumno->fotografias : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Fotografías del alumno
                 </label>
-                <label>
-                    <input type="checkbox" @if(old('fotografiasdelpadre')=='1' || (isset($alumno->fotografiasdelpadre)?$alumno->fotografiasdelpadre:'') == '1')
-                    checked
-                    @else
-
-                    @endif name="fotografiasdelpadre" value="1">
-                    Fotografias del padre
+            
+                <label class="checkbox-item">
+                    <input type="checkbox" name="fotografiasdelpadre" value="1"
+                        @if(old('fotografiasdelpadre') == '1' || (isset($alumno->fotografiasdelpadre) ? $alumno->fotografiasdelpadre : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Fotografías del padre
                 </label>
-                <label>
-                    <input type="checkbox" @if(old('carnet')=='1' || (isset($alumno->carnet)?$alumno->carnet:'') == '1')
-                    checked
-                    @else
-
-                    @endif name="carnet" value="1">
-                    Carnet de Vacunación
+            
+                <label class="checkbox-item">
+                    <input type="checkbox" name="carnet" value="1"
+                        @if(old('carnet') == '1' || (isset($alumno->carnet) ? $alumno->carnet : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Carnet de vacunación
                 </label>
-                <label>
-                    <input type="checkbox" @if(old('certificadodeconducta')=='1' || (isset($alumno->certificadodeconducta)?$alumno->certificadodeconducta:'') == '1')
-                    checked
-                    @else
-
-                    @endif name="certificadodeconducta" value="1">
+            
+                <label class="checkbox-item">
+                    <input type="checkbox" name="certificadodeconducta" value="1"
+                        @if(old('certificadodeconducta') == '1' || (isset($alumno->certificadodeconducta) ? $alumno->certificadodeconducta : '') == '1')
+                            checked
+                        @endif
+                    >
                     Certificado de conducta
                 </label>
-
             </div>
+            
 
             <hr class="mb-2">
             <button type="submit" class="btn btn-primary btn-lg">

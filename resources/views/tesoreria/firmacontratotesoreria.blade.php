@@ -21,13 +21,16 @@
      @endif
     </div>
     <div class="table-responsive">
-      <!-- Projects table -->
+        <!-- Projects table -->
+
+        <form action ="{{ route('firmacontratotesoreria.store')}}" method="POST">
+      @csrf
       <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
             <th scope="col">id</th>
             <th scope="col">Nombre del Padre</th>
-            <th scope="col">Compromiso</th>
+            <th scope="col">Firma del contrato</th>
           </tr>
         </thead>
     
@@ -35,21 +38,29 @@
 
         <tbody>
 
-        @foreach ($padres as $padre)
+        @foreach ($padres as $index=> $padre)
         <tr>
-             <td>{{$padre->id}}</td>
+            <input name='id_padre[]' value="{{$padre->id}}" type="text" style="display: none">
+             <td>  {{$index + 1}}</td>
             <td> {{$padre->primernombre}} {{$padre->primerapellido}}</td>
-             <td>{{$padre->compromiso}} <input type="checkbox" name="nivel" value="compromiso">  Firmo el contrato de tesoreia</td>
-              
-        </tr>
+             <td>
+              <input type="checkbox" name="contrato[]" value="1" @if (isset($padre->firmacontrato[0]))
+                                                                      @if($padre->firmacontrato[0]->contrato)
+                                                                        checked
+                                                                      @endif
 
-       
-        
-            
-           
+                                                                  @endif>  Firmo el contrato</td>
+
+                                                                  </tr>
            @endforeach
         </tbody>
       </table>
+   <br>
+   <br>
+   <div class="col text-left">
+      <button class="btn btn-primary btn-lg" type="submit">Aceptar</button>
+      </form>
+    </div>
     </div>
   </div>
 @endsection
