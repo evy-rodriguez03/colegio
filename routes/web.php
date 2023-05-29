@@ -205,10 +205,11 @@ Route::get('/index', [ConfiguracionController::class,'index'])->name('configurac
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
+Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.create');
+Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
-
 
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
