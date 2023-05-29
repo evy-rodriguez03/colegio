@@ -124,6 +124,8 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
+
+
 //ruta alumnos
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
@@ -205,7 +207,8 @@ Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name(
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
-Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolarindex.index');
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
+
 
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');

@@ -9,6 +9,7 @@
           <h3 class="mb-0">Formulario Pre-Escolar</h3>
         </div>
         <div class="col text-right">
+        <a href="{{route('escolar.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
           <a href="{{Route('panelorientacion.index')}}" class="btn btn-lg btn-primary">Regresar</a>
           <a href="#" class="btn btn-lg btn-success-color-dark">Reporte </a> 
         </div>
