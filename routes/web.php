@@ -26,7 +26,6 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\PanelorientacionController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
-use App\Http\Controllers\ConfiguracionController;
 
 
 /*
@@ -196,9 +195,3 @@ route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadr
 //Rutas consejeria
 route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
 
-
-//Rutas consfiguracion
-Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
-Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
-Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
-Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
