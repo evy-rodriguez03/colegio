@@ -6,7 +6,7 @@
       <div class="card">
           <center><img src="{{asset('img/brand/preescolar.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
           <div class="card-body">
-              <center><a href="{{Route('escolarindex.index')}}" class="btn btn-lg btn-info">Formulario Escolar</a></center>
+              <center><a href="{{Route('escolar.index')}}" class="btn btn-lg btn-info">Formulario Escolar</a></center>
           </div>
       </div>
   </div>
@@ -14,7 +14,7 @@
       <div class="card">
           <center><img src="{{asset('img/brand/preescolar.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
           <div class="card-body">
-              <center><a href="{{Route('pagorealizar.index')}}" class="btn btn-lg btn-info">Formulario preescolar</a></center>
+              <center><a href="{{Route('preescolarindex.index')}}" class="btn btn-lg btn-info">Formulario preescolar</a></center>
           </div>
       </div>
   </div>
