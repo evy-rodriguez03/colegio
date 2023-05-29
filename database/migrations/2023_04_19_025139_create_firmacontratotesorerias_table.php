@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriodoITable extends Migration
+class CreateFirmacontratotesoreriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePeriodoITable extends Migration
      */
     public function up()
     {
-        Schema::create('periodo_i', function (Blueprint $table) {
+        Schema::create('firmacontratotesorerias', function (Blueprint $table) {
             $table->id();
-            $table->date('fechaInicio');
-            $table->string('periodoMatricula');
-            $table->date('fechaCierre');
+            $table->unsignedBigInteger('id_padre');
+            $table->boolean('contrato')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePeriodoITable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periodo_i');
+        Schema::dropIfExists('firmacontratotesorerias');
     }
 }
