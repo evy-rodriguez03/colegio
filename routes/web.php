@@ -29,6 +29,7 @@ use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\formularioescolarController;
 use App\Http\Controllers\FirmacontratotesoreriaController;
+use App\Http\Controllers\formulariopreescolarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -205,8 +206,18 @@ Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name(
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
-Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolarindex.index');
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
+route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
+route::get('/escolar/crear', [formularioescolarController::class,'create'])->name('escolar.create');
+route::get('/padres/{escolar}/edit', [formularioescolarController::class,'edit'])->name('escolar.edit');
+route::post('/escolar', [formularioescolarController::class,'store']);
+route::put('/escolar/{escolar}', [formularioescolarController::class,'update'])->name('escolar.update');
+route::delete('/escolar/{escolar}', [formularioescolarController::class,'destroy'])->name('escolar.destroy');
+route::get('/escolar/{id}', [formularioescolarController::class,'show'])->name('escolar.show');
 
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
 route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
+
+//RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
+Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
