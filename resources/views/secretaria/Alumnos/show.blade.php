@@ -51,9 +51,17 @@
             <td>{{$alumnos->fechadenacimiento}}</td>
         </tr>
         <tr>
-            <th>Telefono Personal</th>
-            <td>{{$alumnos->telefonodeencargado}}</td>
+            <th>Ciudad</th>
+            <td>{{$alumnos->ciudad}}</td>
         </tr>
+        <tr>
+          <th>Departamento</th>
+          <td>{{$alumnos->depto}}</td>
+      </tr>
+      <tr>
+        <th>Pais</th>
+        <td>{{$alumnos->pais}}</td>
+    </tr>
         <tr>
             <th>Genero</th>
             <td>{{$alumnos->genero}}</td>
@@ -63,8 +71,8 @@
             <td>{{$alumnos->direccion}}</td>
         </tr>
         <tr>
-            <th>Lugar de nacimiento</th>
-            <td>{{$alumnos->lugardenacimiento}}</td>
+            <th>Escuela Anterior</th>
+            <td>{{$alumnos->escuelaanterior}}</td>
         </tr>
         <tr>
             <th>Numero de hermanos en la institución</th>
@@ -74,6 +82,10 @@
             <th>Alergia</th>
             <td>{{$alumnos->alergia}}</td>
         </tr>
+        <tr>
+          <th>Total de Hermanos</th>
+          <td>{{$alumnos->totalhermanos}}</td>
+      </tr>
       
         </tbody>
       </table>

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Firmacontrato;
-use App\Models\Padre;
 
-class FirmacontratotesoreriaController extends Controller
+class formulariopreescolarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class FirmacontratotesoreriaController extends Controller
      */
     public function index()
     {
-        //
+        return view('orientacion.preescolar.preescolarindex');
     }
 
     /**
@@ -25,14 +23,7 @@ class FirmacontratotesoreriaController extends Controller
      */
     public function create()
     {
-        $padres = Padre::all();
-
-        foreach ($padres as $key => $value) {
-            $value->firmacontrato = Firmacontrato::where('id_padre','=',$value->id)->get();
-        }
-
-
-        return view ('tesoreria.firmacontratotesoreria')->with('padres',$padres);
+        //
     }
 
     /**
@@ -43,31 +34,7 @@ class FirmacontratotesoreriaController extends Controller
      */
     public function store(Request $request)
     {
-        $id_padres = $request->input('id_padre');
-        $contador = 0;
-
-
-
-        foreach ($id_padres as $key => $id_padre) {
-            $firmacontrato = Firmacontrato::where('id_padre','=', $id_padre)->get();
-
-            if (count($firmacontrato) == 0) {
-                $firmacontrato = new Firmacontrato;
-                $firmacontrato->id_padre = $id_padre;
-                $firmacontrato->contrato = $request->input('contrato')[$contador] ?? 0;
-                $firmacontrato->save();
-            }else{
-                $firmacontrato = Firmacontrato::find($firmacontrato[0]->id);
-                $firmacontrato->id_padre = $id_padre;
-                $firmacontrato->contrato = $request->input('contrato')[$contador] ?? 0;
-                $firmacontrato->save();
-            }
-
-
-            $contador += 1;
-        }
-
-        return redirect('/firmacontratotesoreria')->with('notification','Contrato firmando exitosamente');
+        //
     }
 
     /**
