@@ -20,16 +20,20 @@
 
 <form action="{{ route('grados.store') }}" method="POST">
     @csrf
-    <div>
-        <label for="nombre">Nombre del grado:</label>
-        <input type="text" name="nombre" id="nombre">
+    <div class="col-md-5 mb-3">
+                <label for="nombre"> Nombre del Grado: </label>
+                <input type="text" name="nombre" class="form-control">
+                <div class="valid-feedback"></div>
+              </div>
+
+    <div class="col-md-5 mb-3">
+                <label for="descripcion"> Descripción: </label>
+                <input type="text" name="descripcion" class="form-control" >
+                <div class="valid-feedback"></div>
+              </div>
+        <div>
+        <button type="submit" class="btn btn-primary">Crear Grado</button>
     </div>
-    <div>
-        <label for="descripcion">Descripción:</label>
-        <input type="text" name="descripcion" id="descripcion">
-    </div>
-    <div>
-        <button type="submit">Crear Grado</button>
     </div>
 </form>
 
