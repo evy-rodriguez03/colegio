@@ -95,15 +95,13 @@ Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('in
 route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
-Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
+Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula')
+->middleware(VerificarPeriodoMatricula::class);
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
-
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
 route::post('/alumnopadre', [PadreController::class,'storeconpadre'])->name('submitpadre');
-
 route::get('/alumnomadre', [PadreController::class,'createdatosmadre'])->name('datosmadre.create');
 route::post('/alumnmadre', [PadreController::class,'storeconmadre'])->name('submitmadre');
-
 route::get('/alumnoencargado', [PadreController::class,'createdatosencargado'])->name('datosencargado.create');
 route::post('/alumnencargado', [PadreController::class,'storeconencargado'])->name('submitencargado');
 route::get('/parientetransporte', [ParientetransporteController::class,'index'])->name('parientetransporte');
