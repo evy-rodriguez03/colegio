@@ -28,9 +28,7 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\formularioescolarController;
 use App\Http\Controllers\FirmacontratotesoreriaController;
-use App\Http\Controllers\formulariopreescolarController;
-use App\Http\Controllers\ConfiguracionController;
-use App\Http\Controllers\GradoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -219,10 +217,9 @@ route::put('/escolar/{escolar}', [formularioescolarController::class,'update'])-
 route::delete('/escolar/{escolar}', [formularioescolarController::class,'destroy'])->name('escolar.destroy');
 route::get('/escolar/{id}', [formularioescolarController::class,'show'])->name('escolar.show');
 
-
-//RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
-Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
-
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
 route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
+
+//RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
+Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
