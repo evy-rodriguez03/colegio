@@ -18,6 +18,7 @@ class CreatePeriodoITable extends Migration
             $table->date('fechaInicio');
             $table->string('periodoMatricula');
             $table->date('fechaCierre');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

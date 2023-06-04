@@ -21,6 +21,9 @@ class GradoController extends Controller
             'descripcion' => 'required',
         ]);
 
+        $nombre = $request->input('nombre');
+        $descripcion = $request->input('descripcion');
+
         Grado::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
