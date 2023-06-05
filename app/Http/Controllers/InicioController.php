@@ -29,8 +29,8 @@ class InicioController extends Controller
         $periodo->fechaCierre = $request->input('fechaCierre');
         $periodo->save();
 
-        return redirect('/iniciom')
-        ->with('mensaje', 'Se ha iniciado la matricula exitosa mente.');
+        return redirect()->route('creatematricula')
+        ->with('mensaje', 'Se ha iniciado la matrícula exitosamente.');
     }
 
     
