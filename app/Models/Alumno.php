@@ -44,9 +44,9 @@ class Alumno extends Model
             return $this->belongsToMany(Padre::class,'alumno_padre','alumno_id','padre_id');
         }
 
-        public function curso()
+        public function cursos()
         {
-            return $this->belongsTo(Curso::class);
+            return $this->belongsTo(Curso::class, 'matriculados');
         }
         
 
