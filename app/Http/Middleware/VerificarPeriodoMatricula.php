@@ -31,14 +31,6 @@ class VerificarPeriodoMatricula
         // Si no se está intentando acceder a la vista de matrícula, o si el periodo de matrícula está activo, continuamos con la solicitud
         return $next($request);
 
-        
-
-
-
-
-
-
-
         // Verificar si la solicitud ya se está realizando en la página de inicio del sistema de matrícula
         if ($request->routeIs('inicio.create') || $request->routeIs('inicio.store')) {
             return $next($request);
