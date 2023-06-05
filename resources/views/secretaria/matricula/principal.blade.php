@@ -47,9 +47,7 @@
                         {{$alumno->numerodeidentidad}}
                     </td>
                     <td>
-                        @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
-                        {{$alumno->cursos[0]->niveleducativo}}
-                    @endif
+                     {{$alumno->Matriculados->niveleducativo}}
                     </td>
                     <td>
                         <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
