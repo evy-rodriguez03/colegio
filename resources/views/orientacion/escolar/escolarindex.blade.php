@@ -10,7 +10,7 @@
         </div>
         <div class="col text-right">
         <a href="{{route('escolar.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
-          <a href="{{Route('panelorientacion.index')}}" class="btn btn-lg btn-primary">Regresar</a>
+          <a href="{{Route('panelorientacion.index')}}" class="btn btn-lg btn-success">Regresar</a>
           <a href="#" class="btn btn-lg btn-success-color-dark">Reporte </a> 
         </div>
       </div>

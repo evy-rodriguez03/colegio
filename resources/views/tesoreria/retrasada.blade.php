@@ -10,6 +10,9 @@
         </div>
         <div class="col text-right">
           <a href="{{route('retrasadas.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
+          <a href="{{route('paneltesoreria.index')}}" class="btn btn-lg btn-success">
+                <i class="fas fa-angle-left"></i>
+                Regresar</a>
         </div>
       </div>
     </div>
