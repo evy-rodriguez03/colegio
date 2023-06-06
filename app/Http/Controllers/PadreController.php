@@ -6,6 +6,8 @@ use App\Models\Padre;
 use Barryvdh\DomPDF\Facade\pdf;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\Matriculado;
+use App\Models\Periodo;
 use App\Models\Proceso;
 use Illuminate\Support\Facades\Cache;
 
@@ -303,6 +305,8 @@ class PadreController extends Controller
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
 
+        
+
         Cache::forget('alumno_id');
 
         return redirect()->route('principal.create');
@@ -312,9 +316,19 @@ class PadreController extends Controller
     public function terminar_matricula()
     {
         $alumno_id = Cache::get('alumno_id');
-
+        $alumno = Alumno::find($alumno_id);
+        
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
+
+        $matricula = new Matriculado();
+        $matricula->alumno_id = $alumno_id;
+        $matricula->curso_id = $alumno->curso_id;
+        $matricula->alumno_id = $alumno_id;
+
+        $periodo =  Periodo::where('activo', '=', 1)->get();
+        $matricula->periodo_id = $periodo[0]->id;
+        $matricula->save();
 
         Cache::forget('alumno_id');
 

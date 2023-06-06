@@ -101,6 +101,16 @@ class ImagenEController extends Controller
 public function destroy($id)
 {
     $user = User::find($id);
+
+    if (!$user) {
+        abort(404);
+    }
+
+    if (!$user->imagen) {
+        abort(404);
+    }
+
+
     $archivo = public_path($user->imagen);
 
     if (file_exists($archivo)) {

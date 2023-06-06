@@ -22,9 +22,10 @@ class Curso extends Model
     ];
 
     public function alumnos()
-{
-    return $this->hasMany(Alumno::class);
-}
+    {
+        return $this->belongsToMany(Alumno::class, 'matriculados', 'curso_id', 'alumno_id');
+    }
+    
 
 
     public function matriculas()

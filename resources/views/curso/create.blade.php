@@ -34,24 +34,24 @@
               <select class="form-control" name="niveleducativo" required value="{{ old('niveleducativo') }}">
               <option value="">Seleccione una opción</option>
           <optgroup label="Prebásica">
-              <option value="prekinder">Pre-kinder</option>
-              <option value="kinder">Kinder</option>
-              <option value="preparatoria">Preparatoria</option>
+              <option value="Prekinder">Pre-kinder</option>
+              <option value="Kinder">Kinder</option>
+              <option value="Preparatoria">Preparatoria</option>
           </optgroup>
           <optgroup label="Básica">
-            <option value="primero">1º Grado</option>
-            <option value="segundo">2º Grado</option>
-            <option value="tercero">3º Grado</option>
-            <option value="cuarto">4º Grado</option>
-            <option value="quinto">5º Grado</option>
-            <option value="sexto">6º Grado</option>
-            <option value="septimo">7º Grado</option>
-            <option value="octavo">8º Grado</option>
-            <option value="noveno">9º Grado</option>
+            <option value="Primero">1º Grado</option>
+            <option value="Segundo">2º Grado</option>
+            <option value="Tercero">3º Grado</option>
+            <option value="Cuarto">4º Grado</option>
+            <option value="Quinto">5º Grado</option>
+            <option value="Sexto">6º Grado</option>
+            <option value="Septimo">7º Grado</option>
+            <option value="Octavo">8º Grado</option>
+            <option value="Noveno">9º Grado</option>
         </optgroup>
         <optgroup label="Secundaria">
-            <option value="decimo">10º Medio</option>
-            <option value="undecimo">11º Medio</option>
+            <option value="Decimo">10º Medio</option>
+            <option value="Undecimo">11º Medio</option>
             
         </optgroup>
     </select>
@@ -62,8 +62,8 @@
               <label for="modalidad">Modalidad</label>
               <select type="text" id="modalidad" name="modalidad" class="form-control" required value="{{ old('modalidad') }}">
               <option value="">Elegir</option>
-              <option value="matutina">Bilingue</option>
-              <option value="extendida">Español</option>
+              <option value="Bilingue">Bilingue</option>
+              <option value="Español">Español</option>
           </select>
               <div class="valid-feedback">Looks good!</div>
           </div>
@@ -73,8 +73,8 @@
               <label for="jornada">Jornada</label>
               <select type="text" id="jornada" name="jornada" class="form-control" required value="{{ old('jornada') }}">
               <option value="">Elegir</option>
-              <option value="matutina">Jornada Matutina</option>
-              <option value="extendida">Jornada Extendida</option>
+              <option value="Matutina">Jornada Matutina</option>
+              <option value="Extendida">Jornada Extendida</option>
          </select>
           </div>
       </div>

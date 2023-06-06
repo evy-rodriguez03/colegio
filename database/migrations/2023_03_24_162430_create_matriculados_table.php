@@ -19,9 +19,8 @@ class CreateMatriculadosTable extends Migration
             $table->foreign('alumno_id')->references('id')->on('alumnos');
             $table->unsignedBigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('cursos');
-            $table->date('fecha_de_inicio');
-            $table->date('fecha_de_fin');
-            $table->boolean('activo')->default(true);
+            $table->unsignedBigInteger('periodo_id');
+            $table->foreign('periodo_id')->references('id')->on('periodo_i');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
