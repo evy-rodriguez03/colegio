@@ -33,7 +33,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($alumnos as $index=> $alumno)
+                @if ($alumnos)
+                @foreach ($alumnos->items() as $index => $alumno)
 
 
                 <tr>
@@ -41,13 +42,16 @@
                         {{$index + 1}}
                     </td>
                     <th scope="row">
-                        {{$alumno->primernombre}}{{$alumno->primerapellido}}
+                        {{$alumno->primernombre}} {{$alumno->primerapellido}}
                     </th>
                     <td>
                         {{$alumno->numerodeidentidad}}
                     </td>
                     <td>
-                     {{$alumno->Matriculados->niveleducativo}}
+                        @foreach ($alumno->cursos as $curso)
+                           {{$curso->niveleducativo}} {{$curso->modalidad}}
+                         @endforeach
+                    
                     </td>
                     <td>
                         <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
@@ -68,8 +72,11 @@
 
                     </td>
                     @endforeach
+                    @endif
                 </tr>
             </tbody>
+            {{$alumnos->render()}}
+
         </table>
     </div>
 </div>
