@@ -46,8 +46,9 @@ class Alumno extends Model
 
         public function cursos()
         {
-            return $this->belongsTo(Curso::class, 'matriculados');
+            return $this->belongsToMany(Curso::class, 'matriculados', 'alumno_id', 'curso_id');
         }
+        
         
 
         public function periodo(){

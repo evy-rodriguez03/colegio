@@ -16,9 +16,9 @@ class PrincipalController extends Controller
     public function index()
     {
         $alumnos = Alumno::with('cursos')->paginate(10);
-        return view('secretaria/matricula/principal', compact('alumnos'));
-    }
-
+    $cursos = Curso::pluck('niveleducativo', 'modalidad');
+    return view('secretaria.matricula.principal', compact('alumnos', 'cursos'));
+}
     /**
      * Show the form for creating a new resource.
      *
