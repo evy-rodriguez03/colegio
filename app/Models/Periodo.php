@@ -13,7 +13,6 @@ class Periodo extends Model
     protected $fillable = [
         'fechaInicio',
         'periodoMatricula',
-        'usuario',
         'fechaCierre'
     ];
 

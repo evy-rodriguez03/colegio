@@ -8,7 +8,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/curso.png') }}" class="card-img-top" alt="..." style="width:150px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{Route('usuarios.index')}}" class="btn btn-lg btn-info">Grado</a></center>
+          <center><a href="{{Route('grados.create')}}" class="btn btn-lg btn-info">Grado</a></center>
           
         </div>
       </div>

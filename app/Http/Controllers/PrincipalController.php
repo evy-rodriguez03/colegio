@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\Curso;
 
 class PrincipalController extends Controller
 {
@@ -14,10 +15,10 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::paginate(10);
-        return view('secretaria/matricula/principal', compact('alumnos'));
-    }
-
+        $alumnos = Alumno::with('cursos')->paginate(10);
+    $cursos = Curso::pluck('niveleducativo', 'modalidad');
+    return view('secretaria.matricula.principal', compact('alumnos', 'cursos'));
+}
     /**
      * Show the form for creating a new resource.
      *
