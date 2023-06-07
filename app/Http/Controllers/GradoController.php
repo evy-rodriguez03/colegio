@@ -7,11 +7,14 @@ use App\Models\Grado;
 
 class GradoController extends Controller
 {
-   
+    public function index()
+    {
+        return view('configurar.Grado.indexgrado');
+    }
 
     public function create()
     {
-        return view('configurar.grado');
+        return view('configurar.Grado.grado');
     }
 
     public function store(Request $request)
