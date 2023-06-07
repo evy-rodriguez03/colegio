@@ -30,6 +30,7 @@ use App\Http\Controllers\formularioescolarController;
 use App\Http\Controllers\FirmacontratotesoreriaController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\CursostotalesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -223,3 +224,6 @@ route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,
 
 //RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
 Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
+
+//cursostotales
+Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
