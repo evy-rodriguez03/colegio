@@ -1037,7 +1037,7 @@
         <div class="form-section col-12 mt-3">
         </div>
 
-        <div class="form-navigation">
+        <div class="col text-left">
             <button type="button" class="previous btn btn-success float-left mt-3">Antes</button>
             <button type="button" class="next btn btn-success float-rigth mt-3">Despues</button>
             <button type="submit" class="btn btn-primary float-rigth mt-3">Guardar</button>

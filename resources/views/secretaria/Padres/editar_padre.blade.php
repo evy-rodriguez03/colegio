@@ -6,7 +6,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Agregar Nuevo Padre</h1>
+                <h1 class="mb-0">Actualizar Padre</h1>
             </div>
             <div class="col text-right">
             <a href="{{route('padres.index')}}" class="btn btn-lg btn-success">
@@ -123,9 +123,9 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">
-            Guardar
-        </button>
+        <div class="col text-left">
+        <button type="submit" class="btn btn-primary mt-3"> Guardar </button>
     </form>
+    </div>
 </div>
 @endSection

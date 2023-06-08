@@ -17,7 +17,7 @@
     <!-- Formulario para crear -->
     <div class="card-body">
   <form method="=get"> 
-    <div class="input-group mb-3">
+    <div class="input-group mb-2">
   <input type="text" name="search" class="form-control" placeholder="Buscar Alumno">
   <button class="btn btn-outline-primary" type="submit">Buscar</button>
 </div>
