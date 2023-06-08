@@ -28,7 +28,9 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\formularioescolarController;
 use App\Http\Controllers\FirmacontratotesoreriaController;
-
+use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\GradoController;
+use App\Http\Controllers\CursostotalesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -202,6 +204,7 @@ Route::get('/index', [ConfiguracionController::class,'index'])->name('configurac
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
+Route::get('/indexgrado', [GradoController::class,'index'])->name('grados.index');
 Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.create');
 Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
 
@@ -221,3 +224,6 @@ route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,
 
 //RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
 Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
+
+//cursostotales
+Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
