@@ -132,10 +132,11 @@
             <div class="valid-feedback"></div>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">
-            Guardar
-        </button>
+        <div class="col text-left">
+                <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
+
     </form>
+    </div>
     </div>
 </div>
 @endSection
