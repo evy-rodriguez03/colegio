@@ -7,6 +7,7 @@ use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Proceso;
+use App\Models\Periodo;
 use Illuminate\Support\Facades\Cache;
 
 class AlumnoController extends Controller
@@ -189,7 +190,6 @@ class AlumnoController extends Controller
             'totalhermanos' => 'required|numeric',
             'medico' => 'required|min:3|max:18|string',
             'telefonoemergencia' => 'required|min:3|numeric',
-            'curso_id' => 'required|exists:cursos,id',
 
         ];
         $messages = [
@@ -267,11 +267,9 @@ class AlumnoController extends Controller
                 'totalhermanos' ,
                 'medico',
                 'telefonoemergencia',
-                'curso_id'
             ));
             $id = $value;
         } else {
-            $cursos = Curso::find($request->input('curso_id'));
 
             $alumno = Alumno::create([
                 'primernombre' => $request->input('primernombre'),
@@ -297,15 +295,16 @@ class AlumnoController extends Controller
                 'totalhermanos' => $request->input('totalhermanos'),
                 'medico' => $request->input('medico'),
                 'telefonoemergencia' => $request->input('telefonoemergencia'),
-                'curso_id' => $cursos->id,
             ]);
+
+            session()->put('curso_id', $request->input('curso_id'));
 
             session(['alumno_id' => $alumno->id]);
             Cache::put('alumno_id', $alumno->id);
             $id =  $alumno->id;
         }
 
-
+      
         $estado = new Proceso();
         $estado->id = $id;
         $estado->matriculado = 'no';
