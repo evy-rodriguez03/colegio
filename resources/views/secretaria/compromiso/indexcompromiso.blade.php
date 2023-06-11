@@ -8,9 +8,16 @@
         <div class="col">
           <h3 class="mb-0">Compromiso Conducta</h3>
         </div>
+        
         <div class="col text-right">
-          <a href="{{Route('dashboardsec.index')}}" class="btn btn-lg btn-primary">Regresar</a>
-        </div>
+            <a href="{{Route('dashboardsec.index')}}" class="btn btn-lg btn-success">
+                <i class="fas fa-angle-left"></i>
+                Regresar</a>
+            </div>
+
+
+
+
       </div>
     </div>
     <div class="card-body">
