@@ -119,7 +119,6 @@
   
                 </div>
                 
-                <hr class="mb-2">
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
           </form>
 

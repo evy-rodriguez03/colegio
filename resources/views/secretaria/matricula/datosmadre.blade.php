@@ -112,9 +112,11 @@
             placeholder="Ingrese los ingresos"></input>
         </div>
 
+        <div class="col text-left">
         <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
         <a class="btn btn-success" href="{{ route('datosencargado.create') }}">Siguiente</a>
     </form>
+    </div>
     </div>
 </div>
 @endSection
