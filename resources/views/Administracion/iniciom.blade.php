@@ -41,7 +41,6 @@
             <div class="valid-feedback"></div>
         </div>
   </div>
-
   <button type="submit" class="btn btn-lg btn-Primary mx-16 my-16">Aceptar</button>
             <a href="{{Route('inicio.create')}}" class="btn btn-lg btn-success ">Cancelar </a>
           </form>

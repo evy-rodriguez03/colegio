@@ -314,26 +314,35 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-    {
-        $alumno_id = Cache::get('alumno_id');
-        $alumno = Alumno::find($alumno_id);
-        
-        $estado = Proceso::findOrFail($alumno_id);
-        $estado->delete();
+{
+    $alumno_id = Cache::get('alumno_id');
+    $alumno = Alumno::find($alumno_id);
 
-        $matricula = new Matriculado();
-        $matricula->alumno_id = $alumno_id;
-        $matricula->curso_id = $alumno->curso_id;
-        $matricula->alumno_id = $alumno_id;
+    $cursoId = session()->get('curso_id');
 
-        $periodo =  Periodo::where('activo', '=', 1)->get();
-        $matricula->periodo_id = $periodo[0]->id;
-        $matricula->save();
 
-        Cache::forget('alumno_id');
+    $estado = Proceso::findOrFail($alumno_id);
+    $estado->delete();
 
-        return redirect()->route('principal.create');
-    }
+    $matricula = new Matriculado();
+    $matricula->alumno_id = $alumno_id;
+    $matricula->curso_id = $cursoId;
+    $matricula->alumno_id = $alumno_id;
+    $periodo = Periodo::where('fechaInicio', '<=', now())
+                    ->where('fechaCierre', '>=', now())
+                    ->first();
+
+    $matricula->periodo_id = $periodo->id;
+    $matricula->save();
+
+    Cache::forget('alumno_id');
+
+
+
+    return redirect()->route('principal.create');
+}
+
+    
 
 
     /**

@@ -52,6 +52,7 @@
   <!-- CSS Files -->
   <link href=" {{asset('css/argon-dashboard.css?v=1.1.2')}} " rel="stylesheet" />
   <link rel="stylesheet" href=" {{asset('css/nuevo-estilo.css')}} ">
+  @yield('css')
 </head>
 
 <body class="">

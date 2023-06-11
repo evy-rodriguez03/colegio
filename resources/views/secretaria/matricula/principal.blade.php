@@ -1,5 +1,11 @@
 @extends('layout.panel')
 
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+@endsection
+  
+
+
 @section('content')
 
 <div class="card shadow">
@@ -22,7 +28,7 @@
     </div>
     <div class="table-responsive">
         <!-- Projects table -->
-        <table class="table align-items-center table-flush">
+        <table id="matricula" class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">N°</th>
@@ -84,6 +90,15 @@
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializa la tabla con DataTables
+        $('#matricula').DataTable();
+    });
+
+</script>
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

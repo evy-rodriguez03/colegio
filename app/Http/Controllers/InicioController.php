@@ -17,7 +17,9 @@ class InicioController extends Controller
 
     public function create(){
 
-        return view('Administracion.iniciom');
+        $periodo = new Periodo();
+
+        return view('Administracion.iniciom', compact('periodo'));
     }
 
     public function store(Request $request){
@@ -28,6 +30,8 @@ class InicioController extends Controller
         $periodo->periodoMatricula = $request->input('periodoMatricula');
         $periodo->fechaCierre = $request->input('fechaCierre');
         $periodo->save();
+
+
 
         return redirect()->route('creatematricula')
         ->with('mensaje', 'Se ha iniciado la matrícula exitosamente.');

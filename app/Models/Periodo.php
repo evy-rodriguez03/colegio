@@ -16,7 +16,8 @@ class Periodo extends Model
         'fechaCierre'
     ];
 
-    public function alumno(){
-        return $belongsTo('App\Models\Alumno');
-    }
+  public function alumnos()
+  {
+    return $this->belongsToMany(Periodo::class, 'matriculados', 'periodo_id' ,'alumno_id' );
+  }
 }
