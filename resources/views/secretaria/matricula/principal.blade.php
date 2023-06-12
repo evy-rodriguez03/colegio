@@ -1,10 +1,22 @@
 @extends('layout.panel')
 
 @section('css')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
+<style>
+    .small-select {
+        width: 200px;
+        /* Otros estilos personalizados */
+    }
+</style>
 @endsection
-  
-
+@section('js')
+<script src="{{asset('Datatables/datatables.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('#matricula').DataTable();
+    });
+</script>
+@endsection
 
 @section('content')
 
@@ -15,17 +27,18 @@
                 <h3 class="mb-0">Matriculados</h3>
             </div>
             <div class="col text-right">
-                <a href="{{route('creatematricula')}}" class="btn btn-sm btn-primary">Nueva Matricula</a>
+                <a href="{{ route('creatematricula') }}" class="btn btn-sm btn-primary">Nueva Matricula</a>
             </div>
         </div>
     </div>
     <div class="card-body">
         @if (session('notification'))
         <div class="alert alert-success" role="alert">
-            {{session('notification')}}
+            {{ session('notification') }}
         </div>
         @endif
     </div>
+   
     <div class="table-responsive">
         <!-- Projects table -->
         <table id="matricula" class="table align-items-center table-flush">
@@ -41,64 +54,66 @@
             <tbody>
                 @if ($alumnos)
                 @foreach ($alumnos->items() as $index => $alumno)
-
-
                 <tr>
                     <td scope="row">
-                        {{$index + 1}}
+                        {{ $index + 1 }}
                     </td>
                     <th scope="row">
-                        {{$alumno->primernombre}} {{$alumno->primerapellido}}
+                        {{ $alumno->primernombre }} {{ $alumno->primerapellido }}
                     </th>
                     <td>
-                        {{$alumno->numerodeidentidad}}
+                        {{ $alumno->numerodeidentidad }}
                     </td>
                     <td>
                         @foreach ($alumno->cursos as $curso)
-                           {{$curso->niveleducativo}} {{$curso->modalidad}}
+                           {{ $curso->niveleducativo }} {{ $curso->modalidad }}
                          @endforeach
-                    
                     </td>
                     <td>
-                        <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
+                        <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST" class="form-eliminaralumno">
                             @csrf
                             @method('DELETE')
-                            <a href="{{url('/alumnos/'.$alumno->id)}}" class="btn btn-sm btn-info">Ver</a>
-                            <a href="{{url('/alumnos/'.$alumno->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="{{ url('/alumnos/'.$alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
+                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                          </form>
+                        </form>
                         @php
                             $proce = App\Models\Proceso::where('id','=',$alumno->id)->get();
                         @endphp
                         @if(count($proce) > 0)
-                            <a class="btn btn-warning" href="{{ route('creatematricula', ['id'=>$alumno->id]) }}">Continuar Matricula</a>
-                        @else
-
+                            <a class="btn btn-warning" href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar Matricula</a>
                         @endif
-
                     </td>
-                    @endforeach
-                    @endif
                 </tr>
+                @endforeach
+                @endif
             </tbody>
-            {{$alumnos->render()}}
-
         </table>
     </div>
+    <div class="form-group">
+        <label for="periodo">Periodo:</label>
+        <select id="periodo" class="form-control small-select">
+            <option value="">Todos</option>
+            @foreach ($alumnos as $alumno)
+                @foreach ($alumno->periodos as $periodo)
+                    <option value="{{ $periodo->id }}">{{ $periodo->periodoMatricula }}</option>
+                @endforeach
+            @endforeach
+        </select>
+    </div>
+    
 </div>
+
 @endsection
+
+
+
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
-<script>
-    $(document).ready(function() {
-        // Inicializa la tabla con DataTables
-        $('#matricula').DataTable();
-    });
 
-</script>
+
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
