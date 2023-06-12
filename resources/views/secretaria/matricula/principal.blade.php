@@ -12,9 +12,16 @@
 @section('js')
 <script src="{{asset('Datatables/datatables.min.js')}}"></script>
 <script>
-    $(document).ready(function () {
-        $('#matricula').DataTable();
+  $(document).ready(function() {
+    var tabla = $('#matricula').DataTable();
+
+    $('#periodo').on('change', function() {
+        var periodoId = $(this).val();
+
+        tabla.column(3).search(periodoId).draw();
     });
+});
+
 </script>
 @endsection
 
@@ -90,17 +97,18 @@
             </tbody>
         </table>
     </div>
+    <hr>
     <div class="form-group">
         <label for="periodo">Periodo:</label>
-        <select id="periodo" class="form-control small-select">
+        <select id="periodo" class="form-control custom-select-sm small-select">
             <option value="">Todos</option>
-            @foreach ($alumnos as $alumno)
-                @foreach ($alumno->periodos as $periodo)
-                    <option value="{{ $periodo->id }}">{{ $periodo->periodoMatricula }}</option>
-                @endforeach
+            @foreach ($alumnos->pluck('periodos')->flatten()->unique('id') as $periodo)
+                <option value="{{ $periodo->id }}" data-periodo-id="{{ $periodo->id }}">{{ $periodo->periodoMatricula }}</option>
             @endforeach
         </select>
     </div>
+    
+    
     
 </div>
 
