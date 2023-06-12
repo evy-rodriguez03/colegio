@@ -328,6 +328,8 @@ class PadreController extends Controller
     $matricula->alumno_id = $alumno_id;
     $matricula->curso_id = $cursoId;
     $matricula->alumno_id = $alumno_id;
+
+    
     $periodo = Periodo::where('fechaInicio', '<=', now())
                     ->where('fechaCierre', '>=', now())
                     ->first();
@@ -336,8 +338,6 @@ class PadreController extends Controller
     $matricula->save();
 
     Cache::forget('alumno_id');
-
-
 
     return redirect()->route('principal.create');
 }
