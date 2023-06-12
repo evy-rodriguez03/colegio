@@ -17,7 +17,8 @@ class PrincipalController extends Controller
     {
         $alumnos = Alumno::with('cursos')->paginate(10);
     $cursos = Curso::pluck('niveleducativo', 'modalidad');
-    return view('secretaria.matricula.principal', compact('alumnos', 'cursos'));
+    $periodos = Alumno::with('periodos')->get();
+    return view('secretaria.matricula.principal', compact('alumnos', 'cursos','periodos'));
 }
     /**
      * Show the form for creating a new resource.
