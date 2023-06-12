@@ -36,8 +36,6 @@ class PadreController extends Controller
         return view('secretaria.Padres.datos_padre');
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,6 +44,9 @@ class PadreController extends Controller
      */
     public function store(Request $request)
     {
+
+           // Verificar si no hay un padre registrado
+
         $rules = [
             'tipo' => 'required',
             'primernombre' => 'required|alpha',
@@ -314,12 +315,11 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-{
+    {
     $alumno_id = Cache::get('alumno_id');
     $alumno = Alumno::find($alumno_id);
 
     $cursoId = session()->get('curso_id');
-
 
     $estado = Proceso::findOrFail($alumno_id);
     $estado->delete();
@@ -328,6 +328,8 @@ class PadreController extends Controller
     $matricula->alumno_id = $alumno_id;
     $matricula->curso_id = $cursoId;
     $matricula->alumno_id = $alumno_id;
+
+    if ($matricula->padre) {
     $periodo = Periodo::where('fechaInicio', '<=', now())
                     ->where('fechaCierre', '>=', now())
                     ->first();
@@ -335,9 +337,12 @@ class PadreController extends Controller
     $matricula->periodo_id = $periodo->id;
     $matricula->save();
 
+    } 
+    else {
+    return back()->withErrors(['No se puede completar la matrícula, no hay un padre registrado.']);
+    }
+
     Cache::forget('alumno_id');
-
-
 
     return redirect()->route('principal.create');
 }
