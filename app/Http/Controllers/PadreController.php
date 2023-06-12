@@ -329,7 +329,7 @@ class PadreController extends Controller
     $matricula->curso_id = $cursoId;
     $matricula->alumno_id = $alumno_id;
 
-    if ($matricula->padre) {
+    
     $periodo = Periodo::where('fechaInicio', '<=', now())
                     ->where('fechaCierre', '>=', now())
                     ->first();
@@ -337,13 +337,7 @@ class PadreController extends Controller
     $matricula->periodo_id = $periodo->id;
     $matricula->save();
 
-    } 
-    else {
-    return back()->withErrors(['No se puede completar la matrícula, no hay un padre registrado.']);
-    }
-
     Cache::forget('alumno_id');
-
     return redirect()->route('principal.create');
 }
 
