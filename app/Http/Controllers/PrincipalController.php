@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\Alumno;
 use App\Models\Curso;
+use App\Models\Periodo;
 
 class PrincipalController extends Controller
 {
@@ -15,11 +17,15 @@ class PrincipalController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::with('cursos')->paginate(10);
-    $cursos = Curso::pluck('niveleducativo', 'modalidad');
-    $periodos = Alumno::with('periodos')->get();
-    return view('secretaria.matricula.principal', compact('alumnos', 'cursos','periodos'));
-}
+        Artisan::call('periodo:verificar-estado');
+    
+        $alumnos = Alumno::with('cursos','periodos')->paginate(10);
+        $cursos = Curso::pluck('niveleducativo', 'modalidad');
+        $periodos = Periodo::distinct()->get();
+    
+        return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
