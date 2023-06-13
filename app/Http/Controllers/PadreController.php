@@ -306,8 +306,6 @@ class PadreController extends Controller
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
 
-        
-
         Cache::forget('alumno_id');
 
         return redirect()->route('principal.create');
@@ -328,8 +326,6 @@ class PadreController extends Controller
     $matricula->alumno_id = $alumno_id;
     $matricula->curso_id = $cursoId;
     $matricula->alumno_id = $alumno_id;
-
-    
     $periodo = Periodo::where('fechaInicio', '<=', now())
                     ->where('fechaCierre', '>=', now())
                     ->first();
@@ -340,10 +336,6 @@ class PadreController extends Controller
     Cache::forget('alumno_id');
     return redirect()->route('principal.create');
 }
-
-    
-
-
     /**
      * Display the specified resource.
      *

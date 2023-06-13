@@ -20,4 +20,5 @@ class Periodo extends Model
   {
     return $this->belongsToMany(Periodo::class, 'matriculados', 'periodo_id' ,'alumno_id' );
   }
+
 }
