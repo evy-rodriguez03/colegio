@@ -320,27 +320,18 @@ class PadreController extends Controller
 
     $cursoId = session()->get('curso_id');
 
-
     $estado = Proceso::findOrFail($alumno_id);
     $estado->delete();
 
-    $matricula = new Matriculado();
-    $matricula->alumno_id = $alumno_id;
-    $matricula->curso_id = $cursoId;
-    $matricula->alumno_id = $alumno_id;
+    $periodo = Periodo::where('activo', 1)->first();
 
-    
-    $periodo = Periodo::where('fechaInicio', '<=', now())
-                    ->where('fechaCierre', '>=', now())
-                    ->first();
-
-    $matricula->periodo_id = $periodo->id;
-    $matricula->save();
+    $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
     Cache::forget('alumno_id');
 
     return redirect()->route('principal.create');
 }
+
 
     
 

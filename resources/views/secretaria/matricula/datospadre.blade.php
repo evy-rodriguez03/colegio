@@ -114,7 +114,7 @@
 
         <div class="col text-left">
         <button type="submit" class="btn btn-primary btn-lg"  >Guardar</button>
-        <a class="btn btn-success" href="{{ route('datosmadre.create') }}">Siguiente</a>
+        <a class="btn btn-success" href="{{ route('datosmadre.create') }}">Omitir</a>
     </form>
     </div>
     </div>
