@@ -81,7 +81,6 @@ Route::get('/prinperiodo', [PeriodomController::class,'index'])->name('periodo')
 Route::get('/iniciom', [InicioController::class,'create'])->name('inicio.create');
 Route::post('/iniciom', [InicioController::class,'store'])->name('inicio.store');
 
-
 /*Ruta del boton requisitos*/
 Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
