@@ -305,8 +305,6 @@ class PadreController extends Controller
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
 
-        
-
         Cache::forget('alumno_id');
 
         return redirect()->route('principal.create');
@@ -331,7 +329,6 @@ class PadreController extends Controller
 
     return redirect()->route('principal.create');
 }
-
 
     
 
