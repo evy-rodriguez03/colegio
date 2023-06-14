@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Alumno;
 
 class Periodo extends Model
 {
@@ -18,7 +19,7 @@ class Periodo extends Model
 
   public function alumnos()
   {
-    return $this->belongsToMany(Periodo::class, 'matriculados', 'periodo_id' ,'alumno_id' );
+    return $this->belongsToMany(Alumno::class, 'matriculados', 'periodo_id' ,'alumno_id' );
   }
 
 }

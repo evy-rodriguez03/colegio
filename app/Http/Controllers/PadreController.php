@@ -318,21 +318,12 @@ class PadreController extends Controller
 
     $cursoId = session()->get('curso_id');
 
-    // Verificar si hay al menos un padre de familia asociado al alumno
-    if ($alumno->padres()->count() > 0) {
-        $estado = Proceso::findOrFail($alumno_id);
-        $estado->delete();
+    $estado = Proceso::findOrFail($alumno_id);
+    $estado->delete();
 
-        $matricula = new Matriculado();
-        $matricula->alumno_id = $alumno_id;
-        $matricula->curso_id = $cursoId;
-        $matricula->alumno_id = $alumno_id;
-        $periodo = Periodo::where('fechaInicio', '<=', now())
-                        ->where('fechaCierre', '>=', now())
-                        ->first();
+    $periodo = Periodo::where('activo', 1)->first();
 
-        $matricula->periodo_id = $periodo->id;
-        $matricula->save();
+    $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
         Cache::forget('alumno_id');
 
@@ -344,6 +335,8 @@ class PadreController extends Controller
 }
 
     
+
+
     /**
      * Display the specified resource.
      *

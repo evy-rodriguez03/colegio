@@ -9,16 +9,21 @@
     }
 </style>
 @endsection
+
 @section('js')
 <script src="{{asset('Datatables/datatables.min.js')}}"></script>
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
     var tabla = $('#matricula').DataTable();
 
     $('#periodo').on('change', function() {
         var periodoId = $(this).val();
 
-        tabla.column(3).search(periodoId).draw();
+        if (periodoId) {
+            tabla.column(4).search('^' + periodoId + '$', true, false).draw();
+        } else {
+            tabla.column(4).search('').draw();
+        }
     });
 });
 
@@ -26,7 +31,6 @@
 @endsection
 
 @section('content')
-
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
@@ -45,7 +49,7 @@
         </div>
         @endif
     </div>
-   
+
     <div class="table-responsive">
         <!-- Projects table -->
         <table id="matricula" class="table align-items-center table-flush">
@@ -73,22 +77,26 @@
                     </td>
                     <td>
                         @foreach ($alumno->cursos as $curso)
-                           {{ $curso->niveleducativo }} {{ $curso->modalidad }}
-                         @endforeach
+                        {{ $curso->niveleducativo }} {{ $curso->modalidad }}
+                        @endforeach
                     </td>
                     <td>
-                        <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST" class="form-eliminaralumno">
+                        <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST"
+                            class="form-eliminaralumno">
                             @csrf
                             @method('DELETE')
                             <a href="{{ url('/alumnos/'.$alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
-                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}"
+                                class="btn btn-sm btn-primary">Editar</a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
                         @php
-                            $proce = App\Models\Proceso::where('id','=',$alumno->id)->get();
+                        $proce = App\Models\Proceso::where('id', '=', $alumno->id)->get();
                         @endphp
                         @if(count($proce) > 0)
-                            <a class="btn btn-warning" href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar Matricula</a>
+                        <a class="btn btn-warning"
+                            href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar
+                            Matricula</a>
                         @endif
                     </td>
                 </tr>
@@ -102,17 +110,14 @@
         <label for="periodo">Periodo:</label>
         <select id="periodo" class="form-control custom-select-sm small-select">
             <option value="">Todos</option>
-            @foreach ($alumnos->pluck('periodos')->flatten()->unique('id') as $periodo)
+            @foreach ($periodos as $periodo)
                 <option value="{{ $periodo->id }}" data-periodo-id="{{ $periodo->id }}">{{ $periodo->periodoMatricula }}</option>
             @endforeach
         </select>
     </div>
     
-    
-    
-</div>
-
 @endsection
+
 
 
 
