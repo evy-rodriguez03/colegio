@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Horario</h1>
             </div>
             <div class="col text-right">
-            <a href="{{route('dashboard.index')}}" class="btn btn-lg btn-success">
+            <a href="{{route('configuracion.index')}}" class="btn btn-lg btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>
