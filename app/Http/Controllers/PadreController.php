@@ -318,25 +318,32 @@ class PadreController extends Controller
 
     $cursoId = session()->get('curso_id');
 
+    // Verificar si hay al menos un padre de familia asociado al alumno
+    if ($alumno->padres()->count() > 0) {
+        $estado = Proceso::findOrFail($alumno_id);
+        $estado->delete();
 
-    $estado = Proceso::findOrFail($alumno_id);
-    $estado->delete();
+        $matricula = new Matriculado();
+        $matricula->alumno_id = $alumno_id;
+        $matricula->curso_id = $cursoId;
+        $matricula->alumno_id = $alumno_id;
+        $periodo = Periodo::where('fechaInicio', '<=', now())
+                        ->where('fechaCierre', '>=', now())
+                        ->first();
 
-    $matricula = new Matriculado();
-    $matricula->alumno_id = $alumno_id;
-    $matricula->curso_id = $cursoId;
-    $matricula->alumno_id = $alumno_id;
-    $periodo = Periodo::where('fechaInicio', '<=', now())
-                    ->where('fechaCierre', '>=', now())
-                    ->first();
+        $matricula->periodo_id = $periodo->id;
+        $matricula->save();
 
-    $matricula->periodo_id = $periodo->id;
-    $matricula->save();
+        Cache::forget('alumno_id');
 
-    Cache::forget('alumno_id');
-
-    return redirect()->route('principal.create');
+        return redirect()->route('principal.create');
+    } else {
+        $mensaje = "No se ha registrado ningún padre de familia para este alumno.";
+        return redirect()->back()->with('error', $mensaje);
+    }
 }
+
+    
     /**
      * Display the specified resource.
      *
