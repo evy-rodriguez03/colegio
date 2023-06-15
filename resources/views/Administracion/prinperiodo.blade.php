@@ -2,39 +2,47 @@
 
 @section('content')
 
-<div>
-  <div class="row row-cols-1 row-cols-md-4 py-8 g-12">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <a href="{{Route('inicio.create')}}" class="label label-info">Inicio de Matricula </a>
-        </div>
-      </div>
-    </div>
+<!-- Tu formulario para crear un nuevo registro -->
 
+<div class="card shadow">
+    <div class="card-header border-3">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="mb-0">Periodo Matricula</h1>
+            </div>
+            <div class="col text-right">
+                <a href="{{ route('dashboard.index') }}" class="btn btn-lg btn-primary">
+                    <i class="fas fa-angle-left"></i>
+                    Regresar
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Tabla para mostrar los registros existentes -->
     <div class="card-body">
-     @if (session('notification'))
-       <div class="alert alert-success" role="alert">
-     {{session('notification')}}
-    </div>
-     @endif
-    </div>
-    <div class="table-responsive">
-      <!-- Projects table -->
-      <table class="table align-items-center table-flush">
+    <table class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Número de identidad</th>
-            <th scope="col">Padre encargado</th>
-            <th scope="col">Grado</th>
-            <th scope="col">Sección</th>
-            <th scope="col">Periodo</th>
-          </tr>
-        </thead>
-      </table>
+                    <!-- Definir las columnas de la tabla -->
+                    <th>Fecha de Inicio</th>
+                    <th>Periodo de Matricula</th>
+                    <th>Fecha de Cierre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Recorrer los registros existentes -->
+                @foreach ($periodo as $periodo)
+                <tr>
+                    <!-- Mostrar los valores de cada registro -->
+                    <td>{{ $periodo->fechaInicio }}</td>
+                    <td>{{ $periodo->periodoMatricula }}</td>
+                    <td>{{ $periodo->fechaCierre }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-  </div>
-  
-@endSection
+</div>
+
+@endsection

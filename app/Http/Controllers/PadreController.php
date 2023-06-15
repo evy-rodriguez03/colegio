@@ -305,8 +305,6 @@ class PadreController extends Controller
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
 
-        
-
         Cache::forget('alumno_id');
 
         return redirect()->route('principal.create');
@@ -314,37 +312,38 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-{
-    $alumno_id = Cache::get('alumno_id');
-    $alumno = Alumno::find($alumno_id);
-
-    $cursoId = session()->get('curso_id');
-
-
-    $estado = Proceso::findOrFail($alumno_id);
-    $estado->delete();
-
-    $matricula = new Matriculado();
-    $matricula->alumno_id = $alumno_id;
-    $matricula->curso_id = $cursoId;
-    $matricula->alumno_id = $alumno_id;
-
+    {
+        $alumno_id = Cache::get('alumno_id');
+        $alumno = Alumno::find($alumno_id);
     
-    $periodo = Periodo::where('fechaInicio', '<=', now())
-                    ->where('fechaCierre', '>=', now())
-                    ->first();
-
-    $matricula->periodo_id = $periodo->id;
-    $matricula->save();
-
-    Cache::forget('alumno_id');
-
-    return redirect()->route('principal.create');
-}
-
+        $cursoId = session()->get('curso_id');
     
-
-
+        // Verificar si hay al menos un padre de familia asociado al alumno
+        if ($alumno->padres()->count() > 0) {
+            $estado = Proceso::findOrFail($alumno_id);
+            $estado->delete();
+    
+            $matricula = new Matriculado();
+            $matricula->alumno_id = $alumno_id;
+            $matricula->curso_id = $cursoId;
+            $matricula->alumno_id = $alumno_id;
+            $periodo = Periodo::where('fechaInicio', '<=', now())
+                            ->where('fechaCierre', '>=', now())
+                            ->first();
+    
+            $matricula->periodo_id = $periodo->id;
+            $matricula->save();
+    
+            Cache::forget('alumno_id');
+    
+            return redirect()->route('principal.create');
+        } else {
+            $mensaje = "No se ha registrado ningún padre de familia para este alumno.";
+            return redirect()->back()->with('error', $mensaje);
+        }
+    }
+    
+    
     /**
      * Display the specified resource.
      *
