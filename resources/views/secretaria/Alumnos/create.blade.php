@@ -36,7 +36,7 @@
           </div>
           <div class="col-md-4 mb-3">
               <label for="segundonombre">Segundo Nombre</label>
-              <input type="text" class="form-control" name="segundonombre" placeholder="Segunda nombre" required>
+              <input type="text" class="form-control" name="segundonombre" placeholder="Segunda nombre" >
               <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="col-md-4 mb-3">
