@@ -17,14 +17,11 @@
     </div>
 
     <div class="card-body">
-    @if ($errors->any())
-          @foreach ($errors->all() as $error)
-          <div class="alert alert-danger" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Por favor!</strong> {{$error}}
-        </div>
-          @endforeach
-      @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <!-- inicio formulario -->
 
         <form class="row g-3 mt-3" action="{{route('submitpadre')}}" method="POST">
@@ -114,7 +111,7 @@
 
         <div class="col text-left">
         <button type="submit" class="btn btn-primary btn-lg"  >Guardar</button>
-        <a class="btn btn-success" href="{{ route('datosmadre.create') }}">Siguiente</a>
+        <a class="btn btn-success" href="{{ route('datosmadre.create') }}">Omitir</a>
     </form>
     </div>
     </div>
