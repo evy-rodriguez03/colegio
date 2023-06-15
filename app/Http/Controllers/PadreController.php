@@ -323,9 +323,16 @@ class PadreController extends Controller
             $estado = Proceso::findOrFail($alumno_id);
             $estado->delete();
     
-            $periodo = Periodo::where('activo', 1)->first();
+            $matricula = new Matriculado();
+            $matricula->alumno_id = $alumno_id;
+            $matricula->curso_id = $cursoId;
+            $matricula->alumno_id = $alumno_id;
+            $periodo = Periodo::where('fechaInicio', '<=', now())
+                            ->where('fechaCierre', '>=', now())
+                            ->first();
     
-            $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
+            $matricula->periodo_id = $periodo->id;
+            $matricula->save();
     
             Cache::forget('alumno_id');
     
@@ -336,10 +343,7 @@ class PadreController extends Controller
         }
     }
     
-
     
-
-
     /**
      * Display the specified resource.
      *
