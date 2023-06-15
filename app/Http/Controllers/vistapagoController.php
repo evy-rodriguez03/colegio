@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pagorealizar;
+use App\Models\Alumno;
 
-class PagoaRealizaraController extends Controller
+class vistapagoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,11 @@ class PagoaRealizaraController extends Controller
      */
     public function index()
     {
-        return view ('tesoreria.pagorealizar');
+        $alumnos = Alumno::all();
+        return view ('tesoreria.vistapago', compact('alumnos'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -24,8 +27,7 @@ class PagoaRealizaraController extends Controller
      */
     public function create()
     {
-        
-        return view('pagorealizar.create');
+        return view('tesoreria.vistapago');
     }
 
     /**
@@ -36,23 +38,7 @@ class PagoaRealizaraController extends Controller
      */
     public function store(Request $request)
     {
-        $rules =[
-            'mensualidad'=>'sometimes',
-                  'pagosadministrativos'=>'sometimes',
-                  'bolsaescolar'=>'sometimes',
-        ];
-
-        $messages = [
-            'mensualidad.required' => 'Necesita seleccionar',
-            'pagosadministrativos.required' => 'Necesita seleccionar',
-            'bolsaescolar.required' => 'Necesita seleccionar',
-        ];
-        $this->validate($request,$rules,$messages);
-        Pagorealizar::create(
-            $request->only('mensualidad','pagosadministrativos','bolsaescolar' )
-            );
- 
-              return redirect('/Pagorealizar')->with('success', '¡El dato ha sido guardado');
+        //
     }
 
     /**
