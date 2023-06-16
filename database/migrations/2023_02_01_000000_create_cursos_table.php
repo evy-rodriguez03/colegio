@@ -20,6 +20,7 @@ class CreateCursosTable extends Migration
             $table->string('jornada');
             $table->string('seccion');
             $table->time('horario');
+            $table->integer('idperiodo')->nullable();
             $table->timestamps();
         });
     }

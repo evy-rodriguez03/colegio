@@ -316,7 +316,7 @@ class PadreController extends Controller
     $alumno_id = Cache::get('alumno_id');
     $alumno = Alumno::find($alumno_id);
 
-    $cursoId = session()->get('curso_id');
+    $cursoId = Cache::get('curso_id');
 
     $estado = Proceso::findOrFail($alumno_id);
     $estado->delete();
@@ -326,6 +326,7 @@ class PadreController extends Controller
     $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
     Cache::forget('alumno_id');
+    Cache::forget('Curso_id');
 
     return redirect()->route('principal.create');
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Curso;
+use App\Models\Periodo;
 
 
 class CursoController extends Controller
@@ -16,7 +17,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all();
+        $periodo = Periodo::where('activo','=',1)->first();
+        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->get();
         return view('curso.index')->with('cursos',$cursos);
     }
 
@@ -59,6 +61,7 @@ class CursoController extends Controller
         $curso->jornada = $request->input('jornada');
         $curso->seccion = $request->input('seccion');
         $curso->horario = $request->input('horario');
+        $curso->idperiodo = Periodo::where('activo','=',1)->get('id')[0]->id;
         $curso->save();
 
         return redirect('/cursos');
