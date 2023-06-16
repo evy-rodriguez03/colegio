@@ -70,32 +70,30 @@ $(document).ready(function() {
                         {{ $index + 1 }}
                     </td>
                     <th scope="row">
-                        {{ $alumno->primernombre }} {{ $alumno->primerapellido }}
+                        {{ $alumno->alumno->primernombre }} {{ $alumno->alumno->primerapellido }}
                     </th>
                     <td>
-                        {{ $alumno->numerodeidentidad }}
+                        {{ $alumno->alumno->numerodeidentidad }}
                     </td>
                     <td>
-                        @foreach ($alumno->cursos as $curso)
-                        {{ $curso->niveleducativo }} {{ $curso->modalidad }}
-                        @endforeach
+                        {{ $alumno->curso->niveleducativo }}  {{ $alumno->curso->modalidad }}
                     </td>
                     <td>
                         <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST"
                             class="form-eliminaralumno">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ url('/alumnos/'.$alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
-                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}"
+                            <a href="{{ url('/alumnos/'.$alumno->alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
+                            <a href="{{ url('/alumnos/'.$alumno->alumno->id.'/edit') }}"
                                 class="btn btn-sm btn-primary">Editar</a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
                         @php
-                        $proce = App\Models\Proceso::where('id', '=', $alumno->id)->get();
+                        $proce = App\Models\Proceso::where('id', '=', $alumno->alumno->id)->get();
                         @endphp
                         @if(count($proce) > 0)
                         <a class="btn btn-warning"
-                            href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar
+                            href="{{ route('creatematricula', ['id' => $alumno->alumno->id]) }}">Continuar
                             Matricula</a>
                         @endif
                     </td>
@@ -106,15 +104,7 @@ $(document).ready(function() {
         </table>
     </div>
     <hr>
-    <div class="form-group">
-        <label for="periodo">Periodo:</label>
-        <select id="periodo" class="form-control custom-select-sm small-select">
-            <option value="">Todos</option>
-            @foreach ($periodos as $periodo)
-                <option value="{{ $periodo->id }}" data-periodo-id="{{ $periodo->id }}">{{ $periodo->periodoMatricula }}</option>
-            @endforeach
-        </select>
-    </div>
+    
     
 @endsection
 

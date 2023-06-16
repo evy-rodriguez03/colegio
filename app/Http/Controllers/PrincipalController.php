@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Alumno;
 use App\Models\Curso;
+use App\Models\Matriculado;
 use App\Models\Periodo;
 
 class PrincipalController extends Controller
@@ -18,11 +19,10 @@ class PrincipalController extends Controller
     public function index()
     {
         Artisan::call('periodo:verificar-estado');
-    
-        $alumnos = Alumno::with('cursos','periodos')->paginate(10);
-        $cursos = Curso::pluck('niveleducativo', 'modalidad');
-        $periodos = Periodo::distinct()->get();
-    
+
+        $periodos = Periodo::where('activo','=',1)->first();
+        $alumnos = Matriculado::where('periodo_id','=',isset($periodos->id)?$periodos->id:0)->with('alumno','curso')->paginate(10);
+        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');
         return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos'));
     }
     

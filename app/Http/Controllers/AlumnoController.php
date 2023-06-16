@@ -149,7 +149,8 @@ class AlumnoController extends Controller
 
     public function creatematricula($id = 0)
     {
-        $cursos = Curso::pluck('niveleducativo', 'id');
+        $periodo = Periodo::where('activo','=',1)->get();
+        $cursos = Curso::where('idperiodo','=',$periodo[0]->id)->pluck('niveleducativo', 'id');
 
         if ($id != 0) {
             Cache::put('alumno_id',$id);
@@ -297,7 +298,7 @@ class AlumnoController extends Controller
                 'telefonoemergencia' => $request->input('telefonoemergencia'),
             ]);
 
-            session()->put('curso_id', $request->input('curso_id'));
+            Cache::put('curso_id', $request->input('curso_id'));
 
             session(['alumno_id' => $alumno->id]);
             Cache::put('alumno_id', $alumno->id);
