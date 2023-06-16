@@ -31,6 +31,11 @@ use App\Http\Controllers\FirmacontratotesoreriaController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\CursostotalesController;
+use App\Http\Controllers\vistapagoController;
+use App\Http\Controllers\FormularioescolardosController;
+use App\Http\Controllers\FormularioescolartresController;
+use App\Http\Controllers\FormularioescolarcuatroController;
+use App\Http\Controllers\FormularioescolarcincoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -226,3 +231,20 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 
 //cursostotales
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
+
+//Tesoreria
+route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
+route::post('/vistapagorealizar', [vistapagoController::class,'store']);
+
+//Formularios
+route::get('/escolardos', [FormularioescolardosController::class,'createescolardos'])->name('escolardos.create');
+route::post('/escolar', [FormularioescolardosController::class,'storeescolardos'])->name('submitescolardos');
+
+route::get('/escolartres', [FormularioescolartresController::class,'createescolartres'])->name('escolartres.create');
+route::post('/escolar', [FormularioescolartresController::class,'storeescolartres'])->name('submitescolartres');
+
+route::get('/escolarcuatro', [FormularioescolarcuatroController::class,'createescolarcuatro'])->name('escolarcuatro.create');
+route::post('/escolar', [FormularioescolarcuatroController::class,'storeescolarcuatro'])->name('submitescolarcuatro');
+
+route::get('/escolarcinco', [FormularioescolarcincoController::class,'createescolarcinco'])->name('escolarcinco.create');
+route::post('/escolar', [FormularioescolarcincoController::class,'storeescolarcinco'])->name('submitescolarcinco');
