@@ -17,14 +17,11 @@
     </div>
 
     <div class="card-body">
-    @if ($errors->any())
-          @foreach ($errors->all() as $error)
-          <div class="alert alert-danger" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Por favor!</strong> {{$error}}
-        </div>
-          @endforeach
-      @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <!-- inicio formulario -->
 
         <form class="row g-3 mt-3" action="{{route('submitencargado')}}" method="POST">
@@ -68,7 +65,7 @@
         </div>
         <div class="col-10 mt-3">
             <input type="text" id="identidad" name="numerodeidentidad" class="form-control" required value="{{old('numerodeidentidad')}}"
-            placeholder="Ingrese el número de identidad"></input>
+            placeholder="Ingrese el número de identidad" maxlength="13"></input>
         </div>
 
         <div class="form-group col-2 mt-3">

@@ -38,6 +38,7 @@
                     <td>{{ $periodo->fechaInicio }}</td>
                     <td>{{ $periodo->periodoMatricula }}</td>
                     <td>{{ $periodo->fechaCierre }}</td>
+                    <td></td>
                 </tr>
                 @endforeach
             </tbody>

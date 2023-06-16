@@ -18,14 +18,11 @@
 
 
     <div class="card-body">
-    @if ($errors->any())
-          @foreach ($errors->all() as $error)
-          <div class="alert alert-danger" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <strong>¡Por favor!</strong> {{$error}}
-        </div>
-          @endforeach
-      @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <!-- inicio formulario -->
 
         <form class="row g-3 mt-3" action="{{route('submitmadre')}}" method="POST">

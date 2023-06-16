@@ -14,7 +14,7 @@
       <div class="card">
           <center><img src="{{asset('img/brand/pago_realizar.jpg') }}" class="card-img-top" alt="..." style="width:127px;height:120px;"></center>
           <div class="card-body">
-              <center><a href="{{Route('pagorealizar.index')}}" class="btn btn-lg btn-info">Pago a realizar</a></center>
+              <center><a href="{{Route('vistapago.index')}}" class="btn btn-lg btn-info">Pago a realizar</a></center>
           </div>
       </div>
   </div>
