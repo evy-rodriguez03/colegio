@@ -24,7 +24,7 @@ class formularioescolarController extends Controller
      */
     public function create()
     {
-        return view('orientacion.escolar.formularioescolar');
+        return view('orientacion.escolar.formularioescolaruno');
     }
 
     /**

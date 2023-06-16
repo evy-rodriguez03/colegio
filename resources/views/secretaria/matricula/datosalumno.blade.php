@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="escuelaanterior">Escuela anterior</label>
-                    <input type="text" class="form-control" name="escuelaanterior" value="{{ old('escuelaanterior')?old('escuelaanterior'):(isset($alumno->escuelaanterior)?$alumno->escuelaanterior:'') }}" placeholder="Escuela Anterior" maxlength="20">
+                    <input type="text" class="form-control" name="escuelaanterior" value="{{ old('escuelaanterior')?old('escuelaanterior'):(isset($alumno->escuelaanterior)?$alumno->escuelaanterior:'') }}" placeholder="Escuela Anterior" maxlength="30">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="direccion">Dirección de residencia del alumno(a)</label>

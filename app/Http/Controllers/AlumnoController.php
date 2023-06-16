@@ -51,14 +51,14 @@ class AlumnoController extends Controller
 
         $rules = [
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'required|min:3|string',
+            'segundonombre' => 'min:3|string',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'sometimes|min:3|string',
+            'segundoapellido' => 'min:3|string',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
             'tiene_alergia' => 'sometimes',
-            'genero' => 'required|min:1|string',
+            'genero' => 'min:1|string',
             'direccion' => 'required|string',
             'numerodehermanosenicgc' => 'required|numeric',
             'fotografias' => 'sometimes',
@@ -79,7 +79,7 @@ class AlumnoController extends Controller
             'primernombre.required' => 'El primer nombre es requerido.',
             'primernombre.min' => 'El minimo son 3 caracteres.',
 
-            'segundonombre.required' => 'El Segundo nombre es requerido.',
+            
             'segundonombre.min' => 'El minimo son 3 caracteres.',
 
             'telefonoemergencia.required' => 'El número de telefono es necesario',
@@ -170,9 +170,9 @@ class AlumnoController extends Controller
 
         $rules = [
             'primernombre' => 'required|min:3|max:12|string',
-            'segundonombre' => 'required|min:3|max:12|string',
+            'segundonombre' => 'sometimes|min:3|max:12|string',
             'primerapellido' => 'required|min:3|max:12|string',
-            'segundoapellido' => 'required|min:3|max:12|string',
+            'segundoapellido' => 'min:3|max:12|string',
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $value ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
@@ -198,7 +198,7 @@ class AlumnoController extends Controller
             'primernombre.max' => 'El maximo de primer nombre son 12 caracteres.',
             'primernombre.min' => 'El minimo  de primer nombre son 3 caracteres.',
 
-            'segundonombre.required' => 'El Segundo nombre es requerido.',
+            
             'segundonombre.min' => 'El minimo de Segundo nombre son 3 caracteres.',
             'segundonombre.max' => 'El maximo de Segundo nombre son 12 caracteres.',
 
@@ -209,7 +209,7 @@ class AlumnoController extends Controller
             'primerapellido.min' => 'El minimo de primer apellido son 3 caracteres.',
             'primerapellido.max' => 'El maximo de primer apellido son 12 caracteres.',
 
-            'segundoapellido.required' => 'El segundo apellido es requerido.',
+           
             'segundoapellido.min' => 'El minimo de segundo apellido son 3 caracteres.',
             'segundoapellido.max' => 'El maximo de segundo apellido son 12 caracteres.',
 
@@ -351,10 +351,10 @@ class AlumnoController extends Controller
     {
         $rules = [
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'required|min:3|string',
+            'segundonombre' => 'min:3|string',
             'telefonodeencargado' => 'required|min:8|numeric',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'sometimes|min:3|string',
+            'segundoapellido' => 'min:3|string',
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $id ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'required|min:2|string',
@@ -371,7 +371,7 @@ class AlumnoController extends Controller
             'primernombre.required' => 'El primer nombre es requerido.',
             'primernombre.min' => 'El minimo son 3 caracteres.',
 
-            'segundonombre.required' => 'El Segundo nombre es requerido.',
+            
             'segundonombre.min' => 'El minimo son 3 caracteres.',
 
             'telefonodeencargado.required' => 'El número de telefono es necesario',
