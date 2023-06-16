@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class formularioescolarController extends Controller
+class FormularioescolarcuatroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class formularioescolarController extends Controller
      */
     public function index()
     {
-        return view('orientacion.escolar.escolarindex');
+        
     
     }
 
@@ -22,9 +22,9 @@ class formularioescolarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createescolarcuatro()
     {
-        return view('orientacion.escolar.formularioescolaruno');
+        return view('orientacion.escolar.formularioescolarcuatro');
     }
 
     /**
