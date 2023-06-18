@@ -173,6 +173,7 @@ route::get('/existente', [ExistenteController::class,'index'])->name('existente.
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
 route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
+Route::post('/periodo/{id}/cancelar', [PrincipalController::class, 'cancelarPeriodo'])->name('periodo.cancelar');
 
 //Rutas Horario de clase
 Route::get('/horarioc', [HorarioController::class, 'index'])->name('horario.index');
