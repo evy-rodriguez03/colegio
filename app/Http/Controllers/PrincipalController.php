@@ -25,6 +25,23 @@ class PrincipalController extends Controller
         $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');
         return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos'));
     }
+
+    public function cancelarPeriodo($id)
+{
+    $periodo = Periodo::findOrFail($id);
+
+    if ($periodo->activo) {
+        $periodo->activo = false;
+        $periodo->save();
+        // Puedes realizar otras acciones o mostrar un mensaje de éxito aquí
+    } else {
+        // El periodo ya está cerrado, puedes mostrar un mensaje de error o redirigir a otra página
+    }
+
+    // Redireccionar a la página principal o a otra página adecuada
+    return redirect()->route('principal.create');
+}
+
     
     /**
      * Show the form for creating a new resource.
