@@ -3,7 +3,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
-
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
 
 <style>
     .small-select {
@@ -15,8 +15,16 @@
 @section('js')
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
+
 <script>
-   $('#alumno').DataTable();
+   $(document).ready(function() {
+      $('#alumno').DataTable({
+         lengthMenu: [3, 6, 9, 12],
+      });
+   });
 </script>
 @endsection
 @section('content')
@@ -56,7 +64,6 @@
       <th scope="row">Opciones</th> 
     </tr>
 </head>
-   
 <tbody>
 
 @foreach ($alumnos as $index => $vistapago)
@@ -64,6 +71,12 @@
   <td>{{$vistapago->id}}</td>
   <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
   <td>{{$vistapago->numerodeidentidad }}</td>
+  <td>
+  <form action="{{ url('/pagorealizar.index') }}" method="POST" class="form-pago">
+  @csrf
+  <button type="submit" class="btn btn-sm btn-info">Ver Pago</button>
+</form>     
+  </td>
  </tr>
 
  @endforeach

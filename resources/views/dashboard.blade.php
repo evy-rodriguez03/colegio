@@ -21,15 +21,6 @@
     </div>
     <div class="col">
       <div class="card">
-      <center><img src="{{asset('img/brand/cursototal.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
-        <div class="card-body">
-          <center><a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
-          
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
       <center><img src="{{asset('img/brand/periodomatricula.jpg') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
         <div class="card-body">
           <center><a href="{{route ('periodo')}}" class="btn btn-lg btn-info">Matricula</a></center>

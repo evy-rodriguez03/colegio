@@ -1,13 +1,7 @@
 @extends('layout.panel')
 
 
-@section('styles')
-
-@endsection()
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 @section('content')
-
-
 <div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">
@@ -24,7 +18,8 @@
     <div class="card-body">
   <form method="=get"> 
     <div class="input-group mb-2">
- 
+  <input type="text" name="search" class="form-control" placeholder="Buscar Alumno">
+  <button class="btn btn-outline-primary" type="submit">Buscar</button>
 </div>
 <div class="card-body">
     @if (session('success'))
@@ -36,61 +31,25 @@
             <br>
     <table class="table table-bordered">
     <tr>
-      <th scope="row"><center>Tipo de pago</center></th>
-      <th scope="col"><center>Pago / Estado</center></th>
-      <th scope="row"><center>Monto</center></th>
-    </tr>
-    <tr>
       <th scope="row">Mensualidad</th>
-      <th scope="col"><center><table>
-  <tr>
-    <td>
-      <input type="checkbox" onclick="mostrarMensaje(this)">
-    </td>
-    <td id="mensaje1"></td>
-  </tr>
-  <script>
-function mostrarMensaje(checkbox) {
-  var mensaje = checkbox.parentNode.nextElementSibling;
-  if (checkbox.checked) {
-    mensaje.innerHTML = "Pagado";
-  } else {
-    mensaje.innerHTML = "";
-  }
-}
-</script>
-</table></center></th>
-      <th scope="row"></th>
+      <th scope="col"><center><input type="checkbox" name="mensualidad" value="1"></center></th>
     </tr>
   <tbody>
     <tr>
       <th scope="row">Gastos administrativos</th>
       <td><center><input type="checkbox" name="gastosadministrativos" value="2"></center></td>
-      <th scope="row"></th>
-     
     </tr>
     <tr>
       <th scope="row">Bolsa escolar</th>
-      <td><center><input type="checkbox" name="bolsaescolar" value="3"></center></td>
-      <th scope="row"></th>
+      <td><center><input type="checkbox" name="bolsaescolar" value="1"></center></td>
     </tr>
-   
 
   </tbody>
 </table>
-
-
-
+<br>
 <br>
 <button type="submit"class="btn btn-primary btn-lg">Guardar</button>
     </div>
   </div>
 </form>
 @endsection
-
-@section('scrips')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-@endsection
-
-
-
