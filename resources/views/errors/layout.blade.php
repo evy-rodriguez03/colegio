@@ -51,6 +51,9 @@
                 <div class="title">
                     @yield('message')
                 </div>
+                 <div class="code">
+                    Error Code: @yield('code')
+                </div>
             </div>
         </div>
     </body>
