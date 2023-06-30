@@ -214,11 +214,11 @@ Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.cr
 Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
-Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
 route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
 route::get('/escolar/crear', [formularioescolarController::class,'create'])->name('escolar.create');
 route::get('/padres/{escolar}/edit', [formularioescolarController::class,'edit'])->name('escolar.edit');
-route::post('/escolar', [formularioescolarController::class,'store']);
+Route::post('/escolar', [formularioescolarController::class, 'store']);
 route::put('/escolar/{escolar}', [formularioescolarController::class,'update'])->name('escolar.update');
 route::delete('/escolar/{escolar}', [formularioescolarController::class,'destroy'])->name('escolar.destroy');
 route::get('/escolar/{id}', [formularioescolarController::class,'show'])->name('escolar.show');
@@ -239,13 +239,14 @@ route::post('/vistapagorealizar', [vistapagoController::class,'store']);
 
 //Formularios
 route::get('/escolardos', [FormularioescolardosController::class,'createescolardos'])->name('escolardos.create');
-route::post('/escolar', [FormularioescolardosController::class,'storeescolardos'])->name('submitescolardos');
+route::post('/escolardos', [FormularioescolardosController::class,'storeescolardos'])->name('submitescolardos');
 
 route::get('/escolartres', [FormularioescolartresController::class,'createescolartres'])->name('escolartres.create');
-route::post('/escolar', [FormularioescolartresController::class,'storeescolartres'])->name('submitescolartres');
+route::post('/escolartres', [FormularioescolartresController::class,'storeescolartres'])->name('submitescolartres');
 
 route::get('/escolarcuatro', [FormularioescolarcuatroController::class,'createescolarcuatro'])->name('escolarcuatro.create');
-route::post('/escolar', [FormularioescolarcuatroController::class,'storeescolarcuatro'])->name('submitescolarcuatro');
+route::post('/escolarcuatro', [FormularioescolarcuatroController::class,'storeescolarcuatro'])->name('submitescolarcuatro');
 
 route::get('/escolarcinco', [FormularioescolarcincoController::class,'createescolarcinco'])->name('escolarcinco.create');
-route::post('/escolar', [FormularioescolarcincoController::class,'storeescolarcinco'])->name('submitescolarcinco');
+route::post('/escolarcinco', [FormularioescolarcincoController::class,'storeescolarcinco'])->name('submitescolarcinco');
+

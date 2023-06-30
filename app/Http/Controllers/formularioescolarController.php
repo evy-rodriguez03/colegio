@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Escolar;
+
 use Illuminate\Http\Request;
 
 class formularioescolarController extends Controller
@@ -13,8 +15,8 @@ class formularioescolarController extends Controller
      */
     public function index()
     {
-        return view('orientacion.escolar.escolarindex');
-    
+        $escolar = Escolar::paginate(10);
+        return view('orientacion.escolar.escolarindex', compact('escolar'));
     }
 
     /**
@@ -35,7 +37,51 @@ class formularioescolarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'eprimerapellido' => 'alpha',
+            'esegundoapellido' => 'alpha',
+            'eprimernombre' => 'alpha',
+            'esegundonombre' => 'alpha',
+            'enumerodeidentidad' => 'alpha',
+            'egrado' => 'alpha',
+            'enumerodecelular' => 'alpha',
+            'elugardenacimiento' => 'alpha',
+            'efechadenacimiento' => 'alpha',
+            'eedad' => 'alpha',
+            'procedencia' => 'alpha',
+            'tiempolectivo' => 'alpha',
+            'telelectivo' => 'alpha',
+            'noelectivo' => 'alpha',
+            'telnoelectivo' => 'alpha',
+            'observaciones' => 'alpha',
+        ];
+
+        $messages = [];
+
+        $this->validate($request, $rules, $messages);
+
+        Escolar::create([
+            'eprimerapellido' => $request->input('eprimerapellido'),
+            'esegundoapellido' => $request->input('esegundoapellido'),
+            'eprimernombre' => $request->input('eprimernombre'),
+            'esegundonombre' => $request->input('esegundonombre'),
+            'enumerodeidentidad' => $request->input('enumerodeidentidad'),
+            'egrado' => $request->input('egrado'),
+            'enumerodecelular' => $request->input('enumerodecelular'),
+            'elugardenacimiento' => $request->input('elugardenacimiento'),
+            'efechadenacimiento' => $request->input('efechadenacimiento'),
+            'eedad' => $request->input('eedad'),
+            'procedencia' => $request->input('procedencia'),
+            'tiempolectivo' => $request->input('tiempolectivo'),
+            'telelectivo' => $request->input('telelectivo'),
+            'noelectivo' => $request->input('noelectivo'),
+            'telnoelectivo' => $request->input('telnoelectivo'),
+            'observaciones' => $request->input('observaciones'),
+        ]);
+
+
+
+        return redirect('/escolar')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
     /**

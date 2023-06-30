@@ -47,16 +47,15 @@ class PadreController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'tipo' => 'required',
-            'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
-            'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|max:13|numeric',
-            'telefonopersonal' => 'required|min:8||max:8|numeric',
+            'primernombre' => 'required|min:3|max:14|alpha',
+            'segundonombre' => 'min:3|max:14|alpha',
+            'primerapellido' => 'required|min:3|max:14|alpha',
+            'segundoapellido' => 'min:3|max:14|alpha',
+            'numerodeidentidad' => 'required|min:12|max:13|numeric',
+            'telefonopersonal' => 'min:8|numeric',
             'lugardetrabajo' => 'alpha',
             'oficio' => 'alpha',
-            'telefonooficina' => 'required|min:8|max:9|numeric',
+            'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
 
