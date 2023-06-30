@@ -36,6 +36,10 @@ class Alumno extends Model
         'totalhermanos',
         'medico',
         'telefonoemergencia',
+        'bus',
+        'taxi',
+        'conpadre',
+        'solo',
        
 
     ];
