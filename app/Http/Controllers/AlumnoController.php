@@ -72,7 +72,12 @@ class AlumnoController extends Controller
             'escuelaanterior' => 'sometimes',
             'totalhermanos' => 'required|numeric',
             'medico' => 'required|min:3|max:12|string',
-            'telefonoemergencia' => 'required|min:3|numeric'
+            'telefonoemergencia' => 'required|min:3|numeric',
+            'bus' => 'sometimes',
+            'taxi' => 'sometimes',
+            'conpadre' => 'sometimes',
+            'solo' => 'sometimes'
+
 
         ];
         $messages = [
@@ -140,7 +145,11 @@ class AlumnoController extends Controller
                 'escuelaanterior',
                 'totalhermanos',
                 'medico',
-                'telefonoemergencia'
+                'telefonoemergencia',
+                'bus',
+                'taxi',
+                'conpadre',
+                'solo',
             )
         );
 
@@ -191,6 +200,10 @@ class AlumnoController extends Controller
             'totalhermanos' => 'required|numeric',
             'medico' => 'required|min:3|max:18|string',
             'telefonoemergencia' => 'required|min:3|numeric',
+            'bus' => 'sometimes',
+            'taxi' => 'sometimes',
+            'conpadre' => 'sometimes',
+            'solo' => 'sometimes',
 
         ];
         $messages = [
@@ -268,6 +281,10 @@ class AlumnoController extends Controller
                 'totalhermanos' ,
                 'medico',
                 'telefonoemergencia',
+                'bus',
+                'taxi',
+                'conpadre',
+                'solo',
             ));
             $id = $value;
         } else {
@@ -296,6 +313,10 @@ class AlumnoController extends Controller
                 'totalhermanos' => $request->input('totalhermanos'),
                 'medico' => $request->input('medico'),
                 'telefonoemergencia' => $request->input('telefonoemergencia'),
+                'bus' => $request->has('bus') ? true : false,
+                'taxi' => $request->has('taxi') ? true : false,
+                'conpadre' => $request->has('conpadre') ? true : false,
+                'solo' => $request->has('solo') ? true : false,
             ]);
 
             Cache::put('curso_id', $request->input('curso_id'));
@@ -366,6 +387,10 @@ class AlumnoController extends Controller
             'fotografiasdelpadre' => 'sometimes',
             'carnet' => 'sometimes',
             'certificadodeconductadeconducta' => 'sometimes',
+            'bus' => 'sometimes',
+            'taxi' => 'sometimes',
+            'conpadre' => 'sometimes',
+            'solo' => 'sometimes'
         ];
         $messages = [
             'primernombre.required' => 'El primer nombre es requerido.',
@@ -417,7 +442,11 @@ class AlumnoController extends Controller
             'fotografias',
             'fotografiasdelpadre',
             'carnet',
-            'certificadodeconducta'
+            'certificadodeconducta',
+            'bus',
+            'taxi',
+            'conpadre',
+            'solo',
         ));
 
         return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
