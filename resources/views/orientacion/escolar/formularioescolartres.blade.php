@@ -6,7 +6,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Escolar</h1>
+                <h1 class="mb-0">Escolar Paso-3</h1>
             </div>
             <div class="col text-right">
                 <a href="{{route('escolardos.create')}}" class="btn btn-lg btn-success">
@@ -26,181 +26,147 @@
 
         <form class="row g-3 mt-3" action="{{route('escolar.index')}}" method="POST">
             @csrf
-            <h2 class="col-12 mt-3">VII. Actividades en que le Gustaria Participar:</h2>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="abanda" value="1"> Banda de Gerra
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="afutbol" value="1"> Futbol
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="apingpong" value="1"> Ping Pong
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="anumeros" value="1"> Trabajo con Numeros
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="alectura" value="1"> Lectura
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="acoro" value="1"> Coro
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="abasket" value="1"> Basketball
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="atennis" value="1"> Tennis
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="amanuales" value="1"> Trabajos Manuales
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="aoratoria" value="1"> Oratoria
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="avolley" value="1"> Volleyball
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="aatletismo" value="1"> Atletismo
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="adomestico" value="1"> Trabajo Domestico
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="aanimales" value="1"> Cuidar Animales
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="adibujo" value="1"> Dibujo y Pintura
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="afiestas" value="1"> Fiestas y Reuniones Sociales
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="acientificos" value="1"> Estudios Cientificos
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="aenfermos" value="1"> Cuidar Enfermos
-            </label>
-            <label class="col-2 mt-3">
-                <input type="checkbox" name="aotros" value="1"> Otros
-            </label>
+            <h2 class="col-12 mt-3">IV. Situacion Economica:</h2>
 
-            <div class="valid-feedback"></div>
+            <div class="col-6 mt-3">
+                <label for="situacioneconomica">Su situacion economica la considera:</label>
+                <select type="text" id="situacioneconomica" name="situacioneconomica" class="form-control" required value="{{old('situacioneconomica')}}">
+                    <option value="">Elegir</option>
+                    <option value="muybuena">Muy Buena</option>
+                    <option value="buena">Buena</option>
+                    <option value="regular">Regular</option>
+                    <option value="mala">Mala</option>
+                </select>
+                <div class="valid-feedback"></div>
+            </div>
+
+            <!-- Vivienda -->
+            <h2 class="col-12 mt-3">V. Vivienda:</h2>
+
+            <div class="col-6 mt-3">
+                <label for="casavives">La casa en la que vives es:</label>
+                <select type="text" id="casavives" name="casavives" class="form-control" required value="{{old('casavives')}}">
+                    <option value="">Elegir</option>
+                    <option value="propia">Propia</option>
+                    <option value="alquilada">Alquilada</option>
+                    <option value="amortizada">Amortizada</option>
+                    <option value="prestada">Prestada</option>
+                </select>
+                <div class="valid-feedback"></div>
+            </div>
 
             <div class="col-12 mt-3">
             </div>
-            <div class="col-6 mt-3">
-                <label for="trabajar">Le gustaria trabajar:</label>
-                <select type="text" id="trabajar" name="trabajar" class="form-control" required value="{{old('trabajar')}}">
-                    <option value="">Elegir</option>
-                    <option value="solo">Solo</option>
-                    <option value="grupos">En Grupos</option>
-                </select>
-            </div>
 
             <div class="col-6 mt-3">
-                <label for="namigos">Sus amigos son:</label>
-                <select type="text" id="namigos" name="namigos" class="form-control" required value="{{old('namigos')}}">
-                    <option value="">Elegir</option>
-                    <option value="pocos">Pocos</option>
-                    <option value="muchos">Muchos</option>
-                </select>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="edadamigos">Son sus amigos:</label>
-                <select type="text" id="edadamigos" name="edadamigos" class="form-control" required value="{{old('edadamigos')}}">
-                    <option value="">Elegir</option>
-                    <option value="mayores">Mayores que usted</option>
-                    <option value="jovenes">Mas jovenes</option>
-                    <option value="misma">De la misma edad</option>
-                </select>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="pasatiempos">Cuales son sus diversiones o pasatiempos favoritos?</label>
-                <input type="text" id="pasatiempos1" name="pasatiempos1" class="form-control" required value="{{old('pasatiempos1')}}" placeholder="Primero"></input>
+                <label style="font-weight: bold" for="casavives">En su casa hay:</label>
+                <input type="checkbox" name="computadora" value="1"> Computadora
+                </label>
+                <label>
+                    <input type="checkbox" name="tablet" value="1"> Tablet
+                </label>
+                <label>
+                    <input type="checkbox" name="celular" value="1"> Celular
+                </label>
+                <label>
+                    <input type="checkbox" name="internet" value="1"> Internet
+                </label>
+                <label>
+                    <input type="checkbox" name="otroscasa" value="1"> otros
+                </label>
                 <div class="valid-feedback"></div>
-                <input type="text" id="pasatiempos2" name="pasatiempos2" class="form-control" required value="{{old('pasatiempos2')}}" placeholder="Segundo"></input>
-                <div class="valid-feedback"></div>
-                <input type="text" id="pasatiempos3" name="pasatiempos3" class="form-control" required value="{{old('pasatiempos3')}}" placeholder="Tercero"></input>
+            </div>
+            <!-- Estado de salud -->
+            <h2 class="col-12 mt-3">VI. Estado de Salud:</h2>
+
+            <div class="col-6 mt-3">
+                <label for="talla">Talla:</label>
+                <input type="text" id="talla" name="talla" class="form-control" required value="{{old('talla')}}" placeholder="Ingrese la talla"></input>
                 <div class="valid-feedback"></div>
             </div>
 
-            <!-- Rendimiento  -->
-            <h2 class="col-12 mt-3">VIII. Rendimiento Escolar:</h2>
+            <div class="col-6 mt-3">
+                <label for="peso">Peso:</label>
+                <input type="text" id="peso" name="peso" class="form-control" required value="{{old('peso')}}" placeholder="Ingrese el peso"></input>
+                <div class="valid-feedback"></div>
+            </div>
 
+            <div class="col-6 mt-3">
+                <label for="hatenido">Ha tenido algun problema de salud?:</label>
+                <input type="text" id="hatenido" name="hatenido" class="form-control" required value="{{old('hatenido')}}" placeholder="Dolores,molestias, alergias, enfermedades, etc..."></input>
+                <div class="valid-feedback"></div>
+            </div>
+
+            <div class="col-6 mt-3">
+                <label for="tiene">Tiene algun problema de salud:</label>
+                <input type="text" id="tiene" name="tiene" class="form-control" required value="{{old('tiene')}}" placeholder="Especifique cuales"></input>
+                <div class="valid-feedback"></div>
+            </div>
+
+            <div class="col-6 mt-3">
+                <label for="ver">Tiene dificultades para ver?:</label>
+                <select type="text" id="ver" name="ver" class="form-control" required value="{{old('ver')}}">
+                    <option value="">Elegir</option>
+                    <option value="versi">Si</option>
+                    <option value="verno">No</option>
+                </select>
+            </div>
             <div class="col-6 mt-3"> 
-                <label for="estudios">En cuantas escuelas primarias realizo sus estudios?</label>
-                <input type="text" id="estudios" name="estudios" class="form-control" required value="{{old('estudios')}}" placeholder="Especifique"></input>
+                <label for="verespecifique">Especifique:</label>
+                <input type="text" id="verespecifique" name="verespecifique" class="form-control" required value="{{old('verespecifique')}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
-
             <div class="col-6 mt-3">
-                <label for="repetido">Grados que ha repetido:</label>
-                <input type="text" id="repetido" name="repetido" class="form-control" required value="{{old('repetido')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="claseestudiante">Que clase de estudiante fue en la escuela?</label>
-                <select type="text" id="claseestudiante" name="claseestudiante" class="form-control" required value="{{old('claseestudiante')}}">
+                <label for="verespecifique">Corregida:</label>
+                <select type="text" id="verespecifique" name="verespecifique" class="form-control" required value="{{old('verespecifique')}}">
                     <option value="">Elegir</option>
-                    <option value="cexelente">Exelente</option>
-                    <option value="cmuybueno">Muy bueno</option>
-                    <option value="cbueno">Bueno</option>
-                    <option value="cregular">Regular</option>
-                    <option value="cdeficiente">Deficiente</option>
+                    <option value="sivercorregida">Si</option>
+                    <option value="novercorregida">No</option>
                 </select>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="agrado">Que materia le agrado mas?</label>
-                <input type="text" id="agrado" name="agrado" class="form-control" required value="{{old('agrado')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="agradomenos">Que materia le agrado menos?</label>
-                <input type="text" id="agradomenos" name="agradomenos" class="form-control" required value="{{old('agradomenos')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="considera">Como estudiante se considera:</label>
-                <select type="text" id="considera" name="considera" class="form-control" required value="{{old('considera')}}">
+                <label for="escuchar">Tiene dificultades para escuchar?:</label>
+                <select type="text" id="escuchar" name="escuchar" class="form-control" required value="{{old('escuchar')}}">
                     <option value="">Elegir</option>
-                    <option value="eexelente">Exelente</option>
-                    <option value="emuybueno">Muy bueno</option>
-                    <option value="ebueno">Bueno</option>
-                    <option value="eregular">Regular</option>
-                    <option value="edeficiente">Deficiente</option>
-                    <option value="emalo">Malo</option>
+                    <option value="escucharsi">Si</option>
+                    <option value="escucharno">No</option>
+                </select>
+            </div>
+            <div class="col-6 mt-3">
+                <label for="escucharespecifique">Especifique:</label>
+                <input type="text" id="escucharespecifique" name="escucharespecifique" class="form-control" required value="{{old('escucharespecifique')}}" placeholder="Especifique"></input>
+                <div class="valid-feedback"></div>
+            </div>
+            <div class="col-6 mt-3">
+                <label for="escucharcorregida">Corregida:</label>
+                <select type="text" id="escucharcorregida" name="escucharcorregida" class="form-control" required value="{{old('escucharcorregida')}}">
+                    <option value="">Elegir</option>
+                    <option value="sivercorregida">Si</option>
+                    <option value="novercorregida">No</option>
                 </select>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="horasextra">Cuantas horas extras escolares le dedica al estudio?</label>
-                <input type="text" id="horasextra" name="horasextra" class="form-control" required value="{{old('horasextra')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
+                <label for="estadodentadura">Estado de su dentadura:</label>
+                <select type="text" id="estadodentadura" name="estadodentadura" class="form-control" required value="{{old('estadodentadura')}}">
+                    <option value="">Elegir</option>
+                    <option value="dentadurabuena">Buena</option>
+                    <option value="dentaduramala">Mala</option>
+                    <option value="dentaduraregular">Regular</option>
+                </select>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="tiempolibre">En que emplea su tiempo libre?</label>
-                <input type="text" id="tiempolibre" name="tiempolibre" class="form-control" required value="{{old('tiempolibre')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
+                <label for="recibidovacuna">Ha recibido vacuna en el tiempo que le corresponde?</label>
+                <select type="text" id="recibidovacuna" name="recibidovacuna" class="form-control" required value="{{old('recibidovacuna')}}">
+                    <option value="">Elegir</option>
+                    <option value="vacunasi">Si</option>
+                    <option value="vacunano">No</option>
+                </select>
             </div>
 
-            <div class="col-6 mt-3">
-                <label for="rendimiento">Que hace usted para mejorar su rendimiento academico?</label>
-                <input type="text" id="rendimiento" name="rendimiento" class="form-control" required value="{{old('rendimiento')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="ayudarsele">En que forma podria ayudarsele?</label>
-                <input type="text" id="ayudarsele" name="ayudarsele" class="form-control" required value="{{old('ayudarsele')}}" placeholder="Especifique"></input>
-                <div class="valid-feedback"></div>
+            <div class="col-12 mt-3">
             </div>
 
             <div class="col-3 mt-3">
