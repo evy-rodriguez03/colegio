@@ -33,6 +33,9 @@
       {{session('notification')}}
   </div>
      @endif
+ 
+     <table>
+
         <tbody>  
             <tr>
             <th><h3>Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y') }}</h3></th>
@@ -40,11 +43,14 @@
         </tbody>
 
         <tbody>  
-            <tr>
-            <th><h3>Nombre del Alumno: </h3></th>
-            <td></td>
-            </tr>
-        </tbody>
+        @foreach ($alumnos as $vistaconsejeria)
+    <tr>
+        <th><h3>Nombre del Alumno: {{$vistaconsejeria->primernombre}} {{$vistaconsejeria->segundonombre}}{{$vistaconsejeria->primerapellido}} {{$vistaconsejeria->segundoapellido}}</h3></th>
+    </tr>
+    @endforeach
+</tbody>
+</table>
+
 
      <p>Bienvenidos: 
       Gracias por confiar en nuestra institucion, para nosotros es de mucho agrado atenderles <br>
@@ -54,37 +60,77 @@
     </div>
     <div class="table-responsive">
       <!-- Projects table -->
-      <form action ="{{ route('indexcompromiso.store')}}" method="POST">
-      @csrf
+      <form action="{{ route('tabla.store') }}" method="POST">
+    @csrf
 
-      <table class="table align-items-center table-flush">
+    <table class="table align-items-center table-flush">
+        <!-- Encabezados de la tabla -->
         <thead class="thead-light">
-          <tr>
-            <th scope="col">1° SECRETARIA</th>
-            <th scope="col">2° ORIENTACION</th>
-            <th scope="col">3° CONSEJERIA</th>
-            <th scope="col">4° TESORERIA</th>
-            <th scope="col">5° SECRETARIA </th>
-          </tr>
+            <tr>
+                <th scope="col">1° SECRETARIA</th>
+                <th scope="col">2° ORIENTACION</th>
+                <th scope="col">3° CONSEJERIA</th>
+                <th scope="col">4° TESORERIA</th>
+                <th scope="col">5° SECRETARIA</th>
+            </tr>
         </thead>
 
         <tbody>
-        <tr>
-             <td><input type="checkbox" name="secretaria[]" value="1" ></td>
-             <td><input type="checkbox" name="orientacion[]" value="2" ></td>
-             <td><input type="checkbox" name="consejeria[]" value="3" ></td>
-             <td><input type="checkbox" name="tesoreria[]" value="4" ></td>
-             <td><input type="checkbox" name="sec[]" value="5" ></td>
-        </tr>
+            @foreach ($alumnos as $alumno)
+            <tr>
+                <!-- Checkbox para 1° SECRETARIA -->
+                <td>
+                    <input type="checkbox" name="secretaria[]" value="1"
+                        @if (isset($alumno->campo[0]) && $alumno->campo[0]->secretaria)
+                            checked
+                        @endif
+                    >
+                </td>
+                <!-- Checkbox para 2° ORIENTACION -->
+                <td>
+                    <input type="checkbox" name="orientacion[]" value="2"
+                        @if (isset($alumno->valor[0]) && $alumno->valor[0]->orientacion)
+                            checked
+                        @endif
+                    >
+                </td>
+                <!-- Checkbox para 3° CONSEJERIA -->
+                <td>
+                    <input type="checkbox" name="consejeria[]" value="3"
+                        @if (isset($alumno->consejo[0]) && $alumno->consejo[0]->consejeria)
+                            checked
+                        @endif
+                    >
+                </td>
+                <!-- Checkbox para 4° TESORERIA -->
+                <td>
+                    <input type="checkbox" name="tesoreria[]" value="4"
+                        @if (isset($alumno->dinero[0]) && $alumno->dinero[0]->tesoreria)
+                            checked
+                        @endif
+                    >
+                </td>
+                <!-- Checkbox para 5° SECRETARIA -->
+                <td>
+                    <input type="checkbox" name="sec[]" value="5"
+                        @if (isset($alumno->sector[0]) && $alumno->sector[0]->sec)
+                            checked
+                        @endif
+                    >
+                </td>
+            </tr>
+            @endforeach
         </tbody>
-         
-      </table>
-<br>
-<br>
+    </table>
 
-          <div class="col text-left">
-          <button class="btn btn-primary btn-lg" type="submit">Aceptar</button>
-      </form>
+    <!-- Botón para enviar el formulario -->
+    <br>
+    <br>
+    <div class="col text-left">
+        <button class="btn btn-primary btn-lg" type="submit">Aceptar</button>
+    </div>
+</form>
+
            </div>
     </div>
   </div>
