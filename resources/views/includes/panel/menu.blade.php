@@ -29,7 +29,7 @@
       </a>
     </li>
     <li class="nav-item">
-        <a href="{{Route('consejeria.index')}}" class="nav-link " href="./examples/tables.html">
+        <a href="{{Route('tabla.index')}}" class="nav-link " href="./examples/tables.html">
           <i class="fas fa-users text-red"></i> Consejeria
         </a>
       </li>
