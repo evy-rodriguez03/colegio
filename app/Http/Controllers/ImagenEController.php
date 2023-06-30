@@ -103,13 +103,16 @@ public function destroy($id)
     $user = User::find($id);
 
     if (!$user) {
-        abort(404);
+       
     }
+    
 
     if (!$user->imagen) {
-        abort(404);
+        $errorMessage = 'Lo sentimos, la foto de perfil no fue encontrada.';
+        return view('errors.custom', compact('errorMessage'))->withErrors(['errorMessage' => $errorMessage]);
     }
 
+    
 
     $archivo = public_path($user->imagen);
 
