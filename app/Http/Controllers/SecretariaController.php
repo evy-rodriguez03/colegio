@@ -13,7 +13,8 @@ class SecretariaController extends Controller
      */
     public function index()
     {
-        return view('consejeria.consjindex');
+        
+        return view('consejeria.tablaindex');
     }
 
     /**
@@ -23,7 +24,12 @@ class SecretariaController extends Controller
      */
     public function create()
     {
-        //
+        
+      
+
+
+
+        return view('consejeria.consjindex');
     }
 
     /**
@@ -34,7 +40,7 @@ class SecretariaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
     }
 
     /**
