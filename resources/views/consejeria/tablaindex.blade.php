@@ -62,18 +62,18 @@
     </tr>
 </head>
 <tbody>
-
+@foreach ($alumnos as $index => $vistaconsejeria)
 
  <tr>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td>{{$vistaconsejeria->id}}</td>
+  <td>{{$vistaconsejeria->primernombre}} {{$vistaconsejeria->segundonombre}} {{$vistaconsejeria->primerapellido}} {{$vistaconsejeria->segundoapellido}}</td>
+  <td>{{$vistaconsejeria->numerodeidentidad }}</td>
   <td>
   <a href="{{Route('consejeria.create')}}" class="btn btn-sm btn-info">
           Ver Proceso</a>    
   </td>
  </tr>
-
+ @endforeach
 </tbody>
 </table>
     </div>
