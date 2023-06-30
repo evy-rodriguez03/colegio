@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Periodo;
+use App\Models\Curso;
 
-class CursostotalesController extends Controller
+class periodocursosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class CursostotalesController extends Controller
      */
     public function index()
     {
-        
-        $periodo = Periodo::all();
-        return view('administracion.cursostotales', ['periodo' => $periodo]);
+        $periodo = Periodo::where('activo','=',1)->first();
+        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->get();
+        return view('administracion.periodocursos')->with('cursos',$cursos);
     }
 
     /**

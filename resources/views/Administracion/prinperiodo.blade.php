@@ -1,5 +1,30 @@
 @extends('layout.panel')
+@section('css')
+<link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
 
+<style>
+    .small-select {
+        width: 200px;
+        /* Otros estilos personalizados */
+    }
+</style>
+@endsection
+@section('js')
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
+
+<script>
+   $(document).ready(function() {
+      $('#periodo').DataTable({
+         lengthMenu: [3, 6, 9, 12],
+      });
+   });
+</script>
+@endsection
 @section('content')
 
 <!-- Tu formulario para crear un nuevo registro -->
@@ -20,7 +45,7 @@
     </div>
     <!-- Tabla para mostrar los registros existentes -->
     <div class="card-body">
-        <table class="table align-items-center table-flush">
+        <table id="periodo" class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
                     <!-- Definir las columnas de la tabla -->
