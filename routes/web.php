@@ -201,8 +201,8 @@ route::get('/listalumno/pdf', [ReportesController::class,'pdf'])->name('repalumn
 route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadre.pdf');
 
 //Rutas consejeria
-route::get('/consjindex', [SecretariaController::class,'index'])->name('consejeria.index');
-
+route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
+route::get('/consjindex', [SecretariaController::class,'create'])->name('consejeria.create');
 
 //Rutas consfiguracion
 Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
