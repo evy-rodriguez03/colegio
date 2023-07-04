@@ -36,22 +36,31 @@ class Alumno extends Model
         'totalhermanos',
         'medico',
         'telefonoemergencia',
+        'bus',
+        'taxi',
+        'conpadre',
+        'solo',
        
 
     ];
-        public function padres()
-        {
-            return $this->belongsToMany(Padre::class,'alumno_padre','alumno_id','padre_id');
-        }
+    public function padres()
+    {
+        return $this->belongsToMany(Padre::class, 'alumno_padre', 'alumno_id', 'padre_id');
+    }
 
-        public function cursos()
-        {
-            return $this->belongsToMany(Curso::class, 'matriculados', 'alumno_id', 'curso_id');
-        }
+    public function cursos()
+    {
+        return $this->belongsToMany(Curso::class, 'matriculados', 'alumno_id', 'curso_id');
+    }
 
         public function periodos()
         {
             return $this->belongsToMany(Periodo::class, 'matriculados', 'alumno_id', 'periodo_id');
+        }
+
+        public function consejeria()
+        {
+            return $this->hasOne(Consejeria::class, 'alumno_id');
         }
         
         

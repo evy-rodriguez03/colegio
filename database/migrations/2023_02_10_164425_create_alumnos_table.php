@@ -39,6 +39,10 @@ class CreateAlumnosTable extends Migration
             $table->string('totalhermanos');
             $table->string('medico');
             $table->string('telefonoemergencia');
+            $table->boolean('bus')->default(false)->nullable();
+            $table->boolean('taxi')->default(false)->nullable();
+            $table->boolean('conpadre')->default(false)->nullable();
+            $table->boolean('solo')->default(false)->nullable();
 
             
 

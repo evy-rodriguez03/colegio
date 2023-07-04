@@ -312,29 +312,25 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-    {
-        $alumno_id = Cache::get('alumno_id');
-        $alumno = Alumno::find($alumno_id);
-    
-        $cursoId = session()->get('curso_id');
-    
-        // Verificar si hay al menos un padre de familia asociado al alumno
-        if ($alumno->padres()->count() > 0) {
-            $estado = Proceso::findOrFail($alumno_id);
-            $estado->delete();
-    
-            $periodo = Periodo::where('activo', 1)->first();
-    
-            $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
-    
-            Cache::forget('alumno_id');
-    
-            return redirect()->route('principal.create');
-            } else {
-            $mensaje = "No se ha registrado ningún padre de familia para este alumno.";
-            return redirect()->back()->with('error', $mensaje);
-            }
-        }
+{
+    $alumno_id = Cache::get('alumno_id');
+    $alumno = Alumno::find($alumno_id);
+
+    $cursoId = Cache::get('curso_id');
+
+    $estado = Proceso::findOrFail($alumno_id);
+    $estado->delete();
+
+    $periodo = Periodo::where('activo', 1)->first();
+
+    $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
+
+    Cache::forget('alumno_id');
+    Cache::forget('Curso_id');
+
+    return redirect()->route('principal.create');
+}
+
     
     /**
      * Display the specified resource.
