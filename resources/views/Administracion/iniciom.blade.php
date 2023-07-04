@@ -35,11 +35,11 @@
               </div>
             
 
-      <div class="col-md-5 mb-3">
-            <label for="fechaCierre">Fecha de Cierre</label>
-            <input type="date" class="form-control" name="fechaCierre" placeholder="Ingrese la fecha"  required>
-            <div class="valid-feedback"></div>
-        </div>
+              <div class="col-md-5 mb-3">
+    <label for="fechaCierre">Fecha de Cierre</label>
+    <input type="date" class="form-control" name="fechaCierre" placeholder="Ingrese la fecha" min="<?php echo date('Y-m-d'); ?>" required>
+    <div class="valid-feedback"></div>
+</div>
   </div>
   <button type="submit" class="btn btn-lg btn-Primary mx-16 my-16">Aceptar</button>
             <a href="{{Route('inicio.create')}}" class="btn btn-lg btn-success ">Cancelar </a>
