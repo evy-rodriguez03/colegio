@@ -257,7 +257,50 @@
                     >
                     Certificado de conducta
                 </label>
+                </div>
+
+            <div>
+                <hr class="mb-2">
+                <h4 class="mb-0">Como viaja su hijo</h4>
+                <hr class="mb-2">
             </div>
+
+
+            <div class="checkbox-group"> 
+                <label class="checkbox-item">
+                    <input type="checkbox" name="bus" value="1"
+                        @if(old('bus') == '1' || (isset($alumno->bus) ? $alumno->bus : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Bus
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="taxi" value="1"
+                        @if(old('taxi') == '1' || (isset($alumno->taxi) ? $alumno->taxi : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Taxi
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="conpadre" value="1"
+                        @if(old('conpadre') == '1' || (isset($alumno->conpadre) ? $alumno->conpadre : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Con padre
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="solo" value="1"
+                        @if(old('solo') == '1' || (isset($alumno->solo) ? $alumno->solo : '') == '1')
+                            checked
+                        @endif
+                    >
+                    Solo
+                </label>
+                </div>
+
             
 
             <hr class="mb-2">

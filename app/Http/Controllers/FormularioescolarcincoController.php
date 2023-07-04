@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Escolar;
 use Illuminate\Http\Request;
 
 class FormularioescolarcincoController extends Controller

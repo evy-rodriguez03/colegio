@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Escolar;
-
 use Illuminate\Http\Request;
+use App\Models\Periodo;
+use App\Models\Curso;
 
-class FormularioescolardosController extends Controller
+class periodocursosController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-     //
+        $periodo = Periodo::where('activo','=',1)->first();
+        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->get();
+        return view('administracion.periodocursos')->with('cursos',$cursos);
     }
 
     /**
@@ -19,9 +25,9 @@ class FormularioescolardosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createescolardos()
+    public function create()
     {
-        return view('orientacion.escolar.formularioescolardos');
+        //
     }
 
     /**

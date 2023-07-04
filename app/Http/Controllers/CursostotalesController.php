@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Periodo;
 
 class CursostotalesController extends Controller
 {
@@ -13,7 +14,9 @@ class CursostotalesController extends Controller
      */
     public function index()
     {
-        return view('administracion.cursostotales');
+        
+        $periodo = Periodo::all();
+        return view('administracion.cursostotales', ['periodo' => $periodo]);
     }
 
     /**
