@@ -36,6 +36,7 @@ use App\Http\Controllers\FormularioescolardosController;
 use App\Http\Controllers\FormularioescolartresController;
 use App\Http\Controllers\FormularioescolarcuatroController;
 use App\Http\Controllers\FormularioescolarcincoController;
+use App\Http\Middleware\VerificarCurso;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,7 +103,8 @@ route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('in
 
 //ruta matricula completa
 Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula')
-->middleware(VerificarPeriodoMatricula::class);
+->middleware(VerificarPeriodoMatricula::class)
+->middleware(VerificarCurso::class);
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
 route::post('/alumnopadre', [PadreController::class,'storeconpadre'])->name('submitpadre');
