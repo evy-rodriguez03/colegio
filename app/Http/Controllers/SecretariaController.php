@@ -49,86 +49,29 @@ class SecretariaController extends Controller
     public function store(Request $request)
     {
       
-       // Recupera los valores de los checkboxes seleccionados
-       $secretaria = $request->input('secretaria');
-       $orientacion = $request->input('orientacion');
-       $consejeria = $request->input('consejeria');
-       $tesoreria = $request->input('tesoreria');
-       $sec = $request->input('sec');
+        $id_alumnos = $request->input('id_alumno');
+        $contador = 0;
+        
+        foreach ($id_alumnos as $key => $id_alumno) {
+            $campo = Consejeria::where('id_alumno','=', $id_alumno)->get();
 
-       // Obtén todos los alumnos
-       $alumnos = Alumno::all();
-
-       // Itera sobre los alumnos y guarda los valores en la base de datos
-       foreach ($alumnos as $alumno) {
-           // Guarda los valores de los checkboxes en la tabla correspondiente (asumiendo que hay una tabla para cada campo)
-           if (isset($secretaria)) {
-               $alumno->consejeria()->updateOrCreate(
-                   ['alumno_id' => $alumno->id],
-                   ['secretaria' => true]
-               );
-           } else {
-               $alumno->consejeria()->updateOrCreate(
-                   ['alumno_id' => $alumno->id],
-                   ['secretaria' => false]
-               );
-           }
-
-           // Repite el proceso para los demás campos (orientacion)
-           if (isset($orientacion)) {
-               $alumno->consejeria()->updateOrCreate(
-                   ['alumno_id' => $alumno->id],
-                   ['orientacion' => true]
-               );
-           } else {
-               $alumno->consejeria()->updateOrCreate(
-                   ['alumno_id' => $alumno->id],
-                   ['orientacion' => false]
-               );
-           }
-
-           // Repite el proceso para los demás campos (consejeria, tesoreria, sec)
-           if (isset($consejeria)) {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['consejeria' => true]
-            );
-        } else {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['consejeria' => false]
-            );
+            if (count($campo) == 0) {
+                $campo = new Consejeria;
+                $campo->id_alumno = $id_alumno;
+                $campo->secretaria = $request->input('secretaria')[$contador] ?? 0;
+                $campo->save();
+            }else{
+                $campo = Consejeria::find($campo[0]->id);
+                $campo->id_alumno = $id_alumno;
+                $campo->secretaria = $request->input('secretaria')[$contador] ?? 0;
+                $campo->save();
+                $contador += 1;
+            }
+      
+            return redirect('consejeria/tablaindex');
         }
-         // Repite el proceso para los demás campos (tesoreria, sec)
-         if (isset($tesoreria)) {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['tesoreria' => true]
-            );
-        } else {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['tesoreria' => false]
-            );
-        }
-          // Repite el proceso para los demás campos (sec)
-          if (isset($sec)) {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['sec' => true]
-            );
-        } else {
-            $alumno->consejeria()->updateOrCreate(
-                ['alumno_id' => $alumno->id],
-                ['sec' => false]
-            );
-        }
-       }
-
-       // Redirige o muestra una respuesta adecuada después de guardar los valores
-       return redirect()->back()->with('notification', 'Los valores de los checkboxes se han guardado correctamente.');
-
-   }
+   
+}
 
    // ...
 
