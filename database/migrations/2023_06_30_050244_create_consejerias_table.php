@@ -16,11 +16,11 @@ class CreateConsejeriasTable extends Migration
         Schema::create('consejerias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_alumno');
-            $table->boolean('secretaria')->default(false);
-            $table->boolean('orientacion')->default(false);
-            $table->boolean('consejeria')->default(false);
-            $table->boolean('tesoreria')->default(false);
-            $table->boolean('ultimo')->default(false);
+            $table->boolean('secretaria')->default(false)->nullable();
+            $table->boolean('orientacion')->default(false)->nullable();
+            $table->boolean('consejeria')->default(false)->nullable();
+            $table->boolean('tesoreria')->default(false)->nullable();
+            $table->boolean('ultimo')->default(false)->nullable();
             $table->timestamps();
         });
     }

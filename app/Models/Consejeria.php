@@ -13,18 +13,10 @@ class Consejeria extends Model
     protected $fillable = [
        'secretaria',
        'orientacion',
-       'consejeria',
+       'consejo',
        'tesoreria',
        'ultimo',
 
-   ];
-
-       // Relación uno a uno inversa con el modelo Alumno
-       public function alumno()
-       {
-           return $this->belongsTo(Alumno::class, 'alumno_id');
-       }
-       
-       
+   ];    
 
 }

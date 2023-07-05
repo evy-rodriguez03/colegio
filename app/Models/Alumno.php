@@ -57,12 +57,6 @@ class Alumno extends Model
         {
             return $this->belongsToMany(Periodo::class, 'matriculados', 'alumno_id', 'periodo_id');
         }
-
-        public function consejeria()
-        {
-            return $this->hasOne(Consejeria::class, 'alumno_id');
-        }
-        
         
 
 
