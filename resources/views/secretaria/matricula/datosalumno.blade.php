@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="segundonombre">Segundo Nombre</label>
-                    <input type="text" class="form-control" name="segundonombre" value="{{ old('segundonombre')?old('segundonombre'):(isset($alumno->segundonombre)?$alumno->segundonombre:'') }}" placeholder="Segundo Nombre" required maxlength="12">
+                    <input type="text" class="form-control" name="segundonombre" value="{{ old('segundonombre')?old('segundonombre'):(isset($alumno->segundonombre)?$alumno->segundonombre:'') }}" placeholder="Segundo Nombre" maxlength="12">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -73,7 +73,7 @@
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="segundoapellido">Segundo Apellido</label>
-                    <input type="text" class="form-control" name="segundoapellido" value="{{ old('segundoapellido')?old('segundoapellido'):(isset($alumno->segundoapellido)?$alumno->segundoapellido:'') }}" placeholder="Segundo Apellido" required maxlength="14">
+                    <input type="text" class="form-control" name="segundoapellido" value="{{ old('segundoapellido')?old('segundoapellido'):(isset($alumno->segundoapellido)?$alumno->segundoapellido:'') }}" placeholder="Segundo Apellido"  maxlength="14">
                     <div class="valid-feedback">#</div>
                 </div>
                 <div class="col-md-4 mb-3">
