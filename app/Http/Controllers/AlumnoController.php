@@ -51,9 +51,9 @@ class AlumnoController extends Controller
 
         $rules = [
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'min:3|string',
+            'segundonombre' => 'alpha',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'min:3|string',
+            'segundoapellido' => 'alpha',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
@@ -83,18 +83,12 @@ class AlumnoController extends Controller
         $messages = [
             'primernombre.required' => 'El primer nombre es requerido.',
             'primernombre.min' => 'El minimo son 3 caracteres.',
-
-            
-            'segundonombre.min' => 'El minimo son 3 caracteres.',
-
             'telefonoemergencia.required' => 'El número de telefono es necesario',
             'telefonoemergencia.min' => 'El numero de telefono tiene un minimo de 8 caracteres',
             'telefonoemergencia.numeric' => 'El número de telefono solo acepta números',
             'primerapellido.required' => 'El primer apellido es requerido.',
             'primerapellido.min' => 'El minimo son 3 caracteres.',
-
             'segundoapellido.min' => 'El minimo son 3 caracteres.',
-
             'numerodeidentidad.required' => 'El número de identidad es necesario.',
             'numerodeidentidad.min' => 'El minimo de caracteres del número de identidad es de 13 digitos',
             'numerodeidentidad.numeric' => 'El campo número de identidad solo permite números',
@@ -102,7 +96,6 @@ class AlumnoController extends Controller
             'fechadenacimiento.date' => 'La fecha es necesaria',
             'genero.required' => 'M=Si es masculino, y F=Si es femenino',
             'genero.min' => 'Es necesario tener al menos 1 caracter en genero',
-
             'direccion.required' => 'El campo dirección es necesario',
             'numerodehermanosenicgc.required' => 'Sino tiene escriba "0"',
             'numerodehermanosenicgc.numeric' => 'Solo acepta números',
@@ -174,14 +167,13 @@ class AlumnoController extends Controller
 
     public function storematricula(Request $request)
     {
-
         $value = Cache::get('alumno_id');
 
         $rules = [
             'primernombre' => 'required|min:3|max:12|string',
-            'segundonombre' => 'sometimes|min:3|max:12|string',
+            'segundonombre' => 'alpha',
             'primerapellido' => 'required|min:3|max:12|string',
-            'segundoapellido' => 'min:3|max:12|string',
+            'segundoapellido' => 'alpha',
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $value ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
@@ -210,33 +202,21 @@ class AlumnoController extends Controller
             'primernombre.required' => 'El primer nombre es requerido.',
             'primernombre.max' => 'El maximo de primer nombre son 12 caracteres.',
             'primernombre.min' => 'El minimo  de primer nombre son 3 caracteres.',
-
-            
-            'segundonombre.min' => 'El minimo de Segundo nombre son 3 caracteres.',
-            'segundonombre.max' => 'El maximo de Segundo nombre son 12 caracteres.',
-
             'telefonoemergencia.required' => 'El número de telefono es necesario',
             'telefonoemergencia.min' => 'El numero de telefono tiene un minimo de 8 caracteres',
             'telefonoemergencia.numeric' => 'El número de telefono solo acepta números',
             'primerapellido.required' => 'El primer apellido es requerido.',
             'primerapellido.min' => 'El minimo de primer apellido son 3 caracteres.',
             'primerapellido.max' => 'El maximo de primer apellido son 12 caracteres.',
-
-           
-            'segundoapellido.min' => 'El minimo de segundo apellido son 3 caracteres.',
-            'segundoapellido.max' => 'El maximo de segundo apellido son 12 caracteres.',
-
             'numerodeidentidad.required' => 'El número de identidad es necesario.',
             'numerodeidentidad.min' => 'El minimo de caracteres del número de identidad es de 13 digitos',
             'numerodeidentidad.numeric' => 'El campo número de identidad solo permite números',
             'numerodeidentidad.unique' => 'El campo número de identidad debe ser unico',
             'tiene_alergia.required'=>'Debe seleccionar si tiene una alergia o no',
-
             'fechadenacimiento.required' => 'La fecha de nacimiento es necesaria.',
             'fechadenacimiento.date' => 'La fecha es necesaria',
             'genero.required' => 'seleccion si es masculino, o es femenino',
             'genero.min' => 'Es necesario tener al menos 1 caracter en genero',
-
             'direccion.required' => 'El campo dirección es necesario',
             'numerodehermanosenicgc.required' => 'Sino hermanos tiene escriba "0"',
             'numerodehermanosenicgc.numeric' => 'Solo acepta números',
@@ -372,10 +352,10 @@ class AlumnoController extends Controller
     {
         $rules = [
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'min:3|string',
+            'segundonombre' => 'alpha',
             'telefonodeencargado' => 'required|min:8|numeric',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'min:3|string',
+            'segundoapellido' => 'alpha',
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $id ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'required|min:2|string',
@@ -395,18 +375,11 @@ class AlumnoController extends Controller
         $messages = [
             'primernombre.required' => 'El primer nombre es requerido.',
             'primernombre.min' => 'El minimo son 3 caracteres.',
-
-            
-            'segundonombre.min' => 'El minimo son 3 caracteres.',
-
             'telefonodeencargado.required' => 'El número de telefono es necesario',
             'telefonodeencargado.min' => 'El numero de telefono tiene un minimo de 8 caracteres',
             'telefonodeencargado.numeric' => 'El número de telefono solo acepta números',
             'primerapellido.required' => 'El primer apellido es requerido.',
             'primerapellido.min' => 'El minimo son 3 caracteres.',
-
-            'segundoapellido.min' => 'El minimo son 3 caracteres.',
-
             'numerodeidentidad.required' => 'El número de identidad es necesario.',
             'numerodeidentidad.min' => 'El minimo de caracteres del número de identidad es de 13 digitos',
             'numerodeidentidad.numeric' => 'El campo número de identidad solo permite números',
