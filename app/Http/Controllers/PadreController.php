@@ -49,14 +49,14 @@ class PadreController extends Controller
         $rules = [
             'tipo' => 'required',
             'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'required|alpha',
             'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|max:13|numeric',
-            'telefonopersonal' => 'required|min:8||max:8|numeric',
-            'lugardetrabajo' => 'alpha',
-            'oficio' => 'alpha',
-            'telefonooficina' => 'required|min:8|max:9|numeric',
+            'segundoapellido' => 'required|alpha',
+            'numerodeidentidad' => 'required|min:13|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
+            'lugardetrabajo' => 'required|alpha',
+            'oficio' => 'required|alpha',
+            'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
 
@@ -109,13 +109,13 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|min:3|max:14|alpha',
-            'segundonombre' => 'min:3|max:14|alpha',
+            'segundonombre' => 'required|min:3|max:14|alpha',
             'primerapellido' => 'required|min:3|max:14|alpha',
-            'segundoapellido' => 'min:3|max:14|alpha',
-            'numerodeidentidad' => 'required|min:12|max:13|numeric',
-            'telefonopersonal' => 'min:8|numeric',
-            'lugardetrabajo' => 'alpha',
-            'oficio' => 'alpha',
+            'segundoapellido' => 'required|min:3|max:14|alpha',
+            'numerodeidentidad' => 'required|min:12|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
+            'lugardetrabajo' => 'required|alpha',
+            'oficio' => 'required|alpha',
             'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
@@ -175,13 +175,13 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'required|alpha',
             'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|max:13|numeric',
-            'telefonopersonal' => 'required|min:8|max:8|numeric',
+            'segundoapellido' => 'required|alpha',
+            'numerodeidentidad' => 'required|min:13|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
             'lugardetrabajo' => 'required|alpha',
-            'oficio' => 'alpha',
+            'oficio' => 'required|alpha',
             'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
@@ -246,14 +246,14 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'required|alpha',
             'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:12|max:13|numeric',
-            'telefonopersonal' => 'required|min:8||max:8|numeric',
-            'lugardetrabajo' => 'alpha',
-            'oficio' => 'alpha',
-            'telefonooficina' => 'required|min:8|maxnumeric',
+            'segundoapellido' => 'required|alpha',
+            'numerodeidentidad' => 'required|min:12|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
+            'lugardetrabajo' => 'required|alpha',
+            'oficio' => 'required|alpha',
+            'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
 
