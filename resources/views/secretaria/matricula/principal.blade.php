@@ -2,11 +2,36 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="ruta-a/bootstrap.min.css">
 <style>
     .small-select {
-        width: 200px;
-        /* Otros estilos personalizados */
-    }
+    width: 100px;
+  }
+  
+  .dataTables_paginate .paginate_button {
+    padding: 3px 5px;
+    margin: 0 5px;
+  }
+ 
+  .table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.table-wrapper {
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.table {
+  width: 100%;
+  font-size: 14px;
+}
+    
 </style>
 @endsection
 
@@ -14,7 +39,26 @@
 <script src="{{asset('Datatables/datatables.min.js')}}"></script>
 <script>
 $(document).ready(function() {
-    var tabla = $('#matricula').DataTable();
+  var tabla = $('#matricula').DataTable({
+    pagingType: 'simple_numbers',
+    lengthMenu: [1, 6, 9, 12],
+    language: {
+      lengthMenu: "Mostrar _MENU_ Entradas",
+      loadingRecords: "Cargando...",
+      processing: "Procesando...",
+      search: "Buscar:",
+      zeroRecords: "Sin resultados encontrados",
+      info: "_TOTAL_ Entradas",
+      infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+      infoFiltered: "",
+      paginate: {
+        first: "Primero",
+        last: "Último",
+        next: "Siguiente",
+        previous: "Anterior"
+      }
+    }
+  });
 
     $('#periodo').on('change', function() {
         var periodoId = $(this).val();
@@ -26,7 +70,6 @@ $(document).ready(function() {
         }
     });
 });
-
 </script>
 @endsection
 
@@ -50,8 +93,8 @@ $(document).ready(function() {
         @endif
     </div>
 
-    <div class="table-responsive">
-        <!-- Projects table -->
+    <div class="table-container">
+     <div class="table-wrapper">
         <table id="matricula" class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
@@ -102,6 +145,7 @@ $(document).ready(function() {
                 @endif
             </tbody>
         </table>
+    </div>
     </div>
     <hr>
     
