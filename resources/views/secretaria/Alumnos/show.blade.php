@@ -96,7 +96,13 @@
     'fotografias' => 'Fotografías del alumno',
     'fotografiasdelpadre' => 'Fotografías del padre',
     'carnet' => 'Carnet de vacunación',
-    'certificadodeconducta' => 'Certificado de conducta'
+    'certificadodeconducta' => 'Certificado de conducta',
+    'bus' => 'bus',
+    'taxi' => 'taxi',
+    'conpadre' => 'con padre',
+    'solo' => 'solo'
+    
+
   ];
 ?>
 

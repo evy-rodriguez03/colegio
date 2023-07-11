@@ -1,14 +1,21 @@
 @extends('layout.panel')
 
+
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
-<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
-
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="ruta-a/bootstrap.min.css">
 <style>
-    .small-select {
-        width: 200px;
-        /* Otros estilos personalizados */
-    }
+  .small-select {
+    width: 200px;
+  }
+  
+  .dataTables_paginate .paginate_button {
+    padding: 3px 5px;
+    margin: 0 5px;
+    
+  }
 </style>
 @endsection
 @section('js')
@@ -19,30 +26,28 @@
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
 <script>
-   $(document).ready(function() {
-      $('#curso').DataTable({
-         lengthMenu: [3, 6, 9, 12],
-         language: {
-    "decimal": ",",
-    "thousands": ".",
-    "lengthMenu": "Mostrar _MENU_ registros",
-    "zeroRecords": "No se encontraron resultados",
-    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-    "sSearch": "Buscar:",
-    "oPaginate": {
-        "sFirst": "Primero",
-        "sLast":"Último",
-        "sNext":"Siguiente",
-        "dom": '<"toolbar">Bftrip',
-        "sPrevious": "Anterior"
-    },
-    "sProcessing":"Cargando..."
-}
-         
-      });
-   });
+  $(document).ready(function() {
+    $('#curso').DataTable({
+      pagingType: 'simple_numbers',
+      lengthMenu: [1, 6, 9, 12],
+      language: {
+        lengthMenu: "Mostrar MENU Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: "Siguiente",
+          previous: "Anterior"
+        }
+      }
+    });
+  });
 </script>
 @endsection
 @section('content')
@@ -98,25 +103,8 @@ div class="card shadow">
                     <td></td>
                     
              <td>   
-              <form action="#" method="POST">
-                <button  class="btn btn-sm btn-primary" onclick="mostrarCursos('.$periodo['id_periodo'].')">Mostrar Cursos</button>
-               
-                @csrf
-              </form>
-              <script>
-function mostrarCursos(periodoId) {
-    // Realizar una llamada AJAX para obtener los cursos del periodo seleccionado
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            // Mostrar los cursos obtenidos en el contenedor
-            document.getElementById("cursosContainer").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("GET", "periodocursos.php?periodo_id=" + periodoId, true);
-    xmlhttp.send();
-}
-</script>
+                <a href="{{ route('periodocursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver cursos</a>
+                
              </td>
              
         </tr>
