@@ -18,7 +18,7 @@ class CursoController extends Controller
     public function index()
     {
         $periodo = Periodo::where('activo','=',1)->first();
-        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->get();
+        $cursos = Curso::where('idperiodo', '=', isset($periodo->id) ? $periodo->id : 0)->get();
         return view('curso.index')->with('cursos',$cursos);
     }
 
