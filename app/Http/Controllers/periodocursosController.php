@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Periodo;
 use App\Models\Curso;
+use App\Models\Periodo;
 
 class periodocursosController extends Controller
 {
@@ -14,7 +14,7 @@ class periodocursosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $periodo = Periodo::where('activo','=',1)->first();
         $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->get();
         return view('administracion.periodocursos')->with('cursos',$cursos);

@@ -1,14 +1,21 @@
 @extends('layout.panel')
 
+
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
-<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
-
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="ruta-a/bootstrap.min.css">
 <style>
-    .small-select {
-        width: 200px;
-        /* Otros estilos personalizados */
-    }
+  .small-select {
+    width: 200px;
+  }
+  
+  .dataTables_paginate .paginate_button {
+    padding: 3px 5px;
+    margin: 0 5px;
+    
+  }
 </style>
 @endsection
 @section('js')
@@ -19,11 +26,28 @@
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
 <script>
-   $(document).ready(function() {
-      $('#cursoperiodo').DataTable({
-         lengthMenu: [3, 6, 9, 12],
-      });
-   });
+  $(document).ready(function() {
+    $('#curso').DataTable({
+      pagingType: 'simple_numbers',
+      lengthMenu: [1, 6, 9, 12],
+      language: {
+        lengthMenu: "Mostrar MENU Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: "Siguiente",
+          previous: "Anterior"
+        }
+      }
+    });
+  });
 </script>
 @endsection
 @section('content')
@@ -35,7 +59,7 @@ div class="card shadow">
           <h3 class="mb-0">Cursos del periodo</h3>
         </div>
         <div class="col text-right">
-          <a href="{{Route('dashboard.index')}}" class="btn btn-lg btn-success">
+          <a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>Regresar</a>
         </div>
       </div>
@@ -56,11 +80,11 @@ div class="card shadow">
 
     <div class="table-responsive">
       <!-- Projects table -->
-      <table id="cursoperiodo" class="table align-items-center table-flush">
+      <table id="curso" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
            <th></th>
-          <th>Cursos</th>
+          <th>curso</th>
           <th></th>
            <th>Opciones</th>
           </tr>
@@ -69,22 +93,21 @@ div class="card shadow">
         <tbody>
 
          <!-- Recorrer los registros existentes -->
-   
+         @foreach ($cursos as $curso)
                 <tr>
                     <!-- Mostrar los valores de cada registro -->
-                    @foreach ($cursos as $curso)
-        <tr>
-             <td>{{$curso->id}}</td>
+                  
                    
-                    <td></td>
-                    <td></td>
+                    <td></td> 
+                    <td>{{$curso->id}}</td>
+                    <td>{{$curso->niveleducativo}}</td>
                     
-             <td>   
-             
-             </td>
+             <td>
+             <a href="{{ route('cursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
+               </td>
              
         </tr>
-        
+        @endforeach
         </tbody>
       </table>
     </div>
