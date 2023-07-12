@@ -36,6 +36,8 @@ use App\Http\Controllers\FormularioescolardosController;
 use App\Http\Controllers\FormularioescolartresController;
 use App\Http\Controllers\FormularioescolarcuatroController;
 use App\Http\Controllers\FormularioescolarcincoController;
+use App\Http\Controllers\FormularioescolarseisController;
+use App\Http\Controllers\FormularioescolarsieteController;
 use App\Http\Middleware\VerificarCurso;
 /*
 |--------------------------------------------------------------------------
@@ -252,4 +254,10 @@ route::post('/escolarcuatro', [FormularioescolarcuatroController::class,'storees
 
 route::get('/escolarcinco', [FormularioescolarcincoController::class,'createescolarcinco'])->name('escolarcinco.create');
 route::post('/escolarcinco', [FormularioescolarcincoController::class,'storeescolarcinco'])->name('submitescolarcinco');
+route::get('/escolarseis', [FormularioescolarseisController::class,'createescolarseis'])->name('escolarseis.create');
+route::post('/escolarseis', [FormularioescolarseisController::class,'storeescolarseis'])->name('submitescolarseis');
+
+route::get('/escolarsiete', [FormularioescolarsieteController::class,'createescolarsiete'])->name('escolarsiete.create');
+route::post('/escolarsiete', [FormularioescolarsieteController::class,'storeescolarsiete'])->name('submitescolarsiete');
+
 
