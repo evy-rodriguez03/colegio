@@ -41,9 +41,7 @@
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
             <th scope="col">Número de identidad</th>
-            <th scope="col">Telefono de encargado</th>
-            <th scope="col">Grado</th>
-            <th scope="col">Sección</th>
+            <th scope="col">Telefono de Emergencia</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -62,18 +60,8 @@
               {{$alumno->numerodeidentidad}}
             </td>
             <td>
-              {{$alumno->telefonodeencargado}}
-            </td>
-            <td>
-              @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
-                  {{$alumno->cursos[0]->niveleducativo}}
-              @endif
+              {{$alumno->telefonoemergencia}}
           </td>
-          <td>
-            @if ($alumno->cursos && $alumno->cursos->isNotEmpty())
-                {{$alumno->cursos[0]->seccion}}
-            @endif
-        </td>
            <td>
             
             <form action="{{url('/alumnos/'.$alumno->id)}}" method="POST" class="form-eliminaralumno">
