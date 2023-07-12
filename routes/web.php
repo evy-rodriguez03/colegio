@@ -37,6 +37,7 @@ use App\Http\Controllers\FormularioescolartresController;
 use App\Http\Controllers\FormularioescolarcuatroController;
 use App\Http\Controllers\FormularioescolarcincoController;
 use App\Http\Middleware\VerificarCurso;
+use App\Http\Controllers\periodocursosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -235,12 +236,15 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 
 //cursostotales
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
+route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
+
+
 
 //Tesoreria
 route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
 route::post('/vistapagorealizar', [vistapagoController::class,'store']);
 
-//Formularios
+//Formularios Orientacion 
 route::get('/escolardos', [FormularioescolardosController::class,'createescolardos'])->name('escolardos.create');
 route::post('/escolardos', [FormularioescolardosController::class,'storeescolardos'])->name('submitescolardos');
 
