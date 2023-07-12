@@ -89,16 +89,13 @@
           </head>
         <tbody>
 
-@foreach ($alumnos as $index => $vistapago)
+        @foreach ($alumnos as $index => $vistapago)
  <tr>
   <td>{{$vistapago->id}}</td>
   <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
   <td>{{$vistapago->numerodeidentidad }}</td>
   <td>
-  <form action="{{ url('/pagorealizar.index') }}" method="POST" class="form-pago">
-  @csrf
-  <button type="submit" class="btn btn-sm btn-info">Ver Pago</button>
-</form>     
+  <a href="{{route('pagorealizar.index')}}" class="btn btn-sm btn-info"> ver pago </a>
   </td>
  </tr>
 

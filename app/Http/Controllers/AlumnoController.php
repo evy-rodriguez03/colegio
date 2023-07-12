@@ -19,7 +19,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::with('Curso')->paginate(10);
+        $alumnos = Alumno::with('Cursos')->paginate(10);
         return view('secretaria.Alumnos.index', compact('alumnos'));
     }
 
