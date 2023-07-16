@@ -105,9 +105,7 @@ Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('in
 route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
-Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula')
-->middleware(VerificarPeriodoMatricula::class)
-->middleware(VerificarCurso::class);
+Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
 route::post('/alumnopadre', [PadreController::class,'storeconpadre'])->name('submitpadre');
@@ -132,9 +130,7 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
-
-
-//ruta alumnos
+//ruta alumno
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
@@ -177,7 +173,9 @@ route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.ind
 route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
-route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
+route::get('/principal', [PrincipalController::class,'index'])->name('principal.create')
+->middleware(VerificarPeriodoMatricula::class)
+->middleware(VerificarCurso::class);
 Route::post('/periodo/{id}/cancelar', [PrincipalController::class, 'cancelarPeriodo'])->name('periodo.cancelar');
 
 //Rutas Horario de clase
