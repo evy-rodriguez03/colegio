@@ -25,19 +25,12 @@ class SecretariaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $alumnos = Alumno::all();
-    
-        foreach ($alumnos as $key => $value) {
-            $value->campo = Consejeria::where('id_alumno','=',$value->id)->get();
-            $value->valor = Consejeria::where('id_alumno','=',$value->id)->get();
-            $value->consejo = Consejeria::where('id_alumno','=',$value->id)->get();
-            $value->dinero = Consejeria::where('id_alumno','=',$value->id)->get();
-            $value->sector = Consejeria::where('id_alumno','=',$value->id)->get();
-        }
+        $alumno = Alumno::findOrFail($id);
+        $consejerias = Consejeria::whereIn('id_alumno', $alumno->pluck('id'))->get()->keyBy('id_alumno');
+        return view('consejeria.consjindex', compact('alumno', 'consejerias')); 
         
-        return view('consejeria.consjindex')->with('alumnos', $alumnos); 
     }
 
     /**
@@ -48,28 +41,53 @@ class SecretariaController extends Controller
      */
     public function store(Request $request)
     {
-      
-        $id_alumnos = $request->input('id_alumno');
-        $contador = 0;
-        
-        foreach ($id_alumnos as $key => $id_alumno) {
-            $campo = Consejeria::where('id_alumno','=', $id_alumno)->get();
+       
+          // Recupera los valores de los checkboxes del formulario
+          $alumno = $request->input('id_alumno');
+          $secretaria = $request->input('secretaria') ? 1 : 0;
+          $orientacion = $request->input('orientacion') ? 1 : 0;
+          $consej = $request->input('consej') ? 1 : 0;
+          $tesoreria = $request->input('tesoreria') ? 1 : 0;
+          $secultimo = $request->input('secultimo') ? 1 : 0;
 
-            if (count($campo) == 0) {
-                $campo = new Consejeria;
-                $campo->id_alumno = $id_alumno;
-                $campo->secretaria = $request->input('secretaria')[$contador] ?? 0;
-                $campo->save();
-            }else{
-                $campo = Consejeria::find($campo[0]->id);
-                $campo->id_alumno = $id_alumno;
-                $campo->secretaria = $request->input('secretaria')[$contador] ?? 0;
-                $campo->save();
-                $contador += 1;
-            }
-      
-            return redirect('consejeria/tablaindex');
+
+          $registro_existente = Consejeria::where('id_alumno', $alumno)->count();
+         if ($registro_existente > 0){
+        //Actualizar registro Consejeria del alumno
+        $consejeria = Consejeria::where('id_alumno',$alumno)->first();
+
+         // Asigna los valores de los checkboxes al modelo
+         $consejeria->secretaria = $secretaria;
+         $consejeria->orientacion = $orientacion;
+         $consejeria->consej = $consej;
+         $consejeria->tesoreria = $tesoreria;
+         $consejeria->secultimo = $secultimo;
+
+         // Guarda el modelo en la base de datos
+         $consejeria->save();
+         
+         }else{
+        //Crear registro nuevo en Consejeria del alumno
+
+         // Crea una nueva instancia del modelo Consejeria
+         $consejeria = new Consejeria();
+
+         // Asigna los valores de los checkboxes al modelo
+         $consejeria->secretaria = $secretaria;
+         $consejeria->orientacion = $orientacion;
+         $consejeria->consej = $consej;
+         $consejeria->tesoreria = $tesoreria;
+         $consejeria->secultimo = $secultimo;
+
+         // Guarda el modelo en la base de datos
+         $consejeria->id_alumno = $alumno;
+         $consejeria->save();
         }
+
+
+         // Redirige a la página o realiza alguna acción adicional
+           return redirect('/tablaindex');
+       
    
 }
 
