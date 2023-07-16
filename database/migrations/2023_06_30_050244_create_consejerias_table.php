@@ -18,9 +18,9 @@ class CreateConsejeriasTable extends Migration
             $table->unsignedBigInteger('id_alumno');
             $table->boolean('secretaria')->default(false)->nullable();
             $table->boolean('orientacion')->default(false)->nullable();
-            $table->boolean('consejeria')->default(false)->nullable();
+            $table->boolean('consej')->default(false)->nullable();
             $table->boolean('tesoreria')->default(false)->nullable();
-            $table->boolean('ultimo')->default(false)->nullable();
+            $table->boolean('secultimo')->default(false)->nullable();
             $table->timestamps();
         });
     }
