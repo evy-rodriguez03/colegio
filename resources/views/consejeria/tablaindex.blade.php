@@ -69,7 +69,7 @@
   <td>{{$vistaconsejeria->primernombre}} {{$vistaconsejeria->segundonombre}} {{$vistaconsejeria->primerapellido}} {{$vistaconsejeria->segundoapellido}}</td>
   <td>{{$vistaconsejeria->numerodeidentidad }}</td>
   <td>
-  <a href="{{Route('consejeria.create')}}" class="btn btn-sm btn-info">
+  <a href="{{Route('consejeria.create', $vistaconsejeria->id)}}" class="btn btn-sm btn-info">
           Ver Proceso</a>    
   </td>
  </tr>

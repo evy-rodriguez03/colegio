@@ -205,7 +205,7 @@ route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadr
 
 //Rutas consejeria
 route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
-route::get('/consjindex', [SecretariaController::class,'create'])->name('consejeria.create');
+route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 
 //Rutas consfiguracion
