@@ -20,7 +20,7 @@ class VerificarCurso
         $cursos = Curso::all();
 
     if ($cursos->isEmpty()) {
-        return redirect()->route('cursos.index');
+        return redirect()->route('cursos.create');
     }
         return $next($request);
     }
