@@ -40,6 +40,7 @@ use App\Http\Controllers\FormularioescolarseisController;
 use App\Http\Controllers\FormularioescolarsieteController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
+use App\Http\Controllers\formulariopreescolarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
