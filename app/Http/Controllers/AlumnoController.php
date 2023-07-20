@@ -48,12 +48,13 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $rules = [
+
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'regex:/^[\pL\s\-]+$/u',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'alpha',
+            'segundoapellido' => 'regex:/^[\pL\s\-]+$/u',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
@@ -168,12 +169,12 @@ class AlumnoController extends Controller
     public function storematricula(Request $request)
     {
         $value = Cache::get('alumno_id');
-
+        
         $rules = [
             'primernombre' => 'required|min:3|max:12|string',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'primerapellido' => 'required|min:3|max:12|string',
-            'segundoapellido' => 'alpha',
+            'segundoapellido' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $value ,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',

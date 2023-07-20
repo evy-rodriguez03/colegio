@@ -39,6 +39,8 @@ use App\Http\Controllers\FormularioescolarcincoController;
 use App\Http\Controllers\FormularioescolarseisController;
 use App\Http\Controllers\FormularioescolarsieteController;
 use App\Http\Middleware\VerificarCurso;
+use App\Http\Controllers\periodocursosController;
+use App\Http\Controllers\formulariopreescolarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,9 +106,7 @@ Route::get('/indexcompromiso', [CompromisoController::class,'create'])->name('in
 route::post('/indexcompromiso', [CompromisoController::class,'store'])->name('indexcompromiso.store');
 
 //ruta matricula completa
-Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula')
-->middleware(VerificarPeriodoMatricula::class)
-->middleware(VerificarCurso::class);
+Route::get('/creatematricula/{id?}',[AlumnoController::class, 'creatematricula'])->name('creatematricula');
 Route::post('/storematricula', [AlumnoController::class, 'storematricula'])->name('submitmatricula');
 route::get('/alumnopadre', [PadreController::class,'createdatospadre'])->name('datospadre.create');
 route::post('/alumnopadre', [PadreController::class,'storeconpadre'])->name('submitpadre');
@@ -131,9 +131,7 @@ route::put('/padres/{padres}', [PadreController::class,'update'])->name('padres.
 route::delete('/padres/{padres}', [PadreController::class,'destroy'])->name('padres.destroy');
 route::get('/padres/{id}', [PadreController::class,'show'])->name('padre.show');
 
-
-
-//ruta alumnos
+//ruta alumno
 route::get('/alumnos', [AlumnoController::class,'index'])->name('alumnos.index');
 route::get('/alumnos/crear', [AlumnoController::class,'create'])->name('alumnos.create');
 route::get('/alumnos/{alumnos}/edit', [AlumnoController::class,'edit'])->name('alumnos.edit');
@@ -176,7 +174,9 @@ route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.ind
 route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
-route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
+route::get('/principal', [PrincipalController::class,'index'])->name('principal.create')
+->middleware(VerificarPeriodoMatricula::class)
+->middleware(VerificarCurso::class);
 Route::post('/periodo/{id}/cancelar', [PrincipalController::class, 'cancelarPeriodo'])->name('periodo.cancelar');
 
 //Rutas Horario de clase
@@ -206,7 +206,7 @@ route::get('/listapadre/pdf2', [ReportesController::class,'pdf2'])->name('repadr
 
 //Rutas consejeria
 route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
-route::get('/consjindex', [SecretariaController::class,'create'])->name('consejeria.create');
+route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 
 //Rutas consfiguracion
@@ -237,12 +237,15 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 
 //cursostotales
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
+route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
+
+
 
 //Tesoreria
 route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
 route::post('/vistapagorealizar', [vistapagoController::class,'store']);
 
-//Formularios
+//Formularios Orientacion 
 route::get('/escolardos', [FormularioescolardosController::class,'createescolardos'])->name('escolardos.create');
 route::post('/escolardos', [FormularioescolardosController::class,'storeescolardos'])->name('submitescolardos');
 

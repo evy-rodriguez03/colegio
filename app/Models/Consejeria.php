@@ -13,9 +13,9 @@ class Consejeria extends Model
     protected $fillable = [
        'secretaria',
        'orientacion',
-       'consejo',
+       'consej',
        'tesoreria',
-       'ultimo',
+       'secultimo',
 
    ];    
 

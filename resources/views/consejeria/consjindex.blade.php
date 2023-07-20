@@ -43,11 +43,13 @@
         </tbody>
 
         <tbody>  
-        @foreach ($alumnos as $vistaconsejeria)
+ 
     <tr>
-        <th><h3>Nombre del Alumno: {{$vistaconsejeria->primernombre}} {{$vistaconsejeria->segundonombre}}{{$vistaconsejeria->primerapellido}} {{$vistaconsejeria->segundoapellido}}</h3></th>
+        <h3>Nombre del Alumno: {{ $alumno->primernombre }} {{ $alumno->segundonombre }} {{ $alumno->primerapellido }} {{ $alumno->segundoapellido }}</h3>
     </tr>
-    @endforeach
+
+   
+    
 </tbody>
 </table>
 
@@ -63,6 +65,8 @@
       <form action="{{ route('tabla.store') }}" method="POST">
     @csrf
 
+     <input type="hidden" name='id_alumno' value='{{$alumno->id}}'>
+     
     <table class="table align-items-center table-flush">
         <!-- Encabezados de la tabla -->
         <thead class="thead-light">
@@ -76,51 +80,38 @@
         </thead>
 
         <tbody>
-            @foreach ($alumnos as $alumno)
+     
+                @php
+                    $consejeria = $consejerias->get($alumno->id);
+                    $secretariaChecked = $consejeria && $consejeria->secretaria ? 'checked' : '';
+                    $orientacionChecked = $consejeria && $consejeria->orientacion ? 'checked' : '';
+                    $consejChecked = $consejeria && $consejeria->consej ? 'checked' : '';
+                    $tesoreriaChecked = $consejeria && $consejeria->tesoreria ? 'checked' : '';
+                    $secultimoChecked = $consejeria && $consejeria->secultimo ? 'checked' : '';
+                @endphp
             <tr>
                 <!-- Checkbox para 1° SECRETARIA -->
                 <td>
-                    <input type="checkbox" name="secretaria[]" value="1"
-                        @if (isset($alumno->campo[0]) && $alumno->campo[0]->secretaria)
-                            checked
-                        @endif
-                    >
+                    <input type="checkbox" name="secretaria" value="1" {{ $secretariaChecked }}>
                 </td>
                 <!-- Checkbox para 2° ORIENTACION -->
                 <td>
-                    <input type="checkbox" name="orientacion[]" value="2"
-                        @if (isset($alumno->valor[0]) && $alumno->valor[0]->orientacion)
-                            checked
-                        @endif
-                    >
+                    <input type="checkbox" name="orientacion" value="2" {{ $orientacionChecked }}>
                 </td>
                 <!-- Checkbox para 3° CONSEJERIA -->
                 <td>
-                    <input type="checkbox" name="consejeria[]" value="3"
-                        @if (isset($alumno->consejo[0]) && $alumno->consejo[0]->consejeria)
-                            checked
-                        @endif
-                    >
+                    <input type="checkbox" name="consej" value="3" {{ $consejChecked }}>
                 </td>
                 <!-- Checkbox para 4° TESORERIA -->
                 <td>
-                    <input type="checkbox" name="tesoreria[]" value="4"
-                        @if (isset($alumno->dinero[0]) && $alumno->dinero[0]->tesoreria)
-                            checked
-                        @endif
-                    >
+                    <input type="checkbox" name="tesoreria" value="4" {{ $tesoreriaChecked }}>
                 </td>
                 <!-- Checkbox para 5° SECRETARIA -->
                 <td>
-                    <input type="checkbox" name="sec[]" value="5"
-                        @if (isset($alumno->sector[0]) && $alumno->sector[0]->sec)
-                            checked
-                        @endif
-                    >
+                    <input type="checkbox" name="secultimo" value="5" {{ $secultimoChecked }}>
                 </td>
             </tr>
-            @endforeach
-        </tbody>
+        </tbody> 
     </table>
 
     <!-- Botón para enviar el formulario -->
@@ -134,10 +125,6 @@
            </div>
     </div>
   </div>
-
-
-
-
 
         <script>
            // Obtiene la fecha actual

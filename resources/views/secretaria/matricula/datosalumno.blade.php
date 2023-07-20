@@ -39,7 +39,7 @@
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="numerodeidentidad">Número de identidad</label>
-                    <input type="text" class="form-control" name="numerodeidentidad" id="numerodeidentidad" value="{{ old('numerodeidentidad')?old('numerodeidentidad'):(session('identidad')?session('identidad'):(isset($alumno->numerodeidentidad)?$alumno->numerodeidentidad:'' )) }}" placeholder="Sin guiones" required maxlength="13">
+                    <input type="text" class="form-control" name="numerodeidentidad" id="numerodeidentidad" value="{{ old('numerodeidentidad')?old('numerodeidentidad'):(session('identidad')?session('identidad'):(isset($alumno->numerodeidentidad)?$alumno->numerodeidentidad:'' )) }}" placeholder="Sin guiones" required maxlength="14">
                     <div class="invalid-feedback">#</div>
                 </div>
                 <div class="col-md-1">

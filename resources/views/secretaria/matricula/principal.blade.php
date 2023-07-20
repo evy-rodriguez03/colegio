@@ -13,19 +13,7 @@
     padding: 3px 5px;
     margin: 0 5px;
   }
- 
-  .table-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
 
-.table-wrapper {
-  padding: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
 
 .table {
   width: 100%;
@@ -93,8 +81,8 @@ $(document).ready(function() {
         @endif
     </div>
 
-    <div class="table-container">
-     <div class="table-wrapper">
+    <div class="table-responsive">
+    
         <table id="matricula" class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
@@ -145,7 +133,6 @@ $(document).ready(function() {
                 @endif
             </tbody>
         </table>
-    </div>
     </div>
     <hr>
     
