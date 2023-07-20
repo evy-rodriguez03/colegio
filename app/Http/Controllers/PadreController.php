@@ -35,9 +35,6 @@ class PadreController extends Controller
     {
         return view('secretaria.Padres.datos_padre');
     }
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -109,13 +106,13 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|min:3|max:14|alpha',
-            'segundonombre' => 'min:3|max:14|alpha',
+            'segundonombre' => 'required|min:3|max:14|alpha',
             'primerapellido' => 'required|min:3|max:14|alpha',
-            'segundoapellido' => 'min:3|max:14|alpha',
-            'numerodeidentidad' => 'required|min:12|max:13|numeric',
-            'telefonopersonal' => 'min:8|numeric',
-            'lugardetrabajo' => 'alpha',
-            'oficio' => 'alpha',
+            'segundoapellido' => 'required|min:3|max:14|alpha',
+            'numerodeidentidad' => 'required|min:12|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
+            'lugardetrabajo' => 'required|alpha',
+            'oficio' => 'required|alpha',
             'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
@@ -175,11 +172,11 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'required|alpha',
             'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|max:13|numeric',
-            'telefonopersonal' => 'required|min:8|max:8|numeric',
+            'segundoapellido' => 'required|alpha',
+            'numerodeidentidad' => 'required|min:13|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
             'lugardetrabajo' => 'required|alpha',
             'oficio' => 'required|alpha',
             'telefonooficina' => 'required|min:8|numeric',
@@ -187,6 +184,10 @@ class PadreController extends Controller
         ];
 
         $messages = [
+            'primernombre.max' => 'El numero de caracteres maximo del primer nombre es de 13',
+            'segundonombre.max' => 'El numero de caracteres maximo del segundo nombre es de 13',
+            'primerapellido.max' => 'El numero de caracteres maximo del primer apellido es de 13',
+            'segundoapellido.max' => 'El numero de caracteres maximo del segundo apellido es de 13',
             'telefonopersonal.min' => 'El número de teléfono personal mínimo debe tener 8 dígitos',
             'telefonopersonal.numeric' => 'El número de teléfono personal deben ser dígitos del 1 al 10',
             'telefonooficina.min' => 'El número de teléfono de oficina mínimo debe tener 8 dígitos',
@@ -198,8 +199,9 @@ class PadreController extends Controller
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
-        ];
 
+
+        ];
 
         $this->validate($request, $rules, $messages);
 
@@ -241,18 +243,22 @@ class PadreController extends Controller
     {
         $rules = [
             'primernombre' => 'required|alpha',
-            'segundonombre' => 'alpha',
+            'segundonombre' => 'required|alpha',
             'primerapellido' => 'required|alpha',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:12|max:13|numeric',
-            'telefonopersonal' => 'required|min:8||max:8|numeric',
-            'lugardetrabajo' => 'alpha',
-            'oficio' => 'alpha',
-            'telefonooficina' => 'required|min:8|maxnumeric',
+            'segundoapellido' => 'required|alpha',
+            'numerodeidentidad' => 'required|min:12|numeric',
+            'telefonopersonal' => 'required|min:8|numeric',
+            'lugardetrabajo' => 'required|alpha',
+            'oficio' => 'required|alpha',
+            'telefonooficina' => 'required|min:8|numeric',
             'ingresos' => 'required|numeric',
         ];
 
         $messages = [
+            'primernombre.max' => 'El numero de caracteres maximo del primer nombre es de 13',
+            'segundonombre.max' => 'El numero de caracteres maximo del segundo nombre es de 13',
+            'primerapellido.max' => 'El numero de caracteres maximo del primer apellido es de 13',
+            'segundoapellido.max' => 'El numero de caracteres maximo del segundo apellido es de 13',
             'telefonopersonal.min' => 'El número de teléfono personal mínimo debe tener 8 dígitos',
             'telefonopersonal.numeric' => 'El número de teléfono personal deben ser dígitos del 1 al 10',
             'telefonooficina.min' => 'El número de teléfono de oficina mínimo debe tener 8 dígitos',
@@ -264,8 +270,9 @@ class PadreController extends Controller
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
-        ];
 
+
+        ];
 
         $this->validate($request, $rules, $messages);
 
@@ -302,16 +309,27 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-{
+    {
     $alumno_id = Cache::get('alumno_id');
     $alumno = Alumno::find($alumno_id);
 
     $cursoId = Cache::get('curso_id');
 
-    $estado = Proceso::findOrFail($alumno_id);
-    $estado->delete();
+     // Verificar si hay al menos un padre de familia asociado al alumno
+     if ($alumno->padres()->count() > 0) {
+        $estado = Proceso::findOrFail($alumno_id);
+        $estado->delete();
 
-    $periodo = Periodo::where('activo', 1)->first();
+        $matricula = new Matriculado();
+        $matricula->alumno_id = $alumno_id;
+        $matricula->curso_id = $cursoId;
+        $matricula->alumno_id = $alumno_id;
+        $periodo = Periodo::where('fechaInicio', '<=', now())
+                        ->where('fechaCierre', '>=', now())
+                        ->first();
+
+     $matricula->periodo_id = $periodo->id;
+     $matricula->save();                
 
     $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
@@ -319,8 +337,11 @@ class PadreController extends Controller
     Cache::forget('Curso_id');
 
     return redirect()->route('principal.create');
-}
-
+            } else {
+            $mensaje = "No se ha registrado ningún padre de familia para este alumno.";
+            return redirect()->back()->with('error', $mensaje);
+            }
+        }
     
     /**
      * Display the specified resource.

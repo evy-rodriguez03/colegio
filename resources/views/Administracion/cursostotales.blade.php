@@ -83,10 +83,8 @@ div class="card shadow">
       <table id="curso" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-           <th></th>
-          <th>Periodo de Matricula</th>
-          <th></th>
-           <th>Opciones</th>
+          <th style="width:80%">Periodo de Matricula</th>
+           <th style="width:20%">Opciones</th>
           </tr>
       
         </thead>
@@ -97,12 +95,9 @@ div class="card shadow">
                 <tr>
                     <!-- Mostrar los valores de cada registro -->
                   
-                   
-                    <td></td> 
-                    <td>{{$periodo->periodoMatricula }}</td>
-                    <td></td>
+                    <td style="width:80%">{{$periodo->periodoMatricula }}</td>
                     
-             <td>   
+             <td style="width:20%">   
                 <a href="{{ route('periodocursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver cursos</a>
                 
              </td>
