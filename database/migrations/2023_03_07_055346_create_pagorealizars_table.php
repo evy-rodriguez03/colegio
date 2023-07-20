@@ -15,10 +15,13 @@ class CreatePagorealizarsTable extends Migration
     {
         Schema::create('pagorealizars', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('alumno_id'); // Columna de clave foránea
             $table->boolean('mensualidad')->default(false)->nullable();
             $table->boolean('pagosadministrativos')->default(false)->nullable();
             $table->boolean('bolsaescolar')->default(false)->nullable();
             $table->timestamps();
+
+            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
         });
     }
 

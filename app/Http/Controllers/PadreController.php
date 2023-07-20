@@ -309,7 +309,7 @@ class PadreController extends Controller
 
 
     public function terminar_matricula()
-{
+    {
     $alumno_id = Cache::get('alumno_id');
     $alumno = Alumno::find($alumno_id);
 
@@ -320,7 +320,16 @@ class PadreController extends Controller
         $estado = Proceso::findOrFail($alumno_id);
         $estado->delete();
 
-    $periodo = Periodo::where('activo', 1)->first();
+        $matricula = new Matriculado();
+        $matricula->alumno_id = $alumno_id;
+        $matricula->curso_id = $cursoId;
+        $matricula->alumno_id = $alumno_id;
+        $periodo = Periodo::where('fechaInicio', '<=', now())
+                        ->where('fechaCierre', '>=', now())
+                        ->first();
+
+     $matricula->periodo_id = $periodo->id;
+     $matricula->save();                
 
     $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
