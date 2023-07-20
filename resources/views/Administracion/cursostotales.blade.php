@@ -25,29 +25,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
-<script>
-  $(document).ready(function() {
-    $('#curso').DataTable({
-      pagingType: 'simple_numbers',
-      lengthMenu: [1, 6, 9, 12],
-      language: {
-        lengthMenu: "Mostrar MENU Entradas",
-        loadingRecords: "Cargando...",
-        processing: "Procesando...",
-        search: "Buscar:",
-        zeroRecords: "Sin resultados encontrados",
-        info: "",
-        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-        infoFiltered: "",
-        paginate: {
-          first: "Primero",
-          last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
-        }
-      }
-    });
-  });
+<<script>
+   $(document).ready(function() {
+      $('#curso').DataTable({
+         lengthMenu: [3, 6, 9, 12],
+         language: {
+    "decimal": ",",
+    "thousands": ".",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "sSearch": "Buscar:",
+    "oPaginate": {
+        "sFirst": "Primero",
+        "sLast":"Último",
+        "sNext":"Siguiente",
+        "dom": '<"toolbar">Bftrip',
+        "sPrevious": "Anterior"
+    },
+    "sProcessing":"Cargando..."
+}
+         
+      });
+   });
 </script>
 @endsection
 @section('content')
@@ -83,8 +85,11 @@ div class="card shadow">
       <table id="curso" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-          <th style="width:80%">Periodo de Matricula</th>
-           <th style="width:20%">Opciones</th>
+          <th scope="row"> Nº</th>
+          <th >Periodo de Matricula</th>
+          <th>inicio periodo</th>
+          <th>final periodo</th>
+           <th >Opciones</th>
           </tr>
       
         </thead>
@@ -94,10 +99,11 @@ div class="card shadow">
          @foreach ($periodo as $periodo)
                 <tr>
                     <!-- Mostrar los valores de cada registro -->
-                  
-                    <td style="width:80%">{{$periodo->periodoMatricula }}</td>
-                    
-             <td style="width:20%">   
+                    <td>{{$periodo->id}}</td>
+                    <td >{{$periodo->periodoMatricula }}</td>
+                    <td>{{ $periodo->fechaInicio }}</td>
+                    <td>{{ $periodo->fechaCierre }}</td>
+             <td >   
                 <a href="{{ route('periodocursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver cursos</a>
                 
              </td>
