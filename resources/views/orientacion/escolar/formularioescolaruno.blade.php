@@ -29,36 +29,6 @@
             <h2 class="col-12 mt-3">I. Datos Personales:</h2>
 
             <div class="col-6 mt-3">
-                <label for="eprimerapellido">Primer Apellido:</label>
-                <input type="text" id="eprimerapellido" name="eprimerapellido" class="form-control " required value="{{old('eprimerapellido')}}" placeholder="Ingrese el primer apellido"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="esegundoapellido">Segundo Apellido:</label>
-                <input type="text" id="esegundoapellido" name="esegundoapellido" class="form-control" required value="{{old('esegundoapellido')}}" placeholder="Ingrese el segundo apellido"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="eprimernombre">Primer Nombre:</label>
-                <input type="text" id="eprimernombre" name="eprimernombre" class="form-control" required value="{{old('eprimernombre')}}" placeholder="Ingrese el primer nombre"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="esegundonombre">Segundo Nombre:</label>
-                <input type="text" id="esegundonombre" name="esegundonombre" class="form-control" required value="{{old('esegundonombre')}}" placeholder="Ingrese el segundo nombre"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="enumerodeidentidad">Número de Identidad:</label>
-                <input type="text" id="eidentidad" name="enumerodeidentidad" class="form-control" required value="{{old('enumerodeidentidad')}}" placeholder="Ingrese el número de identidad"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
                 <label for="egrado">Grado:</label>
                 <input type="text" id="egrado" name="egrado" class="form-control" required value="{{old('egrado')}}" placeholder="Ingrese el grado"></input>
                 <div class="valid-feedback"></div>
@@ -67,18 +37,6 @@
             <div class="col-6 mt-3">
                 <label for="enumerodecelular">Numero de Celular:</label>
                 <input type="text" id="enumerodecelular" name="enumerodecelular" class="form-control" required value="{{old('enumerodecelular')}}" placeholder="Ingrese el lugar de trabajo"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="elugardenacimiento">Lugar de Nacimiento:</label>
-                <input type="text" id="elugardenacimiento" name="elugardenacimiento" class="form-control" required value="{{old('elugardenacimiento')}}" placeholder="Ingrese el lugar de nacimiento"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="efechadenacimiento">Fecha de Nacimiento:</label>
-                <input type="text" id="efechadenacimiento" name="efechadenacimiento" class="form-control" required value="{{old('efechadenacimiento')}}" placeholder="Ingrese el télefono de oficina"></input>
                 <div class="valid-feedback"></div>
             </div>
 

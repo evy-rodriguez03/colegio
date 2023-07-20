@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Escolar;
+use App\Models\Alumno;
 
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class formularioescolarController extends Controller
      */
     public function index()
     {
-        $escolar = Escolar::paginate(10);
-        return view('orientacion.escolar.escolarindex', compact('escolar'));
+        $alumnos = Alumno::all();
+        return view('orientacion.escolar.escolarindex', compact('alumnos'));
     }
 
     /**
@@ -24,11 +25,41 @@ class formularioescolarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('orientacion.escolar.formularioescolaruno');
     }
 
+    public function createescolardos()
+    {
+        return view('orientacion.escolar.formularioescolardos');
+    }
+
+    public function createescolartres()
+    {
+        return view('orientacion.escolar.formularioescolartres');
+    }
+
+    public function createescolarcuatro()
+    {
+        return view('orientacion.escolar.formularioescolarcuatro');
+    }
+
+    public function createescolarcinco()
+   {
+       return view('orientacion.escolar.formularioescolarcinco');
+   }
+
+   public function createescolarseis()
+    {
+        return view('orientacion.escolar.formularioescolarseis');
+    }
+
+    public function createescolarsiete()
+    {
+        return view('orientacion.escolar.formularioescolarsiete');
+    }
     /**
      * Store a newly created resource in storage.
      *

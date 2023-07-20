@@ -10,11 +10,11 @@
   .small-select {
     width: 200px;
   }
-  
+
   .dataTables_paginate .paginate_button {
     padding: 3px 5px;
     margin: 0 5px;
-    
+
   }
 </style>
 @endsection
@@ -89,15 +89,15 @@
           </head>
         <tbody>
 
-        @foreach ($alumnos as $index => $vistapago)
- <tr>
-  <td>{{$vistapago->id}}</td>
-  <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
-  <td>{{$vistapago->numerodeidentidad }}</td>
-  <td>
-  <a href="{{route('pagorealizar.index')}}" class="btn btn-sm btn-info"> ver pago </a>
-  </td>
- </tr>
+          @foreach ($alumnos as $index => $vistapago)
+          <tr>
+            <td>{{$vistapago->id}}</td>
+            <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
+            <td>{{$vistapago->numerodeidentidad }}</td>
+            <td>
+              <a href="{{route('pagorealizar.index')}}" class="btn btn-sm btn-info"> ver pago </a>
+            </td>
+          </tr>
 
           @endforeach
 
@@ -105,8 +105,7 @@
 
         </tbody>
       </table>
-      
+
     </div>
   </div>
-  </form>
   @endsection
