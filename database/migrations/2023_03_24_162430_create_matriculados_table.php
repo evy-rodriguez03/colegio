@@ -16,9 +16,9 @@ class CreateMatriculadosTable extends Migration
         Schema::create('matriculados', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('alumno_id');
-            $table->foreign('alumno_id')->references('id')->on('alumnos');
+            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
             $table->unsignedBigInteger('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos')->onUpdate('cascade');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('periodo_id');
             $table->foreign('periodo_id')->references('id')->on('periodo_i');
             $table->timestamp('created_at')->nullable();
