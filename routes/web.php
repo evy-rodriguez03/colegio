@@ -34,6 +34,7 @@ use App\Http\Controllers\CursostotalesController;
 use App\Http\Controllers\vistapagoController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
+use App\Http\Controllers\formulariopreescolarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

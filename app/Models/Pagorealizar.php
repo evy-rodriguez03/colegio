@@ -16,4 +16,9 @@ class Pagorealizar extends Model
         'bolsaescolar',
         
     ];
+
+    public function alumno()
+    {
+        return $this->belongsTo(Alumno::class, 'alumno_id');
+    }
 }

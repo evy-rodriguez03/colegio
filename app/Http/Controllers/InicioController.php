@@ -33,7 +33,8 @@ class InicioController extends Controller
 
 
 
-        return redirect()->route('creatematricula')
+        //return redirect()->route('creatematricula')
+        return redirect()->route('cursos.create')
         ->with('mensaje', 'Se ha iniciado la matrícula exitosamente.');
     }
 
