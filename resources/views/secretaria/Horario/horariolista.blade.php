@@ -24,6 +24,7 @@
                             <th>Descripción</th>
                             <th>Hora Inicial</th>
                             <th>Hora Final</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,8 +32,14 @@
                             <tr>
                                 <td>{{$horario->jornada}}</td>
                                 <td>{{$horario->descripcion}}</td>
-                                <td>{{$horario->hora_inicial}}</td>
+                                <td>{{$horario->hora_inicio}}</td>
                                 <td>{{$horario->hora_final}}</td>
+                                <td>
+                                <form action="{{ route('horario.destroy', $horario->id) }}" method="POST" class="form-eliminarhorario">
+                                @csrf
+                                @method('DELETE')  <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                                </td>
                             </tr> 
                         @endforeach
                     </tbody>
@@ -40,5 +47,4 @@
             </div>
         </div>
     </div>
-
 @endsection

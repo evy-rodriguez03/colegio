@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ConfiguracionController extends Controller
+class JornadaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,23 +13,17 @@ class ConfiguracionController extends Controller
      */
     public function index()
     {
-        return view('configurar.index');
+        //
     }
-
-    public function indexJornada()
-    {
-        return view('configurar.jornada');
-    }
-    
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function createJornada()
+    public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,22 +34,7 @@ class ConfiguracionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos enviados por el formulario
-        $validatedData = $request->validate([
-            'jornada' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:255',
-        ]);
-
-        // Crear una nueva instancia del modelo Jornada y asignar los valores del formulario
-        $jornada = new Jornada();
-        $jornada->jornada = $validatedData['jornada'];
-        $jornada->descripcion = $validatedData['descripcion'];
-
-        // Guardar la jornada en la base de datos
-        $jornada->save();
-
-        // Redirigir a la página de índice de jornadas o a donde desees después de guardar
-        return redirect()->route('jornada.index'); // Cambia 'jornada.index' por la ruta de tu página de índice de jornadas
+        //
     }
 
     /**
