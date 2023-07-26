@@ -204,13 +204,18 @@ route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('co
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 
 //Rutas consfiguracion
+//Rutas jornada
 Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
-Route::get('/indexgrado', [GradoController::class,'index'])->name('grados.index');
+//Rutas grado
+Route::get('/indexgrado', [GradoController::class, 'index'])->name('grados.index');
 Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.create');
 Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
+Route::get('/grados/{id}/edit', [GradoController::class, 'edit'])->name('grados.edit');
+Route::put('/grados/{id}', [GradoController::class, 'update'])->name('grados.update');
+Route::delete('/grados/{id}', [GradoController::class, 'destroy'])->name('grados.destroy');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
