@@ -35,6 +35,8 @@ use App\Http\Controllers\vistapagoController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
 use App\Http\Controllers\formulariopreescolarController;
+use App\Http\Controllers\modalidadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -216,6 +218,16 @@ Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
 Route::get('/grados/{id}/edit', [GradoController::class, 'edit'])->name('grados.edit');
 Route::put('/grados/{id}', [GradoController::class, 'update'])->name('grados.update');
 Route::delete('/grados/{id}', [GradoController::class, 'destroy'])->name('grados.destroy');
+//Rutas modalidad
+Route::get('/modalidadIndex', [modalidadController::class, 'index'])->name('modalidad.index');
+Route::get('/modalidad/create', [modalidadController::class, 'create'])->name('modalidad.create');
+Route::post('/modalidad', [modalidadController::class, 'store'])->name('modalidad.store');
+Route::get('/modalidad/{id}/edit', [modalidadController::class, 'edit'])->name('modalidad.edit');
+Route::put('/modalidad/{id}', [modalidadController::class, 'update'])->name('modalidad.update');
+Route::delete('/modalidad/{id}', [modalidadController::class, 'destroy'])->name('modalidad.destroy');
+
+
+
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
