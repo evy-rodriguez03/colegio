@@ -48,10 +48,10 @@
                                 <td>
     <div class="btn-group">
         <!-- Botón para la vista de edición -->
+        <form action="{{ route('horario.destroy', $horario->id) }}" method="POST" class="form-eliminarhorario">
         <a href="{{ route('horario.edit', $horario->id) }}" class="btn btn-sm btn-primary btn-sm-custom">Editar</a>
 
         <!-- Botón para eliminar -->
-        <form action="{{ route('horario.destroy', $horario->id) }}" method="POST" class="form-eliminarhorario">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-sm btn-danger btn-sm-custom">Eliminar</button>
