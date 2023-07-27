@@ -41,7 +41,7 @@
       <div class="card">
       <center><img src="{{asset('img/brand/seccion.jpg') }}" class="card-img-top" alt="..." style="width:150px;height:120px;"></center>
         <div class="card-body">
-          <center><a href="{{url('/usuarios/crear')}}" class="btn btn-lg btn-info">Sección</a></center>
+          <center><a href="{{route ('seccionindex.index')}}" class="btn btn-lg btn-info">Sección</a></center>
         </div>
       </div>
     </div>
