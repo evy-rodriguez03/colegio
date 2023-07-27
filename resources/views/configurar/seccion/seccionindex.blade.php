@@ -5,10 +5,10 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="mb-0">Lista de Modalidades</h1>
+                    <h1 class="mb-0">Lista de Secciones</h1>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('modalidad.create') }}" class="btn btn-lg btn-primary">Agregar Modalidad</a>
+                    <a href="{{ route('seccionconfig.create') }}" class="btn btn-lg btn-primary">Agregar Secciones</a>
                     <a href="{{ route('configuracion.index') }}" class="btn btn-lg btn-success"> <i class="fas fa-angle-left"></i> Regresar</a>
                 </div>
             </div>
@@ -25,20 +25,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($modalidades as $modalidad) 
+                
+                    @foreach ($secciones as $seccion) {{-- Cambia el nombre de la variable aquí --}}
                     <tr>
-                   <td>{{ $modalidad->nombre }}</td>
-                   <td>{{ $modalidad->descripcion }}</td>
+                   <td>{{ $seccion->nombre }}</td>
+                   <td>{{ $seccion->descripcion }}</td>
                    <td>
                   <div class="btn-group">
-                  <form action="{{ route('modalidad.destroy', $modalidad->id) }}" method="POST" class="form-eliminargrado">
-                  <a href="{{ route('modalidad.edit', $modalidad->id) }}" class="btn btn-sm btn-primary">Editar</a>
-
-                
+                  <form action="{{ route('seccionconfig.destroy', $seccion->id) }}" method="POST" class="form-eliminargrado">
+                  <a href="{{ route('seccionconfig.edit', $seccion->id) }}" class="btn btn-sm btn-primary">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                </form>
+                    </form>
             </div>
         </td>
     </tr>

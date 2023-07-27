@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Modalidad;
 
+
 class modalidadController extends Controller
 {
     /**
@@ -14,8 +15,8 @@ class modalidadController extends Controller
      */
     public function index()
     {
-        $modalidad = Modalidad::all();
-        return view('configurar.Modalidad.modalidadIndex');
+    $modalidades = Modalidad::all(); // Cambia el nombre de la variable para evitar conflictos
+    return view('configurar.Modalidad.modalidadIndex', compact('modalidades'));
     }
 
     /**
@@ -35,19 +36,20 @@ class modalidadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-        ]);
+{
+    $request->validate([
+        'modalidad' => 'required',
+        'descripcion' => 'required',
+    ]);
 
-        $modalidad = new Modalidad();
-        $modalidad->nombre = $request->input('nombre');
-        $modalidad->descripcion = $request->input('descripcion');
-        $modalidad->save();
+    $modalidad = new Modalidad();
+    $modalidad->nombre = $request->input('modalidad');
+    $modalidad->descripcion = $request->input('descripcion');
+    $modalidad->save();
 
-        return redirect()->route('modalidad.index')->with('success', 'Modalidad se ha creado exitosamente.');
-    }
+    return redirect()->route('modalidad.index')->with('success', 'Modalidad se ha creado exitosamente.');
+}
+
 
     /**
      * Display the specified resource.
@@ -68,7 +70,8 @@ class modalidadController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modalidades = Modalidad::find($id);
+        return view('configurar.Modalidad.modalidadEdit', compact('modalidades'));
     }
 
     /**
@@ -80,7 +83,17 @@ class modalidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'modalidad' => 'required',
+            'descripcion' => 'required',
+        ]);
+    
+        $modalidad = new Modalidad();
+        $modalidad->nombre = $request->input('modalidad');
+        $modalidad->descripcion = $request->input('descripcion');
+        $modalidad->save();
+    
+        return redirect()->route('modalidad.index')->with('success', 'Modalidad se ha creado exitosamente.');
     }
 
     /**
@@ -91,6 +104,13 @@ class modalidadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $modalidad = Modalidad::find($id);
+
+        if (!$modalidad) {
+            return redirect()->route('modalidad.index')->with('error', 'Modalidad no encontrado.');
+        }
+        $modalidad->delete();
+
+        return redirect()->route('modalidad.index')->with('success', 'Modalidad eliminado exitosamente.');
     }
 }

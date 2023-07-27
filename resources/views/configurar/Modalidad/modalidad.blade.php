@@ -1,6 +1,5 @@
 @extends('layout.panel')
 
-
 @section('content')
 <div class="card shadow">
     <div class="card-header border-0">
@@ -17,8 +16,7 @@
     </div>
     <!-- Formulario para crear -->
     <div class="card-body">
-
-
+      
       <form action="{{ route('modalidad.store') }}" method="POST">
         @csrf
 
