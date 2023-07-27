@@ -32,10 +32,11 @@
                                 <td>
                                     <div class="btn-group">
                                         <!-- Botón para editar -->
+                                        <form action="{{ route('grados.destroy', $grado->id) }}" method="POST" class="form-eliminargrado">
                                         <a href="{{ route('grados.edit', $grado->id) }}" class="btn btn-sm btn-primary">Editar</a>
 
                                         <!-- Botón para eliminar -->
-                                        <form action="{{ route('grados.destroy', $grado->id) }}" method="POST" class="form-eliminargrado">
+                                        
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>

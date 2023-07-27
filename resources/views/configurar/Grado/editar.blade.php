@@ -1,6 +1,16 @@
+@extends('layout.panel')
 
+@section('content')
+    <div class="card shadow">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1 class="mb-0">Actualizar Grados</h1>
+                </div>
+            </div>
+        </div>
 
-<div class="card-body">
+    <div class="card-body">
         <form action="{{ route('grados.update', $grado->id) }}" method="POST">
             @csrf
             @method('PUT')
