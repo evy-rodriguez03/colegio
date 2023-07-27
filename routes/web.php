@@ -211,6 +211,9 @@ Route::get('/index', [ConfiguracionController::class,'index'])->name('configurac
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
+Route::get('/jornada/{id}/edit', [ConfiguracionController::class, 'edit'])->name('jornada.edit');
+Route::put('/jornada/{id}', [ConfiguracionController::class, 'update'])->name('jornada.update');
+Route::delete('/jornada/{id}', [ConfiguracionController::class, 'destroy'])->name('jornada.destroy');
 //Rutas grado
 Route::get('/indexgrado', [GradoController::class, 'index'])->name('grados.index');
 Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.create');
