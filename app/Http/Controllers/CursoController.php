@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Curso;
+use App\Models\Alumno;
 use App\Models\Periodo;
 
 
@@ -18,7 +19,9 @@ class CursoController extends Controller
     public function index()
     {
         $periodo = Periodo::where('activo','=',1)->first();
-        $cursos = Curso::where('idperiodo', '=', isset($periodo->id) ? $periodo->id : 0)->get();
+        $cursos = Curso::where('idperiodo', '=', isset($periodo->id) ? $periodo->id : 0)
+        ->with('alumnos')// Eager load the students relationship
+        ->get();
         return view('curso.index')->with('cursos',$cursos);
     }
 
@@ -133,8 +136,12 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        $curso = Curso::find($id);
-        $curso->delete();
-        return redirect('/cursos');
+        try {
+            $curso = Curso::findOrFail($id);
+            $curso->delete();
+            return redirect()->route('cursos.index')->with('success', 'Curso eliminado exitosamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('cursos.index')->with('error', 'No se pudo eliminar el curso: ' . $e->getMessage());
+        }
     }
 }

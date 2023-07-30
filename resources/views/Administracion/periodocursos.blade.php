@@ -26,28 +26,30 @@
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-    $('#curso').DataTable({
-      pagingType: 'simple_numbers',
-      lengthMenu: [2, 6, 9, 12],
-      language: {
-        lengthMenu: "Mostrar _MENU_ Entradas",
-        loadingRecords: "Cargando...",
-        processing: "Procesando...",
-        search: "Buscar:",
-        zeroRecords: "Sin resultados encontrados",
-        info: "",
-        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-        infoFiltered: "",
-        paginate: {
-          first: "Primero",
-          last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
-        }
-      }
-    });
-  });
+   $(document).ready(function() {
+      $('#cursoperiodo').DataTable({
+         lengthMenu: [3, 6, 9, 12],
+         language: {
+    "decimal": ",",
+    "thousands": ".",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "sSearch": "Buscar:",
+    "oPaginate": {
+        "sFirst": "Primero",
+        "sLast":"Último",
+        "sNext":"Siguiente",
+        "dom": '<"toolbar">Bftrip',
+        "sPrevious": "Anterior"
+    },
+    "sProcessing":"Cargando..."
+}
+         
+      });
+   });
 </script>
 @endsection
 @section('content')
@@ -80,34 +82,35 @@ div class="card shadow">
 
     <div class="table-responsive">
       <!-- Projects table -->
-      <table id="curso" class="table align-items-center table-flush">
+      <table id="cursoperiodo" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-            <th></th>
-            <th>curso</th>
-            <th></th>
-            <th>Opciones</th>
+          <th scope="row"> Nº</th>
+          <th>curso</th>
+          <th>Modalidad</th>
+          <th>Jornada</th>
+           <th>Opciones</th>
           </tr>
 
         </thead>
         <tbody>
 
-          <!-- Recorrer los registros existentes -->
-          @foreach ($cursos as $curso)
-          <tr>
-            <!-- Mostrar los valores de cada registro -->
-
-
-            <td></td>
-            <td>{{$curso->id}}</td>
-            <td>{{$curso->niveleducativo}}</td>
-
-            <td>
-              <a href="{{ route('alumnocursos.index', $curso->niveleducativo) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
-            </td>
-
-          </tr>
-          @endforeach
+         <!-- Recorrer los registros existentes -->
+         @foreach ($cursos as $curso)
+                <tr>
+                    <!-- Mostrar los valores de cada registro -->
+                  
+                    <td>{{$curso->id}}</td>
+                    <td>{{$curso->niveleducativo}}</td>
+                    <td>{{$curso->modalidad}}</td>
+                    <td>{{$curso->jornada}}</td>
+                    
+             <td>
+             <a href="{{ route('cursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
+               </td>
+             
+        </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

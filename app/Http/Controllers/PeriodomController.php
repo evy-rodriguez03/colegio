@@ -9,7 +9,7 @@ class PeriodomController extends Controller
 {
     public function index()
 {
-    $periodo = Periodo::all();
-    return view('Administracion.prinperiodo', ['periodo' => $periodo]);
+    $periodos = Periodo::all();
+    return view('Administracion.prinperiodo', ['periodos' => $periodos]);
 }
 }
