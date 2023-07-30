@@ -56,10 +56,10 @@ div class="card shadow">
   <div class="card-header border-0">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="mb-0">Cursos del periodo</h3>
+        <h3 class="mb-0">Alumnos por curso</h3>
       </div>
       <div class="col text-right">
-        <a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-success">
+        <a href="{{ route('periodocursos.index')}}" class="btn btn-lg btn-success">
           <i class="fas fa-angle-left"></i>Regresar</a>
       </div>
     </div>
@@ -83,29 +83,16 @@ div class="card shadow">
       <table id="curso" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-            <th></th>
-            <th>curso</th>
-            <th></th>
-            <th>Opciones</th>
+            <th>Nombre</th>
+            <th>ID</th>
           </tr>
-
         </thead>
         <tbody>
 
-          <!-- Recorrer los registros existentes -->
-          @foreach ($cursos as $curso)
+          @foreach ($alumnos as $escolar)
           <tr>
-            <!-- Mostrar los valores de cada registro -->
-
-
-            <td></td>
-            <td>{{$curso->id}}</td>
-            <td>{{$curso->niveleducativo}}</td>
-
-            <td>
-              <a href="{{ route('alumnocursos.index', $curso->niveleducativo) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
-            </td>
-
+            <td>{{$escolar->primernombre}} {{$escolar->primerapellido}}</td>
+            <td>{{$escolar->numerodeidentidad}}</td>
           </tr>
           @endforeach
         </tbody>
