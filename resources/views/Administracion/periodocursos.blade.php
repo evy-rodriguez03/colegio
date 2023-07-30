@@ -106,7 +106,7 @@ div class="card shadow">
                     <td>{{$curso->jornada}}</td>
                     
              <td>
-             <a href="{{ route('cursos.index', ['periodo' => $periodo->id]) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
+             <a href="{{ route('alumnocursos.index', $curso->niveleducativo) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
                </td>
              
         </tr>
