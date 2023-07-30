@@ -1,5 +1,16 @@
 @extends('layout.panel')
 
+@section('css')
+<style>
+    .btn-sm-custom {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+</style>
+@endsection
+
 @section('content')
 
         <div class="card shadow">
@@ -24,6 +35,7 @@
                             <th>Descripción</th>
                             <th>Hora Inicial</th>
                             <th>Hora Final</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,8 +43,21 @@
                             <tr>
                                 <td>{{$horario->jornada}}</td>
                                 <td>{{$horario->descripcion}}</td>
-                                <td>{{$horario->hora_inicial}}</td>
+                                <td>{{$horario->hora_inicio}}</td>
                                 <td>{{$horario->hora_final}}</td>
+                                <td>
+    <div class="btn-group">
+        <!-- Botón para la vista de edición -->
+        <form action="{{ route('horario.destroy', $horario->id) }}" method="POST" class="form-eliminarhorario">
+        <a href="{{ route('horario.edit', $horario->id) }}" class="btn btn-sm btn-primary btn-sm-custom">Editar</a>
+
+        <!-- Botón para eliminar -->
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger btn-sm-custom">Eliminar</button>
+        </form>
+    </div>
+</td>
                             </tr> 
                         @endforeach
                     </tbody>
@@ -40,5 +65,4 @@
             </div>
         </div>
     </div>
-
 @endsection

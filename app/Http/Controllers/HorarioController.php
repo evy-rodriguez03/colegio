@@ -94,7 +94,8 @@ class HorarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $horario = Horario::findOrFail($id);
+        return view('secretaria.Horario.horarioedit', compact('horario'));
     }
 
     /**
@@ -106,8 +107,26 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $horario = Horario::findOrFail($id);
+
+    // Validar datos del formulario
+    $request->validate([
+        'jornada' => 'required',
+        'descripcion' => 'required',
+        'hora_inicio' => 'required',
+        'hora_final' => 'required',
+    ]);
+
+    // Actualizar datos del horario
+    $horario->jornada = $request->input('jornada');
+    $horario->descripcion = $request->input('descripcion');
+    $horario->hora_inicio = $request->input('hora_inicio');
+    $horario->hora_final = $request->input('hora_final');
+    $horario->save();
+
+    return redirect()->route('horario.index')->with('success', 'Horario actualizado correctamente.');
+      }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -117,6 +136,9 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $horarios = Horario::findOrfail($id);
+        $horarios->delete();
+
+        return redirect('/horarioc')->with('eliminar', 'ok');
     }
 }

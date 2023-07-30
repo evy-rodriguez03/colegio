@@ -8,7 +8,7 @@ use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Matriculado;
 use App\Models\Periodo;
-
+use App\Models\Proceso;
 class PrincipalController extends Controller
 {
     /**
@@ -16,18 +16,27 @@ class PrincipalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
+        
         Artisan::call('periodo:verificar-estado');
 
+        if ($request->input('no_matriculado')){
+        $periodos = Periodo::where('activo','=',1)->first();
+        $alumnos_no_matriculado = Proceso::where('matriculado','=','no')->get();
+        $alumnos = Alumno::with('cursos')->paginate(10);
+        $cursos = Curso::pluck('niveleducativo', 'modalidad');
+        }
+        else {
         $periodos = Periodo::where('activo','=',1)->first();
         $alumnos = Matriculado::where('periodo_id','=',isset($periodos->id)?$periodos->id:0)->with('alumno','curso')->paginate(10);
-        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');
+        $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');  
+        }
         return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos'));
     }
 
     public function cancelarPeriodo($id)
-{
+   {
     $periodo = Periodo::findOrFail($id);
 
     if ($periodo->activo) {
@@ -39,7 +48,7 @@ class PrincipalController extends Controller
     }
 
     // Redireccionar a la página principal o a otra página adecuada
-    return redirect()->route('principal.create');
+    return redirect()->route('periodo');
 }
 
     

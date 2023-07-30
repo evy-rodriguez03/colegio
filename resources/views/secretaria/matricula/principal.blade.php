@@ -69,8 +69,11 @@ $(document).ready(function() {
                 <h3 class="mb-0">Matriculados</h3>
             </div>
             <div class="col text-right">
+                <a href="{{ route('principal.create',['no_matriculado'=>'en_proceso']) }}" class="btn btn-sm btn-primary">Proceso de Matricula</a>
                 <a href="{{ route('creatematricula') }}" class="btn btn-sm btn-primary">Nueva Matricula</a>
-            </div>
+              </div>
+
+
         </div>
     </div>
     <div class="card-body">
@@ -97,6 +100,7 @@ $(document).ready(function() {
                 @if ($alumnos)
                 @foreach ($alumnos->items() as $index => $alumno)
                 <tr>
+                  @if(isset( $alumno->alumno->primernombre))
                     <td scope="row">
                         {{ $index + 1 }}
                     </td>
@@ -128,6 +132,39 @@ $(document).ready(function() {
                             Matricula</a>
                         @endif
                     </td>
+                    @else
+                    <td scope="row">
+                        {{ $index + 1 }}
+                    </td>
+                    <th scope="row">
+                        {{ $alumno->primernombre }} {{ $alumno->primerapellido }}
+                    </th>
+                    <td>
+                        {{ $alumno->numerodeidentidad }}
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST"
+                            class="form-eliminaralumno">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ url('/alumnos/'.$alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
+                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}"
+                                class="btn btn-sm btn-primary">Editar</a>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
+                        @php
+                        $proce = App\Models\Proceso::where('id', '=', $alumno->id)->get();
+                        @endphp
+                        @if(count($proce) > 0)
+                        <a class="btn btn-warning"
+                            href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar
+                            Matricula</a>
+                        @endif
+                    </td>
+                    @endif
                 </tr>
                 @endforeach
                 @endif

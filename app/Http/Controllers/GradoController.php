@@ -9,7 +9,8 @@ class GradoController extends Controller
 {
     public function index()
     {
-        return view('configurar.Grado.indexgrado');
+        $grados = Grado::all();
+        return view('configurar.Grado.indexgrado', compact('grados'));
     }
 
     public function create()
@@ -24,14 +25,45 @@ class GradoController extends Controller
             'descripcion' => 'required',
         ]);
 
-        $nombre = $request->input('nombre');
-        $descripcion = $request->input('descripcion');
+        $grado = new Grado();
+        $grado->nombre = $request->input('nombre');
+        $grado->descripcion = $request->input('descripcion');
+        $grado->save();
 
-        Grado::create([
-            'nombre' => $request->nombre,
-            'descripcion' => $request->descripcion,
+        return redirect()->route('grados.index')->with('success', 'Grado creado exitosamente.');
+    }
+    public function edit($id)
+    {
+        $grado = Grado::find($id);
+        return view('configurar.Grado.editar', compact('grado'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
         ]);
 
-        return redirect('/grados')->with('success', 'Grado creado exitosamente.');
+        $grado = Grado::find($id);
+        $grado->nombre = $request->input('nombre');
+        $grado->descripcion = $request->input('descripcion');
+        $grado->save();
+
+        return redirect()->route('grados.index')->with('success', 'Grado actualizado exitosamente.');
     }
+
+    public function destroy($id)
+    {
+    
+        $grado = Grado::find($id);
+
+        if (!$grado) {
+            return redirect()->route('grados.index')->with('error', 'Grado no encontrado.');
+        }
+        $grado->delete();
+
+        return redirect()->route('grados.index')->with('success', 'Grado eliminado exitosamente.');
+    }
+
 }
