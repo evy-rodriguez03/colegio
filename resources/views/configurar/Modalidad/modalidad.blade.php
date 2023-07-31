@@ -1,6 +1,5 @@
 @extends('layout.panel')
 
-
 @section('content')
 <div class="card shadow">
     <div class="card-header border-0">
@@ -9,7 +8,7 @@
           <h3 class="mb-0">Agregar Nueva Modalidad</h3>
         </div>
         <div class="col text-right">
-          <a href="{{route('configuracion.index')}}" class="btn btn-lg btn-success">
+          <a href="{{route('modalidad.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>
             Regresar</a>
         </div>
@@ -17,8 +16,7 @@
     </div>
     <!-- Formulario para crear -->
     <div class="card-body">
-
-
+      
       <form action="{{ route('modalidad.store') }}" method="POST">
         @csrf
 

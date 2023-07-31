@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Jornada;
 
 class ConfiguracionController extends Controller
 {
@@ -18,7 +19,8 @@ class ConfiguracionController extends Controller
 
     public function indexJornada()
     {
-        return view('configurar.jornada');
+        $jornadas = Jornada::all();
+        return view('configurar.Jornada.indexJornada', compact('jornadas'));
     }
     
 
@@ -29,7 +31,7 @@ class ConfiguracionController extends Controller
      */
     public function createJornada()
     {
-        
+        return view('configurar.Jornada.jornada');
     }
 
     /**
@@ -77,7 +79,8 @@ class ConfiguracionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jornada = Jornada::find($id);
+        return view('configurar.Jornada.editar', compact('jornada'));
     }
 
     /**
@@ -89,7 +92,17 @@ class ConfiguracionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'jornada' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+        $jornada = Jornada::find($id);
+        $jornada->jornada = $request->input('jornada');
+        $jornada->descripcion = $request->input('descripcion');
+        $jornada->save();
+
+        return redirect()->route('jornada.index')->with('success', 'Jornada actualizada exitosamente.');
     }
 
     /**
@@ -100,6 +113,9 @@ class ConfiguracionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jornada = Jornada::find($id);
+        $jornada->delete();
+
+        return redirect()->route('jornada.index')->with('success', 'Jornada eliminada exitosamente.');
     }
 }

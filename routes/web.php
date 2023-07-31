@@ -34,7 +34,11 @@ use App\Http\Controllers\CursostotalesController;
 use App\Http\Controllers\vistapagoController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
+use App\Http\Controllers\AlumnocursoController;
 use App\Http\Controllers\formulariopreescolarController;
+use App\Http\Controllers\modalidadController;
+use App\Http\Controllers\SeccionconfigController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -204,13 +208,36 @@ route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('co
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 
 //Rutas consfiguracion
+//Rutas jornada
 Route::get('/index', [ConfiguracionController::class,'index'])->name('configuracion.index');
 Route::get('/indexJornada', [ConfiguracionController::class,'indexJornada'])->name('jornada.index');
 Route::get('/jornada', [ConfiguracionController::class, 'createJornada'])->name('jornada.create');
 Route::post('/jornada', [ConfiguracionController::class,'store'])->name('jornadas.store');
-Route::get('/indexgrado', [GradoController::class,'index'])->name('grados.index');
+Route::get('/jornada/{id}/edit', [ConfiguracionController::class, 'edit'])->name('jornada.edit');
+Route::put('/jornada/{id}', [ConfiguracionController::class, 'update'])->name('jornada.update');
+Route::delete('/jornada/{id}', [ConfiguracionController::class, 'destroy'])->name('jornada.destroy');
+//Rutas grado
+Route::get('/indexgrado', [GradoController::class, 'index'])->name('grados.index');
 Route::get('/grado/create', [GradoController::class, 'create'])->name('grados.create');
 Route::post('/grado', [GradoController::class, 'store'])->name('grados.store');
+Route::get('/grados/{id}/edit', [GradoController::class, 'edit'])->name('grados.edit');
+Route::put('/grados/{id}', [GradoController::class, 'update'])->name('grados.update');
+Route::delete('/grados/{id}', [GradoController::class, 'destroy'])->name('grados.destroy');
+//Rutas modalidad
+Route::get('/modalidadIndex', [modalidadController::class, 'index'])->name('modalidad.index');
+Route::get('/modalidad/create', [modalidadController::class, 'create'])->name('modalidad.create');
+Route::post('/modalidad', [modalidadController::class, 'store'])->name('modalidad.store');
+Route::get('/modalidad/{id}/edit', [modalidadController::class, 'edit'])->name('modalidad.edit');
+Route::put('/modalidad/{id}', [modalidadController::class, 'update'])->name('modalidad.update');
+Route::delete('/modalidad/{id}', [modalidadController::class, 'destroy'])->name('modalidad.destroy');
+
+//Rutas de seccion
+Route::get('/seccionindex', [SeccionconfigController::class, 'index'])->name('seccionindex.index');
+Route::get('/seccion/create', [SeccionconfigController::class, 'create'])->name('seccionconfig.create');
+Route::post('/seccion', [SeccionconfigController::class, 'store'])->name('seccionconfig.store');
+Route::get('/seccion/{id}/edit', [SeccionconfigController::class, 'edit'])->name('seccionconfig.edit');
+Route::put('/seccion/{id}', [SeccionconfigController::class, 'update'])->name('seccionconfig.update');
+Route::delete('/seccion/{id}', [SeccionconfigController::class, 'destroy'])->name('seccionconfig.destroy');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
@@ -232,6 +259,7 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 //cursostotales
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
 route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
+route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->name('alumnocursos.index');
 
 
 
