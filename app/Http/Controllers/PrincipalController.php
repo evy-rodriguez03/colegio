@@ -48,7 +48,7 @@ class PrincipalController extends Controller
     }
 
     // Redireccionar a la página principal o a otra página adecuada
-    return redirect()->route('principal.create');
+    return redirect()->route('periodo');
 }
 
     
