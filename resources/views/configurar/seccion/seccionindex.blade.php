@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                 
-                    @foreach ($secciones as $seccion) {{-- Cambia el nombre de la variable aquí --}}
+                    @foreach ($secciones as $seccion) 
                     <tr>
                    <td>{{ $seccion->nombre }}</td>
                    <td>{{ $seccion->descripcion }}</td>

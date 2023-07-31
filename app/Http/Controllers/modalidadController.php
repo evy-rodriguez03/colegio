@@ -84,12 +84,12 @@ class modalidadController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'modalidad' => 'required',
+            'nombre' => 'required',
             'descripcion' => 'required',
         ]);
     
-        $modalidad = new Modalidad();
-        $modalidad->nombre = $request->input('modalidad');
+        $modalidad = Modalidad::find($id);
+        $modalidad->nombre = $request->input('nombre');
         $modalidad->descripcion = $request->input('descripcion');
         $modalidad->save();
     
