@@ -10,8 +10,8 @@ class InicioController extends Controller
 {
 
     public function index(){
-        $periodo = periodo::whereDate('fechaInicio', '<=', now())->whereDate('fechaCierre', '>=', now())->first();
-        return view::make('periodo', ['periodo' => $periodo]);
+        $periodos = periodo::whereDate('fechaInicio', '<=', now())->whereDate('fechaCierre', '>=', now())->first();
+        return view::make('periodos', ['periodos' => $periodos]);
     }
 
 

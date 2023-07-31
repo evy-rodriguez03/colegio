@@ -34,6 +34,7 @@ use App\Http\Controllers\CursostotalesController;
 use App\Http\Controllers\vistapagoController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
+use App\Http\Controllers\AlumnocursoController;
 use App\Http\Controllers\formulariopreescolarController;
 use App\Http\Controllers\modalidadController;
 use App\Http\Controllers\SeccionconfigController;
@@ -258,6 +259,7 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 //cursostotales
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
 route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
+route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->name('alumnocursos.index');
 
 
 

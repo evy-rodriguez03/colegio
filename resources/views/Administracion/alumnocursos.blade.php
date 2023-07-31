@@ -26,30 +26,28 @@
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
 <script>
-   $(document).ready(function() {
-      $('#cursoperiodo').DataTable({
-         lengthMenu: [3, 6, 9, 12],
-         language: {
-    "decimal": ",",
-    "thousands": ".",
-    "lengthMenu": "Mostrar _MENU_ registros",
-    "zeroRecords": "No se encontraron resultados",
-    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-    "sSearch": "Buscar:",
-    "oPaginate": {
-        "sFirst": "Primero",
-        "sLast":"Último",
-        "sNext":"Siguiente",
-        "dom": '<"toolbar">Bftrip',
-        "sPrevious": "Anterior"
-    },
-    "sProcessing":"Cargando..."
-}
-         
-      });
-   });
+  $(document).ready(function() {
+    $('#curso').DataTable({
+      pagingType: 'simple_numbers',
+      lengthMenu: [2, 6, 9, 12],
+      language: {
+        lengthMenu: "Mostrar _MENU_ Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: "Siguiente",
+          previous: "Anterior"
+        }
+      }
+    });
+  });
 </script>
 @endsection
 @section('content')
@@ -58,10 +56,10 @@ div class="card shadow">
   <div class="card-header border-0">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="mb-0">Cursos del periodo</h3>
+        <h3 class="mb-0">Alumnos por curso</h3>
       </div>
       <div class="col text-right">
-        <a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-success">
+        <a href="{{ route('periodocursos.index')}}" class="btn btn-lg btn-success">
           <i class="fas fa-angle-left"></i>Regresar</a>
       </div>
     </div>
@@ -82,35 +80,21 @@ div class="card shadow">
 
     <div class="table-responsive">
       <!-- Projects table -->
-      <table id="cursoperiodo" class="table align-items-center table-flush">
+      <table id="curso" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
-          <th scope="row"> Nº</th>
-          <th>curso</th>
-          <th>Modalidad</th>
-          <th>Jornada</th>
-           <th>Opciones</th>
+            <th>Nombre</th>
+            <th>ID</th>
           </tr>
-
         </thead>
         <tbody>
 
-         <!-- Recorrer los registros existentes -->
-         @foreach ($cursos as $curso)
-                <tr>
-                    <!-- Mostrar los valores de cada registro -->
-                  
-                    <td>{{$curso->id}}</td>
-                    <td>{{$curso->niveleducativo}}</td>
-                    <td>{{$curso->modalidad}}</td>
-                    <td>{{$curso->jornada}}</td>
-                    
-             <td>
-             <a href="{{ route('alumnocursos.index', $curso->niveleducativo) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
-               </td>
-             
-        </tr>
-        @endforeach
+          @foreach ($alumnos as $escolar)
+          <tr>
+            <td>{{$escolar->primernombre}} {{$escolar->primerapellido}}</td>
+            <td>{{$escolar->numerodeidentidad}}</td>
+          </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

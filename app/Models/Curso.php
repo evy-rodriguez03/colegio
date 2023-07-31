@@ -26,9 +26,15 @@ class Curso extends Model
     }
     
 
-
-    public function matriculas()
+    protected static function boot()
     {
-        return $this->hasOne('App\Models\Matriculado');
+        parent::boot();
+
+        static::deleting(function ($curso) {
+            // Verificar si hay alumnos matriculados en este curso
+            if ($curso->alumnos()->count() > 0) {
+                throw new \Exception("No puedes eliminar este curso porque ya tiene alumnos matriculados.");
+            }
+        });
     }
 }
