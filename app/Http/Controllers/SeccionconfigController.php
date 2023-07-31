@@ -37,7 +37,7 @@ class SeccionconfigController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'seccion' => 'required',
             'descripcion' => 'required',
         ]);
     
@@ -68,7 +68,7 @@ class SeccionconfigController extends Controller
      */
     public function edit($id)
     {
-        $seccion = Seccionconfig::find($id);
+        $secciones = Seccionconfig::find($id);
         return view('configurar.Seccion.editar', compact('secciones'));
     }
 

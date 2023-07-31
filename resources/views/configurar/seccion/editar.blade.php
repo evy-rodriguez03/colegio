@@ -6,12 +6,12 @@
             <h1 class="mb-0">Editar Seccion</h1>
         </div>
         <div class="card-body">
-            <form action="{{ route('seccionconfig.update', $seccion->id) }}" method="POST">
+            <form action="{{ route('seccionconfig.update', $secciones->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="jornada">Seccion</label>
-                    <input type="text" class="form-control" id="seccion" name="secciones" value="{{ $secciones->nombre }}" required>
+                    <label for="nombre">Seccion</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $secciones->nombre }}" required>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
