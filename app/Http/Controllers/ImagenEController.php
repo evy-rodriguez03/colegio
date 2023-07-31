@@ -55,7 +55,16 @@ class ImagenEController extends Controller
 
         return redirect()->route('profile')->with('success','Has subido correctamente la imagen.');
     }
-
+    
+    public function userProfile()
+    {
+        // Obtén la URL de la foto de perfil del usuario
+        $user = User::findOrFail(Auth::user()->id);
+        $fotoPerfilURL = $user->imagen; // Suponiendo que la URL de la foto de perfil se almacena en el atributo "imagen" del modelo User
+    
+        // Pasa la URL de la foto de perfil a la vista
+        return view('pages.user-profile', ['fotoPerfilURL' => $fotoPerfilURL]);
+    }
 
 
     /**
