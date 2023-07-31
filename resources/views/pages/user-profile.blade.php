@@ -1,9 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+<style>
+  .hide-button {
+    display: none;
+  }
+</style>
+
+
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
@@ -142,15 +149,49 @@
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
                 <a href="{{ route('imagenE.index') }}" class="btn btn-sm btn-info mr-4">Actualizar</a>
+
                 <form action="{{route ('imagenE.destroy',[Auth::user()->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-default float-right">Eliminar</button>
+                <button id="deleteProfileBtn" class="btn btn-sm btn-default float-right hide-button">Eliminar</button>
+
+              
               </form>
+  
+              <script>
+    // Función para verificar si el usuario tiene una foto de perfil
+    function tieneFotoPerfil() {
+      var imagen = "{{ Auth::user()->imagen }}"; // Aquí utilizamos el atributo imagen del modelo User para obtener la URL de la foto de perfil del usuario
+      return imagen !== null && imagen !== undefined && imagen !== "";
+    }
+
+    // Función para ocultar el botón de borrar si no hay foto de perfil
+    function ocultarBotonBorrar() {
+      var botonBorrar = document.getElementById("deleteProfileBtn");
+      if (!tieneFotoPerfil()) {
+        botonBorrar.style.display = "none";
+      } else {
+        botonBorrar.style.display = "block"; // O cualquier otro estilo para mostrar el botón
+      }
+    }
+
+    // Llamamos a la función de ocultarBotonBorrar al cargar la página (o cuando se actualiza la foto de perfil)
+    ocultarBotonBorrar();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
               </div>
             </div>
-
-    
 
             <div class="card-body pt-0 pt-md-4">
               <div class="row">
