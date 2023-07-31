@@ -36,6 +36,7 @@ use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
 use App\Http\Controllers\formulariopreescolarController;
 use App\Http\Controllers\modalidadController;
+use App\Http\Controllers\SeccionconfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -229,8 +230,13 @@ Route::get('/modalidad/{id}/edit', [modalidadController::class, 'edit'])->name('
 Route::put('/modalidad/{id}', [modalidadController::class, 'update'])->name('modalidad.update');
 Route::delete('/modalidad/{id}', [modalidadController::class, 'destroy'])->name('modalidad.destroy');
 
-
-
+//Rutas de seccion
+Route::get('/seccionindex', [SeccionconfigController::class, 'index'])->name('seccionindex.index');
+Route::get('/seccion/create', [SeccionconfigController::class, 'create'])->name('seccionconfig.create');
+Route::post('/seccion', [SeccionconfigController::class, 'store'])->name('seccionconfig.store');
+Route::get('/seccion/{id}/edit', [SeccionconfigController::class, 'edit'])->name('seccionconfig.edit');
+Route::put('/seccion/{id}', [SeccionconfigController::class, 'update'])->name('seccionconfig.update');
+Route::delete('/seccion/{id}', [SeccionconfigController::class, 'destroy'])->name('seccionconfig.destroy');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');

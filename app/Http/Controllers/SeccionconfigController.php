@@ -42,7 +42,7 @@ class SeccionconfigController extends Controller
         ]);
     
         $seccion= new Seccionconfig();
-        $seccion->nombre = $request->input('seccion');
+        $seccion->nombre = $request->input('nombre');
         $seccion->descripcion = $request->input('descripcion');
         $seccion->save();
     
