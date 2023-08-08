@@ -22,9 +22,9 @@ class CreateAlumnosTable extends Migration
             $table->string('numerodeidentidad')->unique();;
             $table->date('fechadenacimiento');
             $table->string('genero');
-            $table->string('direccion');
-            $table->string('numerodehermanosenicgc');
-            $table->boolean('tiene_alergia')->default(false);
+            $table->string('direccion')->nullable();
+            $table->string('numerodehermanosenicgc')->nullable();
+            $table->boolean('tiene_alergia')->default(false)->nullable();
             $table->string('alergia')->nullable();
             $table->boolean('fotografias')->default(false)->nullable();
             $table->boolean('fotografiasdelpadre')->default(false)->nullable();
@@ -32,22 +32,17 @@ class CreateAlumnosTable extends Migration
             $table->boolean('certificadodeconducta')->default(false)->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->string('ciudad');
-            $table->string('depto');
-            $table->string('pais');
+            $table->string('ciudad')->nullable();
+            $table->string('depto')->nullable();
+            $table->string('pais')->nullable();
             $table->string('escuelaanterior')->nullable();
-            $table->string('totalhermanos');
-            $table->string('medico');
-            $table->string('telefonoemergencia');
+            $table->string('totalhermanos')->nullable();
+            $table->string('medico')->nullable();
+            $table->string('telefonoemergencia')->nullable();
             $table->boolean('bus')->default(false)->nullable();
             $table->boolean('taxi')->default(false)->nullable();
             $table->boolean('conpadre')->default(false)->nullable();
             $table->boolean('solo')->default(false)->nullable();
-
-            
-
-
-            
         });
     }
 

@@ -104,17 +104,17 @@
 
                 <div class="col-md-4 mb-3">
                     <label for="ciudad">Lugar de nacimiento</label>
-                    <input type="text" class="form-control" pattern="[A-Za-z\s\.]+" name="ciudad" value="{{ old('ciudad')?old('ciudad'):(isset($alumno->ciudad)?$alumno->ciudad:'') }}" placeholder="Ciudad" required maxlength="12">
+                    <input type="text" class="form-control" pattern="[A-Za-z\s\.]+" name="ciudad" value="{{ old('ciudad')?old('ciudad'):(isset($alumno->ciudad)?$alumno->ciudad:'') }}" placeholder="Ciudad"  maxlength="12">
                     <div class="valid-feedback"></div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="depto" id="departamento ">Departamento</label>
-                    <input type="text" class="form-control" name="depto" value="{{ old('depto')?old('depto'):(isset($alumno->depto)?$alumno->depto:'') }}" placeholder="Departamento" required maxlength="12">
+                    <input type="text" class="form-control" name="depto" value="{{ old('depto')?old('depto'):(isset($alumno->depto)?$alumno->depto:'') }}" placeholder="Departamento"  maxlength="12">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="pais" id="pais">Pais</label>
-                    <input type="" class="form-control" name="pais" value="{{ old('pais')?old('pais'):(isset($alumno->pais)?$alumno->pais:'') }}" placeholder="Pais" required maxlength="14">
+                    <input type="" class="form-control" name="pais" value="{{ old('pais')?old('pais'):(isset($alumno->pais)?$alumno->pais:'') }}" placeholder="Pais"  maxlength="14">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="direccion">Dirección de residencia del alumno(a)</label>
-                    <input type="text" class="form-control" pattern="[A-Za-z\s\.,]+" name="direccion" value="{{ old('direccion')?old('direccion'):(isset($alumno->direccion)?$alumno->direccion:'') }}" placeholder="Dirección" maxlength="50">
+                    <input type="text" class="form-control" name="direccion" value="{{ old('direccion')?old('direccion'):(isset($alumno->direccion)?$alumno->direccion:'') }}" placeholder="Dirección" maxlength="50">
                 </div>
             </div>
 
