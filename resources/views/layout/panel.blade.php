@@ -162,7 +162,9 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{ '/'.Auth::user()->imagen }}">
+                
+                <img src="{{ '/'.Auth::user()->imagen }}"  id="imagen-nav" onerror="cargarImagenPredeterminadaNav()">
+
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"></span>
@@ -175,6 +177,14 @@
       </div>
     </nav>
     <!-- End Navbar -->
+     
+    <script>
+      
+      function cargarImagenPredeterminadaNav() {
+               document.getElementById('imagen-nav').src = "{{ asset('img/brand/avatar.png') }}";
+               }
+    </script>
+
     <!-- Header -->
     <div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
 
