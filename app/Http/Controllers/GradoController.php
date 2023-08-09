@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grado;
 
+
 class GradoController extends Controller
 {
     public function index()
@@ -15,8 +16,10 @@ class GradoController extends Controller
 
     public function create()
     {
-        return view('configurar.Grado.grado');
+    $grados = Grado::all();
+    return view('configurar.Grado.grado', compact('grados'));
     }
+
 
     public function store(Request $request)
     {
@@ -25,7 +28,7 @@ class GradoController extends Controller
             'descripcion' => 'required',
         ]);
 
-        $grado = new Grado();
+        $grado = new grado();
         $grado->nombre = $request->input('nombre');
         $grado->descripcion = $request->input('descripcion');
         $grado->save();
