@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF; 
+use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Proceso;
@@ -27,7 +27,7 @@ class AlumnoController extends Controller
     {
         $alumnos = Alumno::All();
         $index = 1; // Definir la variable $index en el controlador
-        $pdf = PDF::loadView('secretaria.alumnos.pdf', compact('alumnos', 'index'));
+        $pdf = Pdf::loadView('secretaria.alumnos.pdf', compact('alumnos', 'index'));
         return $pdf->stream();
     }
     /**
