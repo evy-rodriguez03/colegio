@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Padre;
-use Barryvdh\DomPDF\Facade as PDF; 
+use Barryvdh\DomPDF\Facade\pdf;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\Matriculado;
@@ -22,7 +22,7 @@ class PadreController extends Controller
     public function pdf()
     {
         $padres = Padre::All();
-        $pdf = PDF::loadView('secretaria.Padres.pdfpadres', compact('padres'));
+        $pdf = Pdf::loadView('secretaria.Padres.pdfpadres', compact('padres'));
         return $pdf->stream();
     }
 
