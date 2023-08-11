@@ -15,6 +15,18 @@
     padding: 3px 5px;
     margin: 0 5px;
 
+    .boton-pago {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .boton-pago.pagado {
+    background-color: #2ecc71; /* Cambia el color cuando se haya efectuado el pago */
+  }
+
   }
 </style>
 @endsection
@@ -29,7 +41,7 @@
   $(document).ready(function() {
     $('#alumno').DataTable({
       pagingType: 'simple_numbers',
-      lengthMenu: [1, 6, 9, 12],
+      lengthMenu: [ 9, 12],
       language: {
         lengthMenu: "Mostrar _MENU_ Entradas",
         loadingRecords: "Cargando...",
@@ -95,14 +107,25 @@
             <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
             <td>{{$vistapago->numerodeidentidad }}</td>
             <td>
-              <a href="{{route('pagorealizar.index')}}" class="btn btn-sm btn-info"> ver pago </a>
+              <a href="{{route('pagorealizar.index')}}" id="botonPago" class="btn btn-sm btn-info" class="boton-pago" >Pago </a>
+           
+
+              <script>
+  // Simulación de pago
+  function completarPago() {
+    setTimeout(function() {
+      // Aquí asumimos que el pago se ha completado.
+      var botonPago = document.getElementById("botonPago");
+      botonPago.classList.add("pagado"); // Agregar la clase para cambiar el estilo
+      botonPago.textContent = "Pago Completado"; // Cambiar el texto del botón
+    }, 2000); // Simulamos un retraso de 2 segundos para el pago
+  }
+</script>
+              
             </td>
           </tr>
 
           @endforeach
-
-
-
         </tbody>
       </table>
 
