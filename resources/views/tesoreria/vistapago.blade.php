@@ -14,20 +14,20 @@
   .dataTables_paginate .paginate_button {
     padding: 3px 5px;
     margin: 0 5px;
+}
+    #botonPago {
+  background-color: #3498db; /* Color normal */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
 
-    .boton-pago {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
+#botonPago.pagoEfectuado {
+  background-color: #2ecc71; /* Color cuando el pago está efectuado */
+}
 
-  .boton-pago.pagado {
-    background-color: #2ecc71; /* Cambia el color cuando se haya efectuado el pago */
-  }
-
-  }
+  
 </style>
 @endsection
 @section('js')
@@ -54,8 +54,8 @@
         paginate: {
           first: "Primero",
           last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
+          next: ">>",
+          previous: "<<"
         }
       }
     });
@@ -111,15 +111,17 @@
            
 
               <script>
-  // Simulación de pago
-  function completarPago() {
-    setTimeout(function() {
-      // Aquí asumimos que el pago se ha completado.
-      var botonPago = document.getElementById("botonPago");
-      botonPago.classList.add("pagado"); // Agregar la clase para cambiar el estilo
-      botonPago.textContent = "Pago Completado"; // Cambiar el texto del botón
-    }, 2000); // Simulamos un retraso de 2 segundos para el pago
-  }
+// Supongamos que aquí detectas que el pago se ha efectuado
+const pagoEfectuado = true;
+
+// Obtén una referencia al botón
+const botonPago = document.getElementById('botonPago');
+
+// Si el pago está efectuado, agrega la clase correspondiente
+if (pagoEfectuado) {
+  botonPago.classList.add('pagoEfectuado');
+}
+
 </script>
               
             </td>
