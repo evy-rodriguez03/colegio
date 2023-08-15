@@ -231,7 +231,23 @@ Route::put('/seccion/{id}', [SeccionconfigController::class, 'update'])->name('s
 Route::delete('/seccion/{id}', [SeccionconfigController::class, 'destroy'])->name('seccionconfig.destroy');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
-
+Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
+Route::get('/escolar/crear', [formularioescolarController::class,'create'])->name('escolar.create');
+Route::get('/escolar/{escolar}/edit', [formularioescolarController::class,'edit'])->name('escolar.edit');
+Route::get('/escolardos/{escolar}/edit', [formularioescolarController::class,'editdos'])->name('escolar.editdos');
+Route::get('/escolartres/{escolar}/edit', [formularioescolarController::class,'edittres'])->name('escolar.edittres');
+Route::get('/escolarcuatro/{escolar}/edit', [formularioescolarController::class,'editcuatro'])->name('escolar.editcuatro');
+Route::get('/escolarcinco/{escolar}/edit', [formularioescolarController::class,'editcinco'])->name('escolar.editcinco');
+Route::get('/escolarseis/{escolar}/edit', [formularioescolarController::class,'editseis'])->name('escolar.editseis');
+Route::get('/escolarsiete/{escolar}/edit', [formularioescolarController::class,'editsiete'])->name('escolar.editsiete');
+Route::post('/escolar', [formularioescolarController::class, 'store'])->name('escolar.store');
+Route::put('/escolar/{escolar}', [formularioescolarController::class,'update'])->name('escolar.update');
+Route::put('/escolardos/{escolardos}', [formularioescolarController::class,'updatedos'])->name('escolar.updatedos');
+Route::put('/escolartres/{escolartres}', [formularioescolarController::class,'updatetres'])->name('escolar.updatetres');
+Route::put('/escolarcuatro/{escolarcuatro}', [formularioescolarController::class,'updatecuatro'])->name('escolar.updatecuatro');
+Route::put('/escolarcinco/{escolarcinco}', [formularioescolarController::class,'updatecinco'])->name('escolar.updatecinco');
+Route::put('/escolarseis/{escolarseis}', [formularioescolarController::class,'updateseis'])->name('escolar.updateseis');
+Route::put('/escolarsiete/{escolarsiete}', [formularioescolarController::class,'updatesiete'])->name('escolar.updatesiete');
 
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
@@ -244,7 +260,6 @@ Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name
 Route::get('/cursostotal', [CursostotalesController::class,'index'])->name('cursostotales.index');
 route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
 route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->name('alumnocursos.index');
-
 
 
 //Tesoreria

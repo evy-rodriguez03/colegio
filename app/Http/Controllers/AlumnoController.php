@@ -313,6 +313,166 @@ class AlumnoController extends Controller
         $estado->matriculado = 'no';
         $estado->save();
 
+        $escolar = new Escolar();
+
+        //f1
+        $escolar->alumno_id = $alumno->id;
+        $escolar->primerapellido = $alumno->primerapellido;
+        $escolar->segundoapellido = $alumno->segundoapellido;
+        $escolar->primernombre = $alumno->primernombre;
+        $escolar->segundonombre = $alumno->segundonombre;
+        $escolar->enumerodecelular = null;
+        $escolar->eedad = null;
+        $escolar->procedencia = null;
+        $escolar->tiempolectivo = null;
+        $escolar->telelectivo = null;
+        $escolar->noelectivo = null;
+        $escolar->telnoelectivo = null;
+        $escolar->observaciones = null;
+
+        //f3
+        $escolar->situacioneconomica = null;
+        $escolar->casavives = null;
+        $escolar->computadora = null;
+        $escolar->tablet = null;
+        $escolar->celular = null;
+        $escolar->internet = null;
+        $escolar->otroscasa = null;
+        $escolar->talla = null;
+        $escolar->peso = null;
+        $escolar->hatenido = null;
+        $escolar->ver = null;
+        $escolar->verespecifique = null;
+        $escolar->vercorregida = null;
+        $escolar->escuchar = null;
+        $escolar->escucharespecifique = null;
+        $escolar->escucharcorregida = null;
+        $escolar->estadodentadura = null;
+        $escolar->recibidovacuna = null;
+
+        //f4
+        $escolar->abanda = null;
+        $escolar->afutbol = null;
+        $escolar->apingpong = null;
+        $escolar->anumeros = null;
+        $escolar->alectura = null;
+        $escolar->acoro = null;
+        $escolar->abasket = null;
+        $escolar->atennis = null;
+        $escolar->amanuales = null;
+        $escolar->aoratoria = null;
+        $escolar->avolley = null;
+        $escolar->aatletismo = null;
+        $escolar->adomestico = null;
+        $escolar->aanimales = null;
+        $escolar->adibujo = null;
+        $escolar->afiestas = null;
+        $escolar->acientificos = null;
+        $escolar->aenfermos = null;
+        $escolar->aotros = null;
+        $escolar->trabajar = null;
+        $escolar->namigos =null;
+        $escolar->pasatiempos1 = null;
+        $escolar->pasatiempos2 = null;
+        $escolar->pasatiempos3 = null;
+        $escolar->edadamigos = null;
+
+        //f5
+        $escolar->estudios = null;
+        $escolar->repetido = null;
+        $escolar->claseestudiante = null;
+        $escolar->agrado = null;
+        $escolar->agradomenos = null;
+        $escolar->considera = null;
+        $escolar->horasextra = null;
+        $escolar->tiempolibre = null;
+        $escolar->rendimiento = null;
+        $escolar->ayudarsele = null;
+        $escolar->cursosrepetidos = null;
+        $escolar->materiasreprobadas = null;
+        $escolar->materiasagradan = null;
+        $escolar->atribuyeagrado = null;
+        $escolar->agradanmenos = null;
+        $escolar->materiasdificultad = null;
+        $escolar->culturageneral = null;
+        $escolar->diversificado = null;
+
+        //f6
+        $escolar->pbienconud = null;
+        $escolar->hablarconel = null;
+        $escolar->psolucion = null;
+        $escolar->pconfianza = null;
+        $escolar->mbienconud = null;
+        $escolar->hablarconella = null;
+        $escolar->msolucion = null;
+        $escolar->mconfianza = null;
+        $escolar->pcomprensivo = null;
+        $escolar->mcomprensivo = null;
+        $escolar->ecomprensivo = null;
+        $escolar->pbondadoso = null;
+        $escolar->mbondadoso = null;
+        $escolar->ebondadoso = null;
+        $escolar->pfuete = null;
+        $escolar->mfuete = null;
+        $escolar->efuete = null;
+        $escolar->pestricto = null;
+        $escolar->mestricto = null;
+        $escolar->eestricto = null;
+        $escolar->ptolerante = null;
+        $escolar->mtolerante = null;
+        $escolar->etolerante = null;
+        $escolar->pcomunicativo = null;
+        $escolar->mcomunicativo = null;
+        $escolar->ecomunicativo = null;
+        $escolar->pproblemas = null;
+        $escolar->mproblemas = null;
+        $escolar->eproblemas = null;
+        $escolar->pestudio = null;
+        $escolar->mestudio = null;
+        $escolar->eestudio = null;
+        $escolar->plibertades = null;
+        $escolar->mlibertades = null;
+        $escolar->elibertades = null;
+        $escolar->pfuturo = null;
+        $escolar->mfuturo = null;
+        $escolar->efuturo = null;
+        $escolar->pgrande = null;
+        $escolar->mgrande = null;
+        $escolar->egrande = null;
+        $escolar->pleve = null;
+        $escolar->mleve = null;
+        $escolar->eleve = null;
+        $escolar->nopapa = null;
+        $escolar->nomama = null;
+        $escolar->relaciones = null;
+
+
+        //f7
+        $escolar->triste = null;
+        $escolar->llora = null;
+        $escolar->preocupado = null;
+        $escolar->nervioso = null;
+        $escolar->solo = null;
+        $escolar->debil = null;
+        $escolar->amistoso = null;
+        $escolar->carinioso = null;
+        $escolar->timido = null;
+        $escolar->testarudo = null;
+        $escolar->tranquilo = null;
+        $escolar->puntual = null;
+        $escolar->egoista = null;
+        $escolar->celoso = null;
+        $escolar->violento = null;
+        $escolar->agresivo = null;
+        $escolar->comprensivo = null;
+        $escolar->ordenado = null;
+        $escolar->comunicativo = null;
+        $escolar->religioso = null;
+        $escolar->futuro = null;
+        $escolar->retraido = null;
+        $escolar->cooperador = null;
+
+        $escolar->save();
         
 
         return redirect()->route('datospadre.create');
