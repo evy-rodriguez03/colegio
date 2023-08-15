@@ -29,23 +29,24 @@
 $(document).ready(function() {
   var tabla = $('#matricula').DataTable({
     pagingType: 'simple_numbers',
-    lengthMenu: [1, 6, 9, 12],
-    language: {
-      lengthMenu: "Mostrar _MENU_ Entradas",
-      loadingRecords: "Cargando...",
-      processing: "Procesando...",
-      search: "Buscar:",
-      zeroRecords: "Sin resultados encontrados",
-      info: "_TOTAL_ Entradas",
-      infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-      infoFiltered: "",
-      paginate: {
-        first: "Primero",
-        last: "Último",
-        next: "Siguiente",
-        previous: "Anterior"
-      }
-    }
+    lengthMenu: [9, 12],
+          language: {
+            lengthMenu: "Mostrar _MENU_ Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: ">>",
+          previous: "<<"
+    },
+    "sProcessing":"Cargando..."
+}
   });
 
     $('#periodo').on('change', function() {
@@ -75,14 +76,20 @@ $(document).ready(function() {
 
 
         </div>
-    </div>
-    <div class="card-body">
-        @if (session('notification'))
-        <div class="alert alert-success" role="alert">
-            {{ session('notification') }}
         </div>
-        @endif
-    </div>
+        <!-- Formulario para crear -->
+        <div class="card-body">
+  <form method="=get"> 
+    <div class="input-group mb-2">
+ 
+</div>
+    <div class="card-body">
+    @if (session('success'))
+     <div class="alert alert-success" role="success">
+      {{session('success')}}
+  </div>
+  @endif
+ </form>
 
     <div class="table-responsive">
     
