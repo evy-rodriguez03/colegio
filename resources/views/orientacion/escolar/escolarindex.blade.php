@@ -27,7 +27,7 @@
   $(document).ready(function() {
     $('#alumno').DataTable({
       pagingType: 'simple_numbers',
-      lengthMenu: [1, 6, 9, 12],
+      lengthMenu: [2, 6, 9, 12],
       language: {
         lengthMenu: "Mostrar _MENU_ Entradas",
         loadingRecords: "Cargando...",
@@ -88,7 +88,7 @@
           <td>{{$escolar->primernombre}} {{$escolar->primerapellido}}</td>
           <td>{{$escolar->numerodeidentidad }}</td>
           <td>
-            <a href="{{route('escolar.create')}}" class="btn btn-sm btn-info"> Editar </a>
+            <a href="{{route('escolar.edit', ['escolar' => $escolar->id])}}" class="btn btn-sm btn-info"> Editar </a>
           </td>
         </tr>
 

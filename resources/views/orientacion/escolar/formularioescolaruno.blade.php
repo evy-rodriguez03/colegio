@@ -17,71 +17,87 @@
     </div>
 
     <div class="card-body">
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>¡Por favor!</strong> {{$error}}
         </div>
+        @endforeach
         @endif
         <!-- inicio formulario -->
-
-        <form class="row g-3 mt-3" action="{{ route('escolar.index') }}" method="POST">
+        @foreach ($alumnos as $alumno)
+        <form class="row g-3 mt-3" action="{{ route('escolar.update', $alumnos->id) }}" method="POST">
             @csrf
+            @method('PUT')
+            <h1 class="col-12 mt-3">Datos del Alumno: {{$alumnos->primernombre}} {{$alumnos->segundonombre}} {{$alumnos->primerapellido}} {{$alumnos->segundoapellido}}</h1>
             <h2 class="col-12 mt-3">I. Datos Personales:</h2>
 
             <div class="col-6 mt-3">
-                <label for="egrado">Grado:</label>
-                <input type="text" id="egrado" name="egrado" class="form-control" required value="{{old('egrado')}}" placeholder="Ingrese el grado"></input>
-                <div class="valid-feedback"></div>
+                <label><b>Numero de Identidad:</b> {{$alumnos->numerodeidentidad}}</label>
+            </div>
+
+            <div class="col-6 mt-3">
+                <label><b>Lugar de Nacimiento:</b> {{$alumnos->ciudad}}</label>
+            </div>
+
+            <div class="col-6 mt-3">
+                <label><b>Curso:</b> {{$alumnos->cursos->niveleducativo}}</label>
+            </div>
+            <div class="col-6 mt-3">
+                <label><b>Fecha de nacimiento:</b> {{$alumnos->fechadenacimiento}}</label>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="enumerodecelular">Numero de Celular:</label>
-                <input type="text" id="enumerodecelular" name="enumerodecelular" class="form-control" required value="{{old('enumerodecelular')}}" placeholder="Ingrese el lugar de trabajo"></input>
+                <input type="text" id="enumerodecelular" name="enumerodecelular" class="form-control" value="{{old('enumerodecelular', $escolar->enumerodecelular)}}" placeholder="Ingrese el lugar de trabajo" required maxlength="9"> </input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="eedad">Edad:</label>
-                <input type="text" id="eedad" name="eedad" class="form-control" required value="{{old('eedad')}}" placeholder="Ingrese la edad"></input>
+                <input type="text" id="eedad" name="eedad" class="form-control" value="{{old('eedad', $escolar->eedad)}}" placeholder="Ingrese la edad" maxlength="2"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="procedencia">Escuela o Colegio de Procedencia:</label>
-                <input type="text" id="procedencia" name="procedencia" class="form-control" required value="{{old('procedencia')}}" placeholder="Ingrese el nombre del colegio o escuela"></input>
+                <input type="text" id="procedencia" name="procedencia" class="form-control" value="{{old('procedencia', $escolar->procedencia)}}" placeholder="Ingrese el nombre del colegio o escuela"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <!-- direccion de domicilio -->
 
             <h2 class="col-12 mt-3">II. Direccion del Domicilio:</h2>
+
+
             <div class="col-6 mt-3">
                 <label for="tiempolectivo">En Tiempo Lectivo:</label>
-                <input type="text" id="tiempolectivo" name="tiempolectivo" class="form-control" required value="{{old('tiempolectivo')}}" placeholder="Ingrese el tiempo lectivo"></input>
+                <input type="text" id="tiempolectivo" name="tiempolectivo" class="form-control" value="{{old('tiempolectivo', $escolar->tiempolectivo)}}" placeholder="Ingrese el tiempo lectivo"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="telelectivo">Telefono Fijo:</label>
-                <input type="text" id="telelectivo" name="telelectivo" class="form-control" required value="{{old('telelectivo')}}" placeholder="Ingrese el telefono fijo"></input>
+                <input type="text" id="telelectivo" name="telelectivo" class="form-control" value="{{old('telelectivo', $escolar->telelectivo)}}" placeholder="Ingrese el telefono fijo" maxlength="8"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="noelectivo">En Tiempo No Electivo:</label>
-                <input type="text" id="noelectivo" name="noelectivo" class="form-control" required value="{{old('noelectivo')}}" placeholder="Ingrese el tiempo no lectivo"></input>
+                <input type="text" id="noelectivo" name="noelectivo" class="form-control" value="{{old('noelectivo', $escolar->noelectivo)}}" placeholder="Ingrese el tiempo no lectivo"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="telnoelectivo">Telefono Fijo:</label>
-                <input type="text" id="telnoelectivo" name="telnoelectivo" class="form-control" required value="{{old('telnoelectivo')}}" placeholder="Ingrese el telefono fijo"></input>
+                <input type="text" id="telnoelectivo" name="telnoelectivo" class="form-control" value="{{old('telnoelectivo', $escolar->telnoelectivo)}}" placeholder="Ingrese el telefono fijo" maxlength="8"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="observaciones">Observaciones:</label>
-                <input type="text" id="observaciones" name="observaciones" class="form-control" required value="{{old('observaciones')}}" placeholder="Especifique"></input>
+                <input type="text" id="observaciones" name="observaciones" class="form-control" value="{{old('observaciones', $escolar->observaciones)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
@@ -89,10 +105,12 @@
             </div>
 
             <div class="col-3 mt-3">
-            
-                <a class="btn btn-success" href="{{ route('escolardos.create') }}">siguiente</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-success" href="{{ route('escolar.editdos', ['escolar' => $escolar->id]) }}">siguiente</a>
+
             </div>
         </form>
+        @endforeach
     </div>
 </div>
 @endSection

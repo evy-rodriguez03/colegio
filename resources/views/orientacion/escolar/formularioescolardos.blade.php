@@ -9,7 +9,7 @@
                 <h1 class="mb-0">Escolar Paso-2</h1>
             </div>
             <div class="col text-right">
-                <a href="{{route('escolar.create')}}" class="btn btn-lg btn-success">
+                <a href="{{route('escolar.edit', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
                     <i class="fas fa-angle-left"></i>
                     Regresar</a>
             </div>
@@ -24,22 +24,25 @@
         @endif
         <!-- inicio formulario -->
 
-        <form class="row g-3 mt-3" action="{{route('escolar.index')}}" method="POST">
+        <form class="row g-3 mt-3" action="{{route('escolar.updatedos', $alumnos->id) }}" method="POST">
             @csrf
+            @method('PUT')
+
             <h2 class="col-12 mt-3">III. Datos Familiares:</h2>
 
+
             <!-- padre -->
+            <h2 class="col-12 mt-3">Nombre del Padre: <?php
+                                                        if (!empty($padres->primernombre) || !empty($padres->segundonombre) || !empty($padres->primerapellido) || !empty($padres->segundoapellido)) {
+                                                            echo $padres->primernombre . " " . $padres->segundonombre . " " . $padres->primerapellido . " " . $padres->segundoapellido;
+                                                        } else {
+                                                            echo "No se encontraron datos del padre.";
+                                                        }
+
+                                                        ?></h2>
 
             <div class="col-6 mt-3">
-                <label style="font-weight: bold" for="nombrepadre">Nombre del Padre:</label>
-                <input type="text" id="nombrepadre" name="nombrepadre" class="form-control" required value="{{old('nombrepadre')}}" placeholder="Ingrese nombre completo"></input>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-6 mt-3">
-                <label for="nidentidadpadre">Numero de Identidad:</label>
-                <input type="text" id="nidentidadpadre" name="nidentidadpadre" class="form-control" required value="{{old('nidentidadpadre')}}" placeholder="Ingrese el numero de identidad"></input>
-                <div class="valid-feedback"></div>
+                <label><b>Numero de Identidad:</b> {{$padres->numerodeidentidad}}</label>
             </div>
 
             <div class="col-6 mt-3">
@@ -55,9 +58,7 @@
             </div>
 
             <div class="col-6 mt-3">
-                <label for="ncelularpadre">Numero de Celular:</label>
-                <input type="text" id="ncelularpadre" name="ncelularpadre" class="form-control" required value="{{old('ncelularpadre')}}" placeholder="Ingrese el numero de celular"></input>
-                <div class="valid-feedback"></div>
+                <label><b>Numero de Telefono:</b> {{$padres->telefonopersonal}}</label>
             </div>
 
             <div class="col-6 mt-3">
@@ -84,9 +85,7 @@
             </div>
 
             <div class="col-6 mt-3">
-                <label for="telefonnotrabajopadre">Telefono del Trabajo:</label>
-                <input type="text" id="telefonnotrabajopadre" name="telefonnotrabajopadre" class="form-control" required value="{{old('telefonnotrabajopadre')}}" placeholder="Ingrese el telefono de trabajo"></input>
-                <div class="valid-feedback"></div>
+                <label><b>Telefono del Trabajo:</b> {{$padres->telefonooficina}}</label>
             </div>
 
             <div class="col-12 mt-3">
@@ -292,10 +291,11 @@
 
             <div class="col-12 mt-3">
             </div>
-            
+
 
             <div class="col-3 mt-3">
-                <a class="btn btn-success" href="{{ route('escolartres.create') }}">siguiente</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-success" href="{{ route('escolar.edittres', ['escolar' => $escolar->id])  }}">siguiente</a>
             </div>
         </form>
     </div>
