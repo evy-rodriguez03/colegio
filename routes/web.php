@@ -265,6 +265,6 @@ route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->nam
 //Tesoreria
 route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
 route::post('/vistapagorealizar', [vistapagoController::class,'store']);
-
+route::post('/pagorealizar', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
 
 
