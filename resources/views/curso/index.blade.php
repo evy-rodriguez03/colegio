@@ -26,7 +26,7 @@
             <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">id</th>
+                        <th scope="col">Nº</th>
                         <th scope="col">Grado</th>
                         <th scope="col">Modalidad</th>
                         <th scope="col">Jornada</th>

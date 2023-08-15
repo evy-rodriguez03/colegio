@@ -26,6 +26,7 @@ class modalidadController extends Controller
      */
     public function create()
     {
+        $modalidades = Modalidad::all();
         return view('configurar.Modalidad.modalidad');
     }
 

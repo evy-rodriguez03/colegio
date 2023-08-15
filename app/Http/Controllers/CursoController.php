@@ -7,6 +7,11 @@ use Barryvdh\DomPDF\Facade\pdf;
 use App\Models\Curso;
 use App\Models\Alumno;
 use App\Models\Periodo;
+use App\Models\Grado;
+use App\Models\Horario;
+use App\Models\Modalidad;
+use App\Models\Jornada;
+use App\Models\Seccionconfig;
 
 
 class CursoController extends Controller
@@ -38,7 +43,12 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('curso.create');
+        $grados = Grado::all();
+        $modalidades = Modalidad::all();
+        $jornadas = Jornada::all();
+        $secciones = Seccionconfig::all();
+        $horarios = Horario::all();
+        return view('curso.create', compact('grados', 'modalidades', 'jornadas', 'secciones', 'horarios'));
     }
 
     /**
