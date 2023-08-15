@@ -37,4 +37,9 @@ class Curso extends Model
             }
         });
     }
+
+    public function escolar()
+    {
+        return $this->hasOne(Escolar::class);
+    }
 }

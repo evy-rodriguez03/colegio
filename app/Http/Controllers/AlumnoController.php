@@ -8,6 +8,7 @@ use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Proceso;
 use App\Models\Periodo;
+use App\Models\Escolar;
 use Illuminate\Support\Facades\Cache;
 
 class AlumnoController extends Controller
@@ -48,7 +49,7 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $rules = [
 
             'primernombre' => 'required|min:3|string',
@@ -146,17 +147,16 @@ class AlumnoController extends Controller
                 'solo',
             )
         );
-
         return redirect('/alumnos')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
     public function creatematricula($id = 0)
     {
-        $periodo = Periodo::where('activo','=',1)->get();
-        $cursos = Curso::where('idperiodo','=',$periodo[0]->id)->pluck('niveleducativo', 'id');
+        $periodo = Periodo::where('activo', '=', 1)->get();
+        $cursos = Curso::where('idperiodo', '=', $periodo[0]->id)->pluck('niveleducativo', 'id');
 
         if ($id != 0) {
-            Cache::put('alumno_id',$id);
+            Cache::put('alumno_id', $id);
             $alumno = Alumno::find($id);
         } else {
             $alumno = new Alumno();
@@ -169,13 +169,13 @@ class AlumnoController extends Controller
     public function storematricula(Request $request)
     {
         $value = Cache::get('alumno_id');
-        
+
         $rules = [
             'primernombre' => 'required|min:3|max:12|string',
             'segundonombre' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'primerapellido' => 'required|min:3|max:12|string',
             'segundoapellido' => 'nullable|regex:/^[\pL\s\-]+$/u',
-            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $value ,
+            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,' . $value,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
             'tiene_alergia' => 'required',
@@ -213,7 +213,7 @@ class AlumnoController extends Controller
             'numerodeidentidad.min' => 'El minimo de caracteres del número de identidad es de 13 digitos',
             'numerodeidentidad.numeric' => 'El campo número de identidad solo permite números',
             'numerodeidentidad.unique' => 'El campo número de identidad debe ser unico',
-            'tiene_alergia.required'=>'Debe seleccionar si tiene una alergia o no',
+            'tiene_alergia.required' => 'Debe seleccionar si tiene una alergia o no',
             'fechadenacimiento.required' => 'La fecha de nacimiento es necesaria.',
             'fechadenacimiento.date' => 'La fecha es necesaria',
             'genero.required' => 'seleccion si es masculino, o es femenino',
@@ -242,8 +242,8 @@ class AlumnoController extends Controller
                 'primernombre',
                 'segundonombre',
                 'primerapellido',
-                'segundoapellido' ,
-                'numerodeidentidad' ,
+                'segundoapellido',
+                'numerodeidentidad',
                 'fechadenacimiento',
                 'alergia',
                 'tiene_alergia',
@@ -259,7 +259,7 @@ class AlumnoController extends Controller
                 'depto',
                 'pais',
                 'escuelaanterior',
-                'totalhermanos' ,
+                'totalhermanos',
                 'medico',
                 'telefonoemergencia',
                 'bus',
@@ -307,14 +307,15 @@ class AlumnoController extends Controller
             $id =  $alumno->id;
         }
 
-      
+
         $estado = new Proceso();
         $estado->id = $id;
         $estado->matriculado = 'no';
         $estado->save();
 
-        return redirect()->route('datospadre.create');
+        
 
+        return redirect()->route('datospadre.create');
     }
 
     /**
@@ -357,7 +358,7 @@ class AlumnoController extends Controller
             'telefonodeencargado' => 'required|min:8|numeric',
             'primerapellido' => 'required|min:3|string',
             'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,'. $id ,
+            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,' . $id,
             'fechadenacimiento' => 'required|date',
             'alergia' => 'required|min:2|string',
             'lugardenacimiento' => 'required|min:2|string',
@@ -428,16 +429,15 @@ class AlumnoController extends Controller
 
     public function comprobar(Request $request)
     {
-       $alumnos = Alumno::where('numerodeidentidad','=',$request->input('identidad'))->get();
+        $alumnos = Alumno::where('numerodeidentidad', '=', $request->input('identidad'))->get();
 
-       if (isset($alumnos[0]->id)) {
-        Cache::put('alumno_id', $alumnos[0]->id);
-        return redirect()->route('creatematricula',['id'=>$alumnos[0]->id])->with('success', '¡Matricula Existente!');
-       }else{
-        Cache::forget('alumno_id');
-        return redirect()->route('creatematricula')->with('success', '¡Alumno no matriculado!')->with('identidad', $request->input('identidad'));
-       }
-
+        if (isset($alumnos[0]->id)) {
+            Cache::put('alumno_id', $alumnos[0]->id);
+            return redirect()->route('creatematricula', ['id' => $alumnos[0]->id])->with('success', '¡Matricula Existente!');
+        } else {
+            Cache::forget('alumno_id');
+            return redirect()->route('creatematricula')->with('success', '¡Alumno no matriculado!')->with('identidad', $request->input('identidad'));
+        }
     }
 
     /**

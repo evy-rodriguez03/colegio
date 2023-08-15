@@ -240,14 +240,7 @@ Route::put('/seccion/{id}', [SeccionconfigController::class, 'update'])->name('s
 Route::delete('/seccion/{id}', [SeccionconfigController::class, 'destroy'])->name('seccionconfig.destroy');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
-route::get('/escolar/pdf', [formularioescolarController::class,'pdf'])->name('escolar.pdf');
-Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
-route::get('/escolar/crear', [formularioescolarController::class,'create'])->name('escolar.create');
-route::get('/padres/{escolar}/edit', [formularioescolarController::class,'edit'])->name('escolar.edit');
-Route::post('/escolar', [formularioescolarController::class, 'store']);
-route::put('/escolar/{escolar}', [formularioescolarController::class,'update'])->name('escolar.update');
-route::delete('/escolar/{escolar}', [formularioescolarController::class,'destroy'])->name('escolar.destroy');
-route::get('/escolar/{id}', [formularioescolarController::class,'show'])->name('escolar.show');
+
 
 //contrato tesoreria
 Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
@@ -267,22 +260,5 @@ route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->nam
 route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
 route::post('/vistapagorealizar', [vistapagoController::class,'store']);
 
-//Formularios Orientacion 
-route::get('/escolardos', [FormularioescolarController::class,'createescolardos'])->name('escolardos.create');
-route::post('/escolardos', [FormularioescolarController::class,'storeescolardos'])->name('submitescolardos');
-
-route::get('/escolartres', [FormularioescolarController::class,'createescolartres'])->name('escolartres.create');
-route::post('/escolartres', [FormularioescolarController::class,'storeescolartres'])->name('submitescolartres');
-
-route::get('/escolarcuatro', [FormularioescolarController::class,'createescolarcuatro'])->name('escolarcuatro.create');
-route::post('/escolarcuatro', [FormularioescolarController::class,'storeescolarcuatro'])->name('submitescolarcuatro');
-
-route::get('/escolarcinco', [FormularioescolarController::class,'createescolarcinco'])->name('escolarcinco.create');
-route::post('/escolarcinco', [FormularioescolarController::class,'storeescolarcinco'])->name('submitescolarcinco');
-route::get('/escolarseis', [FormularioescolarController::class,'createescolarseis'])->name('escolarseis.create');
-route::post('/escolarseis', [FormularioescolarController::class,'storeescolarseis'])->name('submitescolarseis');
-
-route::get('/escolarsiete', [FormularioescolarController::class,'createescolarsiete'])->name('escolarsiete.create');
-route::post('/escolarsiete', [FormularioescolarController::class,'storeescolarsiete'])->name('submitescolarsiete');
 
 
