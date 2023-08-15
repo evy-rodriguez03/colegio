@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seccion;
+use App\Models\Alumno;
 
-class SeccionController extends Controller
+class DetallespagoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,10 @@ class SeccionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $seccions = Seccion::all();
-        return view('secretaria.seccion.listasec', compact('seccions'));
+
+    { 
+        $alumnos = Alumno::All();
+        return view('tesoreria.detallespago', compact('alumnos'));
     }
 
     /**
@@ -23,9 +24,12 @@ class SeccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
-    return view('secretaria.seccion.indexsec');
+    public function create()
+    {
+        $alumnos = Alumno::All();
+        return view('tesoreria.detallespago');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,23 +38,36 @@ class SeccionController extends Controller
      */
     public function store(Request $request)
     {
+        $value = Cache::get('alumno_id');
+        
+        $rules = [
+            'mensualidad' => 'sometimes',
+            'pagosadministrativos' => 'sometimes',
+            'bolsaescolar' => 'sometimes'
+        ];
 
-        $request->validate([
-            'descripcion' => 'required',
-            'jornada' => 'required',
-            'modalidad' => 'required',
-            'malla_curricular' => 'required',
-        ]);
+        $this->validate($request, $rules);
 
-    $seccion = new Seccion;
-    $seccion->descripcion = $request->descripcion;
-    $seccion->jornada = $request->jornada;
-    $seccion->modalidad = $request->modalidad;
-    $seccion->malla_curricular = $request->malla_curricular;
-    
-    $seccion->save();
-    return redirect()->route('secciones.index');
+        $id = 0;
+
+        if ($value) {
+            $alumno = Alumno::findOrFail($value);
+            $alumno->update($request->only(
+                'mensualidad',
+                'pagosadministrativos',
+                'bolsaescolar',
+            ));
+            $id = $value;
+        } else {
+
+            $alumno = Alumno::create([
+                'mensualidad' => $request->has('mensualidad') ? true : false,
+                'pagosadministrativos' => $request->has('pagosadministrativos') ? true : false,
+                'bolsaescolar' => $request->has('bolsaescolar') ? true : false,
+            ]);
+
     }
+}
 
     /**
      * Display the specified resource.

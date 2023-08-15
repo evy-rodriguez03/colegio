@@ -185,15 +185,6 @@ Route::delete('/horarioc/{id}', [HorarioController::class, 'destroy'])->name('ho
 Route::get('/horarioc/{id}/edit', [HorarioController::class, 'edit'])->name('horario.edit');
 Route::put('/horarioc/{id}', [HorarioController::class, 'update'])->name('horario.update');
 
-
-//Ruta de Seccion
-Route::get('/indexsec', [SeccionController::class, 'index'])->name('secciones.index');
-Route::get('/indexsec/create', [SeccionController::class, 'create'])->name('secciones.create');
-Route::post('/indexsec', [SeccionController::class, 'store'])->name('secciones.store');
-Route::get('/indexsec/{seccion}', [SeccionController::class, 'show'])->name('secciones.show');
-Route::get('/indexsec/{seccion}/edit', [SeccionController::class, 'edit'])->name('secciones.edit');
-Route::put('/indexsec/{seccion}', [SeccionController::class, 'update'])->name('secciones.update');
-Route::delete('/indexsec/{seccion}', [SeccionController::class, 'destroy'])->name('secciones.destroy');
 //Ruta del dashboard orientacion
  Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
 

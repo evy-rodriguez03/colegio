@@ -88,7 +88,9 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{ '/'.Auth::user()->imagen }}">
+
+                  <img src="{{ '/'.Auth::user()->imagen }}"  id="imagen-nav" onerror="cargarImagenPredeterminadaNav()">
+
                 </span>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
     <div class=" dropdown-header noti-title">
@@ -140,25 +142,50 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="{{ route('imagenE.index') }}">
-                    <img src="{{ '/'.Auth::user()->imagen }}" class="rounded-circle">
-                  </a>
+
+
+
+                <img src="{{ '/'.Auth::user()->imagen }}" class="rounded-circle" id="imagen_perfil" onClick="cambiarImagen()" onerror="cargarImagenPredeterminada()">
+              <form id="cambiarImagenForm" action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data" style="display: none;">
+                 @csrf
+                 <input type="file" name="image" id="imagen" style="display: none;">
+               </form>
+                  
+          
+
+
                 </div>
               </div>
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <a href="{{ route('imagenE.index') }}" class="btn btn-sm btn-info mr-4">Actualizar</a>
 
                 <form action="{{route ('imagenE.destroy',[Auth::user()->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button id="deleteProfileBtn" class="btn btn-sm btn-default float-right hide-button">Eliminar</button>
-
-              
               </form>
   
               <script>
+                 
+              function cambiarImagen(){
+               document.getElementById('imagen').click();
+               }
+            
+               document.getElementById('imagen').addEventListener('change', function() {
+               document.getElementById('cambiarImagenForm').submit();
+              });
+
+               //funcion cargar imagen por defecto 
+               function cargarImagenPredeterminada() {
+                document.getElementById('imagen_perfil').src = "{{ asset('img/brand/avatar.png') }}";
+               }
+
+               function cargarImagenPredeterminadaNav() {
+               document.getElementById('imagen-nav').src = "{{ asset('img/brand/avatar.png') }}";
+               }
+
+
     // Función para verificar si el usuario tiene una foto de perfil
     function tieneFotoPerfil() {
       var imagen = "{{ Auth::user()->imagen }}"; // Aquí utilizamos el atributo imagen del modelo User para obtener la URL de la foto de perfil del usuario
@@ -178,17 +205,6 @@
     // Llamamos a la función de ocultarBotonBorrar al cargar la página (o cuando se actualiza la foto de perfil)
     ocultarBotonBorrar();
   </script>
-
-
-
-
-
-
-
-
-
-
-
 
               </div>
             </div>
