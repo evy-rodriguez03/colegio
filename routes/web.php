@@ -172,9 +172,7 @@ route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.ind
 route::get('/existente', [ExistenteController::class,'index'])->name('existente.index');
 
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
-route::get('/principal', [PrincipalController::class,'index'])->name('principal.create')
-->middleware(VerificarPeriodoMatricula::class)
-->middleware(VerificarCurso::class);
+route::get('/principal', [PrincipalController::class,'index'])->name('principal.create');
 Route::post('/periodo/{id}/cancelar', [PrincipalController::class, 'cancelarPeriodo'])->name('periodo.cancelar');
 
 //Rutas Horario de clase
