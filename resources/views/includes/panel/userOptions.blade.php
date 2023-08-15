@@ -6,10 +6,7 @@
       <i class="ni ni-single-02"></i>
       <span>Mi Perfil</span>
     </a>
-    <a href="#" class="dropdown-item">
-      <i class="ni ni-settings-gear-65"></i>
-      <span>Configuración</span>
-    </a>
+    
     <div class="dropdown-divider"></div>
     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="ni ni-button-power"></i>
