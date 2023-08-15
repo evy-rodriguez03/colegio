@@ -32,7 +32,13 @@ class PrincipalController extends Controller
         $alumnos = Matriculado::where('periodo_id','=',isset($periodos->id)?$periodos->id:0)->with('alumno','curso')->paginate(10);
         $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');  
         }
-        return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos'));
+
+        $periodoActivo = Periodo::whereActivo(1)->count();
+
+        if ($periodoActivo == 0) {
+            return view('Administracion.iniciom');
+        }
+        return view('secretaria.matricula.principal', compact('alumnos', 'cursos', 'periodos', 'periodoActivo'));
     }
 
     public function cancelarPeriodo($id)
