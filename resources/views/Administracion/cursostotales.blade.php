@@ -13,7 +13,7 @@
   
   .dataTables_paginate .paginate_button {
     padding: 3px 5px;
-    margin: 0 5px;
+    margin: 0px 5px;
     
   }
 </style>
@@ -28,22 +28,20 @@
 <script>
    $(document).ready(function() {
       $('#curso').DataTable({
-         lengthMenu: [3, 6, 9, 12],
+         lengthMenu: [10, 20],
          language: {
-    "decimal": ",",
-    "thousands": ".",
     "lengthMenu": "Mostrar _MENU_ registros",
-    "zeroRecords": "No se encontraron resultados",
-    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
     "sSearch": "Buscar:",
+    "zeroRecords": "No se encontraron resultados",
+    "info": "",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "",
     "oPaginate": {
         "sFirst": "Primero",
         "sLast":"Último",
-        "sNext":"Siguiente",
+        "sNext":">>",
         "dom": '<"toolbar">Bftrip',
-        "sPrevious": "Anterior"
+        "sPrevious": "<<"
     },
     "sProcessing":"Cargando..."
 }
