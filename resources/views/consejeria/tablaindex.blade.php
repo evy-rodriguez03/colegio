@@ -26,28 +26,28 @@
 <script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-    $('#alumno').DataTable({
-      pagingType: 'simple_numbers',
-      lengthMenu: [1, 6, 9, 12],
-      language: {
-        lengthMenu: "Mostrar _MENU_ Entradas",
-        loadingRecords: "Cargando...",
-        processing: "Procesando...",
-        search: "Buscar:",
-        zeroRecords: "Sin resultados encontrados",
-        info: "",
-        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-        infoFiltered: "",
-        paginate: {
-          first: "Primero",
-          last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
-        }
-      }
-    });
-  });
+   $(document).ready(function() {
+      $('#alumno').DataTable({
+         lengthMenu: [10, 20],
+         language: {
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "sSearch": "Buscar:",
+    "zeroRecords": "No se encontraron resultados",
+    "info": "",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "",
+    "oPaginate": {
+        "sFirst": "Primero",
+        "sLast":"Último",
+        "sNext":">>",
+        "dom": '<"toolbar">Bftrip',
+        "sPrevious": "<<"
+    },
+    "sProcessing":"Cargando..."
+}
+         
+      });
+   });
 </script>
 @endsection
 @section('content')
