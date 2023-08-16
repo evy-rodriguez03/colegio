@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\pdf;
+use Barryvdh\DomPDF\Facade\pdf; 
 use App\Models\Padre;
 use App\Models\Alumno;
 
@@ -28,7 +28,7 @@ class ReportesController extends Controller
      public function pdf(){
         $alumnos = Alumno::All();
         $padres=Padre::All();
-        $pdf = PDF::loadView('secretaria.Reportes.listalumno', compact('alumnos', 'padres'));
+        $pdf = Pdf::loadView('secretaria.Reportes.listalumno', compact('alumnos', 'padres'));
         $pdf->setPaper('oficio 9', 'landscape');
         return $pdf->stream();
     }
@@ -36,7 +36,7 @@ class ReportesController extends Controller
     public function pdf2(){
         $alumnos = Alumno::All();
         $padres=Padre::All();
-        $pdf = PDF::loadView('secretaria.Reportes.listapadre', compact('alumnos', 'padres'));
+        $pdf = Pdf::loadView('secretaria.Reportes.listapadre', compact('alumnos', 'padres'));
         $pdf->setPaper('oficio 9', 'landscape');
         return $pdf->stream();
     }

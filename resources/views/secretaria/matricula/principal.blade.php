@@ -29,23 +29,24 @@
 $(document).ready(function() {
   var tabla = $('#matricula').DataTable({
     pagingType: 'simple_numbers',
-    lengthMenu: [1, 6, 9, 12],
-    language: {
-      lengthMenu: "Mostrar _MENU_ Entradas",
-      loadingRecords: "Cargando...",
-      processing: "Procesando...",
-      search: "Buscar:",
-      zeroRecords: "Sin resultados encontrados",
-      info: "_TOTAL_ Entradas",
-      infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-      infoFiltered: "",
-      paginate: {
-        first: "Primero",
-        last: "Último",
-        next: "Siguiente",
-        previous: "Anterior"
-      }
-    }
+    lengthMenu: [9, 12],
+          language: {
+            lengthMenu: "Mostrar _MENU_ Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: ">>",
+          previous: "<<"
+    },
+    "sProcessing":"Cargando..."
+}
   });
 
     $('#periodo').on('change', function() {
@@ -69,20 +70,39 @@ $(document).ready(function() {
                 <h3 class="mb-0">Matriculados</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('principal.create',['no_matriculado'=>'en_proceso']) }}" class="btn btn-sm btn-primary">Proceso de Matricula</a>
-                <a href="{{ route('creatematricula') }}" class="btn btn-sm btn-primary">Nueva Matricula</a>
+                
+                <a href="{{ route('principal.create',['no_matriculado'=>'en_proceso']) }}" class="nav-link  active " href="./index.html">Proceso de Matricula
+                <i class="fas fa-history text-blue"></i> 
+                </a>
+
+                <a href="{{Route('creatematricula')}}" class="nav-link  active " href="./index.html">Nueva Matricula
+                <i class="fas fa-user-plus text-green"></i> 
+                </a>
+
+                <a href="{{Route('repadre.pdf')}}" class="nav-link  active " href="./index.html">
+                <i class="fas fa-file-alt text-orange"></i> 
+                </a>
+
+                <a href="{{Route('repalumno.pdf')}}" class="nav-link  active " href="./index.html">
+                <i class="fas fa-file-alt text-yellow"></i> 
+                </a>
+               
               </div>
-
-
         </div>
-    </div>
+        </div>
+        <!-- Formulario para crear -->
+        <div class="card-body">
+  <form method="=get"> 
+    <div class="input-group mb-2">
+ 
+</div>
     <div class="card-body">
-        @if (session('notification'))
-        <div class="alert alert-success" role="alert">
-            {{ session('notification') }}
-        </div>
-        @endif
-    </div>
+    @if (session('success'))
+     <div class="alert alert-success" role="success">
+      {{session('success')}}
+  </div>
+  @endif
+ </form>
 
     <div class="table-responsive">
     
@@ -171,12 +191,9 @@ $(document).ready(function() {
             </tbody>
         </table>
     </div>
-    <hr>
-    
-    
+    <hr> 
+    </div>
 @endsection
-
-
 
 
 
@@ -238,8 +255,4 @@ $(document).ready(function() {
     })
   </script>
   @endif
-
-
-
-
 @endsection

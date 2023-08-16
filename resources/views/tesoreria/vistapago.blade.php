@@ -14,8 +14,20 @@
   .dataTables_paginate .paginate_button {
     padding: 3px 5px;
     margin: 0 5px;
+}
+    #botonPago {
+  background-color: #3498db; /* Color normal */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
 
-  }
+#botonPago.pagoEfectuado {
+  background-color: #2ecc71; /* Color cuando el pago está efectuado */
+}
+
+  
 </style>
 @endsection
 @section('js')
@@ -29,7 +41,7 @@
   $(document).ready(function() {
     $('#alumno').DataTable({
       pagingType: 'simple_numbers',
-      lengthMenu: [1, 6, 9, 12],
+      lengthMenu: [ 9, 12],
       language: {
         lengthMenu: "Mostrar _MENU_ Entradas",
         loadingRecords: "Cargando...",
@@ -42,8 +54,8 @@
         paginate: {
           first: "Primero",
           last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
+          next: ">>",
+          previous: "<<"
         }
       }
     });
@@ -95,14 +107,27 @@
             <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
             <td>{{$vistapago->numerodeidentidad }}</td>
             <td>
-              <a href="{{route('pagorealizar.index')}}" class="btn btn-sm btn-info"> ver pago </a>
+              <a href="{{route('pagorealizar.index')}}" id="botonPago" class="btn btn-sm btn-info" class="boton-pago" >Pago </a>
+           
+
+              <script>
+// Supongamos que aquí detectas que el pago se ha efectuado
+const pagoEfectuado = true;
+
+// Obtén una referencia al botón
+const botonPago = document.getElementById('botonPago');
+
+// Si el pago está efectuado, agrega la clase correspondiente
+if (pagoEfectuado) {
+  botonPago.classList.add('pagoEfectuado');
+}
+
+</script>
+              
             </td>
           </tr>
 
           @endforeach
-
-
-
         </tbody>
       </table>
 
