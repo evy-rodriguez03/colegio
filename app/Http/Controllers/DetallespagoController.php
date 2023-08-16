@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pagorealizar;
 use App\Models\Alumno;
 
-
-class PagoaRealizaraController extends Controller
+class DetallespagoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,10 @@ class PagoaRealizaraController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $alumnos = Alumno::all();
-        return view ('tesoreria.pagorealizar',compact('alumnos'));
+
+    { 
+        $alumnos = Alumno::All();
+        return view('tesoreria.detallespago', compact('alumnos'));
     }
 
     /**
@@ -27,8 +26,8 @@ class PagoaRealizaraController extends Controller
      */
     public function create()
     {
-        
-        return view('pagorealizar.create');
+        $alumnos = Alumno::All();
+        return view('tesoreria.detallespago');
     }
 
     /**
@@ -39,23 +38,36 @@ class PagoaRealizaraController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        $value = Cache::get('alumno_id');
         
-        $alumno_id = 1; // Aquí deberías obtener el ID del alumno que está realizando los pagos (puedes pasarlo como parámetro en la URL o ajustar esta lógica según tu necesidad).
-        // Guardar el estado de los pagos en la tabla "pagos"
-     
-        $pagorealizars = new Pagorealizar();
-        $pagorealizars->alumno_id = $alumno_id;
-        $pagorealizars->mensualidad = $request->input('mensualidad') ? 1 : 0;
-        $pagorealizars->pagosadministrativos = $request->input('pagosadministrativos') ? 1 : 0;
-        $pagorealizars->bolsaescolar = $request->input('bolsaescolar') ? 1 : 0;
-        // Puedes agregar más campos según lo que necesites guardar en la tabla "pagos"
-        $pagorealizars->save();
+        $rules = [
+            'mensualidad' => 'sometimes',
+            'pagosadministrativos' => 'sometimes',
+            'bolsaescolar' => 'sometimes'
+        ];
 
-        // Redireccionar a la vista de pagos o mostrar un mensaje de éxito, etc.
-        return redirect()->route('pagorealizar.index', $alumno_id)->with('notification', 'Los pagos han sido guardados exitosamente.');
+        $this->validate($request, $rules);
+
+        $id = 0;
+
+        if ($value) {
+            $alumno = Alumno::findOrFail($value);
+            $alumno->update($request->only(
+                'mensualidad',
+                'pagosadministrativos',
+                'bolsaescolar',
+            ));
+            $id = $value;
+        } else {
+
+            $alumno = Alumno::create([
+                'mensualidad' => $request->has('mensualidad') ? true : false,
+                'pagosadministrativos' => $request->has('pagosadministrativos') ? true : false,
+                'bolsaescolar' => $request->has('bolsaescolar') ? true : false,
+            ]);
+
     }
+}
 
     /**
      * Display the specified resource.

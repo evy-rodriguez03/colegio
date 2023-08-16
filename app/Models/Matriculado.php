@@ -18,4 +18,9 @@ class Matriculado extends Model
     {
         return $this->belongsTo('App\Models\Curso');
     }
+
+    public function escolar()
+    {
+        return $this->hasOne(Escolar::class);
+    }
 }

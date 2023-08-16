@@ -19,17 +19,20 @@ class Padre extends Model
         'primerapellido',
         'segundoapellido',
         'numerodeidentidad',
-        'telefonopersonal', 
+        'telefonopersonal',
         'lugardetrabajo',
         'oficio',
         'telefonooficina',
         'ingresos'
     ];
-    
-    public function alumnos()
-{
-    return $this->belongsToMany(Alumno::class, 'alumno_padre','padre_id','alumno_id');
-}
 
-    
+    public function alumnos()
+    {
+        return $this->belongsToMany(Alumno::class, 'alumno_padre', 'padre_id', 'alumno_id');
+    }
+
+    public function escolar()
+    {
+        return $this->belongsTo(Escolar::class);
+    }
 }

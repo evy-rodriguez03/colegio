@@ -17,9 +17,9 @@ class CreatePadresTable extends Migration
             $table->bigIncrements('id');
             $table->string('tipo');
             $table->string('primernombre');
-            $table->string('segundonombre');
+            $table->string('segundonombre')->nullable();
             $table->string('primerapellido');
-            $table->string('segundoapellido');
+            $table->string('segundoapellido')->nullable();
             $table->string('numerodeidentidad')->unique();;
             $table->string('telefonopersonal');
             $table->string('lugardetrabajo');
