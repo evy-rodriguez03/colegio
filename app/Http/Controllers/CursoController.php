@@ -124,11 +124,11 @@ class CursoController extends Controller
             'horario' => 'required'
         ]);
 
-        $curso->curso = $request->input('niveleducativo');
+        $curso->niveleducativo = $request->input('niveleducativo');
         $curso->seccion= $request->input('modalidad');
         $curso->horario = $request->input('jornada');
-        $curso->periodo = $request->input('seccion');
-        $curso->jornada = $request->input('horario');
+        $curso->seccion = $request->input('seccion');
+        $curso->horario = $request->input('horario');
 
         $curso->save();
 

@@ -46,7 +46,9 @@
                             <td>{{$curso->seccion}}</td>
                             <td>{{$curso->horario}}</td>
                             <td>
-                                <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST">
+                            
+                                <form id="deleteCurso{{$curso->id}}" action="{{ route('cursos.destroy', $curso->id) }}" method="POST">
+
                                     <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                     @csrf
                                     @method('DELETE')
