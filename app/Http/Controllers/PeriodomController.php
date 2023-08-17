@@ -10,6 +10,7 @@ class PeriodomController extends Controller
     public function index()
 {
     $periodos = Periodo::all();
-    return view('Administracion.prinperiodo', ['periodos' => $periodos]);
+    $periodoActivo = Periodo::where('activo', 1)->first();
+    return view('Administracion.prinperiodo', compact('periodos','periodoActivo'));
 }
 }
