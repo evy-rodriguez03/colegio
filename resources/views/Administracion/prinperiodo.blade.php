@@ -43,7 +43,10 @@
                     <i class="fas fa-angle-left"></i>
                     Regresar
                 </a>
-                <a href="{{Route('inicio.create')}}" class="btn btn-lg btn-success "> Iniciar Periodo </a>
+                @if (!$periodoActivo)
+                <a href="{{ route('inicio.create') }}" class="btn btn-lg btn-success">Iniciar Periodo</a>
+            @endif
+            
             </div>
         </div>
     </div>
