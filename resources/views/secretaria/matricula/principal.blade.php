@@ -120,7 +120,6 @@ $(document).ready(function() {
                 @if ($alumnos)
                 @foreach ($alumnos->items() as $index => $alumno)
                 <tr>
-                  @if(isset( $alumno->alumno->primernombre))
                     <td scope="row">
                         {{ $index + 1 }}
                     </td>
@@ -134,6 +133,8 @@ $(document).ready(function() {
                         {{ $alumno->curso->niveleducativo }}  {{ $alumno->curso->modalidad }}
                     </td>
                     <td>
+                      @if (isset ($alumno->matriculado))
+                      @else 
                         <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST"
                             class="form-eliminaralumno">
                             @csrf
@@ -143,6 +144,8 @@ $(document).ready(function() {
                                 class="btn btn-sm btn-primary">Editar</a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
+
+                        @endif
                         @php
                         $proce = App\Models\Proceso::where('id', '=', $alumno->alumno->id)->get();
                         @endphp
@@ -152,39 +155,6 @@ $(document).ready(function() {
                             Matricula</a>
                         @endif
                     </td>
-                    @else
-                    <td scope="row">
-                        {{ $index + 1 }}
-                    </td>
-                    <th scope="row">
-                        {{ $alumno->primernombre }} {{ $alumno->primerapellido }}
-                    </th>
-                    <td>
-                        {{ $alumno->numerodeidentidad }}
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <form action="{{ url('/alumnos/'.$alumno->id) }}" method="POST"
-                            class="form-eliminaralumno">
-                            @csrf
-                            @method('DELETE')
-                            <a href="{{ url('/alumnos/'.$alumno->id) }}" class="btn btn-sm btn-info">Ver</a>
-                            <a href="{{ url('/alumnos/'.$alumno->id.'/edit') }}"
-                                class="btn btn-sm btn-primary">Editar</a>
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                        </form>
-                        @php
-                        $proce = App\Models\Proceso::where('id', '=', $alumno->id)->get();
-                        @endphp
-                        @if(count($proce) > 0)
-                        <a class="btn btn-warning"
-                            href="{{ route('creatematricula', ['id' => $alumno->id]) }}">Continuar
-                            Matricula</a>
-                        @endif
-                    </td>
-                    @endif
                 </tr>
                 @endforeach
                 @endif

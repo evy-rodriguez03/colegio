@@ -23,8 +23,7 @@ class PrincipalController extends Controller
 
         if ($request->input('no_matriculado')){
         $periodos = Periodo::where('activo','=',1)->first();
-        $alumnos_no_matriculado = Proceso::where('matriculado','=','no')->get();
-        $alumnos = Alumno::with('cursos')->paginate(10);
+        $alumnos = Proceso::where('matriculado','=','no')->with('alumno','curso')->paginate(10);
         $cursos = Curso::pluck('niveleducativo', 'modalidad');
         }
         else {
@@ -32,6 +31,7 @@ class PrincipalController extends Controller
         $alumnos = Matriculado::where('periodo_id','=',isset($periodos->id)?$periodos->id:0)->with('alumno','curso')->paginate(10);
         $cursos = Curso::where('idperiodo','=',isset($periodos->id)?$periodos->id:0)->pluck('niveleducativo', 'modalidad');  
         }
+
 
         $periodoActivo = Periodo::whereActivo(1)->count();
 
