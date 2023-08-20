@@ -331,7 +331,6 @@ class PadreController extends Controller
      $matricula->periodo_id = $periodo->id;
      $matricula->save();                
 
-    $alumno->cursos()->attach($cursoId, ['periodo_id' => $periodo->id]);
 
     Cache::forget('alumno_id');
     Cache::forget('Curso_id');

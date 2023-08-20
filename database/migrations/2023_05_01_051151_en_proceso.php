@@ -16,6 +16,8 @@ class EnProceso extends Migration
         Schema::create('procesos', function (Blueprint $table) {
             $table->integer('id');
             $table->string('matriculado');
+            $table->unsignedBigInteger('curso_id');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
