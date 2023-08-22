@@ -167,13 +167,43 @@ Route::group(['middleware' => ['auth','role:Secretaria|Admin']], function () {
 
 });
 
+Route::group(['middleware' => ['auth','role:Tesoreria|Admin']], function () {
+//RUTA PAGO A REALIZAR
+route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
+route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
+
+//RUTAS RETRASADA
+route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
+route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
+route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
+route::post('/retrasadas', [RetrasadaController::class,'sendData']);
+route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
+route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
+
+//CONTRATO TESORERIA
+Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
+route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
+
+//TESORERIA
+route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
+route::post('/vistapagorealizar', [vistapagoController::class,'store']);
+route::post('/pagorealizar', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
+
+}); 
+
+Route::group(['middleware' => ['auth','role:Consejeria|Admin']], function () {
+//Rutas consejeria
+route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
+route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
+route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
+}); 
 Route::group(['middleware' => ['auth','Admin']], function () {
 
 
     /*Ruta del dashboard secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
-
+ 
     /*Rutas de los paneles */
     Route::get('/dashboard', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
@@ -203,29 +233,11 @@ Route::get('/requisito', [requisitoController::class,
 Route::get('/requisito', [requisitoController::class,
 'create'])->name('requisito.index');
 
-
-//RUTA PAGO A REALIZAR
-route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
-route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
-
-//RUTAS RETRASADA
-route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
-route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
-route::get('/retrasadas/{retrasadas}/edit', [RetrasadaController::class,'edit'])->name('retrasadas.edit');
-route::post('/retrasadas', [RetrasadaController::class,'sendData']);
-route::put('/retrasadas/{retrasadas}', [RetrasadaController::class,'update'])->name('retrasadas.update');
-route::delete('/retrasadas/{retrasadas}', [RetrasadaController::class,'destroy'])->name('retrasadas.destroy');
-
 //RUTA DE LA VISTA PRINCIPAL DEL BOTON INGRESAR Y EXISTENTE
 Route::post('/periodo/{id}/cancelar', [PrincipalController::class, 'cancelarPeriodo'])->name('periodo.cancelar');
 
 //Ruta del dashboard orientacion
  Route::get('/paneldeorientacion', [PanelorientacionController::class,'index'])->name('panelorientacion.index');
-
-//Rutas consejeria
-route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
-route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
-route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 
 //RUTAS DEL FORMULARIO ESCOLAR Y COLEGIO ORIENTACION
 Route::get('/escolar', [formularioescolarController::class,'index'])->name('escolar.index');
@@ -246,18 +258,8 @@ Route::put('/escolarcinco/{escolarcinco}', [formularioescolarController::class,'
 Route::put('/escolarseis/{escolarseis}', [formularioescolarController::class,'updateseis'])->name('escolar.updateseis');
 Route::put('/escolarsiete/{escolarsiete}', [formularioescolarController::class,'updatesiete'])->name('escolar.updatesiete');
 
-//CONTRATO TESORERIA
-Route::get('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'create'])->name('firmacontratotesoreria.create');
-route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,'store'])->name('firmacontratotesoreria.store');
 
 //RUTAS DEL FORMULARIO DE PRE-ESCOLAR ORIENTACION
 Route::get('/preescolar', [formulariopreescolarController::class,'index'])->name('preescolarindex.index');
-
-
-//TESORERIA
-route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
-route::post('/vistapagorealizar', [vistapagoController::class,'store']);
-route::post('/pagorealizar', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
-
 
 });
