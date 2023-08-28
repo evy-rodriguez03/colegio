@@ -24,7 +24,7 @@
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
-            <label for="jornada">Sección</label>
+            <label for="jornada">Jornada</label>
             <input type="text" class="form-control" name="jornada" placeholder="Jornada" required value="{{ old('jornada') }}">
             <div class="valid-feedback"></div>
         </div>

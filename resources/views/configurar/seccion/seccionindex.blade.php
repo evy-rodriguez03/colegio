@@ -15,9 +15,9 @@
         </div>
 
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush">
-                    <thead>
+                    <thead class="thead-light"> <!-- Agregar esta clase -->
                         <tr>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -25,26 +25,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                
-                    @foreach ($secciones as $seccion) 
-                    <tr>
-                   <td>{{ $seccion->nombre }}</td>
-                   <td>{{ $seccion->descripcion }}</td>
-                   <td>
-                  <div class="btn-group">
-                  <form action="{{ route('seccionconfig.destroy', $seccion->id) }}" method="POST" class="form-eliminargrado">
-                  <a href="{{ route('seccionconfig.edit', $seccion->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                    </form>
-            </div>
-        </td>
-    </tr>
-@endforeach
+                        @foreach ($secciones as $seccion)
+                            <tr>
+                                <td>{{ $seccion->nombre }}</td>
+                                <td>{{ $seccion->descripcion }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <!-- Botón para editar -->
+                                        <form action="{{ route('seccionconfig.destroy', $seccion->id) }}" method="POST" class="form-eliminargrado">
+                                            <a href="{{ route('seccionconfig.edit', $seccion->id) }}" class="btn btn-sm btn-primary">Editar</a>
 
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
-                       
                 </table>
             </div>
         </div>

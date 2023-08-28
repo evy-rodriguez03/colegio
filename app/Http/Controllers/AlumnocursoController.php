@@ -14,16 +14,15 @@ class AlumnocursoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($curso)
-{ 
-    //$alumnos = Alumno::all();
-    $alumnos = DB::table('alumnos')
-        ->join('matriculados', 'alumnos.id','=', 'matriculados.alumno_id')
-        ->join('cursos', 'cursos.id', '=', 'matriculados.curso_id')
-        ->where('niveleducativo', '=', $curso)
-    ->get();
-    return view('administracion.alumnocursos', compact('alumnos'));
-}
-
+    { 
+        //$alumnos = Alumno::all();
+        $alumnos = DB::table('alumnos')
+            ->join('matriculados', 'alumnos.id','=', 'matriculados.alumno_id')
+            ->join('cursos', 'cursos.id', '=', 'matriculados.curso_id')
+            ->where('niveleducativo', '=', $curso)
+        ->get();
+        return view('administracion.alumnocursos', compact('alumnos'));
+    }
     /**
      * Show the form for creating a new resource.
      *

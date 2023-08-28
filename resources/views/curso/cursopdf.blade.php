@@ -33,7 +33,7 @@
 <table class="table table-bordered" style="text-align: center; font-size: 20px";> 
         <thead class="cabecera">
           <tr>
-            <th scope="col">id</th>
+            <th scope="col">N°</th>
             <th scope="col">Curso</th>
             <th scope="col">Nivel Educativo</th>
             <th scope="col">Horario</th>

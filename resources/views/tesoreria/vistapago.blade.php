@@ -15,17 +15,7 @@
     padding: 3px 5px;
     margin: 0 5px;
 }
-    #botonPago {
-  background-color: #3498db; /* Color normal */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
 
-#botonPago.pagoEfectuado {
-  background-color: #2ecc71; /* Color cuando el pago está efectuado */
-}
 
   
 </style>
@@ -72,7 +62,10 @@
       <div class="col text-right">
         <a href="{{Route('paneltesoreria.index')}}" class="btn btn-lg btn-success">
           <i class="fas fa-angle-left"></i>Regresar</a>
+
+
       </div>
+      
     </div>
   </div>
   <!-- Formulario para crear -->
@@ -91,6 +84,7 @@
     <div class="table-responsive">
       <!-- Projects table -->
       <table id="alumno" class="table align-items-center table-flush">
+        
         <thead class="thead-light">
           <tr>
             <th scope="row"> Nº</th>
@@ -99,6 +93,7 @@
             <th scope="row">Opciones</th>
           </tr>
           </head>
+          
         <tbody>
 
           @foreach ($alumnos as $index => $vistapago)
@@ -107,29 +102,17 @@
             <td>{{$vistapago->primernombre}} {{$vistapago->primerapellido}}</td>
             <td>{{$vistapago->numerodeidentidad }}</td>
             <td>
-              <a href="{{route('pagorealizar.index')}}" id="botonPago" class="btn btn-sm btn-info" class="boton-pago" >Pago </a>
-           
-
-              <script>
-// Supongamos que aquí detectas que el pago se ha efectuado
-const pagoEfectuado = true;
-
-// Obtén una referencia al botón
-const botonPago = document.getElementById('botonPago');
-
-// Si el pago está efectuado, agrega la clase correspondiente
-if (pagoEfectuado) {
-  botonPago.classList.add('pagoEfectuado');
-}
-
-</script>
-              
+              <a href="{{route('pagorealizar.index', ['id_alumno' => $vistapago->id])}}" id="botonPago" class="btn btn-sm btn-info" class="boton-pago" >Pago </a>
+               <a href="{{route('Detallespago.index', $vistapago->id)}}" class="btn btn-sm btn-success " >Detalles de los pagos </a>
             </td>
+           
           </tr>
-
+     
           @endforeach
         </tbody>
+        
       </table>
+      
 
     </div>
   </div>

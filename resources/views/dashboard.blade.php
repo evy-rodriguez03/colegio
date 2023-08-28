@@ -1,173 +1,154 @@
 @extends('layout.panel')
 
-@section('title', 'Home')
+@section('title', 'Gráficas de Alumnos por Curso')
+
+@section('css')
+<style>
+    /* Estilos para el toggle switch */
+    .custom-toggle {
+        /* ... (misma definición de estilos) */
+    }
+
+    .chart-container {
+        position: relative;
+    }
+
+    .chart-switcher {
+        /* ... (misma definición de estilos) */
+    }
+
+    .chart-switcher label {
+        /* ... (misma definición de estilos) */
+    }
+
+    .chart-labels {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chart-label-card {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        width: 160px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+
+    .chart-label-icon {
+        /* ... (misma definición de estilos) */
+        font-size: 36px;
+        margin-right: 10px;
+    }
+
+    .chart-label-text {
+        /* ... (misma definición de estilos) */
+        font-size: 18px;
+    }
+
+    .chart-card {
+        margin-left: 20px;
+    }
+</style>
+@endsection
 
 @section('content')
-
-@can('dashboard.index')
-    <!-- código HTML de la vista de inicio -->
-@endcan
-
-<div>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card">
-      <center><img src="{{asset('img/brand/personall.jpg') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
-        <div class="card-body">
-          <center><a href="{{Route('usuarios.index')}}" class="btn btn-lg btn-info">Personal</a></center>
-          
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow chart-card">
+            <div class="card-body">
+                <h5 class="card-title">Gráficas de Alumnos por Curso</h5>
+                <div class="chart-radio-container">
+                    <label class="chart-radio-button">
+                        <input type="radio" name="chartType" value="porTodo" checked>
+                        Por Todo
+                    </label>
+                    <label class="chart-radio-button">
+                        <input type="radio" name="chartType" value="porDia">
+                        Por Día
+                    </label>
+                </div>
+                <div id="chartContainer" class="chart-container">
+                    <canvas id="chart"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="col">
-      <div class="card">
-      <center><img src="{{asset('img/brand/cursototal.png') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
-        <div class="card-body">
-          <center><a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-info">Curso Totales</a></center>
-          
+    <div class="col-md-4">
+        <div class="chart-labels">
+            <div class="card shadow chart-label-card">
+            
+                    <i class="fas fa-user-graduate chart-label-icon"></i>
+                    <div class="chart-label-text">
+                        <p class="card-text mb-0">Por Día: {{ $totalAlumnosDia }}</p>
+                    </div>
+                
+            </div>
+            <div class="card shadow chart-label-card">
+                    <i class="fas fa-users chart-label-icon"></i>
+                    <div class="chart-label-text">
+                        <p class="card-text mb-0">{{ now()->format('d-m-Y') }}</p>
+                    </div>
+                
+            </div>
+            <div class="card shadow chart-label-card">
+                    <i class="fas fa-users chart-label-icon"></i>
+                    <div class="chart-label-text">
+                        <p class="card-text mb-0">Total Alumnos: {{ $totalAlumnosTotal }}</p>
+                    </div>
+                
+            </div>
         </div>
-      </div>
     </div>
-    <div class="col">
-      <div class="card">
-      <center><img src="{{asset('img/brand/periodomatricula.jpg') }}" class="card-img-top" alt="..." style="width:120px;height:120px;"></center>
-        <div class="card-body">
-          <center><a href="{{route ('periodo')}}" class="btn btn-lg btn-info">Matricula</a></center>
-           
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  
 </div>
 
-<hr>
-@if(isset($alumnosPorMes) && !$alumnosPorMes->isEmpty())
-<div class="table-responsive tabla-alumnos-mes tabla-dashboard">
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Mes y año</th>
-        <th>Cantidad de alumnos</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($alumnosPorMes as $alumno)
-        <tr>
-          <td>{{ $alumno->month }} {{ $alumno->year }}</td>
-          <td>{{ $alumno->total }}</td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-center">
-    {{ $alumnosPorMes->links() }}
-  </div>
-</div>
-<div>
-  <canvas id="alumnosPorDia"></canvas>
-</div>
-
-<!-- grafica por mes -->
-<div class="card bg-gradient-default shadow">
-  <div class="card-header bg-transparent">
-      <div class="row align-items-center">
-          <div class="col">
-              <h6 class="text-uppercase text-light ls-1 mb-1">Grafica</h6>
-              <h2 class="text-white mb-0">Alumnos por mes</h2>
-          </div>
-      </div>
-  </div>
-  <div class="card-body">
-      <!-- Chart -->
-      <div class="chart">
-          <!-- Chart wrapper -->
-          <canvas id="chart-alumnos-por-mes" class="chart-canvas"></canvas>
-      </div>
-  </div>
-</div>
-<hr>
- <!-- grafica por dia --> 
-<div class="card bg-gradient-default shadow">
-  <div class="card-header bg-transparent">
-      <div class="row align-items-center">
-          <div class="col">
-              <h6 class="text-uppercase text-light ls-1 mb-1">Grafica</h6>
-              <h2 class="text-white mb-0">Alumnos por día</h2>
-          </div>
-      </div>
-  </div>
-  <div class="card-body">
-      <!-- Chart -->
-      <div class="chart">
-          <!-- Chart wrapper -->
-          <canvas id="chart-alumnos-por-dia" class="chart-canvas"></canvas>
-      </div>
-  </div>
-</div>
-
+<!-- Enlace al archivo JavaScript de Chart.js desde el CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  var ctx = document.getElementById('chart-alumnos-por-mes').getContext('2d');
-  var chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: {!! $alumnosPorMes->pluck('month') !!},
-          datasets: [{
-              label: 'Cantidad de alumnos',
-              data: {!! $alumnosPorMes->pluck('total') !!},
-              backgroundColor: '#4e73df'
-          }]
-      },
-      options: {
-          maintainAspectRatio: false,
-          legend: {
-              display: false
-          },
-          scales: {
-              xAxes: [{
-                  gridLines: {
-                      display: false
-                  }
-              }],
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  },
-                  gridLines: {
-                      color: "rgba(0, 0, 0, 0.1)",
-                  }
-              }]
-          }
-      }
-  });
-</script>
+    const chartContainer = document.getElementById('chartContainer');
+    const chartTypeRadioButtons = document.querySelectorAll('[name="chartType"]');
+    const ctx = document.getElementById('chart').getContext('2d');
 
+    const alumnosPorCursoDia = {!! json_encode($alumnosPorCursoDia) !!};
+    const alumnosPorCursoGeneral = {!! json_encode($alumnosPorCursoGeneral) !!};
+    let currentData = alumnosPorCursoGeneral;
 
-
-<script>
-    var ctx = document.getElementById('chart-alumnos-por-dia').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
+    const chart = new Chart(ctx, {
+        type: 'bar',
         data: {
-            labels: {!! json_encode($alumnosPorDia['fechas']) !!},
+            labels: currentData.map(data => data.nombre_curso),
             datasets: [{
-                label: 'Alumnos por día',
-                backgroundColor: 'rgba(255, 255, 255, 0)',
-                borderColor: 'rgb(255, 255, 255)',
-                data: {!! json_encode($alumnosPorDia['cantidades']) !!}
+                label: 'Alumnos',
+                data: currentData.map(data => data.cantidad_alumnos),
             }]
         },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
-        // Configuration options go here
-        options: {}
+    chartTypeRadioButtons.forEach(radioButton => {
+        radioButton.addEventListener('change', () => {
+            if (radioButton.value === 'porTodo') {
+                currentData = alumnosPorCursoGeneral;
+            } else if (radioButton.value === 'porDia') {
+                currentData = alumnosPorCursoDia;
+            }
+
+            chart.data.labels = currentData.map(data => data.nombre_curso);
+            chart.data.datasets[0].data = currentData.map(data => data.cantidad_alumnos);
+            chart.update();
+        });
     });
 </script>
-
-@endif
-
-@endSection
+@endsection

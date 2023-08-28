@@ -29,7 +29,7 @@
 $(document).ready(function() {
   var tabla = $('#matricula').DataTable({
     pagingType: 'simple_numbers',
-    lengthMenu: [9, 12],
+    lengthMenu: [4, 9, 12],
           language: {
             lengthMenu: "Mostrar _MENU_ Entradas",
         loadingRecords: "Cargando...",
@@ -96,8 +96,8 @@ $(document).ready(function() {
     <div class="input-group mb-2">
  
 </div>
+@if (session('success'))
     <div class="card-body">
-    @if (session('success'))
      <div class="alert alert-success" role="success">
       {{session('success')}}
   </div>

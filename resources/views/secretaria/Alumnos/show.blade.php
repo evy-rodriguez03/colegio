@@ -120,15 +120,6 @@
   </div>
 <?php endforeach; ?>
 <hr>
-<form action="{{url('/alumnos/'.$alumnos->id)}}" method="POST" class="form-eliminaralumno">
-    @csrf
-    @method('DELETE')
-    <a href="{{url('/alumnos/'.$alumnos->id.'/edit')}}" class="btn btn-lg btn-primary">Editar</a>
-    <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
-  </form>
-
-     
-      
 
    
 @endSection

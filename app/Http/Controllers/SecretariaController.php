@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Consejeria;
-use App\Models\Alumno ;
+use App\Models\Alumno;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class SecretariaController extends Controller
@@ -20,11 +21,15 @@ class SecretariaController extends Controller
         return view('consejeria.tablaindex',compact('alumnos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function pdf()
+    {
+        $alumnos = Alumno::all();
+        $consejerias = Consejeria::whereIn('id_alumno', $alumnos->pluck('id'))->get()->keyBy('id_alumno');
+        $pdf = Pdf::loadView('consejeria.consejeriapdf', compact('alumnos', 'consejerias'));
+        return $pdf->stream();
+        
+    }
+
     public function create($id)
     {
         $alumno = Alumno::findOrFail($id);

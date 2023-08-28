@@ -7,7 +7,6 @@
 <style>
     .small-select {
         width: 200px;
-        /* Otros estilos personalizados */
     }
 </style>
 @endsection
@@ -22,9 +21,25 @@
     $(document).ready(function() {
         $('#periodo').DataTable({
             lengthMenu: [3, 6, 9, 12],
-        });
-
-    });
+            language: {
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "sSearch": "Buscar:",
+    "zeroRecords": "No se encontraron resultados",
+    "info": "",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "",
+    "oPaginate": {
+        "sFirst": "Primero",
+        "sLast":"Último",
+        "sNext":">>",
+        "dom": '<"toolbar">Bftrip',
+        "sPrevious": "<<"
+    },
+    "sProcessing":"Cargando..."
+}
+         
+      });
+   });
 </script>
 @endsection
 

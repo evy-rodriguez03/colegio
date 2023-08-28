@@ -60,17 +60,7 @@
         
       </table>
     
-      <form action="{{url('/padres/'.$padre->id)}}" method="POST" class="form-eliminarpadre">
-    @csrf
-    @method('DELETE')
-    <a href="{{url('/padres/'.$padre->id.'/edit')}}" class="btn btn-lg btn-primary">Editar</a>
-    <button type="submit" class="btn btn-lg btn-danger">Eliminar</button>
-  </form>
-
-     
-      
-
-   
+  
 @endSection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -82,7 +72,7 @@
       'El padre ha sido borrado exitosamente.',
       'Éxito'
     )
-    
+
         </script>
 
   

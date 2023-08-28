@@ -32,6 +32,7 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\CursostotalesController;
 use App\Http\Controllers\vistapagoController;
+use App\Http\Controllers\DetallespagoController;
 use App\Http\Middleware\VerificarCurso;
 use App\Http\Controllers\periodocursosController;
 use App\Http\Controllers\AlumnocursoController;
@@ -43,7 +44,7 @@ use App\Http\Controllers\SeccionconfigController;
 /*Ruta del dashboar login*/
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'role:Secretaria|Admin|Tesoreria|Orientacion|Consejeria']], function () {
 
     Route::get('/', [DashboardController::class,
     'index'])
@@ -172,6 +173,11 @@ Route::group(['middleware' => ['auth','role:Tesoreria|Admin']], function () {
 route::get('/tesoreriapago', [PagoaRealizaraController::class,'index'])->name('pagorealizar.index');
 route::post('/pagorealizar', [PagoaRealizaraController::class,'store']);
 
+//TESORERIA
+route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
+route::post('/vistapagorealizar', [vistapagoController::class,'store']);
+route::post('/pagorealizar/{id_alumno}', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
+Route::get('/alumnos/{alumno_id}/Detallespago', [DetallespagoController::class,'index'])->name('Detallespago.index');
 //RUTAS RETRASADA
 route::get('/retrasadas', [RetrasadaController::class,'index'])->name('retrasadas.index');
 route::get('/retrasadas/crear', [RetrasadaController::class,'create'])->name('retrasadas.create');
@@ -187,19 +193,21 @@ route::post('/firmacontratotesoreria', [FirmacontratotesoreriaController::class,
 //TESORERIA
 route::get('/tesoreriavistapago', [vistapagoController::class,'index'])->name('vistapago.index');
 route::post('/vistapagorealizar', [vistapagoController::class,'store']);
-route::post('/pagorealizar', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
+route::post('/pagorealizar/{id_alumno}', [PagoaRealizaraController::class,'store'])->name('pagorealizar.store');
+
+Route::get('/alumnos/{alumno_id}/Detallespago', [DetallespagoController::class,'index'])->name('Detallespago.index');
 
 }); 
 
 Route::group(['middleware' => ['auth','role:Consejeria|Admin']], function () {
 //Rutas consejeria
+route::get('/consjindex/pdf', [SecretariaController::class,'pdf'])->name('consejeria.pdf');
 route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
 route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
 }); 
+
 Route::group(['middleware' => ['auth','Admin']], function () {
-
-
     /*Ruta del dashboard secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
@@ -217,7 +225,7 @@ route::get('/usuarios/{usuarios}/edit', [UserController::class,'edit'])->name('u
 route::post('/usuarios', [UserController::class,'sendData']);
 route::put('/usuarios/{usuarios}', [UserController::class,'update'])->name('usuarios.update');
 Route::put('/usuarios/{usuarios}/deshabilitar', [UserController::class,'deshabilitar'])->name('usuarios.deshabilitar');
-Route::post('/usuarios/{usuario}/habilitar', [UserController::class,'habilitar'])->name('usuarios.habilitar');
+Route::put('/usuarios/{usuario}/habilitar', [UserController::class,'habilitar'])->name('usuarios.habilitar');
 route::delete('/usuarios/{usuarios}', [UserController::class,'destroy'])->name('usuarios.destroy');
 
 /*Rutas inicio y cieree de matricula */

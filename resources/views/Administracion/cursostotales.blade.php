@@ -28,7 +28,7 @@
 <script>
    $(document).ready(function() {
       $('#curso').DataTable({
-         lengthMenu: [10, 20],
+         lengthMenu: [3, 9, 12],
          language: {
     "lengthMenu": "Mostrar _MENU_ registros",
     "sSearch": "Buscar:",
@@ -113,4 +113,5 @@ div class="card shadow">
     </div>
   </div>
   </form>
+  </div>
 @endsection

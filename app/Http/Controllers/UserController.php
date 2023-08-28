@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -51,13 +52,17 @@ class UserController extends Controller
         'password.max'=>'La contraseña debe tener un maximo de 15 caracteres'
 
        ];
+
        $this->validate($request,$rules,$messages);
 
-       $user = User::create(
-        $request->only('name','email','password','role')+[
-            'password'=>bcrypt($request->input('password'))
-        ]
-        );
+        $user = User::create([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'password' => Hash::make($request->input('password')),
+        'role' => $request->input('role'),
+    ]);
+
+       
          $user->assignRole($request->input('role'));
          
        return redirect('/usuarios')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');

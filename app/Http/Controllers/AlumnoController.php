@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Proceso;
@@ -27,7 +27,7 @@ class AlumnoController extends Controller
     public function pdf()
     {
         $alumnos = Alumno::All();
-        $index = 1; // Definir la variable $index en el controlador
+        $index = 1; 
         $pdf = Pdf::loadView('secretaria.alumnos.pdf', compact('alumnos', 'index'));
         return $pdf->stream();
     }
@@ -53,9 +53,9 @@ class AlumnoController extends Controller
         $rules = [
 
             'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'regex:/^[\pL\s\-]+$/u',
+            'segundonombre' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'regex:/^[\pL\s\-]+$/u',
+            'segundoapellido' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'numerodeidentidad' => 'required|min:13|numeric',
             'fechadenacimiento' => 'required|date',
             'alergia' => 'sometimes',
@@ -197,6 +197,7 @@ class AlumnoController extends Controller
             'taxi' => 'sometimes',
             'conpadre' => 'sometimes',
             'solo' => 'sometimes',
+            'curso_id' => 'required',
 
         ];
         $messages = [
@@ -231,6 +232,7 @@ class AlumnoController extends Controller
             'medico.required' => 'se necesita el nombre del medico',
             'medico.min' => 'es necesario 3 caractares como minimo',
             'medico.max' => 'El maximo del nombre del doctor son 12 caracteres.',
+            'curso_id.required' => 'es necesario seleccionar el grado',
         ];
         $this->validate($request, $rules, $messages);
 
@@ -268,6 +270,8 @@ class AlumnoController extends Controller
                 'solo',
             ));
             $id = $value;
+            Cache::put('curso_id', $request->input('curso_id'));
+            Cache::put('alumno_id', $alumno->id);
         } else {
 
             $alumno = Alumno::create([
@@ -355,26 +359,31 @@ class AlumnoController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'primernombre' => 'required|min:3|string',
-            'segundonombre' => 'alpha',
-            'telefonodeencargado' => 'required|min:8|numeric',
-            'primerapellido' => 'required|min:3|string',
-            'segundoapellido' => 'alpha',
-            'numerodeidentidad' => 'required|min:13|numeric|unique:alumnos,numerodeidentidad,' . $id,
+            'primernombre' => 'required|min:3|max:12|string',
+            'segundonombre' => 'nullable|regex:/^[\pL\s\-]+$/u',
+            'primerapellido' => 'required|min:3|max:12|string',
+            'segundoapellido' => 'nullable|regex:/^[\pL\s\-]+$/u',
             'fechadenacimiento' => 'required|date',
-            'alergia' => 'required|min:2|string',
-            'lugardenacimiento' => 'required|min:2|string',
+            'alergia' => 'sometimes',
+            'tiene_alergia' => 'nullable',
             'genero' => 'required|min:1|string',
-            'direccion' => 'required|string',
-            'numerodehermanosenicgc' => 'required|numeric',
+            'direccion' => 'nullable|string',
+            'numerodehermanosenicgc' => 'nullable|numeric',
             'fotografias' => 'sometimes',
             'fotografiasdelpadre' => 'sometimes',
             'carnet' => 'sometimes',
             'certificadodeconductadeconducta' => 'sometimes',
+            'ciudad' => 'nullable|min:3|max:16|string',
+            'depto' => 'nullable|min:3|max:16|string',
+            'pais' => 'nullable|min:3|max:16|string',
+            'escuelaanterior' => 'sometimes',
+            'totalhermanos' => 'nullable|numeric',
+            'medico' => 'nullable|min:3|max:18|string',
+            'telefonoemergencia' => 'nullable|numeric',
             'bus' => 'sometimes',
             'taxi' => 'sometimes',
             'conpadre' => 'sometimes',
-            'solo' => 'sometimes'
+            'solo' => 'sometimes',
         ];
         $messages = [
             'primernombre.required' => 'El primer nombre es requerido.',

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title> PDF Reportes Alumnos</title>
+    <title>PDF Reportes Alumnos</title>
     <style>
         .cabecera {
             color: black;
@@ -54,11 +54,9 @@
             <td>{{ \Carbon\Carbon::parse($alumno->fechadenacimiento)->diff(\Carbon\Carbon::now())->format('%y años') }}</td>
             <td>{{ $alumno->escuelaanterior }}</td>
             <td>
-                @foreach($padres as $padre)
-                    @if($padre->id == $alumno->padre_id)
-                        {{ $padre->primernombre }} {{ $padre->primerapellido }}
-                    @endif
-                @endforeach
+                @if(isset($padres[$index]))
+                    {{ $padres[$index]->primernombre }} {{ $padres[$index]->primerapellido }}
+                @endif
             </td>
             <td>{{ $alumno->direccion }}</td>
             <td>{{ \Carbon\Carbon::now()->format('d/m/Y') }}</td>

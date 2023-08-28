@@ -57,6 +57,9 @@
       <div class="col">
         <h3 class="mb-0">Departamento de Consejeria</h3>
       </div>
+      <div class="col text-right">
+          <a href="{{route('consejeria.pdf')}}" class="btn btn-lg btn-primary">Reporte Consejeria</a>
+        </div>
     </div>
   </div>
   <!-- Formulario para crear -->

@@ -27,34 +27,46 @@
           @endforeach
       @endif
         <form action="{{url('/usuarios/'.$usuarios->id)}}" method="POST">
-          @csrf
-          @method('PUT')
-            <div class="form-group">
-                <label for="name">Nombre del Usuario</label>
-                <input type="text" name="name" class="form-control" required value="{{old('name', $usuarios->name)}}">
-            </div>
-            <div class="form-group">
-                <label for="email">Correo Electronico</label>
-                <input type="text" name="email" class="form-control" required value="{{old('email', $usuarios->email)}}">
-            </div>
-
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" class="form-control" required >
-            </div>
-            <div class="form-group">
-                <label for="role">Rol</label>
-                <select class="form-control" name="role" required value="{{old('role', $usuarios->role)}}">
-                  <option value="">Elegir</option>
-                  <option value="Administrador">Administrador</option>
-                 <option value="Secretaria">Secretaria</option>
-                 <option value="Orientacion">Orientacion</option>
-                 <option value="Consejeria">Consejeria</option>
-                 <option value="Tesoreria">Tesoreria</option>
-               </select>
-            </div>
-            <button type="submit" class="btn btn-sm btn-primary">Guardar cambios</button>
-        </form>
-    </div>
-  </div>
+        @csrf
+        @method('PUT')
+        <div class="card-body">
+               
+                <div class="pl-lg-9">
+                  <div class="row">
+                    <div class="col-lg-10">
+                      <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Nombre</label>
+                                        <input class="form-control" type="text" name="username" value="{{ old('name', Auth::user()->name) }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Usuario</label>
+                                        <input class="form-control" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Cargo</label>
+                                        <select class="form-control" name="role" value="{{ old('role', Auth::user()->role) }}">
+                                        <option value="">Elegir</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Secretaria">Secretaria</option>
+                                        <option value="Orientacion">Orientacion</option>
+                                        <option value="Consejeria">Consejeria</option>
+                                        <option value="Tesoreria">Tesoreria</option>
+                                        </select>
+                                    </div>
+                            
+        <div class="form-group">
+            <label for="example-text-input" class="form-control-label">Contraseña</label>
+            <input class="form-control" type="password" name="password" value="{{ old('password', auth()->user()->password) }}">
+        </div>
+          </div>
+             </div> 
+        <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+    </form>
+</div>
 @endsection

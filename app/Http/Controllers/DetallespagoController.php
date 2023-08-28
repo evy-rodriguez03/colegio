@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\Pagorealizar;
 
 class DetallespagoController extends Controller
 {
@@ -12,23 +13,22 @@ class DetallespagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
 
-    { 
-        $alumnos = Alumno::All();
-        return view('tesoreria.detallespago', compact('alumnos'));
-    }
+     public function index($alumno_id)
+     {
+        $pagorealizar = Pagorealizar::where('alumno_id', $alumno_id)->get();
+         
+         return view('tesoreria.Detallespago', compact('pagorealizar', 'alumno_id'));
+     }
 
+
+     
+     
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $alumnos = Alumno::All();
-        return view('tesoreria.detallespago');
-    }
 
     /**
      * Store a newly created resource in storage.

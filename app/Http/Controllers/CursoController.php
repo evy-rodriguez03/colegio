@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Curso;
 use App\Models\Alumno;
 use App\Models\Periodo;
@@ -99,8 +99,13 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
+        $grados = Grado::all();
+        $modalidades = Modalidad::all();
+        $jornadas = Jornada::all();
+        $secciones = Seccionconfig::all();
+        $horarios = Horario::all();
         $curso = Curso::find($id);
-        return view('curso.edit')->with('curso',$curso);
+        return view('curso.edit', compact('grados', 'modalidades', 'jornadas', 'secciones', 'horarios'))->with('curso',$curso);
     }
 
     /**

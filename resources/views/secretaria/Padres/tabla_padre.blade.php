@@ -28,7 +28,7 @@
 <script>
    $(document).ready(function() {
       $('#tablapadres').DataTable({
-         lengthMenu: [ 9, 12],
+         lengthMenu: [ 4, 9, 12],
          language: {
           lengthMenu: "Mostrar _MENU_ Entradas",
         loadingRecords: "Cargando...",
@@ -60,10 +60,7 @@
         <div class="col">
           <h1 class="mb-0">Padres</h1>
         </div>
-        <div class="col text-right">
-          <a href="{{route('padres.create')}}" class="btn btn-lg btn-primary">Nuevo Padre</a>
-          <a href="{{route('padre.pdf')}}" class="btn btn-lg btn-primary">Reporte Padre</a>
-        </div>
+        
       </div>
     </div>
          <!-- Formulario para crear -->
@@ -72,8 +69,8 @@
     <div class="input-group mb-2">
  
 </div>
+@if (session('success'))
     <div class="card-body">
-    @if (session('success'))
      <div class="alert alert-success" role="success">
       {{session('success')}}
   </div>
@@ -129,6 +126,8 @@
     </div>
     {{ $padres->links('vendor.pagination.bootstrap-4') }}
   </div>
+</div>
+
 @endsection
 
 @section('js')
