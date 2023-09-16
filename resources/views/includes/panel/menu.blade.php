@@ -170,9 +170,6 @@ body{
                 </div>
 
                 <ul class="list__show">
-                    <li class="list__inside">
-                        <a href="{{Route('preescolarindex.index')}}" class="nav__link nav__link--inside">Formulario Preescolar</a>
-                    </li>
 
                     <li class="list__inside">
                         <a href="{{Route('escolar.index')}}" class="nav__link nav__link--inside">Formulario Escolar</a>

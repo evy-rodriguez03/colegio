@@ -21,7 +21,7 @@ class UserProfileController extends Controller
 
     public function editprofile($id)
     {
-        $usuarios = User::find($id);
+        $usuarios = User::findOrFail($id);
         return view('pages.editar-profile', compact('usuarios'));
     }
 

@@ -5,7 +5,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Cursos</h3>
+                <h2 class="mb-0">Cursos</h2>
             </div>
             <div class="col text-right">
                 <a href="{{ route('cursos.create') }}" class="btn btn-lg btn-primary">Nuevo Curso</a>

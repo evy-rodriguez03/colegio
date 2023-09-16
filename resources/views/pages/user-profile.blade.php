@@ -95,10 +95,7 @@
       <i class="ni ni-single-02"></i>
       <span>Mi Perfil</span>
     </a>
-    <a href="#" class="dropdown-item">
-      <i class="ni ni-settings-gear-65"></i>
-      <span>Configuración</span>
-    </a>
+
     <div class="dropdown-divider"></div>
     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="ni ni-button-power"></i>
@@ -124,7 +121,7 @@
           <div class="col-lg-7 col-md-10">
             <h1 class="display-2 text-white">Hola</h1>
 
-            <a href="{{ route('profile.edit') }}" class="btn btn-info">Editar Perfil</a>
+            <a href="{{ route('profile.editar', Auth::user()->id) }}" class="btn btn-info">Editar Perfil</a>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
     <div class="card-header border-3">
       <div class="row align-items-center">
         <div class="col">
-          <h1 class="mb-0">Incio y Cierre de Matricula</h1>
+          <h2 class="mb-0">Incio y Cierre de Matricula</h2>
         </div>
         <div class="col text-right">
           <a href="{{route('periodo')}}" class="btn btn-lg btn-primary">

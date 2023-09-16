@@ -51,7 +51,6 @@
                         <form action="{{ url('/usuarios/'.$usuario->id.'/deshabilitar') }}" method="POST" class="formulario-eliminar">
                             @csrf
                             @method('PUT')
-                            <a href="{{ url('/usuarios/'.$usuario->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
                             <button type="submit" class="btn btn-sm btn-danger">Deshabilitar</button>
                         </form>
                         @else

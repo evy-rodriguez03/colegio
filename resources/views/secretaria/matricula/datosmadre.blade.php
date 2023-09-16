@@ -6,7 +6,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Datos madre</h1>
+                <h1 class="mb-0">Datos Madre</h1>
             </div>
             <div class="col text-right">
                 <a href="#" onclick="window.history.back();" class="btn btn-lg btn-success">
@@ -33,7 +33,7 @@
             <label for="primernombre">Primer Nombre:</label>
         </div>
         <div class="col-4 mt-3">
-            <input type="text" id="primernombre" name="primernombre" class="form-control" required maxlength="20" value="{{old('primernombre')}} "
+            <input type="text" id="primernombre" name="primernombre" class="form-control" required maxlength="20" value="{{old('primernombre')}}"
             placeholder="Ingrese el primer nombre"></input>
         </div>
 

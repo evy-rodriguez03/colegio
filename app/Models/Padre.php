@@ -33,6 +33,6 @@ class Padre extends Model
 
     public function escolar()
     {
-        return $this->belongsTo(Escolar::class);
+        return $this->belongsToMany(Escolar::class,  'alumno_padre', 'padre_id', 'alumno_id');
     }
 }

@@ -28,7 +28,7 @@
 <script>
    $(document).ready(function() {
       $('#cursoperiodo').DataTable({
-         lengthMenu: [10, 20],
+         lengthMenu: [3, 6, 9],
          language: {
     "lengthMenu": "Mostrar _MENU_ registros",
     "sSearch": "Buscar:",
@@ -57,7 +57,7 @@ div class="card shadow">
   <div class="card-header border-0">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="mb-0">Cursos del periodo</h3>
+        <h2 class="mb-0">Cursos del periodo</h2>
       </div>
       <div class="col text-right">
         <a href="{{Route('cursostotales.index')}}" class="btn btn-lg btn-success">
@@ -107,7 +107,6 @@ div class="card shadow">
              <td>
              <a href="{{ route('alumnocursos.index', $curso->niveleducativo) }}" class="btn btn-sm btn-primary">Ver alumnos</a>
                </td>
-             
         </tr>
         @endforeach
         </tbody>

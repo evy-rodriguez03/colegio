@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Escolar Paso-6</h1>
+                <h1 class="mb-0">Paso-6</h1>
             </div>
             <div class="col text-right">
-                <a href="{{route('escolar.editcinco', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
+                <a  href="{{route('escolar.editcinco', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
                     <i class="fas fa-angle-left"></i>
                     Regresar</a>
             </div>
@@ -28,10 +28,10 @@
             @csrf
             @method('PUT')
             <!-- Relaciones Interpersonales  -->
-            <h2 class="col-12 mt-3">IX. Relaciones Interpersonales en la Familia</h2>
+            <h2 class="col-12 mt-3">IX. Relaciones interpersonales en la familia:</h2>
 
             <div class="form-group col-12 mt-3">
-                <label>Respecto a su padre madre o persona que desempenie el papel de estos:</label>
+                <label>Respecto a su padre, madre o persona que desempeñe el papel de estos:</label>
             </div>
 
             <h2 class="col-12 mt-3">Padre</h2>
@@ -46,7 +46,7 @@
                     </tr>
 
                     <tr>
-                        <td>Se lleva bien con ud?</td>
+                        <td>¿Se lleva bien con ud?</td>
                         <td><input type="radio" name="pbienconud" id="pbienm" value="0" @if(old('pbienconud')=='0' || (isset($escolar->pbienconud)?$escolar->pbienconud:'') == '0')
                             checked
                             @else
@@ -67,7 +67,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Le permite hablar con el?</td>
+                        <td>¿Le permite hablar con el?</td>
                         <td><input type="radio" name="hablarconel" id="ppermitem" value="0" @if(old('hablarconel')=='0' || (isset($escolar->hablarconel)?$escolar->hablarconel:'') == '0')
                             checked
                             @else
@@ -88,7 +88,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Le participa en la solucion de problemas en el hogar?</td>
+                        <td>¿Le participa en la solución de problemas en el hogar?</td>
                         <td><input type="radio" name="psolucion" id="psolucionm" value="0" @if(old('psolucion')=='0' || (isset($escolar->psolucion)?$escolar->psolucion:'') == '0')
                             checked
                             @else
@@ -108,7 +108,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Tiene confianza con el?</td>
+                        <td>¿Tiene confianza con él?</td>
                         <td><input type="radio" name="pconfianza" id="pconfianzam" value="0" @if(old('pconfianza')=='0' || (isset($escolar->pconfianza)?$escolar->pconfianza:'') == '0')
                             checked
                             @else
@@ -141,7 +141,7 @@
                         <th>Nada</th>
                     </tr>
                     <tr>
-                        <td>Se lleva bien con ud?</td>
+                        <td>¿Se lleva bien con ud?</td>
                         <td><input type="radio" name="mbienconud" id="pbienm" value="0" @if(old('mbienconud')=='0' || (isset($escolar->mbienconud)?$escolar->mbienconud:'') == '0')
                             checked
                             @else
@@ -162,7 +162,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Le permite hablar con ella?</td>
+                        <td>¿Le permite hablar con ella?</td>
                         <td><input type="radio" name="hablarconella" id="ppermitem" value="0" @if(old('hablarconella')=='0' || (isset($escolar->hablarconella)?$escolar->hablarconella:'') == '0')
                             checked
                             @else
@@ -183,7 +183,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Le participa en la solucion de problemas en el hogar?</td>
+                        <td>¿Le participa en la solución de problemas en el hogar?</td>
                         <td><input type="radio" name="msolucion" id="psolucionm" value="0" @if(old('msolucion')=='0' || (isset($escolar->msolucion)?$escolar->msolucion:'') == '0')
                             checked
                             @else
@@ -203,7 +203,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Tiene confianza con el?</td>
+                        <td>¿Tiene confianza con ella?</td>
                         <td><input type="radio" name="mconfianza" id="pconfianzam" value="0" @if(old('mconfianza')=='0' || (isset($escolar->mconfianza)?$escolar->mconfianza:'') == '0')
                             checked
                             @else
@@ -228,7 +228,7 @@
             </div>
 
             <div class="form-group col-12 mt-3">
-                <label>Ubique las siguientes cualidades o rasgos segun corresponda:</label>
+                <label>Ubique las siguientes cualidades o rasgos según corresponda:</label>
             </div>
 
             <div class="form-group col-12 mt-3">
@@ -276,7 +276,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Estricto</td>
+                        <td>Estricto(a)</td>
                         <td><input type="checkbox" name="pestricto" value="1" @if(old('pestricto')=='1' || (isset($escolar->pestricto) ? $escolar->pestricto : '') == '1')
                             checked
                             @endif></td>
@@ -300,7 +300,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Comunicativo</td>
+                        <td>Comunicativo(a)</td>
                         <td><input type="checkbox" name="pcomunicativo" value="1" @if(old('pcomunicativo')=='1' || (isset($escolar->pcomunicativo) ? $escolar->pcomunicativo : '') == '1')
                             checked
                             @endif></td>
@@ -324,7 +324,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Siente preocupacion por mis estudios</td>
+                        <td>Siente preocupación por mis estudios</td>
                         <td><input type="checkbox" name="pestudio" value="1" @if(old('pestudio')=='1' || (isset($escolar->pestudio) ? $escolar->pestudio : '') == '1')
                             checked
                             @endif></td>
@@ -387,13 +387,13 @@
             </div>
 
             <div class="form-group col-4 mt-3">
-                <label for="nopapa">En que rasgos no le gustaria ser como su papa?</label>
+                <label for="nopapa">¿En qué rasgos no le gustaría ser como su papá?</label>
                 <input type="text" id="nopapa" name="nopapa" class="form-control" value="{{old('nopapa', $escolar -> nopapa)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-4 mt-3">
-                <label for="nomama">En que rasgos no le gustaria ser como su mama?</label>
+                <label for="nomama">¿En qué rasgos no le gustaría ser como su mamá?</label>
                 <input type="text" id="nomama" name="nomama" class="form-control"value="{{old('nomama', $escolar -> nomama)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
@@ -427,8 +427,13 @@
 
 
             <div class="col-3 mt-3">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <a class="btn btn-success" href="{{ route('escolar.editsiete', ['escolar' => $escolar->id]) }}">Siguiente</a>
+                <button type="submit" class="btn btn-primary" id="guardarButton">Guardar y seguir</button>
+                <!-- <a class="btn btn-success" href="{{ route('escolar.editsiete', ['escolar' => $escolar->id]) }}">Siguiente</a> -->
+                <script>
+                    document.getElementById("guardarButton").addEventListener("click", function() {
+                        window.location.href = "{{ route('escolar.editsiete', ['escolar' => $escolar->id]) }}";
+                    });
+                </script>
             </div>
         </form>
     </div>

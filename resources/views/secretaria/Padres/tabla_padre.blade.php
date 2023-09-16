@@ -58,7 +58,7 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h1 class="mb-0">Padres</h1>
+          <h2 class="mb-0">Padres</h2>
         </div>
         
       </div>
@@ -94,7 +94,7 @@
               
           <tr>
             <th scope="row">
-             {{$index + 0}}
+             {{$index + 1}}
             </th>
             <td>
               {{$padre->primernombre}} {{$padre->primerapellido}}

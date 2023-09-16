@@ -26,7 +26,7 @@
 <script>
    $(document).ready(function() {
       $('#curso').DataTable({
-         lengthMenu: [10, 20],
+         lengthMenu: [3, 6, 12],
          language: {
     "lengthMenu": "Mostrar _MENU_ registros",
     "sSearch": "Buscar:",
@@ -54,7 +54,7 @@ div class="card shadow">
   <div class="card-header border-0">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="mb-0">Alumnos por curso</h3>
+        <h2 class="mb-0">Alumnos por curso</h2>
       </div>
       <div class="col text-right">
         <a href="{{ route('periodocursos.index')}}" class="btn btn-lg btn-success">

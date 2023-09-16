@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Escolar Paso-5</h1>
+                <h1 class="mb-0">Paso-5</h1>
             </div>
             <div class="col text-right">
-                <a href="{{route('escolar.editcuatro', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
+                <a  href="{{route('escolar.editcuatro', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
                     <i class="fas fa-angle-left"></i>
                     Regresar</a>
             </div>
@@ -28,10 +28,10 @@
             @csrf
             @method('PUT')
             <!-- Rendimiento  -->
-            <h2 class="col-12 mt-3">VIII. Rendimiento Escolar:</h2>
+            <h2 class="col-12 mt-3">VIII. Rendimiento escolar:</h2>
 
             <div class="col-6 mt-3"> 
-                <label for="estudios">En cuantas escuelas primarias realizo sus estudios?</label>
+                <label for="estudios">¿En cuántas escuelas primarias realizó sus estudios?</label>
                 <input type="text" id="estudios" name="estudios" class="form-control" value="{{old('estudios', $escolar->estudios)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="col-6 mt-3">
-                <label for="claseestudiante">Que clase de estudiante fue en la escuela?</label>
+                <label for="claseestudiante">¿Qué clase de estudiante fue en la escuela?</label>
                 <select type="text" id="claseestudiante" name="claseestudiante" class="form-control">
                     <option value="">Elegir</option>
                     <option @if(old('claseestudiante')=='Exelente' || (isset($escolar->claseestudiante)?$escolar->claseestudiante:'') == 'Exelente')
@@ -75,13 +75,13 @@
             </div>
 
             <div class="col-6 mt-3">
-                <label for="agrado">Que materia le agrado mas?</label>
+                <label for="agrado">¿Qué materia le agradó más?</label>
                 <input type="text" id="agrado" name="agrado" class="form-control" value="{{old('agrado', $escolar->agrado)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="agradomenos">Que materia le agrado menos?</label>
+                <label for="agradomenos">¿Qué materia le agradó menos?</label>
                 <input type="text" id="agradomenos" name="agradomenos" class="form-control" value="{{old('agradomenos', $escolar->agradomenos)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
@@ -124,25 +124,25 @@
             </div>
 
             <div class="col-6 mt-3">
-                <label for="horasextra">Cuantas horas extras escolares le dedica al estudio?</label>
+                <label for="horasextra">¿Cuántas horas extras escolares le dedica al estudio?</label>
                 <input type="text" id="horasextra" name="horasextra" class="form-control" value="{{old('horasextra', $escolar->horasextra)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="tiempolibre">En que emplea su tiempo libre?</label>
+                <label for="tiempolibre">¿En qué emplea su tiempo libre?</label>
                 <input type="text" id="tiempolibre" name="tiempolibre" class="form-control" value="{{old('tiempolibre', $escolar->tiempolibre)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="rendimiento">Que hace usted para mejorar su rendimiento academico?</label>
+                <label for="rendimiento">¿Qué hace usted para mejorar su rendimiento académico?</label>
                 <input type="text" id="rendimiento" name="rendimiento" class="form-control" value="{{old('rendimiento', $escolar->rendimiento)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-6 mt-3">
-                <label for="ayudarsele">En que forma podria ayudarsele?</label>
+                <label for="ayudarsele">¿En qué forma podría ayudarsele?</label>
                 <input type="text" id="ayudarsele" name="ayudarsele" class="form-control" value="{{old('ayudarsele', $escolar->ayudarsele)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
@@ -162,44 +162,49 @@
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="materiasagradan">Que materia le agrada mas?</label>
+                <label for="materiasagradan">¿Qué materia le agrada más?</label>
                 <input type="text" id="materiasagradan" name="materiasagradan" class="form-control" value="{{old('materiasagradan', $escolar->materiasagradan)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="atribuyeagrado">A que atribuye usted ese agrado?</label>
+                <label for="atribuyeagrado">¿A qué atribuye usted ese agrado?</label>
                 <input type="text" id="atribuyeagrado" name="atribuyeagrado" class="form-control" value="{{old('atribuyeagrado', $escolar->atribuyeagrado)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="agradanmenos">Que materias le agradan menos?</label>
+                <label for="agradanmenos">¿Qué materias le agradan menos?</label>
                 <input type="text" id="agradanmenos" name="agradanmenos" class="form-control" value="{{old('agradanmenos', $escolar->agradanmenos)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="materiasdificultad">En que materias tiene mas dificultades?</label>
+                <label for="materiasdificultad">¿En qué materias tiene más dificultades?</label>
                 <input type="text" id="materiasdificultad" name="materiasdificultad" class="form-control" value="{{old('materiasdificultad', $escolar->materiasdificultad)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="culturageneral">Que carreras desea seguir despues del Ciclo comun de Cultura General?</label>
+                <label for="culturageneral">¿Qué carreras desea seguir después del ciclo común de cultura general?</label>
                 <input type="text" id="culturageneral" name="culturageneral" class="form-control" value="{{old('culturageneral', $escolar->culturageneral)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="form-group col-6 mt-3">
-                <label for="diversificado">Que carreras desea seguir despues del Ciclo Diversificado?</label>
+                <label for="diversificado">¿Qué carreras desea seguir después del ciclo diversificado?</label>
                 <input type="text" id="diversificado" name="diversificado" class="form-control" value="{{old('diversificado', $escolar->diversificado)}}" placeholder="Especifique"></input>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-3 mt-3">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a class="btn btn-success" href="{{route('escolar.editseis', ['escolar' => $escolar->id]) }}">Siguiente</a>
+            <button type="submit" class="btn btn-primary" id="guardarButton">Guardar y seguir</button>
+            <!-- <a class="btn btn-success" href="{{route('escolar.editseis', ['escolar' => $escolar->id]) }}">Siguiente</a> -->
+            <script>
+                    document.getElementById("guardarButton").addEventListener("click", function() {
+                        window.location.href = "{{route('escolar.editseis', ['escolar' => $escolar->id]) }}";
+                    });
+                </script>
             </div>
         </form>
     </div>

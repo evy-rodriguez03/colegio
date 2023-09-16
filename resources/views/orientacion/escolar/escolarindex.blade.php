@@ -40,8 +40,8 @@
         paginate: {
           first: "Primero",
           last: "Ultimo",
-          next: "Siguiente",
-          previous: "Anterior"
+          next: ">>",
+          previous: "<<"
         }
       }
     });
@@ -53,48 +53,46 @@
   <div class="card-header border-0">
     <div class="row align-items-center">
       <div class="col">
-        <h1 class="mb-0">Formulario Escolar</h1>
+        <h2 class="mb-0">Orientación</h2>
       </div>
+
       <div class="col text-right">
-        <a href="{{Route('panelorientacion.index')}}" class="btn btn-lg btn-success">Regresar</a>
+        <a href="{{Route('panelorientacion.index')}}" class="btn btn-lg btn-success"> <i class="fas fa-angle-left"></i> Regresar</a>
       </div>
+
     </div>
   </div>
   <div class="card-body">
-    @if (session('notification'))
-    <div class="alert alert-success" role="alert">
-      {{session('notification')}}
+
+    <div class="table-responsive">
+      <!-- Projects table -->
+      <table id="alumno" class="table align-items-center table-flush">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">N</th>
+            <th scope="col">Nombre del Alumno</th>
+            <th scope="col">Id</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+
+          @foreach ($alumnos as $index => $escolar)
+          <tr>
+            <th>{{$index + 1}}</th>
+            <td>{{$escolar->primernombre}} {{$escolar->primerapellido}}</td>
+            <td>{{$escolar->numerodeidentidad }}</td>
+            <td>
+              <a href="{{route('escolar.edit', ['escolar' => $escolar->id])}}" class="btn btn-sm btn-info"> Editar </a>
+            </td>
+          </tr>
+
+          @endforeach
+        </tbody>
+      </table>
     </div>
-    @endif
-  </div>
-  <div class="table-responsive">
-    <!-- Projects table -->
-    <table id="alumno" class="table align-items-center table-flush">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">N</th>
-          <th scope="col">Nombre del Alumno</th>
-          <th scope="col">Id</th>
-          <th scope="col">Opciones</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-
-        @foreach ($alumnos as $index => $escolar)
-        <tr>
-          <th>{{$index + 1}}</th>
-          <td>{{$escolar->primernombre}} {{$escolar->primerapellido}}</td>
-          <td>{{$escolar->numerodeidentidad }}</td>
-          <td>
-            <a href="{{route('escolar.edit', ['escolar' => $escolar->id])}}" class="btn btn-sm btn-info"> Editar </a>
-          </td>
-        </tr>
-
-        @endforeach
-      </tbody>
-    </table>
   </div>
 </div>
 @endsection

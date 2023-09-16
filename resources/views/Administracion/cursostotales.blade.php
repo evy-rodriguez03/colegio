@@ -56,10 +56,10 @@ div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Cursos Totales</h3>
+          <h2 class="mb-0">Cursos Totales</h2>
         </div>
         <div class="col text-right">
-          <a href="{{Route('dashboard.index')}}" class="btn btn-lg btn-success">
+          <a href="{{Route('periodocursos.index')}}" class="btn btn-lg btn-success">
             <i class="fas fa-angle-left"></i>Regresar</a>
         </div>
       </div>

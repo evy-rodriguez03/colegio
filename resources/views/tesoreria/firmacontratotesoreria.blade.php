@@ -5,7 +5,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Firma de Contrato</h3>
+                <h2 class="mb-0">Firma de Contrato</h2>
             </div>
             <div class="col text-right">
                 <a href="{{ Route('paneltesoreria.index') }}" class="btn btn-lg btn-success">
@@ -22,7 +22,7 @@
         </div>
         @endif
     </div>
-    <div class="table-responsive p-3"> <!-- Agregado el padding en todos los lados -->
+    <div class="table-responsive-sm container p-3"> <!-- Agregado el padding en todos los lados -->
         <!-- Projects table -->
         <form action="{{ route('firmacontratotesoreria.store') }}" method="POST">
             @csrf

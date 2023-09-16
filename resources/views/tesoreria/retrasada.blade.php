@@ -1,123 +1,108 @@
 @extends('layout.panel')
+@section('css')
+<link rel="stylesheet" href="{{ asset('Datatables/datatables.min.css') }}">
+<link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="ruta-a/bootstrap.min.css">
+<style>
+  .small-select {
+    width: 200px;
+  }
 
+  .dataTables_paginate .paginate_button {
+    padding: 3px 5px;
+    margin: 0 5px;
+
+  }
+</style>
+@endsection
+@section('js')
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#alumno').DataTable({
+      pagingType: 'simple_numbers',
+      lengthMenu: [3, 6, 9, 12],
+      language: {
+        lengthMenu: "Mostrar _MENU_ Entradas",
+        loadingRecords: "Cargando...",
+        processing: "Procesando...",
+        search: "Buscar:",
+        zeroRecords: "Sin resultados encontrados",
+        info: "",
+        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+        infoFiltered: "",
+        paginate: {
+          first: "Primero",
+          last: "Ultimo",
+          next: ">>",
+          previous: "<<"
+        }
+      }
+    });
+  });
+</script>
+@endsection
 
 @section('content')
 <div class="card shadow">
-    <div class="card-header border-0">
-      <div class="row align-items-center">
-        <div class="col">
-          <h1 class="mb-0">Clases Retrasadas</h1>
-        </div>
-        <div class="col text-right">
-          <a href="{{route('retrasadas.create')}}" class="btn btn-lg btn-primary">Nuevo Alumno</a>
-          <a href="{{route('paneltesoreria.index')}}" class="btn btn-lg btn-success">
-                <i class="fas fa-angle-left"></i>
-                Regresar</a>
-        </div>
+  <div class="card-header border-0">
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="mb-0">Clases Retrasadas</h2>
+      </div>
+      <div class="col text-right">
+        <a href="{{route('paneltesoreria.index')}}" class="btn btn-lg btn-success">
+          <i class="fas fa-angle-left"></i>
+          Regresar</a>
       </div>
     </div>
-    <div class="card-body">
-      
-     @if (session('notification'))
-     <div class="alert alert-success" role="alert">
-      {{session('notification')}}
   </div>
-     @endif
+  <div class="card-body">
+
+    @if (session('notification'))
+    <div class="alert alert-success" role="alert">
+      {{session('notification')}}
     </div>
+    @endif
+  </div>
+  <div class="card-body">
     <div class="table-responsive">
       <!-- Projects table -->
-      <table class="table align-items-center table-flush">
+      <table id="alumno" class="table align-items-center table-flush">
         <thead class="thead-light">
           <tr>
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Materia</th>
-            <th scope="col">Total a Pagar</th>
-            <th scope="col">Opciones</th>
+            <th scope="col">Numero de Identidad</th>
+            <th scope="row">Opciones</th>
           </tr>
         </thead>
-        <tbody>  
-          @foreach ($retrasadas as $index=> $retrasada)
-              
+        <tbody>
+          @foreach ($alumnos as $index=> $retrasadas)
+
           <tr>
             <th scope="row">
-             {{$index + 1}}
+              {{$index + 1}}
             </th>
             <td>
-              {{$retrasada->primernombre}} {{$retrasada->primerapellido}}
+              {{$retrasadas->primernombre}} {{$retrasadas->primerapellido}}
             </td>
             <td>
-              {{$retrasada->materiaretrasada}}
+              {{$retrasadas->numerodeidentidad}}
             </td>
+
             <td>
-              {{$retrasada->total}}
+              <a href="{{Route('retrasadas.create', $retrasadas->id)}}" class="btn btn-sm btn-info"> Editar</a>
             </td>
-            <td>
-            <form action="{{url('/retrasadas/'.$retrasada->id)}}" method="POST" class="formulario-eliminar">
-              @csrf
-              @method('DELETE')
-              <a href="{{url('/retrasadas/'.$retrasada->id.'/edit')}}" class="btn btn-sm bt-primary">Editar</a>
-              <button type="submit" class="btn btn-sm bt-danger">Eliminar</button>
-            </form>
-            </td>
-           @endforeach
+          </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
   </div>
-@endsection
-
-@section('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-@if (session('eliminar') == 'ok')
-        <script> 
-        Swal.fire(
-      '¡Borrado!',
-      'El alumno ha sido borrado exitosamente.',
-      'Éxito'
-    )
-    
-        </script>
-
-  
-@endif
-
-<script>
-
-  $('.formulario-eliminar').submit(function(e){
-  e.preventDefault();
-
-
-  Swal.fire({
-  title: '¿Esta seguro?',
-  text: "¡Si usted borra este registro no podra recuperarlo!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, borralo'
-}).then((result) => {
-  if (result.isConfirmed) {
-  
-    this.submit();
-  }
-})
-  });
-
-  
-</script>
-
-@if(session('success'))
-  <script>
-    Swal.fire({
-      icon: 'success',
-      title: '¡Perfecto!',
-      text: '{{ session('success') }}',
-      showConfirmButton: false,
-      timer: 3000
-    })
-  </script>
-  @endif
-
-@endsection
+  @endsection

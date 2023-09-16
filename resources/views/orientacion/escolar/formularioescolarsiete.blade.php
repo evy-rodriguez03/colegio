@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="mb-0">Escolar Paso-7</h1>
+                <h1 class="mb-0">Paso-7</h1>
             </div>
             <div class="col text-right">
-                <a href="{{route('escolar.editseis', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
+                <a  href="{{route('escolar.editseis', ['escolar' => $escolar->id])}}" class="btn btn-lg btn-success">
                     <i class="fas fa-angle-left"></i>
                     Regresar</a>
             </div>
@@ -28,7 +28,7 @@
             @csrf
             @method('PUT')
             <div class="col-12 mt-3">
-                <label>A continuacion se indican algunas manifestaciones y sentimientos que frecuentemente existen en las personas:</label>
+                <label>A continuación se indican algunas manifestaciones y sentimientos que frecuentemente existen en las personas:</label>
             </div>
             <div class="col-12 mt-3">
                 <table class="table align-items-center table-flush">
@@ -75,7 +75,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Se siente preocupado</td>
+                        <td>Se siente preocupado(a)</td>
                         <td><input type="radio" name="preocupado" id="fpreocupado" value="0" @if(old('preocupado')=='0' || (isset($escolar->preocupado)?$escolar->preocupado:'') == '0')
                             checked
                             @else
@@ -93,7 +93,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Se considera nervioso</td>
+                        <td>Se considera nervioso(a)</td>
                         <td><input type="radio" name="nervioso" id="fnervioso" value="0" @if(old('nervioso')=='0' || (isset($escolar->nervioso)?$escolar->nervioso:'') == '0')
                             checked
                             @else
@@ -111,7 +111,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Se siente solo</td>
+                        <td>Se siente solo(a)</td>
                         <td><input type="radio" name="solo" id="fsolo" value="0" @if(old('solo')=='0' || (isset($escolar->solo)?$escolar->solo:'') == '0')
                             checked
                             @else
@@ -129,7 +129,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Se considera debil fisicamente</td>
+                        <td>Se considera débil físicamente</td>
                         <td><input type="radio" name="debil" id="fdebil" value="0" @if(old('debil')=='0' || (isset($escolar->debil)?$escolar->debil:'') == '0')
                             checked
                             @else
@@ -147,7 +147,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es amistoso</td>
+                        <td>Es amistoso(a)</td>
                         <td><input type="radio" name="amistoso" id="famistoso" value="0" @if(old('amistoso')=='0' || (isset($escolar->amistoso)?$escolar->amistoso:'') == '0')
                             checked
                             @else
@@ -165,7 +165,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es carinioso</td>
+                        <td>Es cariñoso(a)</td>
                         <td><input type="radio" name="carinioso" id="fcarinioso" value="0" @if(old('carinioso')=='0' || (isset($escolar->carinioso)?$escolar->carinioso:'') == '0')
                             checked
                             @else
@@ -183,7 +183,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Se considera timido</td>
+                        <td>Se considera tímido(a)</td>
                         <td><input type="radio" name="timido" id="ftimido" value="0" @if(old('timido')=='0' || (isset($escolar->timido)?$escolar->timido:'') == '0')
                             checked
                             @else
@@ -201,7 +201,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es testarudo</td>
+                        <td>Es testarudo(a)</td>
                         <td><input type="radio" name="testarudo" id="ftestarudo" value="0" @if(old('testarudo')=='0' || (isset($escolar->testarudo)?$escolar->testarudo:'') == '0')
                             checked
                             @else
@@ -219,7 +219,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es tranquilo pasivo</td>
+                        <td>Es tranquilo(a) pasivo(a)</td>
                         <td><input type="radio" name="tranquilo" id="ftranquilo" value="0" @if(old('tranquilo')=='0' || (isset($escolar->tranquilo)?$escolar->tranquilo:'') == '0')
                             checked
                             @else
@@ -273,7 +273,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es celoso</td>
+                        <td>Es celoso(a)</td>
                         <td><input type="radio" name="celoso" id="fceloso" value="0" @if(old('celoso')=='0' || (isset($escolar->celoso)?$escolar->celoso:'') == '0')
                             checked
                             @else
@@ -291,7 +291,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es violento</td>
+                        <td>Es violento(a)</td>
                         <td><input type="radio" name="violento" id="fviolento" value="0" @if(old('violento')=='0' || (isset($escolar->violento)?$escolar->violento:'') == '0')
                             checked
                             @else
@@ -309,7 +309,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es agresivo</td>
+                        <td>Es agresivo(a)</td>
                         <td><input type="radio" name="agresivo" id="fagresivo" value="0" @if(old('agresivo')=='0' || (isset($escolar->agresivo)?$escolar->agresivo:'') == '0')
                             checked
                             @else
@@ -327,7 +327,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es comprensivo</td>
+                        <td>Es comprensivo(a)</td>
                         <td><input type="radio" name="comprensivo" id="fcomprensivo" value="0" @if(old('comprensivo')=='0' || (isset($escolar->comprensivo)?$escolar->comprensivo:'') == '0')
                             checked
                             @else
@@ -345,7 +345,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es ordenado</td>
+                        <td>Es ordenado(a)</td>
                         <td><input type="radio" name="ordenado" id="fordenado" value="0" @if(old('ordenado')=='0' || (isset($escolar->ordenado)?$escolar->ordenado:'') == '0')
                             checked
                             @else
@@ -363,7 +363,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es comunicativo</td>
+                        <td>Es comunicativo(a)</td>
                         <td><input type="radio" name="comunicativo" id="fcomunicativo" value="0" @if(old('comunicativo')=='0' || (isset($escolar->comunicativo)?$escolar->comunicativo:'') == '0')
                             checked
                             @else
@@ -381,7 +381,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es muy religioso</td>
+                        <td>Es muy religioso(a)</td>
                         <td><input type="radio" name="religioso" id="freligioso" value="0" @if(old('religioso')=='0' || (isset($escolar->religioso)?$escolar->religioso:'') == '0')
                             checked
                             @else
@@ -417,7 +417,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es retraido</td>
+                        <td>Es retraido(a)</td>
                         <td><input type="radio" name="retraido" id="fretraido" value="0" @if(old('retraido')=='0' || (isset($escolar->retraido)?$escolar->retraido:'') == '0')
                             checked
                             @else
@@ -435,7 +435,7 @@
                             @endif></td>
                     </tr>
                     <tr>
-                        <td>Es cooperador</td>
+                        <td>Es cooperador(a)</td>
                         <td><input type="radio" name="cooperador" id="fcooperador" value="0" @if(old('cooperador')=='0' || (isset($escolar->cooperador)?$escolar->cooperador:'') == '0')
                             checked
                             @else
@@ -456,8 +456,13 @@
             </div>
 
             <div class="col-3 mt-3">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-                <a class="btn btn-success" href="{{ route('escolar.index') }}">Terminar</a>
+            <button type="submit" class="btn btn-success" id="guardarButton">Guardar y terminar</button>
+                <!-- <a class="btn btn-success" href="{{ route('escolar.index') }}">Terminar</a> -->
+                <script>
+                    document.getElementById("guardarButton").addEventListener("click", function() {
+                        window.location.href = "{{ route('escolar.index') }}";
+                    });
+                </script>
             </div>
         </form>
     </div>

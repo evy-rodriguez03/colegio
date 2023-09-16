@@ -27,7 +27,7 @@
           @endforeach
       @endif
       
-      <form method="POST" action="{{ route('profile.update', ['id' => Auth::user()->id]) }}">
+      <form method="POST" action="{{ url('profile/'.Auth::user()->id) }}">
  
         @csrf
         @method('PUT')
@@ -40,7 +40,7 @@
                                 <div class="col-md-10">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nombre</label>
-                                        <input class="form-control" type="text" name="username" value="{{ old('name', Auth::user()->name) }}">
+                                        <input class="form-control" type="text" name="name" value="{{ old('name', Auth::user()->name) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-10">

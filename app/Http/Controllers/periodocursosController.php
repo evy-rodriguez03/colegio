@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Models\Periodo;
+use Illuminate\Support\Facades\Cache;
 
 class periodocursosController extends Controller
 {
@@ -15,7 +16,15 @@ class periodocursosController extends Controller
      */
     public function index()
     { 
-        $periodo = Periodo::where('activo','=',1)->first();
+        $idperiodo=0;
+        if(isset($_GET['periodo'])){
+            $idperiodo = $_GET['periodo'];
+            Cache::put('idperiodo', $_GET['periodo']);
+        }
+        else{
+            $idperiodo = Cache::get('idperiodo');
+        }
+        $periodo = Periodo::find($idperiodo);
         $cursos = Curso::where('idperiodo','=',isset($periodo->id) ?$periodo->id:0)->get();
         return view('administracion.periodocursos')->with(['cursos'=>$cursos,'periodo'=>$periodo]);
     }

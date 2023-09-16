@@ -18,9 +18,9 @@ class CreateEscolarsTable extends Migration
             $table->unsignedBigInteger('alumno_id');
             //f1
             $table->string('primerapellido');
-            $table->string('segundoapellido');
+            $table->string('segundoapellido')->nullable();
             $table->string('primernombre');
-            $table->string('segundonombre');
+            $table->string('segundonombre')->nullable();;
             $table->string('enumerodecelular')->nullable();
             $table->string('eedad')->nullable();
             $table->string('procedencia')->nullable();
