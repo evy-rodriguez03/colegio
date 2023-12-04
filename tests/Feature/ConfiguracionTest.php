@@ -1737,6 +1737,1132 @@ class ConfiguracionTest extends TestCase
 
     
 
+
+
+
+    
+    public function test_121_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidadIndex');
+        $response->assertViewIs('configurar.Modalidad.modalidadIndex');
+    }
+
+    public function test_122_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Lista de Modalidades');
+    }
+
+    public function test_123_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Nombre');
+    }
+
+    public function test_124_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_2()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Descripción');
+    }
+
+    public function test_125_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_3()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Opciones');
+    }
+
+    public function test_126_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_nuevo()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Agregar Modalidad');
+    }
+
+    public function test_127_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Regresar');
+    }
+
+    public function test_128_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_editar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        Modalidad::firstOrCreate(
+                [
+                    'nombre' => 'Express',
+                ],
+                [
+                    'descripcion' => 'en la tarde',
+                ]
+            );
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Editar');
+    }
+
+    public function test_129_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_eliminar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $response = $this->get('/modalidadIndex');
+
+        $response->assertSee('Eliminar');
+    }
+
+    public function test_130_la_ruta_modalidad_create_deberia_retornar_respuesta_302_sin_usuario_logueado()
+    {
+        $response = $this->get('/modalidad/create');
+        $response->assertStatus(302);
+    }
+
+    public function test_131_la_ruta_modalidad_create_deberia_retornar_al_login_sin_usuario_logueado()
+    {
+        $response = $this->get('/modalidad/create');
+        $response->assertRedirect('/login');
+    }
+
+    public function test_132_la_ruta_modalidad_create_deberia_retornar_respuesta_200_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertStatus(200);
+    }
+
+    public function test_133_la_ruta_modalidad_create_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertViewIs('configurar.Modalidad.modalidad');
+    }
+
+    public function test_134_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/modalidad/create');
+        $response->assertSee('Agregar Nueva Modalidad');
+    }
+
+
+    public function test_135_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes_label_modalidad()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertSee('Modalidad');
+    }
+
+    public function test_136_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes_label_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertSee('Descripción');
+    }
+
+    public function test_137_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertSee('Regresar');
+    }
+
+    public function test_138_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes_boton_guardar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/modalidad/create');
+        $response->assertSee('Guardar');
+    }
+
+
+    public function test_139_la_ruta_modalidad_store_deberia_crear_la_modalidad()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => 'Express',
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $ultimoRegistro = Modalidad::latest()->first();
+
+        $this->assertTrue($ultimoRegistro->nombre == 'Express');
+    }
+
+
+    public function test_140_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_nombre_obligatorio()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => null,
+            'descripcion' => 'en la tarde',
+        ]);
+
+
+        $response->assertInvalid([
+            'modalidad' => 'El campo modalidad es obligatorio.',
+        ]);
+    }
+
+    public function test_141_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_modalidad_solo_texto()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => 787,
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $response->assertInvalid([
+            'modalidad' => 'El campo modalidad debe ser una cadena de texto.',
+        ]);
+    }
+
+    public function test_142_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_modalidad_max_255()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' =>'sdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsd',
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $response->assertInvalid([
+            'modalidad' => 'El campo modalidad no debe exceder los 255 caracteres.',
+        ]);
+    }
+
+
+    public function test_143_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_descripcion_obligatorio()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => 'Express',
+            'descripcion' => null,
+        ]);
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción es obligatorio.',
+        ]);
+    }
+
+    public function test_144_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_descripcion_solo_texto()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => 'Express',
+            'descripcion' => 454,
+        ]);
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción debe ser una cadena de texto.',
+        ]);
+    }
+
+    public function test_145_la_ruta_modalidad_store_deberia_crear_la_modalidad_validaciones_descripcion_max_255()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+        $modalididad->delete();
+
+        $response = $this->post('/modalidad',[
+            'modalidad' => 'Express',
+            'descripcion' => 'sdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsd',
+        ]);
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción no debe exceder los 255 caracteres.',
+        ]);
+    }
+
+
+    public function test_146_la_ruta_modalidad_edit_deberia_retornar_respuesta_302_sin_usuario_logueado()
+    {
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertStatus(302);
+    }
+
+    public function test_147_la_ruta_jornada_edit_deberia_retornar_al_login_sin_usuario_logueado()
+    {
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertRedirect('/login');
+    }
+
+
+    public function test_148_la_ruta_modalidad_edit_deberia_retornar_respuesta_200_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertStatus(200);
+    }
+
+    public function test_149_la_ruta_jornada_edit_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertViewIs('configurar.Modalidad.modalidadEdit');
+    }
+
+    public function test_150_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee('Editar modalidad');
+    }
+
+
+    public function test_151_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_label_nombre()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee('Nombre');
+    }
+
+    public function test_152_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_label_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee('Descripción');
+    }
+
+    public function test_153_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_input_nombre()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee($modalididad->nombre);
+    }
+
+    public function test_154_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_input_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee($modalididad->descripcion);
+    }
+
+    public function test_155_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee('Regresar');
+    }
+
+    public function test_156_la_ruta_modalidad_edit_deberia_retornar_a_la_vista_conteniendo_componetes_boton_guardar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->get('modalidad/'. $modalididad->id .'/edit' );
+        $response->assertSee('Guardar cambios');
+    }
+
+
+    public function test_157_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_nombre_obligatorio()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => null,
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'nombre' => 'El campo nombre es obligatorio.',
+        ]);
+    }
+
+    public function test_158_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_nombre_solo_texto()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => 858,
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'nombre' => 'El campo nombre debe ser una cadena de texto.',
+        ]);
+    }
+
+    public function test_159_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_modalidad_max_255()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => 'sdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsd',
+            'descripcion' => 'en la tarde',
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'nombre' => 'El campo nombre no debe exceder los 255 caracteres.',
+        ]);
+    }
+
+
+    public function test_160_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_descripcion_obligatorio()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => 'Express',
+            'descripcion' => null,
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción es obligatorio.',
+        ]);
+    }
+
+    public function test_161_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_descripcion_solo_texto()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => 'Express',
+            'descripcion' => 5454,
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción debe ser una cadena de texto.',
+        ]);
+    }
+
+    public function test_162_la_ruta_modalidad_update_deberia_actualizar_la_modalidad_validaciones_descripcion_max_255()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $modalididad = Modalidad::firstOrCreate(
+            [
+                'nombre' => 'Express',
+            ],
+            [
+                'descripcion' => 'en la tarde',
+            ]
+        );
+
+        $response = $this->put('/modalidad/'.$modalididad->id,[
+            'nombre' => 'Express',
+            'descripcion' => 'sdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsdsdjhkasduykljalksjdlkajsd',
+        ]);
+
+        $modalididad->delete();
+
+        $response->assertInvalid([
+            'descripcion' => 'El campo descripción no debe exceder los 255 caracteres.',
+        ]);
+    }
+
+
+
+    public function test_163_la_ruta_seccionindex_deberia_retornar_respuesta_302_sin_usuario_logueado()
+    {
+        $response = $this->get('/seccionindex');
+        $response->assertStatus(302);
+    }
+
+    public function test_164_la_ruta_seccionindex_deberia_retornar_al_login_sin_usuario_logueado()
+    {
+        $response = $this->get('/seccionindex');
+        $response->assertRedirect('/login');
+    }
+
+    public function test_165_la_ruta_modalidadIndex_deberia_retornar_respuesta_200_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccionindex');
+        $response->assertStatus(200);
+    }
+
+    public function test_166_la_ruta_modalidadIndex_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccionindex');
+        $response->assertViewIs('configurar.Seccion.seccionindex');
+    }
+
+    public function test_167_la_ruta_seccionindex_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Lista de Secciones');
+    }
+
+    public function test_168_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Nombre');
+    }
+
+    public function test_169_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_2()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Descripción');
+    }
+
+    public function test_170_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_3()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Opciones');
+    }
+
+    public function test_171_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_nuevo()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Agregar Secciones');
+    }
+
+    public function test_172_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Regresar');
+    }
+
+    public function test_173_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_editar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        Seccionconfig::firstOrCreate(
+                [
+                    'nombre' => 'A',
+                ],
+                [
+                    'descripcion' => 'Manana',
+                ]
+            );
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Editar');
+    }
+
+    public function test_174_la_ruta_seccionindex_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_eliminar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+        $response = $this->get('/seccionindex');
+
+        $response->assertSee('Eliminar');
+    }
+
+    public function test_175_la_ruta_seccion_create_deberia_retornar_respuesta_302_sin_usuario_logueado()
+    {
+        $response = $this->get('/seccion/create');
+        $response->assertStatus(302);
+    }
+
+    public function test_176_la_ruta_seccion_create_deberia_retornar_al_login_sin_usuario_logueado()
+    {
+        $response = $this->get('/seccion/create');
+        $response->assertRedirect('/login');
+    }
+
+    public function test_177_la_ruta_seccion_create_deberia_retornar_respuesta_200_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertStatus(200);
+    }
+
+    public function test_178_la_ruta_modalidad_create_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertViewIs('configurar.Seccion.seccion');
+    }
+
+    public function test_179_la_ruta_seccion_create_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/seccion/create');
+        $response->assertSee('Agregar Nueva Seccion');
+    }
+
+
+    public function test_180_la_ruta_seccion_create_deberia_retornar_a_la_vista_conteniendo_componetes_label_Seccion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertSee('Seccion');
+    }
+
+    public function test_181_la_ruta_seccion_create_deberia_retornar_a_la_vista_conteniendo_componetes_label_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertSee('Descripción');
+    }
+
+    public function test_182_la_ruta_modalidad_create_deberia_retornar_a_la_vista_conteniendo_componetes_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertSee('Regresar');
+    }
+
+    public function test_183_la_ruta_seccion_create_deberia_retornar_a_la_vista_conteniendo_componetes_boton_guardar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $response = $this->get('/seccion/create');
+        $response->assertSee('Guardar');
+    }
+
+
+    public function test_184_la_ruta_seccion_store_deberia_crear_la_seccion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+        $secciondonf->delete();
+
+        $response = $this->post('/seccion',[
+            'seccion' => 'A',
+            'descripcion' => 'Manana',
+        ]);
+
+        $ultimoRegistro = Seccionconfig::latest()->first();
+
+        $this->assertTrue($ultimoRegistro->nombre == 'A');
+    }
+
+
+    public function test_185_la_ruta_seccion_edit_deberia_retornar_respuesta_302_sin_usuario_logueado()
+    {
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertStatus(302);
+    }
+
+    public function test_186_la_ruta_seccion_edit_deberia_retornar_al_login_sin_usuario_logueado()
+    {
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertRedirect('/login');
+    }
+
+
+    public function test_187_la_ruta_seccion_edit_deberia_retornar_respuesta_200_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertStatus(200);
+    }
+
+    public function test_188_la_ruta_jornada_edit_deberia_retornar_a_la_vista_usuario_logueado()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertViewIs('configurar.Seccion.editar');
+    }
+
+    public function test_189_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee('Editar Seccion');
+    }
+
+
+    public function test_190_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_label_seccion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee('Seccion');
+    }
+
+    public function test_191_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_label_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee('Descripción');
+    }
+
+    public function test_192_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_input_seccion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee($secciondonf->nombre);
+    }
+
+    public function test_193_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_input_descripcion()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee($secciondonf->descripcion);
+    }
+
+    public function test_194_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_boton_regresar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee('Regresar');
+    }
+
+    public function test_195_la_ruta_seccion_edit_deberia_retornar_a_la_vista_conteniendo_componetes_boton_guardar()
+    {
+        $user = User::find(1);
+        $this->actingAs($user);
+
+        $secciondonf =  Seccionconfig::firstOrCreate(
+            [
+                'nombre' => 'A',
+            ],
+            [
+                'descripcion' => 'Manana',
+            ]
+        );
+
+        $response = $this->get('seccion/'. $secciondonf->id .'/edit' );
+        $response->assertSee('Guardar cambios');
+    }
+
+
    
 
 }
+
+
