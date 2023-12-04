@@ -28,6 +28,21 @@ class PadrePDFTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function test_paraVerificarRetornaPDF()
+    {
+        $response = $this->get('/padres/pdf');
+
+        $response->assertHeader('Content-Type', 'application/pdf');
+    }
+
+    public function test_paraVerificarPerformance()
+    {
+        $startTime = microtime(true);
+        $this->get('/padres/pdf');
+        $endTime = microtime(true);
+
+        $this->assertLessThan(2, $endTime - $startTime); 
+    }
 
     
 }
