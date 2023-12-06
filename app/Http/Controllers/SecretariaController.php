@@ -18,7 +18,7 @@ class SecretariaController extends Controller
     public function index()
     {
         $alumnos = Alumno::all();
-        return view('consejeria.tablaindex',compact('alumnos'));
+        return view('consejeria.tablaindex', compact('alumnos'));
     }
 
     public function pdf()
@@ -27,15 +27,13 @@ class SecretariaController extends Controller
         $consejerias = Consejeria::whereIn('id_alumno', $alumnos->pluck('id'))->get()->keyBy('id_alumno');
         $pdf = Pdf::loadView('consejeria.consejeriapdf', compact('alumnos', 'consejerias'));
         return $pdf->stream();
-        
     }
 
     public function create($id)
     {
         $alumno = Alumno::findOrFail($id);
         $consejerias = Consejeria::whereIn('id_alumno', $alumno->pluck('id'))->get()->keyBy('id_alumno');
-        return view('consejeria.consjindex', compact('alumno', 'consejerias')); 
-        
+        return view('consejeria.consjindex', compact('alumno', 'consejerias'));
     }
 
     /**
@@ -46,57 +44,61 @@ class SecretariaController extends Controller
      */
     public function store(Request $request)
     {
-       
-          // Recupera los valores de los checkboxes del formulario
-          $alumno = $request->input('id_alumno');
-          $secretaria = $request->input('secretaria') ? 1 : 0;
-          $orientacion = $request->input('orientacion') ? 1 : 0;
-          $consej = $request->input('consej') ? 1 : 0;
-          $tesoreria = $request->input('tesoreria') ? 1 : 0;
-          $secultimo = $request->input('secultimo') ? 1 : 0;
+
+        $request->validate([
+            'id_alumno' => 'required|integer',
+        ], [
+            'id_alumno.required' => 'El ID del alumno es obligatorio.',
+            'id_alumno.integer' => 'El ID del alumno debe ser numérico.',
+        ]);
+
+        // Recupera los valores de los checkboxes del formulario
+        $alumno = $request->input('id_alumno');
+        $secretaria = $request->input('secretaria') ? 1 : 0;
+        $orientacion = $request->input('orientacion') ? 1 : 0;
+        $consej = $request->input('consej') ? 1 : 0;
+        $tesoreria = $request->input('tesoreria') ? 1 : 0;
+        $secultimo = $request->input('secultimo') ? 1 : 0;
 
 
-          $registro_existente = Consejeria::where('id_alumno', $alumno)->count();
-         if ($registro_existente > 0){
-        //Actualizar registro Consejeria del alumno
-        $consejeria = Consejeria::where('id_alumno',$alumno)->first();
+        $registro_existente = Consejeria::where('id_alumno', $alumno)->count();
+        if ($registro_existente > 0) {
+            //Actualizar registro Consejeria del alumno
+            $consejeria = Consejeria::where('id_alumno', $alumno)->first();
 
-         // Asigna los valores de los checkboxes al modelo
-         $consejeria->secretaria = $secretaria;
-         $consejeria->orientacion = $orientacion;
-         $consejeria->consej = $consej;
-         $consejeria->tesoreria = $tesoreria;
-         $consejeria->secultimo = $secultimo;
+            // Asigna los valores de los checkboxes al modelo
+            $consejeria->secretaria = $secretaria;
+            $consejeria->orientacion = $orientacion;
+            $consejeria->consej = $consej;
+            $consejeria->tesoreria = $tesoreria;
+            $consejeria->secultimo = $secultimo;
 
-         // Guarda el modelo en la base de datos
-         $consejeria->save();
-         
-         }else{
-        //Crear registro nuevo en Consejeria del alumno
+            // Guarda el modelo en la base de datos
+            $consejeria->save();
+        } else {
+            //Crear registro nuevo en Consejeria del alumno
 
-         // Crea una nueva instancia del modelo Consejeria
-         $consejeria = new Consejeria();
+            // Crea una nueva instancia del modelo Consejeria
+            $consejeria = new Consejeria();
 
-         // Asigna los valores de los checkboxes al modelo
-         $consejeria->secretaria = $secretaria;
-         $consejeria->orientacion = $orientacion;
-         $consejeria->consej = $consej;
-         $consejeria->tesoreria = $tesoreria;
-         $consejeria->secultimo = $secultimo;
+            // Asigna los valores de los checkboxes al modelo
+            $consejeria->secretaria = $secretaria;
+            $consejeria->orientacion = $orientacion;
+            $consejeria->consej = $consej;
+            $consejeria->tesoreria = $tesoreria;
+            $consejeria->secultimo = $secultimo;
 
-         // Guarda el modelo en la base de datos
-         $consejeria->id_alumno = $alumno;
-         $consejeria->save();
+            // Guarda el modelo en la base de datos
+            $consejeria->id_alumno = $alumno;
+            $consejeria->save();
         }
 
 
-         // Redirige a la página o realiza alguna acción adicional
-           return redirect('/tablaindex');
-       
-   
-}
+        // Redirige a la página o realiza alguna acción adicional
+        return redirect('/tablaindex');
+    }
 
-   // ...
+    // ...
 
     /**
      * Display the specified resource.
