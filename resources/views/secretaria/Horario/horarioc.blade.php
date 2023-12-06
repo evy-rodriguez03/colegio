@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group col-2 mt-3">
-            <label for="descripcion">Descripcion:</label>
+            <label for="descripcion">Descripción:</label>
         </div>
         <div class="col-4 mt-3">
             <input type="text" id="descripcion" name="descripcion" class="form-control"

@@ -7,7 +7,12 @@
                 <div class="col">
                     <h1 class="mb-0">Actualizar Grados</h1>
                 </div>
+                <div class="col text-right">
+                    <a href="{{ route('grados.index')}}" class="btn btn-lg btn-success">
+                      <i class="fas fa-angle-left"></i>Regresar</a>
+                  </div>
             </div>
+
         </div>
 
     <div class="card-body">

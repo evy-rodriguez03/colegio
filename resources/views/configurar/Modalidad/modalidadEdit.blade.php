@@ -4,6 +4,11 @@
     <div class="card shadow">
         <div class="card-header border-0">
             <h1 class="mb-0">Editar modalidad</h1>
+            <div class="col text-right">
+                <a href="{{route('jornada.index')}}" class="btn btn-lg btn-success">
+                  <i class="fas fa-angle-left"></i>
+                  Regresar</a>
+              </div>
         </div>
         <div class="card-body">
     <form action="{{ route('modalidad.update', $modalidades->id) }}" method="POST">

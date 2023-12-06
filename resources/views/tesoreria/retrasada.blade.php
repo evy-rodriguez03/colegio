@@ -78,7 +78,7 @@
           <tr>
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Numero de Identidad</th>
+            <th scope="col">Número de Identidad</th>
             <th scope="row">Opciones</th>
           </tr>
         </thead>
