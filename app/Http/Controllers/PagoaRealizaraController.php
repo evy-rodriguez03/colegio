@@ -17,12 +17,12 @@ class PagoaRealizaraController extends Controller
      */
     public function index(Request $request)
     {
-        $alumno = Alumno::leftJoin('pagorealizars','pagorealizars.alumno_id','=','alumnos.id')
-        ->select('alumnos.*','pagorealizars.mensualidad','pagorealizars.pagosadministrativos','pagorealizars.bolsaescolar')
-        ->where('alumnos.id',$request['id_alumno'])
-        ->first();
+        $alumno = Alumno::leftJoin('pagorealizars', 'pagorealizars.alumno_id', '=', 'alumnos.id')
+            ->select('alumnos.*', 'pagorealizars.mensualidad', 'pagorealizars.pagosadministrativos', 'pagorealizars.bolsaescolar')
+            ->where('alumnos.id', $request['id_alumno'])
+            ->first();
         Log::info($alumno);
-        return view ('tesoreria.pagorealizar', compact('alumno'));
+        return view('tesoreria.pagorealizar', compact('alumno'));
     }
 
     /**
@@ -32,7 +32,7 @@ class PagoaRealizaraController extends Controller
      */
     public function create()
     {
-        
+
         return view('pagorealizar.create');
     }
 
@@ -42,33 +42,42 @@ class PagoaRealizaraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-{
-    $alumno_id = $request['id_alumno'];
-    
-    // Verificar si ya existe un registro para el alumno en la tabla "pagos"
-    $pagosExistente = Pagorealizar::where('alumno_id', $alumno_id);
-    if ($pagosExistente->count() > 0) {
-        //Si existe un registro lo actualiza   
-        $pagosExistente->update([
-            'mensualidad' => $request->input('mensualidad') ? 1 : 0,
-            'pagosadministrativos' => $request->input('pagosadministrativos') ? 1 : 0,
-            'bolsaescolar' => $request->input('bolsaescolar') ? 1 : 0,
-        ]);
-    }else{
-        // Si no existe un registro, crea uno nuevo
-    $pagorealizars = new Pagorealizar();
-    $pagorealizars->alumno_id = $alumno_id;
-    $pagorealizars->mensualidad = $request->input('mensualidad') ? 1 : 0;
-    $pagorealizars->pagosadministrativos = $request->input('pagosadministrativos') ? 1 : 0;
-    $pagorealizars->bolsaescolar = $request->input('bolsaescolar') ? 1 : 0;
-    // Puedes agregar más campos según lo que necesites guardar en la tabla "pagos"
-    $pagorealizars->save();
-    }
+    public function store(Request $request/*,$id_alumno*/)
+    {
+        // $request['alumno_id'] = $id_alumno;
 
-    // Redireccionar a la vista de pagos o mostrar un mensaje de éxito, etc.
-    return redirect()->route('vistapago.index', $alumno_id)->with('notification', 'Los pagos han sido guardados exitosamente.');
-}
+        // $this->validate($request, [
+        //     'alumno_id' => 'required|integer',
+        // ], [
+        //     'alumno_id.required' => 'El ID del alumno es obligatorio.',
+        //     'alumno_id.integer' => 'El ID del alumno debe ser un número entero.',
+        // ]);
+
+        $alumno_id = $request['alumno_id'];
+
+        // Verificar si ya existe un registro para el alumno en la tabla "pagos"
+        $pagosExistente = Pagorealizar::where('alumno_id', $alumno_id);
+        if ($pagosExistente->count() > 0) {
+            //Si existe un registro lo actualiza
+            $pagosExistente->update([
+                'mensualidad' => $request->input('mensualidad') ? 1 : 0,
+                'pagosadministrativos' => $request->input('pagosadministrativos') ? 1 : 0,
+                'bolsaescolar' => $request->input('bolsaescolar') ? 1 : 0,
+            ]);
+        } else {
+            // Si no existe un registro, crea uno nuevo
+            $pagorealizars = new Pagorealizar();
+            $pagorealizars->alumno_id = $alumno_id;
+            $pagorealizars->mensualidad = $request->input('mensualidad') ? 1 : 0;
+            $pagorealizars->pagosadministrativos = $request->input('pagosadministrativos') ? 1 : 0;
+            $pagorealizars->bolsaescolar = $request->input('bolsaescolar') ? 1 : 0;
+            // Puedes agregar más campos según lo que necesites guardar en la tabla "pagos"
+            $pagorealizars->save();
+        }
+
+        // Redireccionar a la vista de pagos o mostrar un mensaje de éxito, etc.
+        return redirect()->route('vistapago.index', $alumno_id)->with('notification', 'Los pagos han sido guardados exitosamente.');
+    }
 
 
 

@@ -29,39 +29,40 @@ class UserProfileController extends Controller
     {
         $rules = [
             'name' => 'required|min:3|alpha',
-                    'email'=> 'required|email|string',  
+                    'email'=> 'required|email|string|unique:users,email,'.$id,
                     'password' =>'required|string|min:8|max:15',
                     'role'=> 'required'
-    
+
            ];
-    
+
            $messages= [
             'name.required' => 'El nombre es obligatorio',
             'name.min' => 'El nombre debe contener más de 3 caracteres',
             'name.alpha' => 'El nombre solo debe contener letras, tampoco espacios.',
             'email.required' => 'El email es obligatorio',
             'email.email' => 'El correo debe ser un email valido',
+             'email.unique' => 'Este correo ya se encuentra registrado',
             'password.required'=> 'La contraseña es un campo obligatorio',
             'password.min' => 'La contraseña al menos como minimo debe tener 6 caracteres',
             'password.max'=>'La contraseña debe tener un maximo de 15 caracteres'
-    
+
            ];
            $this->validate($request,$rules,$messages);
 
            $usuarios = User::findOrFail($id);
-    
+
           $data = $request->only('name','email','password','role');
           $password = $request->input('password');
 
-          
-           
+
+
 
            if ($password) {
             $data['password'] = bcrypt($password);
            };
 
            $usuarios->fill($data);
-           
+
            $usuarios->save();
 
            if($request->hasfile('image')){
@@ -75,7 +76,7 @@ class UserProfileController extends Controller
                 'path' => $request->image->store('users','images')
             ]);
            }
-             
+
              return redirect('/profile')->with('success', '¡El dato ha sido guardado/actualizado correctamente!');
     }
 
