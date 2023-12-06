@@ -126,6 +126,7 @@ class PadreController extends Controller
             'numerodeidentidad.numeric' => 'El número de identidad deben tener solo valores numéricos',
             'numerodeidentidad.min' => 'El número de identidad deben tener al menos 13 dígitos',
             'primernombre.alpha' => 'El primer nombre no deben tener valores numéricos',
+            'primernombre.min' => 'El primer nombre debe tener mínimo 3 caracteres',
             'segundonombre.alpha' => 'El segundo nombre no deben tener valores numéricos',
             'primerapellido.alpha' => 'El primer apellido no deben tener valores numéricos',
             'segundoapellido.alpha' => 'El segundo apellido no deben tener valores numéricos',
@@ -323,7 +324,7 @@ class PadreController extends Controller
                         ->first();
 
      $matricula->periodo_id = $periodo->id;
-     $matricula->save();                
+     $matricula->save();
 
 
     Cache::forget('alumno_id');
@@ -335,7 +336,7 @@ class PadreController extends Controller
             return redirect()->back()->with('error', $mensaje);
             }
         }
-    
+
     /**
      * Display the specified resource.
      *

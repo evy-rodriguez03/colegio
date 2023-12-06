@@ -43,7 +43,7 @@ class PadreStoreTest extends TestCase
         $this->get('/padres/crear');
         $endTime = microtime(true);
 
-        $this->assertLessThan(2, $endTime - $startTime); 
+        $this->assertLessThan(2, $endTime - $startTime);
     }
 
     public function testPrimernombreVacio()
