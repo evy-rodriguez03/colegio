@@ -22,7 +22,7 @@ class ConfiguracionController extends Controller
         $jornadas = Jornada::all();
         return view('configurar.Jornada.indexJornada', compact('jornadas'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,6 +46,13 @@ class ConfiguracionController extends Controller
         $validatedData = $request->validate([
             'jornada' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
+        ], [
+            'jornada.required' => 'El campo jornada es obligatorio.',
+            'jornada.string' => 'El campo jornada debe ser una cadena de texto.',
+            'jornada.max' => 'El campo jornada no debe exceder los 255 caracteres.',
+            'descripcion.required' => 'El campo descripcion es obligatorio.',
+            'descripcion.string' => 'El campo descripcion debe ser una cadena de texto.',
+            'descripcion.max' => 'El campo descripcion no debe exceder los 255 caracteres.',
         ]);
 
         // Crear una nueva instancia del modelo Jornada y asignar los valores del formulario
@@ -93,8 +100,15 @@ class ConfiguracionController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'jornada' => 'required',
-            'descripcion' => 'required',
+            'jornada' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:255',
+        ], [
+            'jornada.required' => 'El campo jornada es obligatorio.',
+            'jornada.string' => 'El campo jornada debe ser una cadena de texto.',
+            'jornada.max' => 'El campo jornada no debe exceder los 255 caracteres.',
+            'descripcion.required' => 'El campo descripcion es obligatorio.',
+            'descripcion.string' => 'El campo descripcion debe ser una cadena de texto.',
+            'descripcion.max' => 'El campo descripcion no debe exceder los 255 caracteres.',
         ]);
 
         $jornada = Jornada::find($id);

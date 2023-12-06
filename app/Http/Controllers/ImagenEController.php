@@ -41,7 +41,12 @@ class ImagenEController extends Controller
     {
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ], [
+            'image.required' => 'El campo de imagen es obligatorio.',
+            'image.image' => 'El archivo debe ser una imagen.',
+            'image.mimes' => 'La imagen debe ser de tipo: jpeg, png, jpg, gif o svg.',
+            'image.max' => 'La imagen no puede ser mayor a 2048 kilobytes (2MB).',
         ]);
 
         $imageName = time().'.'.$request->image->extension();
@@ -55,13 +60,13 @@ class ImagenEController extends Controller
 
         return redirect()->route('profile')->with('success','Has subido correctamente la imagen.');
     }
-    
+
     public function userProfile()
     {
         // Obtén la URL de la foto de perfil del usuario
         $user = User::findOrFail(Auth::user()->id);
         $fotoPerfilURL = $user->imagen; // Suponiendo que la URL de la foto de perfil se almacena en el atributo "imagen" del modelo User
-    
+
         // Pasa la URL de la foto de perfil a la vista
         return view('pages.user-profile', ['fotoPerfilURL' => $fotoPerfilURL]);
     }
@@ -112,30 +117,30 @@ public function destroy($id)
     $user = User::find($id);
 
     if (!$user) {
-       
+
     }
-    
+
 
     if (!$user->imagen) {
         $errorMessage = 'Lo sentimos, la foto de perfil no fue encontrada.';
         return view('errors.custom', compact('errorMessage'))->withErrors(['errorMessage' => $errorMessage]);
     }
 
-    
+
 
     $archivo = public_path($user->imagen);
 
     if (file_exists($archivo)) {
-      
+
         unlink($archivo);
-       
+
         $user->imagen = null;
         $user->save();
-       
+
         return redirect()->back()->with('success', 'La imagen de perfil ha sido eliminada con éxito.');
     } else {
-    
+
         return redirect()->back()->with('error', 'No se pudo encontrar la imagen de perfil para eliminar.');
     }
 }
-} 
+}

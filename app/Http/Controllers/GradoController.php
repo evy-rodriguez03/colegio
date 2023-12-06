@@ -24,8 +24,12 @@ class GradoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'nombre' => 'required|unique:grados,nombre',
             'descripcion' => 'required',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.unique' => 'El campo nombre ya existe.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
         ]);
 
         $grado = new grado();
@@ -44,8 +48,13 @@ class GradoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required',
+            'nombre' => 'required|unique:grados,nombre,'.$id,
             'descripcion' => 'required',
+        ],
+        [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.unique' => 'El campo nombre ya existe.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
         ]);
 
         $grado = Grado::find($id);
@@ -58,7 +67,7 @@ class GradoController extends Controller
 
     public function destroy($id)
     {
-    
+
         $grado = Grado::find($id);
 
         if (!$grado) {

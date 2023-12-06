@@ -67,7 +67,7 @@ Route::delete('/imagenE/{id}', [ImagenEController::class,'destroy'])->name('imag
 });
 
 Route::group(['middleware' => ['auth','role:Secretaria|Admin']], function () {
-    //Cursos 
+    //Cursos
     route::get('/cursos/pdf', [CursoController::class,'pdf'])->name('cursos.pdf');
     route::resource('cursos','App\Http\Controllers\CursoController');
 
@@ -76,8 +76,8 @@ Route::group(['middleware' => ['auth','role:Secretaria|Admin']], function () {
     route::get('/periodocursos', [periodocursosController::class,'index'])->name('periodocursos.index');
     route::get('/alumnocursos/{curso}', [AlumnocursoController::class,'index'])->name('alumnocursos.index');
 
-   
-    //Padres 
+
+    //Padres
     route::get('/padres/pdf', [PadreController::class,'pdf'])->name('padre.pdf');
     route::get('/padres', [PadreController::class,'index'])->name('padres.index');
     route::get('/padres/crear', [PadreController::class,'create'])->name('padres.create');
@@ -195,7 +195,7 @@ route::post('/pagorealizar/{id_alumno}', [PagoaRealizaraController::class,'store
 
 Route::get('/alumnos/{alumno_id}/Detallespago', [DetallespagoController::class,'index'])->name('Detallespago.index');
 
-}); 
+});
 
 Route::group(['middleware' => ['auth','role:Consejeria|Admin']], function () {
 //Rutas consejeria
@@ -203,13 +203,13 @@ route::get('/consjindex/pdf', [SecretariaController::class,'pdf'])->name('consej
 route::get('/tablaindex', [SecretariaController::class,'index'])->name('tabla.index');
 route::get('/consjindex/{id}', [SecretariaController::class,'create'])->name('consejeria.create');
 route::post('/tablaindex', [SecretariaController::class,'store'])->name('tabla.store');
-}); 
+});
 
 Route::group(['middleware' => ['auth','Admin']], function () {
     /*Ruta del dashboard secretaria*/
     Route::get('/dashboardsec', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');
- 
+
     /*Rutas de los paneles */
     Route::get('/dashboard', [dashboardsecController::class,
     'create'])->name('dashboardsec.index');

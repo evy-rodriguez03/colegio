@@ -39,8 +39,15 @@ class modalidadController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'modalidad' => 'required',
-        'descripcion' => 'required',
+        'modalidad' => 'required|string|max:255',
+        'descripcion' => 'required|string|max:255',
+    ], [
+        'modalidad.required' => 'El campo modalidad es obligatorio.',
+        'modalidad.string' => 'El campo modalidad debe ser una cadena de texto.',
+        'modalidad.max' => 'El campo modalidad no debe exceder los 255 caracteres.',
+        'descripcion.required' => 'El campo descripción es obligatorio.',
+        'descripcion.string' => 'El campo descripción debe ser una cadena de texto.',
+        'descripcion.max' => 'El campo descripción no debe exceder los 255 caracteres.',
     ]);
 
     $modalidad = new Modalidad();
@@ -85,15 +92,22 @@ class modalidadController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:255',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.string' => 'El campo nombre debe ser una cadena de texto.',
+            'nombre.max' => 'El campo nombre no debe exceder los 255 caracteres.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
+            'descripcion.string' => 'El campo descripción debe ser una cadena de texto.',
+            'descripcion.max' => 'El campo descripción no debe exceder los 255 caracteres.',
         ]);
-    
+
         $modalidad = Modalidad::find($id);
         $modalidad->nombre = $request->input('nombre');
         $modalidad->descripcion = $request->input('descripcion');
         $modalidad->save();
-    
+
         return redirect()->route('modalidad.index')->with('success', 'Modalidad se ha creado exitosamente.');
     }
 
