@@ -43,9 +43,10 @@ class FirmacontratotesoreriaController extends Controller
      */
     public function store(Request $request)
     {
-
         $id_padres = $request->input('id_padre');
         $contador = 0;
+
+
 
         foreach ($id_padres as $key => $id_padre) {
             $firmacontrato = Firmacontrato::where('id_padre','=', $id_padre)->get();

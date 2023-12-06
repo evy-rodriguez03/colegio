@@ -1,60 +1,12 @@
 @extends('layout.panel')
 
 @section('content')
-{{-- <style>
-    .form-search {
-        padding: 0 15px;
-        position: relative;
-    }
-    .form-search .form-control-search {
-        background-color: rgba(115, 186, 221, 0.048);
-        box-shadow: none;
-        border: medium;
-        border-radius: 30px;
-        box-shadow: 0 0 0;
-        color: #020000;
-        display: block;
-        font-size: 20px;
-        font-weight: 300;
-        height: 50px;
-        line-height: 1.42857;
-        vertical-align: middle;
-        transition: background-color .2s;
-    }
-    .form-search .btn-submit {
-        position: absolute;
-        right: 18px;
-        border: none;
-        padding: 10px 12px;
-        height: 44px;
-        line-height: 30px;
-        width: 44px;
-        display: block;
-        top: 3px;
-        opacity: .85;
-        background: #fff;
-        color: #666;
-        transition: all .2s;
-        border-radius: 25px;
-    }
-</style> --}}
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
                 <h3 class="mb-0">Usuarios</h3>
             </div>
-            {{-- <div class="col">
-                <form class="" itemprop="potentialAction" itemscope="itemscope" itemtype="https://schema.org/SearchAction" accept-charset="UTF-8" method="get">
-                    <div class="form-group form-search">
-
-                        <input type="text" name="buscar" id="buscar" class="form-control form-control-search" placeholder="Buscar por nombre" itemprop="query-input">
-                        <button type="submit" class="btn btn-white btn-round btn-submit">
-                        <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </div> --}}
             <div class="col text-right">
                 <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-primary">Nuevo Usuario</a>
             </div>

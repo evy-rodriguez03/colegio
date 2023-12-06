@@ -59,7 +59,7 @@
             @csrf
 
             <input type="hidden" name='id_alumno' value='{{ $alumno->id }}'>
-
+     
             <table class="table align-items-center table-flush">
                 <!-- Encabezados de la tabla -->
                 <thead class="thead-light">
@@ -84,12 +84,12 @@
                     <tr>
                         <!-- Checkbox para 1° SECRETARIA -->
                         <td>
-                            <input type="checkbox" name="secretaria" id="secretaria" value="1" {{ $secretariaChecked }}>
+                            <input type="checkbox" name="secretaria" value="1" {{ $secretariaChecked }}>
                         </td>
                         <!-- Checkbox para 2° ORIENTACION -->
                         <td>
                             <input type="checkbox" name="orientacion" value="2" {{ $orientacionChecked }}>
-                        </td>       
+                        </td>
                         <!-- Checkbox para 3° CONSEJERIA -->
                         <td>
                             <input type="checkbox" name="consej" value="3" {{ $consejChecked }}>
@@ -103,7 +103,7 @@
                             <input type="checkbox" name="secultimo" value="5" {{ $secultimoChecked }}>
                         </td>
                     </tr>
-                </tbody>
+                </tbody> 
             </table>
 
             <!-- Botón para enviar el formulario -->

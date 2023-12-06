@@ -11,7 +11,7 @@ class Firmacontrato extends Model
     protected $table = 'firmacontratotesorerias';
 
      protected $fillable = [
+        'id_padre',
         'contrato',
-
     ];
 }
