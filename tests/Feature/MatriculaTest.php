@@ -52,7 +52,7 @@ class MatriculaTest extends TestCase
             'periodoMatricula' => '2021',
             'fechaCierre' => '2021-12-31',
         ]);
-
+     //Aqui tendria que mostrar un mensaje de error
         $response->assertSessionHasErrors('fechaInicio');
     }
 
@@ -64,6 +64,7 @@ class MatriculaTest extends TestCase
             'fechaCierre' => '2021-12-31',
         ]);
 
+        //Aqui tendria que mostrar un mensaje de error//Aqui tendria que mostrar un mensaje de error
         $response->assertSessionHasErrors('fechaInicio');
     }
 
@@ -75,6 +76,7 @@ class MatriculaTest extends TestCase
             'fechaCierre' => '2021-12-31',
         ]);
 
+        //El formato dia/mes/año
         $response->assertSessionHasErrors('fechaInicio');
     }
 
@@ -95,7 +97,7 @@ class MatriculaTest extends TestCase
             'periodoMatricula' => '2021',
             'fechaCierre' => '2021-12-31',
         ]);
-
+        //Aqui tendria que mostrar un mensaje de error
         $response->assertSessionHasErrors('fechaInicio');
     }
 
