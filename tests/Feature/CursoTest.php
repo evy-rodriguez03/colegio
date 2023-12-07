@@ -32,7 +32,7 @@ class CursoTest extends TestCase
     {
         $response = $this->get('/cursos');
 
-        $response->assertViewIs('curso.create');//esta tiene que retornar a curso.index 
+        $response->assertViewIs('curso.index');
     }
 
     public function test_paraVerificarPerformance()
@@ -48,6 +48,18 @@ class CursoTest extends TestCase
     {
         $response = $this->post('/cursos', [
             'niveleducativo' => '',
+            'modalidad' => 'Presencial',
+            'jornada' => 'Matutina',
+            'seccion' => 'A',
+            'horario' => '07:00:00',
+        ]);
+
+        $response->assertSessionHasErrors('niveleducativo');
+    }
+     public function testNivelEducativoDatosCorrectos()
+    {
+        $response = $this->post('/cursos', [
+            'niveleducativo' => 'Primaria',
             'modalidad' => 'Presencial',
             'jornada' => 'Matutina',
             'seccion' => 'A',
@@ -82,6 +94,18 @@ class CursoTest extends TestCase
 
         $response->assertSessionHasErrors('modalidad');
     }
+public function testModalidadCorrecto()
+    {
+        $response = $this->post('/cursos', [
+            'niveleducativo' => 'Primaria',
+            'modalidad' => 'Presencial',
+            'jornada' => 'Matutina',
+            'seccion' => 'A',
+            'horario' => '07:00:00',
+        ]);
+
+        $response->assertSessionHasErrors('modalidad');
+    }
 
     public function testModalidadNull()
     {
@@ -102,6 +126,18 @@ class CursoTest extends TestCase
             'niveleducativo' => 'Primaria',
             'modalidad' => 'Presencial',
             'jornada' => '',
+            'seccion' => 'A',
+            'horario' => '07:00:00',
+        ]);
+
+        $response->assertSessionHasErrors('jornada');
+    }   
+    public function testJornadaDatosCorrectos()
+    {
+        $response = $this->post('/cursos', [
+            'niveleducativo' => 'Primaria',
+            'modalidad' => 'Presencial',
+            'jornada' => 'Matutina',
             'seccion' => 'A',
             'horario' => '07:00:00',
         ]);
@@ -129,6 +165,18 @@ class CursoTest extends TestCase
             'modalidad' => 'Presencial',
             'jornada' => 'Matutina',
             'seccion' => '',
+            'horario' => '07:00:00',
+        ]);
+
+        $response->assertSessionHasErrors('seccion');
+    }
+    public function testSeccionDatosCorrectos()
+    {
+        $response = $this->post('/cursos', [
+            'niveleducativo' => 'Primaria',
+            'modalidad' => 'Presencial',
+            'jornada' => 'Matutina',
+            'seccion' => 'B',
             'horario' => '07:00:00',
         ]);
 
