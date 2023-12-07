@@ -24,7 +24,12 @@ class InicioController extends Controller
 
     public function store(Request $request){
 
-        
+        $request->validate([
+            'fechaInicio' => 'required|date|alpha_num',
+            'periodoMatricula' => 'required|alpha_num', 
+            'fechaCierre' => 'required|date|after_or_equal:fechaInicio',
+        ]);
+
         $periodo = new Periodo;
         $periodo->fechaInicio = $request->input('fechaInicio');
         $periodo->periodoMatricula = $request->input('periodoMatricula');

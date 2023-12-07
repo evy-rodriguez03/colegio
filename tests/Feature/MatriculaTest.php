@@ -77,7 +77,8 @@ class MatriculaTest extends TestCase
 
         $response->assertSessionHasErrors('fechaInicio');
     }
-
+ 
+    //Nuestro sistema no debe de permitir fechas futuras solo la actual
     public function testFechaInicioFutura()
     {
         $response = $this->post('/iniciom', [
@@ -87,7 +88,7 @@ class MatriculaTest extends TestCase
         ]);
 
         $response->assertSessionHasErrors('fechaInicio');
-    }
+    } 
     public function testFechaInicioLetras()
     {
         $response = $this->post('/iniciom', [
