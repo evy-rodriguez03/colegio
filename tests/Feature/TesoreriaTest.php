@@ -117,9 +117,18 @@ class TesoreriaTest extends TestCase
     }
   
      //cambio
-    public function test_12_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1()
+     //muchas de las pruebas estan mal aplicadas por ejmplo esta 
+     //tambien seria para la vista de vista pagos no firma contrato
+     //   public function test_12_la_ruta_pagorealizar_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1(){
+       // $response = $this->actingAs(User::find(1))->get('/tesoreriavistapago');
+       // $response->assertSee(' Nº'); }
+       //tiene que ver mucho la logica del sistema
+     public function test_12_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1()
     {
-        $response = $this->actingAs(User::find(1))->get('/tesoreriavistapago');
+        $user = User::find(1);
+        $this->actingAs($user);
+        $response = $this->get('/tesoreriavistapago');
+
         $response->assertSee(' Nº');
     }
 
@@ -149,7 +158,8 @@ class TesoreriaTest extends TestCase
 
         $response->assertSee('Opciones');
     }
-
+    
+    //por la logica del sistema no puede devolver a esa vista 
     public function test_16_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_pagos()
     {
         $user = User::find(1);
@@ -167,7 +177,7 @@ class TesoreriaTest extends TestCase
 
         $response->assertSee('Detalles de los pagos');
     }
-
+     //el nombre esta mal planteado
     public function test_18_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_boton_regresar()
     {
         $user = User::find(1);
@@ -187,6 +197,7 @@ class TesoreriaTest extends TestCase
         $response->assertSee('Buscar');
     }
 
+    //por la logica del sistema no puede ser un error en la prueba 
     public function test_20_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_texto_nombre()
     {
         $user = User::find(1);
@@ -445,7 +456,8 @@ class TesoreriaTest extends TestCase
 
         $response->assertSee('Pago a Realizar');
     }
-
+      //po la logica del sistema no se podria ejecutar esta prueba ya que iene la vista detalles del pao o incluso deoleia al panel
+      //de tesoreria no al index , esa divido ese sistema
     public function test_28_la_ruta_tesoreriapago_deberia_retornar_a_la_vista_tabla_index_conteniendo_componetes_mensualidad()
     {
         $user = User::find(1);
