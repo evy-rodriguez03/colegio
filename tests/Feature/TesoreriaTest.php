@@ -115,13 +115,11 @@ class TesoreriaTest extends TestCase
 
         $response->assertSee('Pago a Realizar');
     }
-
+  
+     //cambio
     public function test_12_la_ruta_firmacontratotesoreria_deberia_retornar_a_la_vista_tabla_index_conteniendo_columna_1()
     {
-        $user = User::find(1);
-        $this->actingAs($user);
-        $response = $this->get('/tesoreriavistapago');
-
+        $response = $this->actingAs(User::find(1))->get('/tesoreriavistapago');
         $response->assertSee(' Nº');
     }
 
