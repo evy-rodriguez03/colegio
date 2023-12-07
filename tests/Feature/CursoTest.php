@@ -32,7 +32,7 @@ class CursoTest extends TestCase
     {
         $response = $this->get('/cursos');
 
-        $response->assertViewIs('curso.create');
+        $response->assertViewIs('curso.create');//esta tiene que retornar a curso.index 
     }
 
     public function test_paraVerificarPerformance()
