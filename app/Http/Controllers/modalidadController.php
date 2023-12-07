@@ -40,7 +40,8 @@ class modalidadController extends Controller
 {
     $request->validate([
         'modalidad' => 'required|string|max:255',
-        'descripcion' => 'required|string|max:255',
+        'descripcion' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\s\-]+$/',
+
     ], [
         'modalidad.required' => 'El campo modalidad es obligatorio.',
         'modalidad.string' => 'El campo modalidad debe ser una cadena de texto.',

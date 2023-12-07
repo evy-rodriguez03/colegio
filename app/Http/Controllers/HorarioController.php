@@ -41,7 +41,7 @@ class HorarioController extends Controller
 
         $request->validate([
             'jornada' => 'required',
-            'descripcion' => 'required',
+            'descripcion' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\s\-]+$/',
             'horaInicial.*' => 'required',
             'horaFinal.*' => 'required',
             'ampmInicial.*' => 'required',
