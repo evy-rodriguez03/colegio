@@ -25,7 +25,7 @@ class GradoController extends Controller
     {
         $request->validate([
             'nombre' => 'required|unique:grados,nombre',
-            'descripcion' => 'required',
+            'descripcion' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\s\-]+$/',
         ], [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'nombre.unique' => 'El campo nombre ya existe.',

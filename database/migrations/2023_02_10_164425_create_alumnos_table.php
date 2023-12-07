@@ -21,6 +21,7 @@ class CreateAlumnosTable extends Migration
             $table->string('segundoapellido')->nullable();
             $table->string('numerodeidentidad')->unique();
             $table->date('fechadenacimiento');
+            $table->string('lugardenacimiento')->nullable();
             $table->string('genero');
             $table->string('direccion')->nullable();
             $table->string('numerodehermanosenicgc')->nullable();

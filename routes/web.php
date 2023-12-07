@@ -96,7 +96,8 @@ Route::group(['middleware' => ['auth','role:Secretaria|Admin']], function () {
     route::get('/alumnos/pdf', [AlumnoController::class,'pdf'])->name('alumnos.pdf');
     route::get('/alumnos/{alumnos}', [AlumnoController::class,'show'])->name('alumnos.show');
     route::delete('/alumnos/{alumnos}',[AlumnoController::class,'destroy'])->name('alumnos.destroy');
-    route::post('/comprobar/matricula', [AlumnoController::class,'comprobar'])->name('comprobar.alumno');
+    Route::post('/comprobar/matricula', [AlumnoController::class,'comprobar'])->name('comprobar.alumno');
+
 
     //Ingresar_Alumno
     route::get('/ingresar', [IngresarController::class,'index'])->name('ingresar.index');
